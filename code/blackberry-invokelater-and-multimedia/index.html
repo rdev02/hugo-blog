@@ -30,15 +30,15 @@
     
 
     
-    <meta name="description" content="Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory&nbsp;leaks&nbsp;but some thing blocked the event dispatch&nbsp;queue. I asked for help on&nbsp;Stack Overflow&nbsp;and&nbsp;BlackBerry developer forums&nbsp;but that didn&#8217;t lead me&nbsp;&nbsp;anywhere except that I thought that something definitely gets locked.">
-    <meta property="og:description" content="Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory&nbsp;leaks&nbsp;but some thing blocked the event dispatch&nbsp;queue. I asked for help on&nbsp;Stack Overflow&nbsp;and&nbsp;BlackBerry developer forums&nbsp;but that didn&#8217;t lead me&nbsp;&nbsp;anywhere except that I thought that something definitely gets locked.">
+    <meta name="description" content="Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn&#8217;t lead me anywhere except that I thought that something definitely gets locked.">
+    <meta property="og:description" content="Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn&#8217;t lead me anywhere except that I thought that something definitely gets locked.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="BlackBerry invokeLater and Multimedia.">
     <meta property="og:url" content="blog.vnomad.com/code/blackberry-invokelater-and-multimedia/">
     <meta property="og:site_name" content="Nomad&#39;s reflections">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory&nbsp;leaks&nbsp;but some thing blocked the event dispatch&nbsp;queue. I asked for help on&nbsp;Stack Overflow&nbsp;and&nbsp;BlackBerry developer forums&nbsp;but that didn&#8217;t lead me&nbsp;&nbsp;anywhere except that I thought that something definitely gets locked.">
+    <meta name="twitter:description" content="Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn&#8217;t lead me anywhere except that I thought that something definitely gets locked.">
     
       <meta name="twitter:creator" content="@rdev02">
     
@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-hn2ecmd5khuhizdlrexpkfukaemqe4ngxqqvizhaylypes8miiytj1tzylb9.min.css" />
+    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
     
     
       
@@ -249,17 +249,17 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory&nbsp;leaks&nbsp;but some thing blocked the event dispatch&nbsp;queue. I asked for help on&nbsp;<a href="http://stackoverflow.com/questions/1459681/application-crashes-with-exception-when-using-javax-microedition-media-player/1464802#1464802">Stack Overflow</a>&nbsp;and&nbsp;<a href="http://supportforums.blackberry.com/rim/board/message?board.id=java_dev&amp;message.id=61681&amp;jump=true#M61681">BlackBerry developer forums</a>&nbsp;but that didn&#8217;t lead me&nbsp;&nbsp;anywhere except that I thought that something definitely gets locked. as my sounds were played via</p>
+              <p>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on <a href="http://stackoverflow.com/questions/1459681/application-crashes-with-exception-when-using-javax-microedition-media-player/1464802#1464802">Stack Overflow</a> and <a href="http://supportforums.blackberry.com/rim/board/message?board.id=java_dev&amp;message.id=61681&amp;jump=true#M61681">BlackBerry developer forums</a> but that didn&#8217;t lead me  anywhere except that I thought that something definitely gets locked. as my sounds were played via</p>
 
-<pre name="code">SoundPlayer sp = new SoundPlayer((String) ((SoundNotification) arg).getArg() + Constants.EXTENSION_MIDI);
+<pre><code class="language-java">SoundPlayer sp = new SoundPlayer((String) ((SoundNotification) arg).getArg() + Constants.EXTENSION_MIDI);
         sp.setVolumeLevel(100);
         sp.setMaxPlaybackMilis(4000);
         invokeLater(sp);
-</pre>
+</code></pre>
 
 <p>i though that maybe this is the concurrent resource access issue as some of the melodies had to be played more than one time. So I implemented a simple manager like</p>
 
-<pre name="code">class SoundManager implements Runnable {
+<pre><code class="language-java">class SoundManager implements Runnable {
 
   boolean _isRunning;
   Vector _playList;
@@ -314,11 +314,11 @@ ga('send', 'pageview');
   }
 
 }
-</pre>
+</code></pre>
 
-<p>and launched it along with application. BTW I was pretty much&nbsp;surprised&nbsp;that there IS NO QUEUE in 4.0.2 blackberry JDK SO i had to use Vector(well din&#8217;t really have to but it was used all around the code so I just grabbed it to be able to asap). This solved the issue.</p>
+<p>and launched it along with application. BTW I was pretty much surprised that there IS NO QUEUE in 4.0.2 blackberry JDK SO i had to use Vector(well din&#8217;t really have to but it was used all around the code so I just grabbed it to be able to asap). This solved the issue.</p>
 
-<p>&nbsp;&nbsp;However the the root of the problem was different from what I thought(though the solution is still correct). The root of the problem was &nbsp;my misunderstanding of the invokeLater method. It is misleading that it takes Runnable as a param &#8211; it actually executes your runnable on the event dispatch queue! Gotcha! Some of my sounds were 13 seconds long &#8211; no wonder firmware blocked the app with &nbsp;&#8220;<span style="border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 18px;">Application is not responding</span>&#8221; exception.</p>
+<p>However the the root of the problem was different from what I thought(though the solution is still correct). The root of the problem was  my misunderstanding of the invokeLater method. It is misleading that it takes Runnable as a param &#8211; it actually executes your runnable on the event dispatch queue! Gotcha! Some of my sounds were 13 seconds long &#8211; no wonder firmware blocked the app with  &#8220;<span style="border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 18px;">Application is not responding</span>&#8221; exception.</p>
 
               
             </div>
@@ -567,7 +567,7 @@ ga('send', 'pageview');
     
   
     
-    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4m__UITi3O6d78IL15dqz-FH3jb4pDHi6UlZyWMAfF5U_3KwRN8_dz8zeiKaFxoQlDA1dYpNTjn1Qc7ajoVlgFDDMjCu84gDMJEj3bEPBWMeSVcxJpWzB-LcMKQ3BRxlgrV9mxBbdaXeWdzZc5ZVXEJ2APGUhJsGXu6cNX5w0SPByUrPgMzHntFkewms6SgFIXFvmfsNQkiPHe2GmLL8jVUg/wp_back3.jpg?psid=1');"></div>
+    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4mGqBlcQGSIsuw6OFD-MyiXqyGa5dq-7DqQCgrXbP8kko6a9YT1Fr8ggCKZtEAdbDOqQa1eLNBJs9ZrWtimhlGd9Kum54jI9nWD-XvxFXe82LAKj11EtvUynlpcA6w__DOYjkaDPllOF-Xrs5acIf_p5kh7S9c8p_kGs3qjzXwko2tXxqSDt1Oe9himcpdzjiofihRH_N4cHAKRqiHvGui1g?width=3072&amp;height=1728&amp;cropmode=none');"></div>
   
 
 
@@ -579,7 +579,7 @@ ga('send', 'pageview');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-qnzos5sqnu4rohtf6zokzzqkdyxbfe0m9ontx6rqhebzsxhjvpl7renqyqqd.min.js"></script>
+<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
 
 
 

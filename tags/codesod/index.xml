@@ -38,7 +38,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       
       <guid>blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
       <description>Had a real problem with my wifi after moving to Ubuntu from win -&amp;gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
-       Having this changed in</description>
+        Having this changed</description>
     </item>
     
     <item>
@@ -49,8 +49,8 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <guid>blog.vnomad.com/code/idea-ant-hanging/</guid>
       <description>I had a very &amp;#8216;uncomfortable&amp;#8217; issue with Idea when using it for ant builds &amp;#8211; it hang in certain places like jar update task, rename task or similar.
 All my struggle can be found on Idea track. Fortunately Carl Abramsson found a workaround for that issue using
- -noinput&amp;nbsp;
- switch to ant launch. Now everything works like a charm. Decided to create this post in case some one will be&amp;nbsp;desperately&amp;nbsp;googling for a solution in the wrong place 🙂</description>
+ -noinput
+ switch to ant launch. Now everything works like a charm. Decided to create this post in case some one will be desperately googling for a solution in the wrong place 🙂</description>
     </item>
     
   </channel>

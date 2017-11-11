@@ -64,8 +64,8 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/switching-to-container-based-datasource/</guid>
-      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing&amp;nbsp;weird&amp;nbsp;and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
-&amp;nbsp;&amp;nbsp; &amp;nbsp;First of all lets assume we use JBoss app server.</description>
+      <description>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
+First of all lets assume we use JBoss app server.</description>
     </item>
     
     <item>
@@ -74,7 +74,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Wed, 23 Sep 2009 09:37:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/blackberry-invokelater-and-multimedia/</guid>
-      <description>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&amp;#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory&amp;nbsp;leaks&amp;nbsp;but some thing blocked the event dispatch&amp;nbsp;queue. I asked for help on&amp;nbsp;Stack Overflow&amp;nbsp;and&amp;nbsp;BlackBerry developer forums&amp;nbsp;but that didn&amp;#8217;t lead me&amp;nbsp;&amp;nbsp;anywhere except that I thought that something definitely gets locked.</description>
+      <description>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&amp;#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn&amp;#8217;t lead me anywhere except that I thought that something definitely gets locked.</description>
     </item>
     
     <item>

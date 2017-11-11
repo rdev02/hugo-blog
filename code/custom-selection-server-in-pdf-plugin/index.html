@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-hn2ecmd5khuhizdlrexpkfukaemqe4ngxqqvizhaylypes8miiytj1tzylb9.min.css" />
+    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
     
     
       
@@ -251,13 +251,14 @@ ga('send', 'pageview');
             <div class="main-content-wrap">
               <p>Recently i was developing a feature for the Adobe&reg; Acrobat Reader&reg; plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page&#8230; &#8211; bad you are :). Here i&#8217;ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.0.5 SDK.First i would like to say that i haven&#8217;t found better way(say another way) to make slection/highlight of an annotation that creating my own selection server for that annotation. It also has to be said that every single type in Acrobat that &#8220;can be highlighted&#8221; has its own selection server(of type AVDocSelectionServer) which in practise can be obtained if you know its &#8220;internal&#8221; name. For example if you want a selection server for type &#8220;Button&#8221; you can something as following:</p>
 
-<pre name="code">AVDocGetSelectionServerByType(ASAtomFromString("Button")); </pre>
+<pre><code class="language-cpp">AVDocGetSelectionServerByType(ASAtomFromString(&quot;Button&quot;));
+</code></pre>
 
 <p>There are selection servers for simple annotations but my annotation was a custom object, created by plug-in and thus didn&#8217;t have one. It didn&#8217;t prevent acrobat to use normal highlighting for it as when treating it as simple annotation in object editing mode, but the request was to provide highligting regardless of mode. So solution is to register the selection server. There is an example shipped with SDK of how to make custom selection servers but this example has a minor bug in it(it is configured so that selection will be drawn on every page whereas it has to be drawn only on the page where the object resides) and it doesnt take into consideration possibility of acrobat to change selection servers without notifying current selection server to lose its selection(for example when user press CTRL+A). So here we go with the code:First thing is to create a class which would be holding our selection and provide the selection type. To manage selections on different pages i created a simple class containinng list with page/data pairs and made it static for cross-page persistance. secondly implement the selection server. There is one workaround here in my code: to handle CTRL+A for simple objects on the page i use its selection server by injecting &#8220;losing selection&#8221; funtionality before server case takes place and then return to the normal application flow.This is definetely not a good way &#8211; but i found no other solution and this one is working:).</p>
 
 <p>So here is the header file of the Selection Server</p>
 
-<pre name="code">/*********************************************************************
+<pre><code class="language-cpp">/*********************************************************************
 ADOBE SYSTEMS INCORPORATED
 Copyright (C) 1994-2003 Adobe Systems Incorporated
 All rights reserved.
@@ -272,45 +273,48 @@ SelectionServer.h
 
 #ifndef PIDGETSELECTIONSERVER_H
 #define PIDGETSELECTIONSERVER_H
-#include <list>
-#include 
+#include &lt;list&gt;
+#include &lt;map&gt;
 
-<map>
-  typedef pair<pdpage,list<asfixedRect>*> PageSelection;
+typedef pair&lt;pdpage,list&lt;asfixedRect&gt;*&gt; PageSelection;
   /* CustomClassSelection
   ** ------------------------------------------------------
   **
   ** This is the structure used to store selection data for
-  ** selections of type "CustomClass". All callbacks in our
+  ** selections of type &quot;CustomClass&quot;. All callbacks in our
   ** AVDocSelectionServer can assume that selData is a
   ** pointer to one of these.
   */
   typedef struct _t_CustomClassSelection
   {
-  PDAnnot annotToScrollTo;// the first annot that is highlighted
-  list<pageSelection>* pageSelectionToHighlight;
-  AVDoc currentDoc;
-  bool isAnnotToScrollToSet;
+    PDAnnot annotToScrollTo;// the first annot that is highlighted
+    list&lt;pageSelection&gt;* pageSelectionToHighlight;
+    AVDoc currentDoc;
+    bool isAnnotToScrollToSet;
   } CustomClassSelectionRec, *CustomClassSelection;
+
   // Pidget selection/highlight methods. These methods are
   // shared between the selection server and the AVTool.
   void InitializeCustomClassSelectionServer (void);
   /* SelectionServerGetType
   ** ------------------------------------------------------
   ** */
-  /** We're registering a selection server of type "CustomClass".
+  /** We're registering a selection server of type &quot;CustomClass&quot;.
   **
   ** @return the selection server type.
   ** */
   static ACCB1 ASAtom ACCB2 CustomClassSelectionServerGetType ()
   {
-  return ASAtomFromString ("CustomClass");
+    return ASAtomFromString (&quot;CustomClass&quot;);
   }
+
   ACCB1 void ACCB2 DrawCustomClassSelection (AVPageView pageView, AVDevRect *updateRect, void *data);
   extern ACCB1 void ACCB2 SelectionServerLosingSelection (AVDoc doc, void *selData, ASBool highlight);
   void* MySelectAllProc (AVDoc doc, void * selData);
   extern AVDocSelectionSelectAllProc prc;
-  #endif // !SELECTIONSERVER_H
+  #endif 
+  
+  // !SELECTIONSERVER_H
   // ***************Its corresponding realization and helper 'drawing utils' file intended to actually draw the selection************
   /*********************************************************************
   ADOBE SYSTEMS INCORPORATED
@@ -326,18 +330,18 @@ SelectionServer.h
   file SelectionServer.cpp
   - The SelectionServer plug-in implements a selection server to handle
   pidgets. The pidgets selection tool allows users to select pidgetss by calling
-  AVDocSetSelection() with a selection type of "CustomClass".
+  AVDocSetSelection() with a selection type of &quot;CustomClass&quot;.
   This call passes control to the selection server, which proceeds to
   highlight the pidget.
   - The selection server functionality is limited to getting, showing, and
   losing a selection.
   *********************************************************************/
   #ifndef MAC_PLATFORM
-  #include "PIHeaders.h"
+  #include &quot;PIHeaders.h&quot;
   #endif
-  #include "CommonHeaders.h"
-  #include "SelectionServer.h"
-  #include "Page.h"
+  #include &quot;CommonHeaders.h&quot;
+  #include &quot;SelectionServer.h&quot;
+  #include &quot;Page.h&quot;
   
   /*-------------------------------------------------------
   Constants/Declarations
@@ -363,27 +367,28 @@ SelectionServer.h
   //** */
   static ACCB1 void ACCB2 SelectionServerGettingSelection (AVDoc doc, void *selData, ASBool highlight)
   {
-  ASAtom atm = ASAtomFromString("Authoring");
-  AVDocSelectionServer srvr = AVDocGetSelectionServerByType(atm);
-  prc = srvr->SelectAll;
-  srvr->SelectAll = ASCallbackCreateProto (AVDocSelectionSelectAllProc, &MySelectAllProc);
-  
-  
-  AVPageView pageView = AVDocGetPageView(doc);
-  CustomClassSelection isel = (CustomClassSelection)selData;
-  // Draw the selection. It will only be drawn if the page
-  // holding the selection is being displayed.
-  DrawCustomClassSelection (pageView, NULL, selData);
-  // Register the AVPageViewDrawProc so we can redraw the selection
-  // when the page is updated.
-  AVAppRegisterForPageViewDrawing (cbDrawCustomClassSelection, isel);
+    ASAtom atm = ASAtomFromString(&quot;Authoring&quot;);
+    AVDocSelectionServer srvr = AVDocGetSelectionServerByType(atm);
+    prc = srvr-&gt;SelectAll;
+    srvr-&gt;SelectAll = ASCallbackCreateProto (AVDocSelectionSelectAllProc, &amp;MySelectAllProc);
+    
+    
+    AVPageView pageView = AVDocGetPageView(doc);
+    CustomClassSelection isel = (CustomClassSelection)selData;
+    // Draw the selection. It will only be drawn if the page
+    // holding the selection is being displayed.
+    DrawCustomClassSelection (pageView, NULL, selData);
+    // Register the AVPageViewDrawProc so we can redraw the selection
+    // when the page is updated.
+    AVAppRegisterForPageViewDrawing (cbDrawCustomClassSelection, isel);
   }
+
   void* MySelectAllProc (AVDoc doc, void * selData){
-  SelectionServerLosingSelection(AVAppGetActiveDoc(),Page::currentSelection,false);
-  ASAtom atm = ASAtomFromString("Authoring");
-  AVDocSelectionServer srvr = AVDocGetSelectionServerByType(atm);
-  srvr->SelectAll = prc;
-  return srvr->SelectAll(doc,selData);
+    SelectionServerLosingSelection(AVAppGetActiveDoc(),Page::currentSelection,false);
+    ASAtom atm = ASAtomFromString(&quot;Authoring&quot;);
+    AVDocSelectionServer srvr = AVDocGetSelectionServerByType(atm);
+    srvr-&gt;SelectAll = prc;
+    return srvr-&gt;SelectAll(doc,selData);
   }
   /* SelectionServerLosingSelection
   ** ------------------------------------------------------
@@ -405,48 +410,48 @@ SelectionServer.h
   */
   ACCB1 void ACCB2 SelectionServerLosingSelection (AVDoc doc, void *selData, ASBool highlight)
   {
-  AVPageView pageView = AVDocGetPageView(doc);
-  CustomClassSelection isel = (CustomClassSelection)selData;
-  ASAtom atm = ASAtomFromString("Authoring");
-  AVDocSelectionServer srvr = AVDocGetSelectionServerByType(atm);
-  srvr->SelectAll = prc;
-  
-  // Make sure that an exception doesn't prevent us from
-  // releasing the PDPage.
-  DURING
-  // Unregister the AVPageViewDrawProc; there's no selection
-  // to draw any more.
-  AVAppUnregisterForPageViewDrawing (cbDrawCustomClassSelection);
-  
-  for(list<pageSelection>::iterator i = isel->pageSelectionToHighlight->begin(); i != isel->pageSelectionToHighlight->end(); i++)
-  {
-  PageSelection* iteratorSel = &(*i);
-  ASInt32 pageNum = PDPageGetNumber (iteratorSel->first);
-  if ((pageNum >= AVPageViewGetFirstVisiblePageNum(pageView)) &&
-  (pageNum <= AVPageViewGetLastVisiblePageNum(pageView)) &#038;&#038; highlight)
-  {
-  AVDevRect viewRect;
-  for(list<asfixedRect>::iterator pageRect = iteratorSel->second->begin(); pageRect != iteratorSel->second->end();pageRect++)
-  {
-  AVPageViewRectToDevice (pageView, &(*pageRect), &viewRect);
-  AVPageViewInvalidateRect (pageView, &viewRect);
-  }
-  AVPageViewDrawNow (pageView);
-  }
-  }
-  
-  HANDLER
-  END_HANDLER;
-  // Release the page.
-  
-  for(list<pageSelection>::iterator i = isel->pageSelectionToHighlight->begin(); i != isel->pageSelectionToHighlight->end(); i++)
-  {
-  PDPageRelease (((PageSelection)(*i)).first);
-  }
-  // Free the selection data. Note that anyone calling AVDocSetSelection
-  // for our selection server must have used ASmalloc to allocate the
-  // memory, or this won't work.
-  ASfree (isel);
+    AVPageView pageView = AVDocGetPageView(doc);
+    CustomClassSelection isel = (CustomClassSelection)selData;
+    ASAtom atm = ASAtomFromString(&quot;Authoring&quot;);
+    AVDocSelectionServer srvr = AVDocGetSelectionServerByType(atm);
+    srvr-&gt;SelectAll = prc;
+    
+    // Make sure that an exception doesn't prevent us from
+    // releasing the PDPage.
+    DURING
+    // Unregister the AVPageViewDrawProc; there's no selection
+    // to draw any more.
+    AVAppUnregisterForPageViewDrawing (cbDrawCustomClassSelection);
+    
+    for(list&lt;pageSelection&gt;::iterator i = isel-&gt;pageSelectionToHighlight-&gt;begin(); i != isel-&gt;pageSelectionToHighlight-&gt;end(); i++)
+    {
+      PageSelection* iteratorSel = &amp;(*i);
+      ASInt32 pageNum = PDPageGetNumber (iteratorSel-&gt;first);
+      if ((pageNum &gt;= AVPageViewGetFirstVisiblePageNum(pageView)) &amp;&amp;
+      (pageNum &lt;= AVPageViewGetLastVisiblePageNum(pageView)) &amp;#038;&amp;#038; highlight)
+      {
+        AVDevRect viewRect;
+        for(list&lt;asfixedRect&gt;::iterator pageRect = iteratorSel-&gt;second-&gt;begin(); pageRect != iteratorSel-&gt;second-&gt;end();pageRect++)
+        {
+          AVPageViewRectToDevice (pageView, &amp;(*pageRect), &amp;viewRect);
+          AVPageViewInvalidateRect (pageView, &amp;viewRect);
+        }
+        AVPageViewDrawNow (pageView);
+      }
+    }
+    
+    HANDLER
+    END_HANDLER;
+    // Release the page.
+    
+    for(list&lt;pageSelection&gt;::iterator i = isel-&gt;pageSelectionToHighlight-&gt;begin(); i != isel-&gt;pageSelectionToHighlight-&gt;end(); i++)
+    {
+      PDPageRelease (((PageSelection)(*i)).first);
+    }
+    // Free the selection data. Note that anyone calling AVDocSetSelection
+    // for our selection server must have used ASmalloc to allocate the
+    // memory, or this won't work.
+    ASfree (isel);
   }
   /* SelectionServerShowSelection
   ** ------------------------------------------------------
@@ -465,18 +470,20 @@ SelectionServer.h
   {
   //currently not used
   }
+
   ASBool SelectionServerKeyDown (AVDoc doc, void * data, AVKeyCode key, AVFlagBits16 flags){
-  if (key == 127) {
-  AVDocClearSelection(AVAppGetActiveDoc(),false);
-  }
-  return false;
+    if (key == 127) {
+      AVDocClearSelection(AVAppGetActiveDoc(),false);
+    }
+    return false;
   }
   
   void* SelectionServerRemovedFromSelection (AVDoc doc, void * curData, void * remData, ASBool highlight)
   {
-  int x = 10;
-  return NULL;
+    int x = 10;
+    return NULL;
   }
+
   /* InitializeSelectionServer
   ** ------------------------------------------------------
   ** */ 
@@ -487,61 +494,59 @@ SelectionServer.h
   // ** */
   void InitializeCustomClassSelectionServer (void)
   {
-  // Initialize our supporting globals.
-  CustomClass_K = CustomClassSelectionServerGetType();
-  cbDrawCustomClassSelection = ASCallbackCreateProto (AVPageViewDrawProc, DrawCustomClassSelection);
-  // Set up the pidget selection server.
-  memset (&CustomClassSelectionServer, 0, sizeof(AVDocSelectionServerRec));
-  CustomClassSelectionServer.size = sizeof(AVDocSelectionServerRec);
-  // Currently, we only implement Getting, Losing and Showing selections.
-  CustomClassSelectionServer.GetType =
-  ASCallbackCreateProto (AVDocSelectionGetTypeProc, &CustomClassSelectionServerGetType);
-  CustomClassSelectionServer.GettingSelection =
-  ASCallbackCreateProto (AVDocSelectionGettingSelectionProc, &SelectionServerGettingSelection);
-  CustomClassSelectionServer.LosingSelection =
-  ASCallbackCreateProto (AVDocSelectionLosingSelectionProc, &SelectionServerLosingSelection);
-  CustomClassSelectionServer.ShowSelection =
-  ASCallbackCreateProto (AVDocSelectionShowSelectionProc, &SelectionServerShowSelection);
-  CustomClassSelectionServer.KeyDown =
-  ASCallbackCreateProto (AVDocSelectionKeyDownProc, &SelectionServerKeyDown);
-  CustomClassSelectionServer.RemovedFromSelection =
-  ASCallbackCreateProto (AVDocSelectionRemovedFromSelectionProc, &SelectionServerRemovedFromSelection);
-  AVDocRegisterSelectionServer (&CustomClassSelectionServer);
+    // Initialize our supporting globals.
+    CustomClass_K = CustomClassSelectionServerGetType();
+    cbDrawCustomClassSelection = ASCallbackCreateProto (AVPageViewDrawProc, DrawCustomClassSelection);
+    // Set up the pidget selection server.
+    memset (&amp;CustomClassSelectionServer, 0, sizeof(AVDocSelectionServerRec));
+    CustomClassSelectionServer.size = sizeof(AVDocSelectionServerRec);
+    // Currently, we only implement Getting, Losing and Showing selections.
+    CustomClassSelectionServer.GetType =
+    ASCallbackCreateProto (AVDocSelectionGetTypeProc, &amp;CustomClassSelectionServerGetType);
+    CustomClassSelectionServer.GettingSelection =
+    ASCallbackCreateProto (AVDocSelectionGettingSelectionProc, &amp;SelectionServerGettingSelection);
+    CustomClassSelectionServer.LosingSelection =
+    ASCallbackCreateProto (AVDocSelectionLosingSelectionProc, &amp;SelectionServerLosingSelection);
+    CustomClassSelectionServer.ShowSelection =
+    ASCallbackCreateProto (AVDocSelectionShowSelectionProc, &amp;SelectionServerShowSelection);
+    CustomClassSelectionServer.KeyDown =
+    ASCallbackCreateProto (AVDocSelectionKeyDownProc, &amp;SelectionServerKeyDown);
+    CustomClassSelectionServer.RemovedFromSelection =
+    ASCallbackCreateProto (AVDocSelectionRemovedFromSelectionProc, &amp;SelectionServerRemovedFromSelection);
+    AVDocRegisterSelectionServer (&amp;CustomClassSelectionServer);
   }
-  </pre>
-  
+</code></pre>
 
 <p><p>
     // drawing utils implementation
   </p></p>
 
-<p><pre name="code">
-/*********************************************************************
+<pre><code class="language-cpp">/*********************************************************************
 ADOBE SYSTEMS INCORPORATED
-Copyright &copy; 1994-2003 Adobe Systems Incorporated
+Copyright (C) 1994-2003 Adobe Systems Incorporated
 All rights reserved.
 NOTICE: Adobe permits you to use, modify, and distribute this file
 in accordance with the terms of the Adobe license agreement
 accompanying it. If you have received this file from a source other
 than Adobe, then your use, modification, or distribution of it
 requires the prior written permission of Adobe.
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-*/
+-------------------------------------------------------------------*/ 
 /**
 file SelectionServerDrawUtils.cpp
 - Implementation to draw the highlight around the selected pidget.
-********************************************************************<em>/
+*********************************************************************/
 #ifndef MAC_PLATFORM
-#include &ldquo;PIHeaders.h&rdquo;
+#include &quot;PIHeaders.h&quot;
 #endif
-#include &ldquo;CommonHeaders.h&rdquo;
-#include &ldquo;SelectionServer.h&rdquo;
-#include &ldquo;Resource.h&rdquo;
-/</em>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-
+#include &quot;CommonHeaders.h&quot;
+#include &quot;SelectionServer.h&quot;
+#include &quot;Resource.h&quot;
+/*-------------------------------------------------------
 Helper Methods
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-<em>/
-/</em> DrawCustomClassSelectionHighlight
-** &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-** */
+-------------------------------------------------------*/
+/* DrawCustomClassSelectionHighlight
+** ------------------------------------------------------
+** */ 
 /** Draws the selection on the pageview. Simply draws a
 ** rectangle around the pidget.
 **
@@ -550,22 +555,22 @@ Helper Methods
 ** */
 static void DrawCustomClassSelectionHighlight (AVPageView pageView, const AVDevRect *selBounds)
 {
-PDColorValueRec colorVal;
-// Define the color for our selection.
-colorVal.space = PDDeviceRGB ;
-colorVal.value[0] = ASInt32ToFixed(1);
-colorVal.value[1] = colorVal.value[2] = ASInt32ToFixed(0);</p>
+  PDColorValueRec colorVal;
+  // Define the color for our selection.
+  colorVal.space = PDDeviceRGB ;
+  colorVal.value[0] = ASInt32ToFixed(1);
+  colorVal.value[1] = colorVal.value[2] = ASInt32ToFixed(0);
 
-<p>// Set the drawing color for the pageview.
-AVPageViewSetColor (pageView, &amp;colorVal);
-// Draw the highlight.
-AVPageViewDrawRectOutline(pageView, selBounds, 2, NULL, 0);
+  // Set the drawing color for the pageview.
+  AVPageViewSetColor (pageView, &amp;colorVal);
+  // Draw the highlight.
+  AVPageViewDrawRectOutline(pageView, selBounds, 2, NULL, 0);
 }
 /* DrawCustomClassSelection
-** &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-** */
+** ------------------------------------------------------
+** */ 
 /** This is the AVPageViewDrawProc that draws the current
-** selection. It is registered whenever the selection server&rsquo;s
+** selection. It is registered whenever the selection server's
 ** GettingSelection callback is called, and unregistered when
 ** the LosingSelection callback is called. The callback is
 ** created in InitializeSelectionServer().
@@ -575,79 +580,80 @@ AVPageViewDrawRectOutline(pageView, selBounds, 2, NULL, 0);
 ** @see AVPageViewRectToDevice
 ** */
 ACCB1 void ACCB2 DrawCustomClassSelection (AVPageView pageView, AVDevRect *updateRect, void *data)
-{</p>
+{
 
-<p>CustomClassSelection isel = (CustomClassSelection)data;
-for(list<pageSelection>::iterator i = isel-&gt;pageSelectionToHighlight-&gt;begin(); i != isel-&gt;pageSelectionToHighlight-&gt;end(); i++)
-{
-PageSelection* iteratorSel = &amp;(*i);
-if(AVAppGetActiveDoc() != isel-&gt;currentDoc)
-{
-//this is not the document we need
-return;
-}
-ASInt32 pageNum = PDPageGetNumber (iteratorSel-&gt;first);</p>
+  CustomClassSelection isel = (CustomClassSelection)data;
+  for(list&lt;pageSelection&gt;::iterator i = isel-&gt;pageSelectionToHighlight-&gt;begin(); i != isel-&gt;pageSelectionToHighlight-&gt;end(); i++)
+  {
+    PageSelection* iteratorSel = &amp;(*i);
+    if(AVAppGetActiveDoc() != isel-&gt;currentDoc)
+    {
+      //this is not the document we need
+      return;
+    }
+    ASInt32 pageNum = PDPageGetNumber (iteratorSel-&gt;first);
 
-<p>DURING
-if ((pageNum &gt;= AVPageViewGetFirstVisiblePageNum(pageView)) &amp;&amp;
-(pageNum &lt;= AVPageViewGetLastVisiblePageNum(pageView))&#038;&#038;(pageNum == AVPageViewGetPageNum(pageView)))
-{
-// Convert the pidgets&rsquo;s bounding rect to device space.
-for(list<asfixedRect>::iterator pageRect = iteratorSel-&gt;second-&gt;begin(); pageRect != iteratorSel-&gt;second-&gt;end();pageRect++)
-{
-ASFixedRect rect = *pageRect;
-AVDevRect viewRect;
-AVPageViewRectToDevice (pageView, &amp;rect, &amp;viewRect);
-DrawCustomClassSelectionHighlight (pageView, &amp;viewRect);
+    DURING
+    if ((pageNum &gt;= AVPageViewGetFirstVisiblePageNum(pageView)) &amp;&amp;
+    (pageNum &lt;= AVPageViewGetLastVisiblePageNum(pageView))&amp;#038;&amp;#038;(pageNum == AVPageViewGetPageNum(pageView)))
+    {
+      // Convert the pidgets's bounding rect to device space.
+      for(list&lt;asfixedRect&gt;::iterator pageRect = iteratorSel-&gt;second-&gt;begin(); pageRect != iteratorSel-&gt;second-&gt;end();pageRect++)
+      {
+        ASFixedRect rect = *pageRect;
+        AVDevRect viewRect;
+        AVPageViewRectToDevice (pageView, &amp;rect, &amp;viewRect);
+        DrawCustomClassSelectionHighlight (pageView, &amp;viewRect);
+      }
+    }
+    HANDLER
+    END_HANDLER
+  }
 }
-}
-HANDLER
-END_HANDLER
-}
-}
-</pre></p>
+</code></pre>
 
 <p><p>
     //we&#8217;ll also need some class to hold the selection class instance
   </p></p>
 
-<p><pre name="code">
-#include &ldquo;CustomClassSelectionServer/SelectionServer.h&rdquo;
+<pre><code class="language-cpp">#include &quot;CustomClassSelectionServer/SelectionServer.h&quot;
 class Page:
 {
-public:
-Page(Form *parent);
-~Page();
-//other custom code</p>
+    public:
+    Page(Form *parent);
+    ~Page();
+    //other custom code
 
-<p>static void InitSelection();
-static void SetSelection();
-static CustomClassSelection currentSelection;</p>
+    static void InitSelection();
+    static void SetSelection();
+    static CustomClassSelection currentSelection;
+};
 
-<p>};
-typedef vector<page> PageVector;</p>
+typedef vector&lt;page&gt; PageVector;
 
-<p>//making the selection would be fairly easy:
+//making the selection would be fairly easy:
 Page::InitSelection();
 for(every_page)
 {
-if( need_selection )
-{
-/ /add selection rectangle
-pageSlctn.second-&gt;push_back(boundingRect);
-if(!currentSelection-&gt;isAnnotToScrollToSet)
-{
-currentSelection-&gt;annotToScrollTo = annot;
-currentSelection-&gt;isAnnotToScrollToSet = true;
-//also add referrence to document to avoid cross document painting
-currentSelection-&gt;currentDoc = AVAppGetActiveDoc();
-}
-}
-currentSelection-&gt;pageSelectionToHighlight-&gt;push_back(pageSlctn);
-}
-Page::SetSelection();</p>
+    if( need_selection )
+    {
+        / /add selection rectangle
+        pageSlctn.second-&gt;push_back(boundingRect);
+        if(!currentSelection-&gt;isAnnotToScrollToSet)
+        {
+            currentSelection-&gt;annotToScrollTo = annot;
+            currentSelection-&gt;isAnnotToScrollToSet = true;
+            //also add referrence to document to avoid cross document painting
+            currentSelection-&gt;currentDoc = AVAppGetActiveDoc();
+        }
 
-<p></pre></p>
+
+        currentSelection-&gt;pageSelectionToHighlight-&gt;push_back(pageSlctn);
+    }
+}
+
+Page::SetSelection();
+</code></pre>
 
               
             </div>
@@ -894,7 +900,7 @@ Page::SetSelection();</p>
     
   
     
-    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4m__UITi3O6d78IL15dqz-FH3jb4pDHi6UlZyWMAfF5U_3KwRN8_dz8zeiKaFxoQlDA1dYpNTjn1Qc7ajoVlgFDDMjCu84gDMJEj3bEPBWMeSVcxJpWzB-LcMKQ3BRxlgrV9mxBbdaXeWdzZc5ZVXEJ2APGUhJsGXu6cNX5w0SPByUrPgMzHntFkewms6SgFIXFvmfsNQkiPHe2GmLL8jVUg/wp_back3.jpg?psid=1');"></div>
+    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4mGqBlcQGSIsuw6OFD-MyiXqyGa5dq-7DqQCgrXbP8kko6a9YT1Fr8ggCKZtEAdbDOqQa1eLNBJs9ZrWtimhlGd9Kum54jI9nWD-XvxFXe82LAKj11EtvUynlpcA6w__DOYjkaDPllOF-Xrs5acIf_p5kh7S9c8p_kGs3qjzXwko2tXxqSDt1Oe9himcpdzjiofihRH_N4cHAKRqiHvGui1g?width=3072&amp;height=1728&amp;cropmode=none');"></div>
   
 
 
@@ -906,7 +912,7 @@ Page::SetSelection();</p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-qnzos5sqnu4rohtf6zokzzqkdyxbfe0m9ontx6rqhebzsxhjvpl7renqyqqd.min.js"></script>
+<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
 
 
 

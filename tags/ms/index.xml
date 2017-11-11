@@ -20,7 +20,7 @@
       <description>I really, really do not know if that&amp;#8217;s accidental or on-purpose and whether it&amp;#8217;s connected with the fact that Microsoft bought Skype, but this morning I received a wonderful email:
   Now 3 things about this:
 1. I **am **a skype user.
-2. Who the hell is Natalia??? And why, and when&amp;nbsp; and WTF?!
+2. Who the hell is Natalia??? And why, and when and WTF?!
 3. I love to use skype. It would be sad if this is the turning point.</description>
     </item>
     
@@ -30,8 +30,7 @@
       <pubDate>Sun, 28 Mar 2010 20:06:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/mcpd-acquired/</guid>
-      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;Finally. Now frankly &amp;#8211; preparing for MS exams while doing die-hard java is not a funny thing to do. NEVER practice such a combination&amp;#8230;
-&amp;nbsp;&amp;nbsp; &amp;nbsp;About the exam &amp;#8211; it was better then the previous 2: it obeyed no rules:). What I mean here is that I could have skipped the preparation kit completely! Yes there were a few questions related to the book&amp;#8217;s content, BUT reading it is completely optional IMHO.</description>
+      <description>Finally. Now frankly &amp;amp;#8211; preparing for MS exams while doing die-hard java is not a funny thing to do. NEVER practice such a combination&amp;amp;#8230; About the exam &amp;amp;#8211; it was better then the previous 2: it obeyed no rules:). What I mean here is that I could have skipped the preparation kit completely! Yes there were a few questions related to the book&amp;amp;#8217;s content, BUT reading it is completely optional IMHO.</description>
     </item>
     
     <item>
@@ -40,7 +39,7 @@
       <pubDate>Thu, 24 Dec 2009 21:11:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/devenv-crash-from-the-command-line/</guid>
-      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &amp;#8211; a standard windows crash appeared with 0xc000005 error code and a &amp;#8220;friendly&amp;#8221; Send/Don&amp;#8217;t send error to Microsoft dialog.</description>
+      <description>Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &amp;#8211; a standard windows crash appeared with 0xc000005 error code and a &amp;#8220;friendly&amp;#8221; Send/Don&amp;#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.</description>
     </item>
     
     <item>
@@ -49,8 +48,7 @@
       <pubDate>Sat, 12 Sep 2009 19:44:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/mcts-acquired/</guid>
-      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &amp;#8211; it&amp;#8217;s like a combination of the previous 2 with some logic included- &amp;nbsp;not just simple development components.
-&amp;nbsp;&amp;nbsp; Regarding the exam &amp;#8211; not much can be said. Only one thing is worth mentioning &amp;#8211; it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is&amp;#8230; Interesting how would the next one go&amp;#8230;</description>
+      <description>One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &amp;amp;#8211; it&amp;amp;#8217;s like a combination of the previous 2 with some logic included- not just simple development components.  Regarding the exam &amp;#8211; not much can be said. Only one thing is worth mentioning &amp;#8211; it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is&amp;#8230; Interesting how would the next one go&amp;#8230;</description>
     </item>
     
     <item>

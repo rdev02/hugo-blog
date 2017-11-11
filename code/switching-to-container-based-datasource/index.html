@@ -30,18 +30,18 @@
     
 
     
-    <meta name="description" content="&nbsp;&nbsp; &nbsp;Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing&nbsp;weird&nbsp;and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
-&nbsp;&nbsp; &nbsp;First of all lets assume we use JBoss app server.">
-    <meta property="og:description" content="&nbsp;&nbsp; &nbsp;Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing&nbsp;weird&nbsp;and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
-&nbsp;&nbsp; &nbsp;First of all lets assume we use JBoss app server.">
+    <meta name="description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
+First of all lets assume we use JBoss app server.">
+    <meta property="og:description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
+First of all lets assume we use JBoss app server.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Switching to  container based datasource…">
     <meta property="og:url" content="blog.vnomad.com/code/switching-to-container-based-datasource/">
     <meta property="og:site_name" content="Nomad&#39;s reflections">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="&nbsp;&nbsp; &nbsp;Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing&nbsp;weird&nbsp;and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
-&nbsp;&nbsp; &nbsp;First of all lets assume we use JBoss app server.">
+    <meta name="twitter:description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
+First of all lets assume we use JBoss app server.">
     
       <meta name="twitter:creator" content="@rdev02">
     
@@ -66,7 +66,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-hn2ecmd5khuhizdlrexpkfukaemqe4ngxqqvizhaylypes8miiytj1tzylb9.min.css" />
+    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
     
     
       
@@ -254,9 +254,10 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>&nbsp;&nbsp; &nbsp;Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing&nbsp;weird&nbsp;and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.</p>
+              <p>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.</p>
 
-<p>&nbsp;&nbsp; &nbsp;First of all lets assume we use JBoss app server. Different versions of JBoss have their own configuration &#8220;specials&#8221; so I&#8217;ll stick to 5.0.1 jdk 6. First of all we need to register the desired datasource withing the container obtaining a JNDI name. Example configurtion files for registration can be found in [JBoss install dir]/docsexamplesjca. The resulting config file which has to be pout under server/[configuration_name]/deploy would look like</p>
+<pre><code>First of all lets assume we use JBoss app server. Different versions of JBoss have their own configuration &amp;#8220;specials&amp;#8221; so I&amp;#8217;ll stick to 5.0.1 jdk 6. First of all we need to register the desired datasource withing the container obtaining a JNDI name. Example configurtion files for registration can be found in [JBoss install dir]/docsexamplesjca. The resulting config file which has to be pout under server/[configuration_name]/deploy would look like
+</code></pre>
 
 <pre><code class="language-xml">&lt;local-tx-datasource&gt;
     &lt;jndi-name&gt;MySqlDS&lt;/jndi-name&gt;
@@ -281,37 +282,14 @@ hibernate.transaction.manager\_lookup\_class = org.hibernate.transaction.JBossTr
 
 <p>Deploying your app, especially if you deployed with Tomcat compatibility you might see the next exception on startup:</p>
 
-<p><span style="font-family: Verdana; font-size: 13px;"></span></p>
+<pre><code>ERROR [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/mydb]] (main) Exception starting filter ServiceFilter
+java.lang.&lt;b&gt;ClassCastException&lt;/b&gt;: com.arjuna.ats.jbossatx.jta.TransactionManagerDelegate cannot be cast to javax.transaction.TransactionManager
+at org.hibernate.transaction.JNDITransactionManagerLookup.getTransactionManager(JNDITransactionManagerLookup.java:23)
+at org.hibernate.impl.SessionFactoryImpl.SessionFactoryImpl.java:264)
+at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1055)
+</code></pre>
 
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  <i><b>ERROR</b> [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/mydb]] (main) Exception starting filter ServiceFilter</i>
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  <i>java.lang.<b>ClassCastException</b>: com.arjuna.ats.jbossatx.jta.TransactionManagerDelegate cannot be cast to javax.transaction.TransactionManager</i>
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  <i>at org.hibernate.transaction.JNDITransactionManagerLookup.getTransactionManager(JNDITransactionManagerLookup.java:23)</i>
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  <i>at org.hibernate.impl.SessionFactoryImpl.</i><init><i>(SessionFactoryImpl.java:264)</i></init>
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  <i>at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1055)</i>
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  In short this means that you have a classloader issue having loaded the wrong manager first. Most likely you have the&nbsp;javax-transaction.jar in your bin. Remove it and everything will work fine :).
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-</div>
+<p>In short this means that you have a classloader issue having loaded the wrong manager first. Most likely you have the javax-transaction.jar in your bin. Remove it and everything will work fine :).</p>
 
 <p>If you need to set up the very same thing on Tomcat, then you have to keep in mind the next thing</p>
 
@@ -341,11 +319,10 @@ url=&quot;jdbc:mysql://localhost:3306/mydatasource?autoReconnect=true&quot;/&gt;
 
 <p>Then your hibernate.properties configuration would look like:</p>
 
-<p>hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect</p>
-
-<p>hibernate.connection.datasource = java:comp/env/jdbc/testdb</p>
-
-<p>#hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFactory</p>
+<pre><code class="language-ini">hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
+hibernate.connection.datasource = java:comp/env/jdbc/testdb
+hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFactory
+</code></pre>
 
               
             </div>
@@ -594,7 +571,7 @@ url=&quot;jdbc:mysql://localhost:3306/mydatasource?autoReconnect=true&quot;/&gt;
     
   
     
-    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4m__UITi3O6d78IL15dqz-FH3jb4pDHi6UlZyWMAfF5U_3KwRN8_dz8zeiKaFxoQlDA1dYpNTjn1Qc7ajoVlgFDDMjCu84gDMJEj3bEPBWMeSVcxJpWzB-LcMKQ3BRxlgrV9mxBbdaXeWdzZc5ZVXEJ2APGUhJsGXu6cNX5w0SPByUrPgMzHntFkewms6SgFIXFvmfsNQkiPHe2GmLL8jVUg/wp_back3.jpg?psid=1');"></div>
+    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4mGqBlcQGSIsuw6OFD-MyiXqyGa5dq-7DqQCgrXbP8kko6a9YT1Fr8ggCKZtEAdbDOqQa1eLNBJs9ZrWtimhlGd9Kum54jI9nWD-XvxFXe82LAKj11EtvUynlpcA6w__DOYjkaDPllOF-Xrs5acIf_p5kh7S9c8p_kGs3qjzXwko2tXxqSDt1Oe9himcpdzjiofihRH_N4cHAKRqiHvGui1g?width=3072&amp;height=1728&amp;cropmode=none');"></div>
   
 
 
@@ -606,7 +583,7 @@ url=&quot;jdbc:mysql://localhost:3306/mydatasource?autoReconnect=true&quot;/&gt;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-qnzos5sqnu4rohtf6zokzzqkdyxbfe0m9ontx6rqhebzsxhjvpl7renqyqqd.min.js"></script>
+<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
 
 
 

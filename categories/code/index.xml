@@ -37,8 +37,8 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</guid>
-      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K.
-&amp;nbsp;&amp;nbsp; Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
+      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K.
+Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
     </item>
     
     <item>
@@ -47,8 +47,8 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/switching-to-container-based-datasource/</guid>
-      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing&amp;nbsp;weird&amp;nbsp;and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
-&amp;nbsp;&amp;nbsp; &amp;nbsp;First of all lets assume we use JBoss app server.</description>
+      <description>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
+First of all lets assume we use JBoss app server.</description>
     </item>
     
     <item>
@@ -66,7 +66,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Mon, 14 Sep 2009 20:25:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/blogger-code-formatting/</guid>
-      <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote&amp;nbsp;now I can make such fancy posts as:
+      <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
 using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } }  </description>
     </item>
     

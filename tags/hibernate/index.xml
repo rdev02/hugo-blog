@@ -17,8 +17,8 @@
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/switching-to-container-based-datasource/</guid>
-      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing&amp;nbsp;weird&amp;nbsp;and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
-&amp;nbsp;&amp;nbsp; &amp;nbsp;First of all lets assume we use JBoss app server.</description>
+      <description>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
+First of all lets assume we use JBoss app server.</description>
     </item>
     
   </channel>

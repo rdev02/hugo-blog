@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-hn2ecmd5khuhizdlrexpkfukaemqe4ngxqqvizhaylypes8miiytj1tzylb9.min.css" />
+    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
     
     
       
@@ -251,9 +251,31 @@ ga('send', 'pageview');
             <div class="main-content-wrap">
               <p>Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:</p>
 
-<div style="clear: both; text-align: center;">
-  <img class="alignnone size-full wp-image-167" src="https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1.jpg" alt="msqlchart" width="968" height="566" srcset="https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1.jpg 968w, https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1-768x449.jpg 768w, https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1-830x485.jpg 830w, https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1-230x134.jpg 230w, https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1-350x205.jpg 350w, https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1-480x281.jpg 480w" sizes="(max-width: 968px) 100vw, 968px" />
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure left" >
+  
+    <a class="fancybox" href="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2011/09/msqlChart.jpg" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2011/09/msqlChart.jpg" >
+  
+    </a>
+  
+  
 </div>
+
 
 <p>As a quick summary &#8211; interestingly enough I do not see any speed improvement since 5.1:) there is one between 5.5 and 5.6 but it&#8217;s nowhere near the 5.1.</p>
 
@@ -431,21 +453,21 @@ ga('send', 'pageview');
 
 <p>One more thing in case interested &#8211; the code snippet I used for generating the data:</p>
 
-<pre class="brush: java; title: ; notranslate" title="">public class CreateTestTableSql {
+<pre><code class="language-cs">public class CreateTestTableSql {
 
     private static final int QUERY_ROWS = 10 * 1000 * 1000;
     private static final int BATCH_SIZE = 10 * 1000;
     private static final boolean USE_BATCH = true;
 
     static Random r = new Random();
-    static SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+    static SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy/MM/dd HH:mm&quot;);
 
     public static void main(String[] args) throws Exception {
 
         StringBuilder spotTradeSQLRow = new StringBuilder();
 
 
-        File f = new File(USE_BATCH ? "batchmysql.sql" : "mysql.sql");
+        File f = new File(USE_BATCH ? &quot;batchmysql.sql&quot; : &quot;mysql.sql&quot;);
         if (f.exists()) {
             f.delete();
         }
@@ -454,43 +476,43 @@ ga('send', 'pageview');
 
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
 
-        System.out.println("Start");
+        System.out.println(&quot;Start&quot;);
         int batchCounter = 0;
-        for (int i = 0; i < QUERY_ROWS; i++) {
+        for (int i = 0; i &lt; QUERY_ROWS; i++) {
             if (USE_BATCH) {
                 if (batchCounter == BATCH_SIZE) {
-                    spotTradeSQLRow.append(";n");
+                    spotTradeSQLRow.append(&quot;;n&quot;);
                     batchCounter = 0;
                 }
                 if (batchCounter == 0) {
-                    spotTradeSQLRow.append("INSERT INTO test.testtable VALUES(");
+                    spotTradeSQLRow.append(&quot;INSERT INTO test.testtable VALUES(&quot;);
                 } else {
-                    spotTradeSQLRow.append(",(");
+                    spotTradeSQLRow.append(&quot;,(&quot;);
                 }
             } else {
-                spotTradeSQLRow.append("INSERT INTO test.testtable VALUES(");
+                spotTradeSQLRow.append(&quot;INSERT INTO test.testtable VALUES(&quot;);
             }
-            spotTradeSQLRow.append(i + ","); //id
-            spotTradeSQLRow.append((r.nextBoolean() ?( "'" +getRandomString() + "'"): "NULL") + ","); //testVarchar
-            spotTradeSQLRow.append((r.nextBoolean() ? r.nextInt() : "NULL") + ","); //testInt
-            spotTradeSQLRow.append((r.nextBoolean() ? r.nextDouble() : "NULL") + ","); //testInt
-            spotTradeSQLRow.append((r.nextBoolean() ? ("'" + getRandomDate() + "'") : "NULL") +
-              ")"); //testInt
+            spotTradeSQLRow.append(i + &quot;,&quot;); //id
+            spotTradeSQLRow.append((r.nextBoolean() ?( &quot;'&quot; +getRandomString() + &quot;'&quot;): &quot;NULL&quot;) + &quot;,&quot;); //testVarchar
+            spotTradeSQLRow.append((r.nextBoolean() ? r.nextInt() : &quot;NULL&quot;) + &quot;,&quot;); //testInt
+            spotTradeSQLRow.append((r.nextBoolean() ? r.nextDouble() : &quot;NULL&quot;) + &quot;,&quot;); //testInt
+            spotTradeSQLRow.append((r.nextBoolean() ? (&quot;'&quot; + getRandomDate() + &quot;'&quot;) : &quot;NULL&quot;) +
+              &quot;)&quot;); //testInt
             if (!USE_BATCH) {
-                spotTradeSQLRow.append(";");
+                spotTradeSQLRow.append(&quot;;&quot;);
             }
             out.write(spotTradeSQLRow.toString());
-            out.write("n");
+            out.write(&quot;n&quot;);
             spotTradeSQLRow.delete(0, spotTradeSQLRow.length());
             batchCounter++;
 
         }
         if (USE_BATCH) {
-           out.write(";");
+           out.write(&quot;;&quot;);
         }
 
         out.close();
-        System.out.println("end");
+        System.out.println(&quot;end&quot;);
 
     }
 
@@ -508,17 +530,17 @@ ga('send', 'pageview');
 
     private static String getRandomString() {
         final int rand = r.nextInt(10);
-        if (rand < 3) {
-            return "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-        } else if (rand >= 3 && rand < 6) {
-            return "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+        if (rand &lt; 3) {
+            return &quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;;
+        } else if (rand &gt;= 3 &amp;&amp; rand &lt; 6) {
+            return &quot;BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB&quot;;
         } else {
-            return "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC";
+            return &quot;CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC&quot;;
         }
     }
 }
 
-</pre>
+</code></pre>
 
               
             </div>
@@ -767,7 +789,7 @@ ga('send', 'pageview');
     
   
     
-    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4m__UITi3O6d78IL15dqz-FH3jb4pDHi6UlZyWMAfF5U_3KwRN8_dz8zeiKaFxoQlDA1dYpNTjn1Qc7ajoVlgFDDMjCu84gDMJEj3bEPBWMeSVcxJpWzB-LcMKQ3BRxlgrV9mxBbdaXeWdzZc5ZVXEJ2APGUhJsGXu6cNX5w0SPByUrPgMzHntFkewms6SgFIXFvmfsNQkiPHe2GmLL8jVUg/wp_back3.jpg?psid=1');"></div>
+    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4mGqBlcQGSIsuw6OFD-MyiXqyGa5dq-7DqQCgrXbP8kko6a9YT1Fr8ggCKZtEAdbDOqQa1eLNBJs9ZrWtimhlGd9Kum54jI9nWD-XvxFXe82LAKj11EtvUynlpcA6w__DOYjkaDPllOF-Xrs5acIf_p5kh7S9c8p_kGs3qjzXwko2tXxqSDt1Oe9himcpdzjiofihRH_N4cHAKRqiHvGui1g?width=3072&amp;height=1728&amp;cropmode=none');"></div>
   
 
 
@@ -779,7 +801,7 @@ ga('send', 'pageview');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-qnzos5sqnu4rohtf6zokzzqkdyxbfe0m9ontx6rqhebzsxhjvpl7renqyqqd.min.js"></script>
+<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
 
 
 

@@ -17,7 +17,7 @@
       <pubDate>Fri, 21 Aug 2009 09:14:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/windows-service-accounts/</guid>
-      <description>Recently(probably 2 moths ago, but still &amp;#8211; recently) had to configure a bit of security for our test servers, visible to the web. Of course started with securing services under their own special accounts, limited to a very small amount of rights. Everything went on&amp;nbsp;smoothly&amp;nbsp;except one lil&amp;#8217; thing &amp;#8211; it didn&amp;#8217;t work:) All permissions were set correctly, all relationships assigned well, &amp;nbsp;but services didn&amp;#8217;t start. Resolution(found it in 2 hours) was fairly simple &amp;#8211; while creating accounts for my services I forgot to check the &amp;#8220;Password never expires&amp;#8221; checkbox.</description>
+      <description>Recently(probably 2 moths ago, but still &amp;#8211; recently) had to configure a bit of security for our test servers, visible to the web. Of course started with securing services under their own special accounts, limited to a very small amount of rights. Everything went on smoothly except one lil&amp;#8217; thing &amp;#8211; it didn&amp;#8217;t work:) All permissions were set correctly, all relationships assigned well, but services didn&amp;#8217;t start. Resolution(found it in 2 hours) was fairly simple &amp;#8211; while creating accounts for my services I forgot to check the &amp;#8220;Password never expires&amp;#8221; checkbox.</description>
     </item>
     
   </channel>

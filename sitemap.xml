@@ -213,7 +213,7 @@
   </url>
   
   <url>
-    <loc>blog.vnomad.com/tea/turkey-vacation/</loc>
+    <loc>blog.vnomad.com/travel/tur/turkey-vacation/</loc>
     <lastmod>2009-09-12T17:30:00+00:00</lastmod>
   </url>
   
@@ -560,18 +560,24 @@
   
   <url>
     <loc>blog.vnomad.com/categories/travel/</loc>
-    <lastmod>2009-04-12T18:40:00+00:00</lastmod>
+    <lastmod>2009-09-12T17:30:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>blog.vnomad.com/travel/</loc>
-    <lastmod>2009-04-12T18:40:00+00:00</lastmod>
+    <lastmod>2009-09-12T17:30:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>blog.vnomad.com/tags/tur/</loc>
+    <lastmod>2009-09-12T17:30:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>blog.vnomad.com/categories/tur/</loc>
     <lastmod>2009-09-12T17:30:00+00:00</lastmod>
     <priority>0</priority>
   </url>

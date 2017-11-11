@@ -2622,8 +2622,7 @@ pre > code {
 
 code {
   background-color: #fdf6e3;
-  overflow-x: auto;
-  padding: 0.5em; }
+  overflow-x: auto; }
 
 .codeblock--tabbed figcaption .tab.active {
   background: #fdf6e3;

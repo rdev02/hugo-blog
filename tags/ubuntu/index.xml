@@ -18,7 +18,7 @@
       
       <guid>blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</guid>
       <description>If you&amp;#8217;re in the same trouble as I was with black screen during boot(plymouth has the theme installed and even displays it during shutdown) then there is a small thing that has to be edited in order to get rid of this annoyance. Go to
- &amp;nbsp;/etc/grub.d/10_linux
+ /etc/grub.d/10_linux
  and remove the **handoff=7 **parameter. Inspired by this and also this(pretty nice tool for configuring plymouth for dummies).</description>
     </item>
     

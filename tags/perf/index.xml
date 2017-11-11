@@ -17,7 +17,7 @@
       <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
       
       <guid>blog.vnomad.com/code/javascript-performance-tests/</guid>
-      <description>I&amp;#8217;m dealing a lot with javascript nowadays and obviously I have to take performance into account. One way of doing this is writing a bunch of test code and record the time for your scripts, but what if you wanted to quickly test out some approaches and do not really want to invest a lot into them? Today I was pointed to a solution:&amp;nbsp;http://jsperf.com/. This awesome tool does not just give you the framework to easily test out javascript but also provides and already created library of tests other people created when investigating their performance issues.</description>
+      <description>I&amp;#8217;m dealing a lot with javascript nowadays and obviously I have to take performance into account. One way of doing this is writing a bunch of test code and record the time for your scripts, but what if you wanted to quickly test out some approaches and do not really want to invest a lot into them? Today I was pointed to a solution: http://jsperf.com/. This awesome tool does not just give you the framework to easily test out javascript but also provides and already created library of tests other people created when investigating their performance issues.</description>
     </item>
     
     <item>

@@ -30,15 +30,15 @@
     
 
     
-    <meta name="description" content="&nbsp;&nbsp; &nbsp; &nbsp;Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &#8211; a standard windows crash appeared with 0xc000005 error code and a &#8220;friendly&#8221; Send/Don&#8217;t send error to Microsoft dialog.">
-    <meta property="og:description" content="&nbsp;&nbsp; &nbsp; &nbsp;Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &#8211; a standard windows crash appeared with 0xc000005 error code and a &#8220;friendly&#8221; Send/Don&#8217;t send error to Microsoft dialog.">
+    <meta name="description" content="Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &#8211; a standard windows crash appeared with 0xc000005 error code and a &#8220;friendly&#8221; Send/Don&#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.">
+    <meta property="og:description" content="Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &#8211; a standard windows crash appeared with 0xc000005 error code and a &#8220;friendly&#8221; Send/Don&#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Devenv crash from the command line.">
     <meta property="og:url" content="blog.vnomad.com/code/devenv-crash-from-the-command-line/">
     <meta property="og:site_name" content="Nomad&#39;s reflections">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="&nbsp;&nbsp; &nbsp; &nbsp;Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &#8211; a standard windows crash appeared with 0xc000005 error code and a &#8220;friendly&#8221; Send/Don&#8217;t send error to Microsoft dialog.">
+    <meta name="twitter:description" content="Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &#8211; a standard windows crash appeared with 0xc000005 error code and a &#8220;friendly&#8221; Send/Don&#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.">
     
       <meta name="twitter:creator" content="@rdev02">
     
@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-hn2ecmd5khuhizdlrexpkfukaemqe4ngxqqvizhaylypes8miiytj1tzylb9.min.css" />
+    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
     
     
       
@@ -249,9 +249,10 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>&nbsp;&nbsp; &nbsp; &nbsp;Those of you who use devenv for building VS solutions(although you are discouraged to <a href="http://msdn.microsoft.com/en-us/library/xee0c8y7.aspx">here</a>) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &#8211; a standard windows crash appeared with 0xc000005 error code and a &#8220;friendly&#8221; Send/Don&#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.exe &nbsp;compiler process is hanging after this crash, waiting for infinity.</p>
+              <p>Those of you who use devenv for building VS solutions(although you are discouraged to <a href="http://msdn.microsoft.com/en-us/library/xee0c8y7.aspx">here</a>) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &#8211; a standard windows crash appeared with 0xc000005 error code and a &#8220;friendly&#8221; Send/Don&#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.exe  compiler process is hanging after this crash, waiting for infinity.</p>
 
-<p>&nbsp;&nbsp; &nbsp;Googling around led me to <a href="https://connect.microsoft.com/VisualStudio/feedback/ViewFeedback.aspx?FeedbackID=332669">this hm&#8230; page</a>&nbsp;&nbsp;after I thoroughly read the <a href="http://social.msdn.microsoft.com/Forums/en-US/vssmartdevicesnative/thread/993b29f4-d8f5-4c2a-8b1a-4b130ed01dc4">very one microsoft forum thread about the issue</a>. The culprit is that you have to use 1 thread for all your compiling. Reposting from the last link you have to</p>
+<pre><code>Googling around led me to [this hm&amp;#8230; page][2]  after I thoroughly read the [very one microsoft forum thread about the issue][3]. The culprit is that you have to use 1 thread for all your compiling. Reposting from the last link you have to
+</code></pre>
 
 <blockquote>
 <p><span style="font-family: Verdana; font-size: 11px;">set &#8220;maximum number of parallel project builds&#8221; to 1 instead of 2 or more, it doesn&#8217;t crash anymore.</span></p>
@@ -259,7 +260,8 @@ ga('send', 'pageview');
 
 <p>explanation &#8211; a memory leak in the building module&#8230;</p>
 
-<p>&nbsp;&nbsp; &nbsp; This actually doesn&#8217;t have to reproduce in SP1. I&#8217;ve got the latest VS Team developer with the latest SP and it still reproduces&#8230; Will try msBuild tomorrow and see if situation improves having more threads as the way it had been mentioned in the above links &#8211; if you have multi-core architecture you probably don&#8217;t want to do everything in one thread, especially if this is your continuous integration server.</p>
+<pre><code> This actually doesn&amp;#8217;t have to reproduce in SP1. I&amp;#8217;ve got the latest VS Team developer with the latest SP and it still reproduces&amp;#8230; Will try msBuild tomorrow and see if situation improves having more threads as the way it had been mentioned in the above links &amp;#8211; if you have multi-core architecture you probably don&amp;#8217;t want to do everything in one thread, especially if this is your continuous integration server.
+</code></pre>
 
               
             </div>
@@ -508,7 +510,7 @@ ga('send', 'pageview');
     
   
     
-    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4m__UITi3O6d78IL15dqz-FH3jb4pDHi6UlZyWMAfF5U_3KwRN8_dz8zeiKaFxoQlDA1dYpNTjn1Qc7ajoVlgFDDMjCu84gDMJEj3bEPBWMeSVcxJpWzB-LcMKQ3BRxlgrV9mxBbdaXeWdzZc5ZVXEJ2APGUhJsGXu6cNX5w0SPByUrPgMzHntFkewms6SgFIXFvmfsNQkiPHe2GmLL8jVUg/wp_back3.jpg?psid=1');"></div>
+    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4mGqBlcQGSIsuw6OFD-MyiXqyGa5dq-7DqQCgrXbP8kko6a9YT1Fr8ggCKZtEAdbDOqQa1eLNBJs9ZrWtimhlGd9Kum54jI9nWD-XvxFXe82LAKj11EtvUynlpcA6w__DOYjkaDPllOF-Xrs5acIf_p5kh7S9c8p_kGs3qjzXwko2tXxqSDt1Oe9himcpdzjiofihRH_N4cHAKRqiHvGui1g?width=3072&amp;height=1728&amp;cropmode=none');"></div>
   
 
 
@@ -520,7 +522,7 @@ ga('send', 'pageview');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-qnzos5sqnu4rohtf6zokzzqkdyxbfe0m9ontx6rqhebzsxhjvpl7renqyqqd.min.js"></script>
+<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
 
 
 
