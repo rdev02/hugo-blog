@@ -1,0 +1,103 @@
+baseURL                = "localhost"
+defaultContentLanguage = "en-us"
+description            = "tea | travel | code"
+languageCode           = "en-us"
+theme                  = "hugo-tranquilpeak-theme"
+title                  = "Nomad's reflections"
+watch                  = true
+disqusShortname        = "vnomad" 
+googleAnalytics        = "UA-64535001-2"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  archive = "archives"
+
+[permalinks]
+  post = "/:year/:month/:slug/"
+
+[author]
+  name = "Viktor Halitsyn"
+  bio = "Came a long way from Ukraine, still so much to go..."
+  job = "software engineer"
+  location = "Seattle, WA"
+  gravatarEmail = "viktor.halitsyn@outlook.com"
+  twitter = "rdev02"
+  googlePlus = "+victorhalitsyn"
+
+[params]
+    dateFormat = "01/02/2006"
+    keywords = ["code", "travel", "immigration", "ukraine", "washington"]
+    sidebarBehavior = 3
+    # clearReading = true # useless at sidebarBehavior 3 OR 4
+    thumbnailImage = true
+    thumbnailImagePosition = "left"
+    autoThumbnailImage = false
+    coverImage = "https://vfybkq.bn1303.livefilestore.com/y4m__UITi3O6d78IL15dqz-FH3jb4pDHi6UlZyWMAfF5U_3KwRN8_dz8zeiKaFxoQlDA1dYpNTjn1Qc7ajoVlgFDDMjCu84gDMJEj3bEPBWMeSVcxJpWzB-LcMKQ3BRxlgrV9mxBbdaXeWdzZc5ZVXEJ2APGUhJsGXu6cNX5w0SPByUrPgMzHntFkewms6SgFIXFvmfsNQkiPHe2GmLL8jVUg/wp_back3.jpg?psid=1"
+    favicon = "/favicon.jpg" 
+    imageGallery = true
+    hierarchicalCategories = true
+    syntaxHighlighter = "highligth.js"
+    
+    [[params.customCSS]]
+        href = "https://fonts.googleapis.com/css?family=Oswald|Roboto"
+
+    [[params.sharingOptions]]
+        name = "Facebook"
+        icon = "fa-facebook-official"
+        url = "https://www.facebook.com/sharer/sharer.php?u=%s"
+    [[params.sharingOptions]]
+        name = "Twitter"
+        icon = "fa-twitter"
+        url = "https://twitter.com/intent/tweet?text=%s"
+
+[[menu.main]]
+  weight = 1
+  identifier = "home"
+  name = "Home"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
+  url = "/"
+[[menu.main]]
+  weight = 2
+  identifier = "categories"
+  name = "Categories"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
+  url = "/categories"
+[[menu.main]]
+  weight = 3
+  identifier = "tags"
+  name = "Tags"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-tags\"></i>"
+  url = "/tags"
+[[menu.main]]
+  weight = 4
+  identifier = "archives"
+  name = "Archives"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-archive\"></i>"
+  url = "/archives"
+[[menu.main]]
+  weight = 5
+  identifier = "about"
+  name = "About"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
+  url = "/#about"
+
+[[menu.links]]
+  weight = 1
+  identifier = "github"
+  name = "GitHub"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-github\"></i>"
+  url = "https://github.com/rdev02"
+[[menu.links]]
+  weight = 2
+  identifier = "twitter"
+  name = "Twitter"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-twitter\"></i>"
+  url = "https://twitter.com/rdev02"
+
+[[menu.misc]]
+  weight = 0
+  identifier = "rss"
+  name = "RSS"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-rss\"></i>"
+  url = "/index.xml"

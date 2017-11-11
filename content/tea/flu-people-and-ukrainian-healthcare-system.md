@@ -1,0 +1,17 @@
+---
+title: Flu, people and ukrainian healthcare system
+author: Viktor Halitsyn
+date: 2009-10-30T19:10:00+00:00
+type: post
+categories:
+  - tea
+tags:
+  - social
+  - ukr
+
+---
+<span style="font-size: x-large;"><b>THEY ALL SUCK!!! </b><span style="font-size: medium;">a big deal.</span></span>  
+I will start with the last one. Having just recovered from the flu I decided to go to the hospital in order to check if I&#8217;ve totally recovered and that there is nothing &#8220;under the hood&#8221; which would strike me in the back in few days. The normal procedure here is to have a blood&nbsp;analysis&nbsp;and a few more tests. Step one &#8211; find the doctor. The friendly woman on the reception forwarded me to the room 225 where I had to meet one. No lines &#8211; I just enter the room and the doctor greets me: &#8220;Hi, were are you living?&#8221; WTF?! &#8211; &#8220;Bla-bla&#8221;(giving him my address). &#8220;You know &#8211; I can do anything for you &#8211; your flat is not &#8216;in my range&#8217;. Your doctor will come 6 hours later.&#8221; God damn! I&#8217;ve got work to do! After I insisted he gave me the ticket for tests. Happy with that I come 4 storeys up. I enter the test-room and the friendly nurse greets me &#8220;Hi, have you got your cotton-wool and hydrogen peroxide with you? If not we&#8217;re not able to proceed with the tests&#8221;. Holy&#8230;.. where am I ? In the desert? Africa? Global shortage of everything? NO &#8211; UKRAINE! It turned out that I just need to give her 2 UAH and it turns out the everything is in its place&#8230;. For God sakes! I understand salaries are low, but soon I see I would have to do the tests by myself &#8211; they will&nbsp;generously&nbsp;give me an opportunity to use their precious equipment!  
+&nbsp;&nbsp; &nbsp;Now those people&#8230; We&#8217;ve got an&nbsp;epidemic situation&nbsp;here recently. Same as EVERY year. Just that now also have elections&nbsp;coming. So this situation is shifted to be the disaster of all times and our candidates faithfully fighting it. Thanks to that everyone got&nbsp;frightened that they will come down ill or even worse &#8211; die. Predictably (**in the ukrainian way**)&nbsp;people bought all the available medicine in all possible stores. Result &#8211; healthy people with pills, store owners with money &#8211; **poor ill people without money and medicine dying.**&nbsp;This is the Ukrainian way of preventing epidemics.  
+&nbsp;&nbsp; &nbsp;Now you just listen to them &#8211; the major reason for the flu to spread so fast is !!!! migration of people in western Ukraine. Translation: these european bastards going back and forth and pople trying to earn a bit of money &#8211; they are THE MOST EVIL &#8211; lets isolate them! Bullshit! Double bullshit! Look into our hospitals &#8211; they are almost ruins. Let any european enter the toilet in our hospital, in the hospital where people are trying to cure serious&nbsp;diseases or are having&nbsp;procedures of different complexity, where babies are born &#8211; he/she will never vote for Ukraine to join EU. EVER. I mentioned toilet because if of hand it might not strike that hard &#8211; visiting that place leaves an unforgettable&nbsp;impression. This is why we have an epidemic situation &#8211; because doctors say &#8211; it&#8217;s not my case,and all the money for hospitals are &#8230; vanished.  
+&nbsp;&nbsp; I wonder if it ever comes to en end or at least change. And I wonder if I would be still alive&#8230;
