@@ -33,7 +33,7 @@ googleAnalytics        = "UA-64535001-2"
     thumbnailImage = true
     thumbnailImagePosition = "left"
     autoThumbnailImage = false
-    coverImage = "https://vfybkq.bn1303.livefilestore.com/y4m__UITi3O6d78IL15dqz-FH3jb4pDHi6UlZyWMAfF5U_3KwRN8_dz8zeiKaFxoQlDA1dYpNTjn1Qc7ajoVlgFDDMjCu84gDMJEj3bEPBWMeSVcxJpWzB-LcMKQ3BRxlgrV9mxBbdaXeWdzZc5ZVXEJ2APGUhJsGXu6cNX5w0SPByUrPgMzHntFkewms6SgFIXFvmfsNQkiPHe2GmLL8jVUg/wp_back3.jpg?psid=1"
+    coverImage = "https://vfybkq.bn1303.livefilestore.com/y4mGqBlcQGSIsuw6OFD-MyiXqyGa5dq-7DqQCgrXbP8kko6a9YT1Fr8ggCKZtEAdbDOqQa1eLNBJs9ZrWtimhlGd9Kum54jI9nWD-XvxFXe82LAKj11EtvUynlpcA6w__DOYjkaDPllOF-Xrs5acIf_p5kh7S9c8p_kGs3qjzXwko2tXxqSDt1Oe9himcpdzjiofihRH_N4cHAKRqiHvGui1g?width=3072&height=1728&cropmode=none"
     favicon = "/favicon.jpg" 
     imageGallery = true
     hierarchicalCategories = true

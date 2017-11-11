@@ -29,14 +29,17 @@ Had a real problem with my wifi after moving to Ubuntu from win -> my download s
 <div style="clear: both; text-align: center;">
 </div>
 
-<div style="clear: both; text-align: center;">
-  <a href="" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="119" src="" width="320" /></a>
-</div>
+{{<image classes="fancybox center clear" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2011/05/AvahiWarn.jpg">}}
 
-Having this changed in
+Having this changed 
 
-> _AVAHI\_DAEMON\_DETECT\_LOCAL=1 to AVAHI\_DAEMON\_DETECT\_LOCAL=0 in   
-> /etc/default/avahi-daemon_
+> _AVAHI\_DAEMON\_DETECT\_LOCAL=1 
+
+to 
+
+> AVAHI\_DAEMON\_DETECT\_LOCAL=0
+
+in `/etc/default/avahi-daemon_`
 
 Got me up to 22Mb/s after reboot. We&#8217;ll see if I could squeeze more from my cheap router flashing it with some different firmware, but for now I&#8217;m quite happy to gain a 10x speed improvement 🙂
 

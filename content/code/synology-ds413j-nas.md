@@ -3,6 +3,7 @@ title: Synology DS413j NAS
 author: Viktor Halitsyn
 date: 2013-08-28T23:25:00+00:00
 disqusIdentifier: 5152925270
+thumbnailImage: https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/dsj413j/dsj413j-thumb.jpg
 type: post
 categories:
   - tech
@@ -19,7 +20,7 @@ tags:
   </div>
   
   <div style="clear: both; text-align: center;">
-    <a style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;" href="http://www.synology.com/products/img/top/DS413j.jpg"><img src="https://tse1.mm.bing.net/th?&id=OIP.M4017c0c2804245fc1a410602b0e58597o0&w=300&h=225&c=0&pid=1.9&rs=0&p=0&r=0" border="0" /></a>
+    {{< image classes="fancybox center clear" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/dsj413j/dsj413j.jpg" title="DSJ413j" >}}
   </div>
   
   <div style="text-align: left;">

@@ -2,14 +2,24 @@
 title: Seagate BlackArmor NAS 400.
 author: Viktor Halitsyn
 date: 2013-02-05T08:20:00+00:00
+thumbnailImage: https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/BlackArmor400/ext-nas-blackarmor-nas-400-overview-2-316x268.png
 excerpt: |
    So I decided that I'm sick and tired of plugging in and out usb drives. Be it my tiny 16GB daily thumb drive, or store-it-all 2TB external seagate - this is a pain... And to make sure everything is stored you have to "detach/remove" them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money. This is long and tedious so for quick and impatient there's a summary at the end.
 type: post
 categories:
   - tech
+  - gadgets
 disqusIdentifier: 5154575809
 tags:
   - nas
+gallery:
+  - https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/BlackArmor400/SeageBaConsole.jpg
+  - https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/02/004592-1-1.jpg
+  - https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/02/004592-1-1.jpg
+  - https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/02/004592-1-1-550x262.jpg
+  - https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/02/004592-1-1-230x109.jpg
+  - https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/02/004592-1-1-350x166.jpg
+  - https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/02/004592-1-1-480x227.jpg
 
 ---
 <div dir="ltr" style="text-align: left;">
@@ -30,9 +40,10 @@ tags:
     </li>
   </ul>
   
-  <div style="clear: both; text-align: center;">
-    <a style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img src="http://www.seagate.com/files/www-content/product-content/blackarmor-fam/blackarmor-nas-400/_shared/images/overview/ext-nas-blackarmor-nas-400-overview-2-316x268.png" width="200" height="200" border="0" /></a>
-  </div>
+  <div style="clear: both; text-align: center;background-color: white;">
+ {{<image classes="fancybox left" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/BlackArmor400/ext-nas-blackarmor-nas-400-overview-2-316x268.png" title="BlackArmor400" >}}
+
+    </div>
   
   <p>
     I had a couple of Seagate drives before and overall my experience with them was good. Nowadays you can find complaints about pretty much any manufacturer and any product so I did not really pay attention to what <i>others</i> said &#8211;  was looking for my set of requirements for the <i>right</i> price. And there it <a href="http://www.seagate.com/external-hard-drives/network-storage/business/blackarmor-nas-400/" target="_blank">shines</a> &#8211; perfect solution for all my needs and even a little bit more! Remote management, encryption, DDNS, configurable backups, all-you-can-imagine media sharing, internal downloader and more &#8211; sweet!<br /> So I went to Amazon and ordered one. It was just before new years so I received my order in a month &#8211; but that was not urgent: storage is not smth. that one should make haste with IMO.
@@ -45,11 +56,12 @@ tags:
   <p>
     <b>UI and software</b>
   </p>
-  
-  <div style="clear: both; text-align: center;">
-    <img class="size-full wp-image-163 alignright" src="https://blog.vnomad.com/wp-content/uploads/2013/02/004592-1-1.jpg" alt="004592-1" width="553" height="262" srcset="https://blog.vnomad.com/wp-content/uploads/2013/02/004592-1-1.jpg 553w, https://blog.vnomad.com/wp-content/uploads/2013/02/004592-1-1-550x262.jpg 550w, https://blog.vnomad.com/wp-content/uploads/2013/02/004592-1-1-230x109.jpg 230w, https://blog.vnomad.com/wp-content/uploads/2013/02/004592-1-1-350x166.jpg 350w, https://blog.vnomad.com/wp-content/uploads/2013/02/004592-1-1-480x227.jpg 480w" sizes="(max-width: 553px) 100vw, 553px" />
-  </div>
-  
+</div>
+
+  {{< wide-image src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/BlackArmor400/SeageBaConsole.jpg" title="UI Console look" >}}
+ More images below in the gallery.
+<div dir="ltr" style="text-align: left;">
+
   <p>
     UI was slow. As a developer I&#8217;m used to wait times. I&#8217;m patient. But even for me it was tad slow. It was intuitive though. I quickly found my way around without the manual but then the limitations kicked in<br /> &#8211; you have have a usb stick plugged in to the first usb slot(and only 1st, which front btw) if you want encryption<br /> &#8211; you have to have entire volume encrypted<br /> &#8211; you have to wait all surface scan and zero-out if you change anything about the volumes(and it lasts about 8 hours on my 2TB drives)<br /> &#8211; you cannot have a read only share(bummer!)<br /> &#8211; you have to do 1 thing at a time or else everything you configured before may get messed up and only hard reset followed by total zero-outcheck of drives(8 hours again) will save you<br /> &#8211; and probably many other I did not discover due to I did not plan to use that functionality at all.<br /> BUT I went through all this, patiently, believing that once I get this linux set up and working &#8211; it&#8217;ll be rock solid and serve me well for many years. That is how it is usually done with linux &#8211; you get it for cheep, but you pay with your time. Your configuration is a pain, but after all it worx (period)
   </p>
@@ -88,6 +100,6 @@ tags:
   </p>
   
   <p>
-    &nbsp;
+     
   </p>
 </div>

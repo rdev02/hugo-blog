@@ -321,7 +321,7 @@ public class Test2 {
 <table border="1" cellpadding="0" cellspacing="0">
   <tr>
     <td>
-      &nbsp;
+       
     </td>
     
     <td>
@@ -410,9 +410,7 @@ public class Test2 {
 
 In a chart:
 
-<div style="clear: both; text-align: center;">
-  <a href="http://3.bp.blogspot.com/-5lMNHzri8vw/Tab1K4lqx1I/AAAAAAAAGB4/z6Kff25CibQ/s1600/csv_comparizon.JPG" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="168" src="http://3.bp.blogspot.com/-5lMNHzri8vw/Tab1K4lqx1I/AAAAAAAAGB4/z6Kff25CibQ/s320/csv_comparizon.JPG" width="320" /></a>
-</div>
+{{<image classes="fancybox left" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2011/04/csv_comparizon.jpg">}}
 
 _<u>But wait &#8211; there&#8217;s more 🙂</u>_
   
@@ -434,7 +432,7 @@ StringBasedReaderImproved time: 12.118 sec
   
 RegexBasedReader time: 15.244 sec
 
-**SAME but in console:&nbsp;**
+**SAME but in console: **
 
 SplitBasedReader time: 138.025 sec.
   

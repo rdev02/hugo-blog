@@ -14,9 +14,7 @@ tags:
 ---
 Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:
 
-<div style="clear: both; text-align: center;">
-  <img class="alignnone size-full wp-image-167" src="https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1.jpg" alt="msqlchart" width="968" height="566" srcset="https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1.jpg 968w, https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1-768x449.jpg 768w, https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1-830x485.jpg 830w, https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1-230x134.jpg 230w, https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1-350x205.jpg 350w, https://blog.vnomad.com/wp-content/uploads/2011/09/msqlChart-1-480x281.jpg 480w" sizes="(max-width: 968px) 100vw, 968px" />
-</div>
+{{<image classes="fancybox left" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2011/09/msqlChart.jpg">}}
 
 As a quick summary &#8211; interestingly enough I do not see any speed improvement since 5.1:) there is one between 5.5 and 5.6 but it&#8217;s nowhere near the 5.1.
   
@@ -194,7 +192,8 @@ Of course this is the developer machine setup and ran on one virtual machine, bu
   
 One more thing in case interested &#8211; the code snippet I used for generating the data:
 
-<pre class="brush: java; title: ; notranslate" title="">public class CreateTestTableSql {
+```cs
+public class CreateTestTableSql {
 
     private static final int QUERY_ROWS = 10 * 1000 * 1000;
     private static final int BATCH_SIZE = 10 * 1000;
@@ -281,6 +280,6 @@ One more thing in case interested &#8211; the code snippet I used for generating
     }
 }
 
-</pre>
+```
 
  [1]: https://docs.google.com/spreadsheet/ccc?key=0AtItSpPjhRWvdDlDbklHUzZxNFBFNkRya3RNbng5ZWc&hl=en_US

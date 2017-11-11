@@ -11,9 +11,9 @@ tags:
   - hibernate
 
 ---
-&nbsp;&nbsp; &nbsp;Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing&nbsp;weird&nbsp;and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
+    Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
   
-&nbsp;&nbsp; &nbsp;First of all lets assume we use JBoss app server. Different versions of JBoss have their own configuration &#8220;specials&#8221; so I&#8217;ll stick to 5.0.1 jdk 6. First of all we need to register the desired datasource withing the container obtaining a JNDI name. Example configurtion files for registration can be found in [JBoss install dir]/docsexamplesjca. The resulting config file which has to be pout under server/[configuration_name]/deploy would look like
+    First of all lets assume we use JBoss app server. Different versions of JBoss have their own configuration &#8220;specials&#8221; so I&#8217;ll stick to 5.0.1 jdk 6. First of all we need to register the desired datasource withing the container obtaining a JNDI name. Example configurtion files for registration can be found in [JBoss install dir]/docsexamplesjca. The resulting config file which has to be pout under server/[configuration_name]/deploy would look like
 
 ```xml
 <local-tx-datasource>
@@ -40,42 +40,18 @@ hibernate.transaction.manager\_lookup\_class = org.hibernate.transaction.JBossTr
 ```
 Deploying your app, especially if you deployed with Tomcat compatibility you might see the next exception on startup:
   
-<span style="font-family: Verdana; font-size: 13px;"></span>
+```
+ERROR [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/mydb]] (main) Exception starting filter ServiceFilter
+java.lang.<b>ClassCastException</b>: com.arjuna.ats.jbossatx.jta.TransactionManagerDelegate cannot be cast to javax.transaction.TransactionManager
+at org.hibernate.transaction.JNDITransactionManagerLookup.getTransactionManager(JNDITransactionManagerLookup.java:23)
+at org.hibernate.impl.SessionFactoryImpl.SessionFactoryImpl.java:264)
+at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1055)
+```
+In short this means that you have a classloader issue having loaded the wrong manager first. Most likely you have the javax-transaction.jar in your bin. Remove it and everything will work fine :).
 
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  <i><b>ERROR</b> [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/mydb]] (main) Exception starting filter ServiceFilter</i>
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  <i>java.lang.<b>ClassCastException</b>: com.arjuna.ats.jbossatx.jta.TransactionManagerDelegate cannot be cast to javax.transaction.TransactionManager</i>
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  <i>at org.hibernate.transaction.JNDITransactionManagerLookup.getTransactionManager(JNDITransactionManagerLookup.java:23)</i>
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  <i>at org.hibernate.impl.SessionFactoryImpl.</i><init><i>(SessionFactoryImpl.java:264)</i></init>
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  <i>at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1055)</i>
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-  In short this means that you have a classloader issue having loaded the wrong manager first. Most likely you have the&nbsp;javax-transaction.jar in your bin. Remove it and everything will work fine :).
-</div>
-
-<div style="margin-bottom: 0px; margin-top: 0px;">
-</div>
 
 If you need to set up the very same thing on Tomcat, then you have to keep in mind the next thing
   
-
-
 > Tomcat is a hybrid sort of environment (neither fish nor fowl) from the standpoint of Hibernate. Tomcat provides a JNDI and DataSource, unlike a standalone application. The DataSource facility should facilitate portability among application servers. But like a standalone environment, Tomcat provides no Transaction Manager. Hence your code must use the Hibernate Transaction Manager, as it would in a standalone application environment 
 
 With this in mind you&#8217;ll have to configure the server.xml with
@@ -104,10 +80,8 @@ And web.xml with
 
 Then your hibernate.properties configuration would look like:
   
-
-  
+```ini
 hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
-  
 hibernate.connection.datasource = java:comp/env/jdbc/testdb
-  
-#hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFactory
+hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFactory
+```

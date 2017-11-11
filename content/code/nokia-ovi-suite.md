@@ -11,12 +11,12 @@ disqusIdentifier: 5353341584
 
 ---
 Installed, played with it a bit&#8230; Looks nice 🙂  
-Among significant&nbsp;pluses(IMHO of course):
+Among significant pluses(IMHO of course):
 
   * smoother experience
   * nice improved and thought out UI
   * sms log deserves additional applause (clap)(clap)(clap)
-  * back(PC->phone)&nbsp;synchronization&nbsp;improved(both speed and reliability)
+  * back(PC->phone) synchronization improved(both speed and reliability)
   * working(at last) maps(NavTech)
 
 <div>
@@ -37,14 +37,14 @@ Among significant&nbsp;pluses(IMHO of course):
   </ul>
   
   <div>
-    &nbsp;&nbsp; &nbsp;But for those the are great news: Good ol&#8217; PC Suite is not removed with Ovi upgrade 🙂 So you can still use it if you wish to&#8230;
+        But for those the are great news: Good ol&#8217; PC Suite is not removed with Ovi upgrade 🙂 So you can still use it if you wish to&#8230;
   </div>
   
   <div>
-    &nbsp;&nbsp; &nbsp;Generally Ovi is a much better tool for daily sync then PC Suite was. I literally enjoy using it. And most of the PC Suite functionality preserved.&nbsp;
+        Generally Ovi is a much better tool for daily sync then PC Suite was. I literally enjoy using it. And most of the PC Suite functionality preserved. 
   </div>
   
   <div>
-    &nbsp;&nbsp; &nbsp;I didn&#8217;t use the Ovi store &#8211; the main purpose of all this thing :):):) but I used maps service and it is pretty decent. Keeping in mind that you can download the maps for different regions and upload them to your mobile beforehand makes it a very useful thing, specially if you have a gen5 Nokia.
+        I didn&#8217;t use the Ovi store &#8211; the main purpose of all this thing :):):) but I used maps service and it is pretty decent. Keeping in mind that you can download the maps for different regions and upload them to your mobile beforehand makes it a very useful thing, specially if you have a gen5 Nokia.
   </div>
 </div>

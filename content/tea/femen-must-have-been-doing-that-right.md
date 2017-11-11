@@ -9,12 +9,10 @@ tags:
   - social
 
 ---
-Now seriously smth HAS to be done about Ukrainian girls reputation in Europe and generally&nbsp;throughout&nbsp;the world. Now I can&#8217;t speak for whole Ukraine but it seems to me that at least Western Ukraine girls are not that money-loving. Today walking to work I saw this 
+Now seriously smth HAS to be done about Ukrainian girls reputation in Europe and generally throughout the world. Now I can&#8217;t speak for whole Ukraine but it seems to me that at least Western Ukraine girls are not that money-loving. Today walking to work I saw this 
 
-<div style="clear: both; text-align: center;">
-  <a href="" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="" /></a>
-</div>
+{{<image classes="fancybox left" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/20109/11/18112009.jpg">}}
 
 <div style="clear: both; text-align: left;">
-  All this stuff means &#8220;I am a wealthy&nbsp;entrepreneur from&nbsp;USA looking for a nice <span style="text-decoration: line-through;">whore</span>&nbsp;wife from Ukraine aging 19-27&#8243;. Now I&#8217;ve seen this in newspapers and message boards etc. But on billboard???!!! I think they have crossed the line with this. Where is the Ukrainian MFA looking? It ruined my day..
+  All this stuff means &#8220;I am a wealthy entrepreneur from USA looking for a nice <span style="text-decoration: line-through;">whore</span> wife from Ukraine aging 19-27&#8243;. Now I&#8217;ve seen this in newspapers and message boards etc. But on billboard???!!! I think they have crossed the line with this. Where is the Ukrainian MFA looking? It ruined my day..
 </div>

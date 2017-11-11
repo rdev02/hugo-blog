@@ -11,7 +11,7 @@ tags:
   - formatting
 
 ---
-Finally I found a nice code formatter for google blogs. Thanks to [PleaseMakeAnote][1]&nbsp;now I can make such fancy posts as:
+Finally I found a nice code formatter for google blogs. Thanks to [PleaseMakeAnote][1] now I can make such fancy posts as:
 
 ```cs
 using System;
