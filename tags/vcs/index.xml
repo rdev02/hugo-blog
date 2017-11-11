@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vcs on Nomad&#39;s reflections</title>
-    <link>rdev02.github.io/hugo-blog/tags/vcs/</link>
+    <link>blog.vnomad.com/tags/vcs/</link>
     <description>Recent content in Vcs on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 29 Sep 2008 15:03:00 +0000</lastBuildDate>
     
-	<atom:link href="rdev02.github.io/hugo-blog/tags/vcs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.vnomad.com/tags/vcs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SVN vs CVS</title>
-      <link>rdev02.github.io/hugo-blog/code/svn-vs-cvs/</link>
+      <link>blog.vnomad.com/code/svn-vs-cvs/</link>
       <pubDate>Mon, 29 Sep 2008 15:03:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/svn-vs-cvs/</guid>
+      <guid>blog.vnomad.com/code/svn-vs-cvs/</guid>
       <description>About 3 years ago I wash introduced to CVS and from that time I havent stopped using it as it quickly became my daily useage tool. Since than I tried some different tools- just because i had to due to work purposes and one of them was Subversion(SVN). I [ractically don&amp;#8217;t see any difference between the two in usage and moreover in the interface. It has to be said that I use TortoiseCVS/SVN verisons &amp;#8211; maybe standalone apps differ significantly.</description>
     </item>
     

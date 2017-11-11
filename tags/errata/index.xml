@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Errata on Nomad&#39;s reflections</title>
-    <link>rdev02.github.io/hugo-blog/tags/errata/</link>
+    <link>blog.vnomad.com/tags/errata/</link>
     <description>Recent content in Errata on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 09 Mar 2010 22:38:00 +0000</lastBuildDate>
     
-	<atom:link href="rdev02.github.io/hugo-blog/tags/errata/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.vnomad.com/tags/errata/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Wireless router problem and an unexpected way to solve it.</title>
-      <link>rdev02.github.io/hugo-blog/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</link>
+      <link>blog.vnomad.com/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</link>
       <pubDate>Tue, 09 Mar 2010 22:38:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</guid>
+      <guid>blog.vnomad.com/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</guid>
       <description>A lil&amp;#8217; bit nerdy here. So if anyone does not like all that computer stuff skip to the LAST LINE.
 The trouble.
 It all started when I bought my first wireless router D-Link DIR 320. It looked fine. Started working in seconds and was pretty easy to configure. I was really happy but the I suddenly saw that I can&amp;#8217;t reach my favorite finance site. Sites may be down, I thought.</description>

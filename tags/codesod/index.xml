@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Codesod on Nomad&#39;s reflections</title>
-    <link>rdev02.github.io/hugo-blog/tags/codesod/</link>
+    <link>blog.vnomad.com/tags/codesod/</link>
     <description>Recent content in Codesod on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 06 Sep 2011 08:06:00 +0000</lastBuildDate>
     
-	<atom:link href="rdev02.github.io/hugo-blog/tags/codesod/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.vnomad.com/tags/codesod/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>java.net.MalformedURLException: no protocol: and]</title>
-      <link>rdev02.github.io/hugo-blog/code/java-net-malformedurlexception-no-protocol-and/</link>
+      <link>blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</link>
       <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/java-net-malformedurlexception-no-protocol-and/</guid>
+      <guid>blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</guid>
       <description>Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:
 Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is: java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780) at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627) at javax.naming.InitialContext.lookup(InitialContext.java:392) at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154)  I was sure I configured it right as I have
 &amp;lt;jee:jndi-lookup id=&amp;quot;JBossMQ&amp;quot; jndi-name=&amp;quot;XAConnectionFactory&amp;quot; proxy-interface=&amp;quot;javax.jms.ConnectionFactory&amp;quot; environment-ref=&amp;quot;jndiProps&amp;quot; resource-ref=&amp;quot;true&amp;quot;/&amp;gt; &amp;lt;util:properties id=&amp;quot;jndiProps&amp;quot; location=&amp;quot;META-INF/spring/jndi.</description>
@@ -24,29 +24,29 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
     
     <item>
       <title>j2ee sdk install hanging fix.</title>
-      <link>rdev02.github.io/hugo-blog/code/j2ee-sdk-install-hanging-fix/</link>
+      <link>blog.vnomad.com/code/j2ee-sdk-install-hanging-fix/</link>
       <pubDate>Wed, 01 Jun 2011 18:41:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/j2ee-sdk-install-hanging-fix/</guid>
+      <guid>blog.vnomad.com/code/j2ee-sdk-install-hanging-fix/</guid>
       <description>Spent about 3 hours trying to install the latest java ee sdk on my natty narwhal with no luck. It usually hang with 45% and 5seconds left forever. Might be I&amp;#8217;m a bad googler but turned out that there is a bug in the installer which prevents the installation from continuing. The workaround is to disable the network connections before the installation begins(disabling while it is hanging did not work for me).</description>
     </item>
     
     <item>
       <title>Avahi and “network service discovery disabled”</title>
-      <link>rdev02.github.io/hugo-blog/code/avahi-and-network-service-discovery-disabled/</link>
+      <link>blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</link>
       <pubDate>Fri, 20 May 2011 21:07:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/avahi-and-network-service-discovery-disabled/</guid>
+      <guid>blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
       <description>Had a real problem with my wifi after moving to Ubuntu from win -&amp;gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
        Having this changed in</description>
     </item>
     
     <item>
       <title>Idea ant hanging</title>
-      <link>rdev02.github.io/hugo-blog/code/idea-ant-hanging/</link>
+      <link>blog.vnomad.com/code/idea-ant-hanging/</link>
       <pubDate>Thu, 11 Feb 2010 10:18:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/idea-ant-hanging/</guid>
+      <guid>blog.vnomad.com/code/idea-ant-hanging/</guid>
       <description>I had a very &amp;#8216;uncomfortable&amp;#8217; issue with Idea when using it for ant builds &amp;#8211; it hang in certain places like jar update task, rename task or similar.
 All my struggle can be found on Idea track. Fortunately Carl Abramsson found a workaround for that issue using
  -noinput&amp;nbsp;

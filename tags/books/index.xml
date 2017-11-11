@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Books on Nomad&#39;s reflections</title>
-    <link>rdev02.github.io/hugo-blog/tags/books/</link>
+    <link>blog.vnomad.com/tags/books/</link>
     <description>Recent content in Books on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Sep 2007 20:50:00 +0000</lastBuildDate>
     
-	<atom:link href="rdev02.github.io/hugo-blog/tags/books/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.vnomad.com/tags/books/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Nice books to read[OOP,OOD, Agile etc.]</title>
-      <link>rdev02.github.io/hugo-blog/code/nice-books-to-readoopood-agile-etc/</link>
+      <link>blog.vnomad.com/code/nice-books-to-readoopood-agile-etc/</link>
       <pubDate>Thu, 27 Sep 2007 20:50:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/nice-books-to-readoopood-agile-etc/</guid>
+      <guid>blog.vnomad.com/code/nice-books-to-readoopood-agile-etc/</guid>
       <description>Recently, i started to come across _r e a l l y _nice books about software project management and risks. So friends of mine also share good patterns/best practices books. among them the can be listed :
  _ _Tom DeMarco, “Waltzing with Bears: Managing Risk on Software Projects” Steve McConnell &amp;#8220;Software project survival guide&amp;#8221; &amp;#8220;Analysis Patterns: Reusable Object Models&amp;#8221; Martin Fowler Design Patterns Book
 Design Patterns: Elements of Reusable Object-Oriented Software by ErichGamma, RichardHelm, RalphJohnson, and JohnVlissides Edvard Yourdon &amp;#8216;Death March&amp;#8217;  if someone can contribute to the list &amp;#8211; welcome!</description>

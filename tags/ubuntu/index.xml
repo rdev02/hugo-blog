@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Nomad&#39;s reflections</title>
-    <link>rdev02.github.io/hugo-blog/tags/ubuntu/</link>
+    <link>blog.vnomad.com/tags/ubuntu/</link>
     <description>Recent content in Ubuntu on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 28 Jun 2011 20:22:00 +0000</lastBuildDate>
     
-	<atom:link href="rdev02.github.io/hugo-blog/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.vnomad.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Plymouth fix for Ubuntu 11.04</title>
-      <link>rdev02.github.io/hugo-blog/code/plymouth-fix-for-ubuntu-11-04/</link>
+      <link>blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</link>
       <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/plymouth-fix-for-ubuntu-11-04/</guid>
+      <guid>blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</guid>
       <description>If you&amp;#8217;re in the same trouble as I was with black screen during boot(plymouth has the theme installed and even displays it during shutdown) then there is a small thing that has to be edited in order to get rid of this annoyance. Go to
  &amp;nbsp;/etc/grub.d/10_linux
  and remove the **handoff=7 **parameter. Inspired by this and also this(pretty nice tool for configuring plymouth for dummies).</description>

@@ -2,300 +2,300 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Nomad&#39;s reflections</title>
-    <link>rdev02.github.io/hugo-blog/tags/</link>
+    <link>blog.vnomad.com/tags/</link>
     <description>Recent content in Tags on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Oct 2010 15:06:00 +0000</lastBuildDate>
     
-	<atom:link href="rdev02.github.io/hugo-blog/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.vnomad.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>.Net</title>
-      <link>rdev02.github.io/hugo-blog/tags/.net/</link>
+      <link>blog.vnomad.com/tags/.net/</link>
       <pubDate>Wed, 13 Oct 2010 15:06:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/.net/</guid>
+      <guid>blog.vnomad.com/tags/.net/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blackberry</title>
-      <link>rdev02.github.io/hugo-blog/tags/blackberry/</link>
+      <link>blog.vnomad.com/tags/blackberry/</link>
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/blackberry/</guid>
+      <guid>blog.vnomad.com/tags/blackberry/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Books</title>
-      <link>rdev02.github.io/hugo-blog/tags/books/</link>
+      <link>blog.vnomad.com/tags/books/</link>
       <pubDate>Thu, 27 Sep 2007 20:50:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/books/</guid>
+      <guid>blog.vnomad.com/tags/books/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C#</title>
-      <link>rdev02.github.io/hugo-blog/tags/c#/</link>
+      <link>blog.vnomad.com/tags/c#/</link>
       <pubDate>Sat, 12 Dec 2009 23:11:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/c#/</guid>
+      <guid>blog.vnomad.com/tags/c#/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C&#43;&#43;</title>
-      <link>rdev02.github.io/hugo-blog/tags/c&#43;&#43;/</link>
+      <link>blog.vnomad.com/tags/c&#43;&#43;/</link>
       <pubDate>Mon, 05 Nov 2007 16:50:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/c&#43;&#43;/</guid>
+      <guid>blog.vnomad.com/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code</title>
-      <link>rdev02.github.io/hugo-blog/tags/code/</link>
+      <link>blog.vnomad.com/tags/code/</link>
       <pubDate>Wed, 14 Sep 2011 06:50:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/code/</guid>
+      <guid>blog.vnomad.com/tags/code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Codesod</title>
-      <link>rdev02.github.io/hugo-blog/tags/codesod/</link>
+      <link>blog.vnomad.com/tags/codesod/</link>
       <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/codesod/</guid>
+      <guid>blog.vnomad.com/tags/codesod/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Csharp</title>
-      <link>rdev02.github.io/hugo-blog/tags/csharp/</link>
+      <link>blog.vnomad.com/tags/csharp/</link>
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/csharp/</guid>
+      <guid>blog.vnomad.com/tags/csharp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Errata</title>
-      <link>rdev02.github.io/hugo-blog/tags/errata/</link>
+      <link>blog.vnomad.com/tags/errata/</link>
       <pubDate>Tue, 09 Mar 2010 22:38:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/errata/</guid>
+      <guid>blog.vnomad.com/tags/errata/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Formatting</title>
-      <link>rdev02.github.io/hugo-blog/tags/formatting/</link>
+      <link>blog.vnomad.com/tags/formatting/</link>
       <pubDate>Mon, 14 Sep 2009 20:25:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/formatting/</guid>
+      <guid>blog.vnomad.com/tags/formatting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hack</title>
-      <link>rdev02.github.io/hugo-blog/tags/hack/</link>
+      <link>blog.vnomad.com/tags/hack/</link>
       <pubDate>Mon, 20 Jun 2011 08:34:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/hack/</guid>
+      <guid>blog.vnomad.com/tags/hack/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hibernate</title>
-      <link>rdev02.github.io/hugo-blog/tags/hibernate/</link>
+      <link>blog.vnomad.com/tags/hibernate/</link>
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/hibernate/</guid>
+      <guid>blog.vnomad.com/tags/hibernate/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>rdev02.github.io/hugo-blog/tags/java/</link>
+      <link>blog.vnomad.com/tags/java/</link>
       <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/java/</guid>
+      <guid>blog.vnomad.com/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Js</title>
-      <link>rdev02.github.io/hugo-blog/tags/js/</link>
+      <link>blog.vnomad.com/tags/js/</link>
       <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/js/</guid>
+      <guid>blog.vnomad.com/tags/js/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>rdev02.github.io/hugo-blog/tags/linux/</link>
+      <link>blog.vnomad.com/tags/linux/</link>
       <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/linux/</guid>
+      <guid>blog.vnomad.com/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Maven</title>
-      <link>rdev02.github.io/hugo-blog/tags/maven/</link>
+      <link>blog.vnomad.com/tags/maven/</link>
       <pubDate>Thu, 21 Apr 2011 10:52:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/maven/</guid>
+      <guid>blog.vnomad.com/tags/maven/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mobile</title>
-      <link>rdev02.github.io/hugo-blog/tags/mobile/</link>
+      <link>blog.vnomad.com/tags/mobile/</link>
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/mobile/</guid>
+      <guid>blog.vnomad.com/tags/mobile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ms</title>
-      <link>rdev02.github.io/hugo-blog/tags/ms/</link>
+      <link>blog.vnomad.com/tags/ms/</link>
       <pubDate>Mon, 16 May 2011 07:35:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/ms/</guid>
+      <guid>blog.vnomad.com/tags/ms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mysql</title>
-      <link>rdev02.github.io/hugo-blog/tags/mysql/</link>
+      <link>blog.vnomad.com/tags/mysql/</link>
       <pubDate>Wed, 14 Sep 2011 06:50:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/mysql/</guid>
+      <guid>blog.vnomad.com/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nas</title>
-      <link>rdev02.github.io/hugo-blog/tags/nas/</link>
+      <link>blog.vnomad.com/tags/nas/</link>
       <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/nas/</guid>
+      <guid>blog.vnomad.com/tags/nas/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Perf</title>
-      <link>rdev02.github.io/hugo-blog/tags/perf/</link>
+      <link>blog.vnomad.com/tags/perf/</link>
       <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/perf/</guid>
+      <guid>blog.vnomad.com/tags/perf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rant</title>
-      <link>rdev02.github.io/hugo-blog/tags/rant/</link>
+      <link>blog.vnomad.com/tags/rant/</link>
       <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/rant/</guid>
+      <guid>blog.vnomad.com/tags/rant/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Social</title>
-      <link>rdev02.github.io/hugo-blog/tags/social/</link>
+      <link>blog.vnomad.com/tags/social/</link>
       <pubDate>Sun, 19 Jun 2011 21:16:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/social/</guid>
+      <guid>blog.vnomad.com/tags/social/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Symbian</title>
-      <link>rdev02.github.io/hugo-blog/tags/symbian/</link>
+      <link>blog.vnomad.com/tags/symbian/</link>
       <pubDate>Sat, 20 Jun 2009 12:32:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/symbian/</guid>
+      <guid>blog.vnomad.com/tags/symbian/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>rdev02.github.io/hugo-blog/tags/tools/</link>
+      <link>blog.vnomad.com/tags/tools/</link>
       <pubDate>Thu, 12 May 2011 12:34:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/tools/</guid>
+      <guid>blog.vnomad.com/tags/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tur</title>
-      <link>rdev02.github.io/hugo-blog/tags/tur/</link>
+      <link>blog.vnomad.com/tags/tur/</link>
       <pubDate>Sat, 12 Sep 2009 17:30:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/tur/</guid>
+      <guid>blog.vnomad.com/tags/tur/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ubuntu</title>
-      <link>rdev02.github.io/hugo-blog/tags/ubuntu/</link>
+      <link>blog.vnomad.com/tags/ubuntu/</link>
       <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/ubuntu/</guid>
+      <guid>blog.vnomad.com/tags/ubuntu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ukr</title>
-      <link>rdev02.github.io/hugo-blog/tags/ukr/</link>
+      <link>blog.vnomad.com/tags/ukr/</link>
       <pubDate>Fri, 30 Oct 2009 19:10:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/ukr/</guid>
+      <guid>blog.vnomad.com/tags/ukr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vcs</title>
-      <link>rdev02.github.io/hugo-blog/tags/vcs/</link>
+      <link>blog.vnomad.com/tags/vcs/</link>
       <pubDate>Mon, 29 Sep 2008 15:03:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/vcs/</guid>
+      <guid>blog.vnomad.com/tags/vcs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Windows</title>
-      <link>rdev02.github.io/hugo-blog/tags/windows/</link>
+      <link>blog.vnomad.com/tags/windows/</link>
       <pubDate>Fri, 21 Aug 2009 09:14:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/windows/</guid>
+      <guid>blog.vnomad.com/tags/windows/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Wise</title>
-      <link>rdev02.github.io/hugo-blog/tags/wise/</link>
+      <link>blog.vnomad.com/tags/wise/</link>
       <pubDate>Fri, 26 Sep 2008 19:23:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/wise/</guid>
+      <guid>blog.vnomad.com/tags/wise/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Wp</title>
-      <link>rdev02.github.io/hugo-blog/tags/wp/</link>
+      <link>blog.vnomad.com/tags/wp/</link>
       <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/tags/wp/</guid>
+      <guid>blog.vnomad.com/tags/wp/</guid>
       <description></description>
     </item>
     

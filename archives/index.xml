@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Archives on Nomad&#39;s reflections</title>
-    <link>rdev02.github.io/hugo-blog/archives/</link>
+    <link>blog.vnomad.com/archives/</link>
     <description>Recent content in Archives on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="rdev02.github.io/hugo-blog/archives/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.vnomad.com/archives/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

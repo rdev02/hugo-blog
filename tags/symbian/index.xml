@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Symbian on Nomad&#39;s reflections</title>
-    <link>rdev02.github.io/hugo-blog/tags/symbian/</link>
+    <link>blog.vnomad.com/tags/symbian/</link>
     <description>Recent content in Symbian on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 20 Jun 2009 12:32:00 +0000</lastBuildDate>
     
-	<atom:link href="rdev02.github.io/hugo-blog/tags/symbian/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.vnomad.com/tags/symbian/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Damn Symbian errors!</title>
-      <link>rdev02.github.io/hugo-blog/code/damn-symbian-errors/</link>
+      <link>blog.vnomad.com/code/damn-symbian-errors/</link>
       <pubDate>Sat, 20 Jun 2009 12:32:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/damn-symbian-errors/</guid>
+      <guid>blog.vnomad.com/code/damn-symbian-errors/</guid>
       <description>Now you never know how will modern technology strike you next time&amp;#8230; Experience I&amp;#8217;ve got today is remarkable. It&amp;#8217;s not that something awful happened, but potentially this is really serious. Imagine you have a template in the phone to send SMS quickly with predefined text. And Imagine this piece of software has bugs&amp;#8230; Whatever &amp;#8211; one might think if it won&amp;#8217;t send an sms &amp;#8211; I’ll retype and sent it again.</description>
     </item>
     

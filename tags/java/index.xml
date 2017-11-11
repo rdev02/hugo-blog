@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on Nomad&#39;s reflections</title>
-    <link>rdev02.github.io/hugo-blog/tags/java/</link>
+    <link>blog.vnomad.com/tags/java/</link>
     <description>Recent content in Java on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 06 Sep 2011 08:06:00 +0000</lastBuildDate>
     
-	<atom:link href="rdev02.github.io/hugo-blog/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.vnomad.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>java.net.MalformedURLException: no protocol: and]</title>
-      <link>rdev02.github.io/hugo-blog/code/java-net-malformedurlexception-no-protocol-and/</link>
+      <link>blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</link>
       <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/java-net-malformedurlexception-no-protocol-and/</guid>
+      <guid>blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</guid>
       <description>Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:
 Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is: java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780) at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627) at javax.naming.InitialContext.lookup(InitialContext.java:392) at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154)  I was sure I configured it right as I have
 &amp;lt;jee:jndi-lookup id=&amp;quot;JBossMQ&amp;quot; jndi-name=&amp;quot;XAConnectionFactory&amp;quot; proxy-interface=&amp;quot;javax.jms.ConnectionFactory&amp;quot; environment-ref=&amp;quot;jndiProps&amp;quot; resource-ref=&amp;quot;true&amp;quot;/&amp;gt; &amp;lt;util:properties id=&amp;quot;jndiProps&amp;quot; location=&amp;quot;META-INF/spring/jndi.</description>
@@ -24,84 +24,84 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
     
     <item>
       <title>j2ee sdk install hanging fix.</title>
-      <link>rdev02.github.io/hugo-blog/code/j2ee-sdk-install-hanging-fix/</link>
+      <link>blog.vnomad.com/code/j2ee-sdk-install-hanging-fix/</link>
       <pubDate>Wed, 01 Jun 2011 18:41:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/j2ee-sdk-install-hanging-fix/</guid>
+      <guid>blog.vnomad.com/code/j2ee-sdk-install-hanging-fix/</guid>
       <description>Spent about 3 hours trying to install the latest java ee sdk on my natty narwhal with no luck. It usually hang with 45% and 5seconds left forever. Might be I&amp;#8217;m a bad googler but turned out that there is a bug in the installer which prevents the installation from continuing. The workaround is to disable the network connections before the installation begins(disabling while it is hanging did not work for me).</description>
     </item>
     
     <item>
       <title>Java to BlazeDS NAN in double values.</title>
-      <link>rdev02.github.io/hugo-blog/code/java-to-blazeds-nan-in-double-values/</link>
+      <link>blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/</link>
       <pubDate>Fri, 22 Apr 2011 09:07:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/java-to-blazeds-nan-in-double-values/</guid>
+      <guid>blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/</guid>
       <description>Internet is basically full of subj but vice-versa(BlazeDS to java). So the problem I had was that when the object is &amp;#8220;translated&amp;#8221; from java via BlazeDS to flex application it had NAN&amp;#8217;s in the double fields. The transfer object was a simple POJO I passed via the interface. First thing I checked were the getters &amp;#8211; all present and valid. I took quite a lot of time till we figured out that it was the missing setters which made the code malfunction.</description>
     </item>
     
     <item>
       <title>String.split() VS String.startsWith() VS Regex simple performance comparison.</title>
-      <link>rdev02.github.io/hugo-blog/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</link>
+      <link>blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</link>
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
+      <guid>blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
       <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100&amp;frasl;1000-line file is not fun and I really think you shouldn&amp;#8217;t bother choosing if you&amp;#8217;re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large &amp;#8211; 320k of CSV data is ~ 12MB performance is considerable.</description>
     </item>
     
     <item>
       <title>org.springframework.oxm.jaxb.Jaxb2Marshaller</title>
-      <link>rdev02.github.io/hugo-blog/code/org-springframework-oxm-jaxb-jaxb2marshaller/</link>
+      <link>blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/</link>
       <pubDate>Wed, 29 Sep 2010 15:45:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/org-springframework-oxm-jaxb-jaxb2marshaller/</guid>
+      <guid>blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/</guid>
       <description>There is a nice tutorial here on how to create spring web services using jax-b. Works just fine but it&amp;#8217;s hell lots of issues you would run into while making it actually work. The most frustrating for me as of today was the absence of Jaxb2Marshaller. in the std &amp;#8220;spring-ws-core&amp;#8221; artifact package. It&amp;#8217;s just not there and noone would tell you. Only _**Jaxb1Marshaller **_is. After an hour googling found this (BTW very simple and straightforward) post where spotted the &amp;#8220;spring-oxm-tiger&amp;#8221; artifact.</description>
     </item>
     
     <item>
       <title>Switching to  container based datasource…</title>
-      <link>rdev02.github.io/hugo-blog/code/switching-to-container-based-datasource/</link>
+      <link>blog.vnomad.com/code/switching-to-container-based-datasource/</link>
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/switching-to-container-based-datasource/</guid>
+      <guid>blog.vnomad.com/code/switching-to-container-based-datasource/</guid>
       <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing&amp;nbsp;weird&amp;nbsp;and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
 &amp;nbsp;&amp;nbsp; &amp;nbsp;First of all lets assume we use JBoss app server.</description>
     </item>
     
     <item>
       <title>BlackBerry invokeLater and Multimedia.</title>
-      <link>rdev02.github.io/hugo-blog/code/blackberry-invokelater-and-multimedia/</link>
+      <link>blog.vnomad.com/code/blackberry-invokelater-and-multimedia/</link>
       <pubDate>Wed, 23 Sep 2009 09:37:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/blackberry-invokelater-and-multimedia/</guid>
+      <guid>blog.vnomad.com/code/blackberry-invokelater-and-multimedia/</guid>
       <description>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&amp;#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory&amp;nbsp;leaks&amp;nbsp;but some thing blocked the event dispatch&amp;nbsp;queue. I asked for help on&amp;nbsp;Stack Overflow&amp;nbsp;and&amp;nbsp;BlackBerry developer forums&amp;nbsp;but that didn&amp;#8217;t lead me&amp;nbsp;&amp;nbsp;anywhere except that I thought that something definitely gets locked.</description>
     </item>
     
     <item>
       <title>Java sdk is hacking Window… :)</title>
-      <link>rdev02.github.io/hugo-blog/code/java-sdk-is-hacking-window/</link>
+      <link>blog.vnomad.com/code/java-sdk-is-hacking-window/</link>
       <pubDate>Sun, 12 Apr 2009 19:00:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/java-sdk-is-hacking-window/</guid>
+      <guid>blog.vnomad.com/code/java-sdk-is-hacking-window/</guid>
       <description>Everybody knows of such a nice tool developed by our precious Google as Google Search. Recently I conducted a search on my computer for a simple word &amp;#8216;Hack&amp;#8217;. I was impressed by the results:
 the word is mostly used in &amp;#8230; !!!Java sdk!!! &amp;#8211; try it out. I saw also some Visusal Studio files and some more but&amp;#8230; I the Sun guys need to hack Windows in orde to get things done&amp;#8230; no fursther comments&amp;#8230;</description>
     </item>
     
     <item>
       <title>J2ME radio lists trouble</title>
-      <link>rdev02.github.io/hugo-blog/code/j2me-radio-lists-trouble/</link>
+      <link>blog.vnomad.com/code/j2me-radio-lists-trouble/</link>
       <pubDate>Thu, 19 Mar 2009 13:05:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/j2me-radio-lists-trouble/</guid>
+      <guid>blog.vnomad.com/code/j2me-radio-lists-trouble/</guid>
       <description>Recently I needed to do a simple task &amp;#8211; implement a radio button list with choices under J2ME MIDP 2.0. I started with creating an new view of type javax.microedition.lcdui.List, keeping in mind that I can just construct it with List.EXCLUSIVE and add whatever items i want and everything should work fine. Well almost&amp;#8230; All looked nice and the items showed up very attractively, having transparency and current font set up by default, which looked quite impressive.</description>
     </item>
     
     <item>
       <title>Trying out Google base</title>
-      <link>rdev02.github.io/hugo-blog/code/trying-out-google-base/</link>
+      <link>blog.vnomad.com/code/trying-out-google-base/</link>
       <pubDate>Tue, 10 Jun 2008 09:44:00 +0000</pubDate>
       
-      <guid>rdev02.github.io/hugo-blog/code/trying-out-google-base/</guid>
+      <guid>blog.vnomad.com/code/trying-out-google-base/</guid>
       <description>Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app&amp;#8230; But when finished everything looked very nice!
 class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;quot;; const string BATCH_COUNT_SETTING = &amp;quot;batchCount&amp;quot;; const string CHECK_EXISTANCE_SETTING = &amp;quot;checkExistance&amp;quot;; const string MyItem_ITEMTYPE_SETTING = &amp;quot;MyItemItemType&amp;quot;; const string MyDB_CONNECTION_STRING = &amp;quot;MyDBConnectionString&amp;quot;; static void Main(string[] args) { string appNameG = Utils.</description>
     </item>
