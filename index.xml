@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nomad&#39;s reflections</title>
-    <link>blog.vnomad.com/</link>
+    <link>http://blog.vnomad.com/</link>
     <description>Recent content on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 28 Aug 2013 23:25:00 +0000</lastBuildDate>
     
-	<atom:link href="blog.vnomad.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.vnomad.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Synology DS413j NAS</title>
-      <link>blog.vnomad.com/code/synology-ds413j-nas/</link>
+      <link>http://blog.vnomad.com/code/synology-ds413j-nas/</link>
       <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/synology-ds413j-nas/</guid>
+      <guid>http://blog.vnomad.com/code/synology-ds413j-nas/</guid>
       <description>In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&amp;#8217;t duplicate them in this one. But, to keep consistent with the previous review I&amp;#8217;ll go with the same headings/experience areas. That being said &amp;#8211; here we go!  
  DSJ413j   
 
@@ -25,46 +25,46 @@ Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this t
     
     <item>
       <title>Seagate BlackArmor NAS 400.</title>
-      <link>blog.vnomad.com/code/seagate-blackarmor-nas-400/</link>
+      <link>http://blog.vnomad.com/code/seagate-blackarmor-nas-400/</link>
       <pubDate>Tue, 05 Feb 2013 08:20:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/seagate-blackarmor-nas-400/</guid>
+      <guid>http://blog.vnomad.com/code/seagate-blackarmor-nas-400/</guid>
       <description>So I decided that I&amp;#8217;m sick and tired of plugging in and out usb drives. Be it my tiny 16GB daily thumb drive, or store-it-all 2TB external seagate &amp;#8211; this is a pain&amp;#8230; And to make sure everything is stored you have to &amp;#8220;detach/remove&amp;#8221; them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money.</description>
     </item>
     
     <item>
       <title>Javascript performance tests</title>
-      <link>blog.vnomad.com/code/javascript-performance-tests/</link>
+      <link>http://blog.vnomad.com/code/javascript-performance-tests/</link>
       <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/javascript-performance-tests/</guid>
+      <guid>http://blog.vnomad.com/code/javascript-performance-tests/</guid>
       <description>I&amp;#8217;m dealing a lot with javascript nowadays and obviously I have to take performance into account. One way of doing this is writing a bunch of test code and record the time for your scripts, but what if you wanted to quickly test out some approaches and do not really want to invest a lot into them? Today I was pointed to a solution: http://jsperf.com/. This awesome tool does not just give you the framework to easily test out javascript but also provides and already created library of tests other people created when investigating their performance issues.</description>
     </item>
     
     <item>
       <title>WP7 Mango dive</title>
-      <link>blog.vnomad.com/code/wp7-mango-dive/</link>
+      <link>http://blog.vnomad.com/code/wp7-mango-dive/</link>
       <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/wp7-mango-dive/</guid>
+      <guid>http://blog.vnomad.com/code/wp7-mango-dive/</guid>
       <description>It has been a few month since I started mangling with WP7 platform. The more I learnt about it from the inside the more I wanted to buy new real WP7 phone. Things changed slightly after I have done my very first app(didn&amp;#8217;t make it to the app store as I found plenty of similar ones already there and mine was not adding much :() but still as of now I would really be interested in posessing a WP7 phone and giving it a solid try.</description>
     </item>
     
     <item>
       <title>MySql performance. 5.1 VS 5.5 VS 5.6 (dev)</title>
-      <link>blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</link>
+      <link>http://blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</link>
       <pubDate>Wed, 14 Sep 2011 06:50:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</guid>
+      <guid>http://blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</guid>
       <description>Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:</description>
     </item>
     
     <item>
       <title>java.net.MalformedURLException: no protocol: and]</title>
-      <link>blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</link>
+      <link>http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</link>
       <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</guid>
+      <guid>http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</guid>
       <description>Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:
 Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is: java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780) at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627) at javax.naming.InitialContext.lookup(InitialContext.java:392) at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154)  I was sure I configured it right as I have
 &amp;lt;jee:jndi-lookup id=&amp;quot;JBossMQ&amp;quot; jndi-name=&amp;quot;XAConnectionFactory&amp;quot; proxy-interface=&amp;quot;javax.jms.ConnectionFactory&amp;quot; environment-ref=&amp;quot;jndiProps&amp;quot; resource-ref=&amp;quot;true&amp;quot;/&amp;gt; &amp;lt;util:properties id=&amp;quot;jndiProps&amp;quot; location=&amp;quot;META-INF/spring/jndi.</description>
@@ -72,10 +72,10 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
     
     <item>
       <title>Plymouth fix for Ubuntu 11.04</title>
-      <link>blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</link>
+      <link>http://blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</link>
       <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</guid>
+      <guid>http://blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</guid>
       <description>If you&amp;#8217;re in the same trouble as I was with black screen during boot(plymouth has the theme installed and even displays it during shutdown) then there is a small thing that has to be edited in order to get rid of this annoyance. Go to
  /etc/grub.d/10_linux
  and remove the **handoff=7 **parameter. Inspired by this and also this(pretty nice tool for configuring plymouth for dummies).</description>
@@ -83,56 +83,56 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
     
     <item>
       <title>Hackathon in Lviv</title>
-      <link>blog.vnomad.com/code/hackathon-in-lviv/</link>
+      <link>http://blog.vnomad.com/code/hackathon-in-lviv/</link>
       <pubDate>Mon, 20 Jun 2011 08:34:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/hackathon-in-lviv/</guid>
+      <guid>http://blog.vnomad.com/code/hackathon-in-lviv/</guid>
       <description>Great news! Best Hackathon traditions to invade Lviv. DOU is planning a hackathon @ June 9 — 10. Location is not set yet, but people are welcome to join now, so that we know there&amp;#8217;ll be enough people comming. More details here. If anyone interested to create a team &amp;#8211; reach me via comments here or on IMs&amp;#8230;</description>
     </item>
     
     <item>
       <title>IT ramblings</title>
-      <link>blog.vnomad.com/tea/it-ramblings/</link>
+      <link>http://blog.vnomad.com/tea/it-ramblings/</link>
       <pubDate>Sun, 19 Jun 2011 21:16:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tea/it-ramblings/</guid>
+      <guid>http://blog.vnomad.com/tea/it-ramblings/</guid>
       <description>There is going to be an interesting event soon in Lviv both for those who are in IT and those who love to use and improve their english. It&amp;#8217;s called IT Ramblings. Follow the link and check it out. I&amp;#8217;m definitely coming, join in 😉</description>
     </item>
     
     <item>
       <title>New quest from Microsoft</title>
-      <link>blog.vnomad.com/code/new-quest-from-microsoft/</link>
+      <link>http://blog.vnomad.com/code/new-quest-from-microsoft/</link>
       <pubDate>Sat, 04 Jun 2011 07:54:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/new-quest-from-microsoft/</guid>
+      <guid>http://blog.vnomad.com/code/new-quest-from-microsoft/</guid>
       <description>33+k UAH for those lucky to win the lottery among the ones most skilled in MS puzzle solving:) More here</description>
     </item>
     
     <item>
       <title>j2ee sdk install hanging fix.</title>
-      <link>blog.vnomad.com/code/j2ee-sdk-install-hanging-fix/</link>
+      <link>http://blog.vnomad.com/code/j2ee-sdk-install-hanging-fix/</link>
       <pubDate>Wed, 01 Jun 2011 18:41:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/j2ee-sdk-install-hanging-fix/</guid>
+      <guid>http://blog.vnomad.com/code/j2ee-sdk-install-hanging-fix/</guid>
       <description>Spent about 3 hours trying to install the latest java ee sdk on my natty narwhal with no luck. It usually hang with 45% and 5seconds left forever. Might be I&amp;#8217;m a bad googler but turned out that there is a bug in the installer which prevents the installation from continuing. The workaround is to disable the network connections before the installation begins(disabling while it is hanging did not work for me).</description>
     </item>
     
     <item>
       <title>Avahi and “network service discovery disabled”</title>
-      <link>blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</link>
+      <link>http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</link>
       <pubDate>Fri, 20 May 2011 21:07:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
+      <guid>http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
       <description>Had a real problem with my wifi after moving to Ubuntu from win -&amp;gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
         Having this changed</description>
     </item>
     
     <item>
       <title>Skype &#43; Microsoft.</title>
-      <link>blog.vnomad.com/code/skype-microsoft/</link>
+      <link>http://blog.vnomad.com/code/skype-microsoft/</link>
       <pubDate>Mon, 16 May 2011 07:35:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/skype-microsoft/</guid>
+      <guid>http://blog.vnomad.com/code/skype-microsoft/</guid>
       <description>I really, really do not know if that&amp;#8217;s accidental or on-purpose and whether it&amp;#8217;s connected with the fact that Microsoft bought Skype, but this morning I received a wonderful email:
   Now 3 things about this:
 1. I **am **a skype user.
@@ -142,39 +142,39 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
     
     <item>
       <title>Tabkit =&gt; Vertical tabs</title>
-      <link>blog.vnomad.com/code/tabkit-vertical-tabs/</link>
+      <link>http://blog.vnomad.com/code/tabkit-vertical-tabs/</link>
       <pubDate>Thu, 12 May 2011 12:34:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/tabkit-vertical-tabs/</guid>
+      <guid>http://blog.vnomad.com/code/tabkit-vertical-tabs/</guid>
       <description>A post for those who, once tried, cannot live without vertical tabs in FF.
 I used to have TabKit installed but this unfortunately does not support FF 4. So I even was very reluctant to switch to the new version as having my browsing (or should I say _research ) _organized, __is one of the crucial parts of my productivity. But turns out there is Vertical Tabs which does almost the same thing.</description>
     </item>
     
     <item>
       <title>Lift &#43; ajax. The “proper” way of doing presentations.</title>
-      <link>blog.vnomad.com/code/lift-ajax-the-proper-way-of-doing-presentations/</link>
+      <link>http://blog.vnomad.com/code/lift-ajax-the-proper-way-of-doing-presentations/</link>
       <pubDate>Sun, 24 Apr 2011 10:43:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/lift-ajax-the-proper-way-of-doing-presentations/</guid>
+      <guid>http://blog.vnomad.com/code/lift-ajax-the-proper-way-of-doing-presentations/</guid>
       <description>24-th seconds rules&amp;#8230;
  This mostly ru-zone compliant 🙂</description>
     </item>
     
     <item>
       <title>Java to BlazeDS NAN in double values.</title>
-      <link>blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/</link>
+      <link>http://blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/</link>
       <pubDate>Fri, 22 Apr 2011 09:07:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/</guid>
+      <guid>http://blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/</guid>
       <description>Internet is basically full of subj but vice-versa(BlazeDS to java). So the problem I had was that when the object is &amp;#8220;translated&amp;#8221; from java via BlazeDS to flex application it had NAN&amp;#8217;s in the double fields. The transfer object was a simple POJO I passed via the interface. First thing I checked were the getters &amp;#8211; all present and valid. I took quite a lot of time till we figured out that it was the missing setters which made the code malfunction.</description>
     </item>
     
     <item>
       <title>maven-compiler-plugin causing eclipse projects to have j2se 1.4 instead of configured one</title>
-      <link>blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</link>
+      <link>http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</link>
       <pubDate>Thu, 21 Apr 2011 10:52:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</guid>
+      <guid>http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</guid>
       <description>Today was investigating the warnings around some of my eclipse maven projects and noticed that I have a few
  There are no JREs installed in the workspace that are strictly compatible with this environment
  messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine.</description>
@@ -182,75 +182,75 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
     
     <item>
       <title>String.split() VS String.startsWith() VS Regex simple performance comparison.</title>
-      <link>blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</link>
+      <link>http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</link>
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
+      <guid>http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
       <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100&amp;frasl;1000-line file is not fun and I really think you shouldn&amp;#8217;t bother choosing if you&amp;#8217;re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large &amp;#8211; 320k of CSV data is ~ 12MB performance is considerable.</description>
     </item>
     
     <item>
       <title>Nokia OVI suite &amp; sms extract.</title>
-      <link>blog.vnomad.com/code/nokia-ovi-suite-sms-extract/</link>
+      <link>http://blog.vnomad.com/code/nokia-ovi-suite-sms-extract/</link>
       <pubDate>Mon, 27 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/nokia-ovi-suite-sms-extract/</guid>
+      <guid>http://blog.vnomad.com/code/nokia-ovi-suite-sms-extract/</guid>
       <description>There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before &amp;#8211; nice piece of software if we forget about all the &amp;#8220;store&amp;#8221; thing. But it has one important for me thing missing &amp;#8211; sms extracting mechanism. You can&amp;#8217;t just take all of your sms and store to the file you want.</description>
     </item>
     
     <item>
       <title>.NET WMI. Or how do I get all that info?</title>
-      <link>blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/</link>
+      <link>http://blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/</link>
       <pubDate>Wed, 13 Oct 2010 15:06:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/</guid>
+      <guid>http://blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/</guid>
       <description>There&amp;#8217;s a ton of Win properties that your program might want to access/possess/transform and there&amp;#8217;s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there&amp;#8217;s one sigle silver bullet to get them all via
  Select * From [win_category]</description>
     </item>
     
     <item>
       <title>.NET tab control.</title>
-      <link>blog.vnomad.com/code/net-tab-control/</link>
+      <link>http://blog.vnomad.com/code/net-tab-control/</link>
       <pubDate>Fri, 08 Oct 2010 19:39:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/net-tab-control/</guid>
+      <guid>http://blog.vnomad.com/code/net-tab-control/</guid>
       <description>Consider some UI that you would like to present as tabs. And you also know that all these tabs would have a considerate amount of code in common. There are some thoughts here but those are more about visual representation. Also creating usercontrols I believe is not an option due to it&amp;#8217;s not expected to have more tah one tab of a kind. The solution has to both utilize the VS designer(otherwise tab creation would take considerably more time) and keep the code separate from the tabcontrol &amp;#8211; holder form.</description>
     </item>
     
     <item>
       <title>org.springframework.oxm.jaxb.Jaxb2Marshaller</title>
-      <link>blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/</link>
+      <link>http://blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/</link>
       <pubDate>Wed, 29 Sep 2010 15:45:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/</guid>
+      <guid>http://blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/</guid>
       <description>There is a nice tutorial here on how to create spring web services using jax-b. Works just fine but it&amp;#8217;s hell lots of issues you would run into while making it actually work. The most frustrating for me as of today was the absence of Jaxb2Marshaller. in the std &amp;#8220;spring-ws-core&amp;#8221; artifact package. It&amp;#8217;s just not there and noone would tell you. Only _**Jaxb1Marshaller **_is. After an hour googling found this (BTW very simple and straightforward) post where spotted the &amp;#8220;spring-oxm-tiger&amp;#8221; artifact.</description>
     </item>
     
     <item>
       <title>MCPD acquired.</title>
-      <link>blog.vnomad.com/code/mcpd-acquired/</link>
+      <link>http://blog.vnomad.com/code/mcpd-acquired/</link>
       <pubDate>Sun, 28 Mar 2010 20:06:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/mcpd-acquired/</guid>
+      <guid>http://blog.vnomad.com/code/mcpd-acquired/</guid>
       <description>Finally. Now frankly &amp;amp;#8211; preparing for MS exams while doing die-hard java is not a funny thing to do. NEVER practice such a combination&amp;amp;#8230; About the exam &amp;amp;#8211; it was better then the previous 2: it obeyed no rules:). What I mean here is that I could have skipped the preparation kit completely! Yes there were a few questions related to the book&amp;amp;#8217;s content, BUT reading it is completely optional IMHO.</description>
     </item>
     
     <item>
       <title>907: Invalid cod and other BlackBerry OTA problems.</title>
-      <link>blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</link>
+      <link>http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</link>
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</guid>
+      <guid>http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</guid>
       <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K.
 Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
     </item>
     
     <item>
       <title>Wireless router problem and an unexpected way to solve it.</title>
-      <link>blog.vnomad.com/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</link>
+      <link>http://blog.vnomad.com/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</link>
       <pubDate>Tue, 09 Mar 2010 22:38:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</guid>
+      <guid>http://blog.vnomad.com/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</guid>
       <description>A lil&amp;#8217; bit nerdy here. So if anyone does not like all that computer stuff skip to the LAST LINE.
 The trouble.
 It all started when I bought my first wireless router D-Link DIR 320. It looked fine. Started working in seconds and was pretty easy to configure. I was really happy but the I suddenly saw that I can&amp;#8217;t reach my favorite finance site. Sites may be down, I thought.</description>
@@ -258,10 +258,10 @@ It all started when I bought my first wireless router D-Link DIR 320. It looked 
     
     <item>
       <title>Idea ant hanging</title>
-      <link>blog.vnomad.com/code/idea-ant-hanging/</link>
+      <link>http://blog.vnomad.com/code/idea-ant-hanging/</link>
       <pubDate>Thu, 11 Feb 2010 10:18:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/idea-ant-hanging/</guid>
+      <guid>http://blog.vnomad.com/code/idea-ant-hanging/</guid>
       <description>I had a very &amp;#8216;uncomfortable&amp;#8217; issue with Idea when using it for ant builds &amp;#8211; it hang in certain places like jar update task, rename task or similar.
 All my struggle can be found on Idea track. Fortunately Carl Abramsson found a workaround for that issue using
  -noinput
@@ -270,10 +270,10 @@ All my struggle can be found on Idea track. Fortunately Carl Abramsson found a w
     
     <item>
       <title>Nokia Ovi suite</title>
-      <link>blog.vnomad.com/code/nokia-ovi-suite/</link>
+      <link>http://blog.vnomad.com/code/nokia-ovi-suite/</link>
       <pubDate>Thu, 04 Feb 2010 22:22:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/nokia-ovi-suite/</guid>
+      <guid>http://blog.vnomad.com/code/nokia-ovi-suite/</guid>
       <description>Installed, played with it a bit&amp;#8230; Looks nice 🙂
 Among significant pluses(IMHO of course):
  smoother experience nice improved and thought out UI sms log deserves additional applause (clap)(clap)(clap) back(PC-&amp;gt;phone) synchronization improved(both speed and reliability) working(at last) maps(NavTech)   among things I miss:     full control over the phone&amp;#8217;s file system   application install   media(other then mp3) transfer    But for those the are great news: Good ol&amp;#8217; PC Suite is not removed with Ovi upgrade 🙂 So you can still use it if you wish to&amp;#8230;   Generally Ovi is a much better tool for daily sync then PC Suite was.</description>
@@ -281,105 +281,105 @@ Among significant pluses(IMHO of course):
     
     <item>
       <title>Switching to  container based datasource…</title>
-      <link>blog.vnomad.com/code/switching-to-container-based-datasource/</link>
+      <link>http://blog.vnomad.com/code/switching-to-container-based-datasource/</link>
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/switching-to-container-based-datasource/</guid>
+      <guid>http://blog.vnomad.com/code/switching-to-container-based-datasource/</guid>
       <description>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
 First of all lets assume we use JBoss app server.</description>
     </item>
     
     <item>
       <title>Devenv crash from the command line.</title>
-      <link>blog.vnomad.com/code/devenv-crash-from-the-command-line/</link>
+      <link>http://blog.vnomad.com/code/devenv-crash-from-the-command-line/</link>
       <pubDate>Thu, 24 Dec 2009 21:11:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/devenv-crash-from-the-command-line/</guid>
+      <guid>http://blog.vnomad.com/code/devenv-crash-from-the-command-line/</guid>
       <description>Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &amp;#8211; a standard windows crash appeared with 0xc000005 error code and a &amp;#8220;friendly&amp;#8221; Send/Don&amp;#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.</description>
     </item>
     
     <item>
       <title>Creating dynamic plugin architecture with C#.NET</title>
-      <link>blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/</link>
+      <link>http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/</link>
       <pubDate>Sat, 12 Dec 2009 23:11:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/</guid>
+      <guid>http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/</guid>
       <description>There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.</description>
     </item>
     
     <item>
       <title>Sad &amp; funny world of mobile development.</title>
-      <link>blog.vnomad.com/code/sad-funny-world-of-mobile-development/</link>
+      <link>http://blog.vnomad.com/code/sad-funny-world-of-mobile-development/</link>
       <pubDate>Mon, 07 Dec 2009 09:38:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/sad-funny-world-of-mobile-development/</guid>
+      <guid>http://blog.vnomad.com/code/sad-funny-world-of-mobile-development/</guid>
       <description>Being a &amp;#8216;mobile&amp;#8217; developer is definitely fun. Although sometimes, when you think about it &amp;#8216;deeper&amp;#8217; you&amp;#8217;d rather drink a pint of whiskey:). Take a look at the enterprise Symbian OS:  http://www.codeproject.com/KB/mobile/Symbian_OS_design_faults.aspx  Reliable, huh? 😉 And it&amp;#8217;s not just Symbian &amp;#8211; in my point of view it&amp;#8217;s MIDP itself. You just can&amp;#8217;t rely on it unless you test, test and once again &amp;#8211; test. For me it feels like implementation usually just do not care about about what does the specification say.</description>
     </item>
     
     <item>
       <title>:? = (think)</title>
-      <link>blog.vnomad.com/tea/think/</link>
+      <link>http://blog.vnomad.com/tea/think/</link>
       <pubDate>Tue, 01 Dec 2009 10:53:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tea/think/</guid>
+      <guid>http://blog.vnomad.com/tea/think/</guid>
       <description>Yess and BTW its the Skype shortcut. While on thinking mood guess what would the &amp;#8216;telemonision&amp;#8217; or here in Ukraine &amp;#8216;telemonizor&amp;#8217; would mean? You guessed it right &amp;#8211; a monitor, which has a capability to be come an TV. Why would one need such a thing &amp;#8211; I dunno, but lots and lots of people here want it. I suppose they think that in this way they would spend less money &amp;#8211; but hey &amp;#8211; you would have none: no monitor would be a good TV and no TV would suit you as a nice fast-response monitor, UNLESS it costs more then 2 of them bought separately.</description>
     </item>
     
     <item>
       <title>JetBrains Idea – still the best.</title>
-      <link>blog.vnomad.com/code/jetbrains-idea-still-the-best/</link>
+      <link>http://blog.vnomad.com/code/jetbrains-idea-still-the-best/</link>
       <pubDate>Thu, 19 Nov 2009 11:12:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/jetbrains-idea-still-the-best/</guid>
+      <guid>http://blog.vnomad.com/code/jetbrains-idea-still-the-best/</guid>
       <description>Now that I wrote lots of &amp;#8216;bad&amp;#8217; stuff about this new community version &amp;#8211; time to write something fine, as I really enjoy developing in this IDE.
 First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my &amp;#8216;more serious&amp;#8217; still reproduce this is something pleasant, indicating that the work is in progress and I&amp;#8217;m sure all the other stuff will be fixed soon.</description>
     </item>
     
     <item>
       <title>Femen must have been doing that right.</title>
-      <link>blog.vnomad.com/tea/femen-must-have-been-doing-that-right/</link>
+      <link>http://blog.vnomad.com/tea/femen-must-have-been-doing-that-right/</link>
       <pubDate>Wed, 18 Nov 2009 13:17:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tea/femen-must-have-been-doing-that-right/</guid>
+      <guid>http://blog.vnomad.com/tea/femen-must-have-been-doing-that-right/</guid>
       <description>Now seriously smth HAS to be done about Ukrainian girls reputation in Europe and generally throughout the world. Now I can&amp;#8217;t speak for whole Ukraine but it seems to me that at least Western Ukraine girls are not that money-loving. Today walking to work I saw this
   All this stuff means &amp;#8220;I am a wealthy entrepreneur from USA looking for a nice whore wife from Ukraine aging 19-27&amp;#8243;. Now I&amp;#8217;ve seen this in newspapers and message boards etc.</description>
     </item>
     
     <item>
       <title>IntelliJ IDEA Community Edition – now it gets serious.</title>
-      <link>blog.vnomad.com/code/intellij-idea-community-edition-now-it-gets-serious/</link>
+      <link>http://blog.vnomad.com/code/intellij-idea-community-edition-now-it-gets-serious/</link>
       <pubDate>Thu, 12 Nov 2009 10:41:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/intellij-idea-community-edition-now-it-gets-serious/</guid>
+      <guid>http://blog.vnomad.com/code/intellij-idea-community-edition-now-it-gets-serious/</guid>
       <description>In my previous post I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along.
 First of all I&amp;#8217;ve ran into an issue with ant Jar task. It refused to work with an &amp;#8216;update&amp;#8217; option set to true. The interesting part of it was that executing the task independently didn&amp;#8217;t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to &amp;#8230; hang.</description>
     </item>
     
     <item>
       <title>IntelliJ IDEA Community Edition first impressions.</title>
-      <link>blog.vnomad.com/code/intellij-idea-community-edition-first-impressions/</link>
+      <link>http://blog.vnomad.com/code/intellij-idea-community-edition-first-impressions/</link>
       <pubDate>Thu, 05 Nov 2009 10:15:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/intellij-idea-community-edition-first-impressions/</guid>
+      <guid>http://blog.vnomad.com/code/intellij-idea-community-edition-first-impressions/</guid>
       <description>Recently JetBrains released the brand new version of IDEA free for all. A few years before I Used this IDE for some projects and was very happy with it &amp;#8211; consequent moving to eclipse disappointed me much. However time passed and I&amp;#8217;ve got used to eclipse &amp;#8211; it&amp;#8217;s not a bad platform after all and it was free. So now when the free version idea came out I was very anxious convincing our customers to switch.</description>
     </item>
     
     <item>
       <title>Flu, people and ukrainian healthcare system</title>
-      <link>blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/</link>
+      <link>http://blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/</link>
       <pubDate>Fri, 30 Oct 2009 19:10:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/</guid>
+      <guid>http://blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/</guid>
       <description>THEY ALL SUCK!!! a big deal.
 I will start with the last one. Having just recovered from the flu I decided to go to the hospital in order to check if I&amp;#8217;ve totally recovered and that there is nothing &amp;#8220;under the hood&amp;#8221; which would strike me in the back in few days. The normal procedure here is to have a blood analysis and a few more tests. Step one &amp;#8211; find the doctor.</description>
     </item>
     
     <item>
       <title>BlackBerry fun.</title>
-      <link>blog.vnomad.com/code/blackberry-fun/</link>
+      <link>http://blog.vnomad.com/code/blackberry-fun/</link>
       <pubDate>Tue, 20 Oct 2009 14:08:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/blackberry-fun/</guid>
+      <guid>http://blog.vnomad.com/code/blackberry-fun/</guid>
       <description>Reading the developers guide on BlackBerry you may come across astonishing things. I&amp;#8217;m impressed. When I started doing little things in the blackberry app I soon got used to it and considered the platform to be well organized. Now that I&amp;#8217;m reading a book I get more and more confused about what I should do and what I shan&amp;#8217;t! Take a look at this masterpiece
  
 Why it is not necessary to obfuscate applications  The compiler for the BlackBerry® Java™ Development Environment is set to minimize the size of the application.</description>
@@ -387,10 +387,10 @@ Why it is not necessary to obfuscate applications  The compiler for the BlackBer
     
     <item>
       <title>BlackBerry internet usage, OTA and other staff.</title>
-      <link>blog.vnomad.com/code/blackberry-internet-usage-ota-and-other-staff/</link>
+      <link>http://blog.vnomad.com/code/blackberry-internet-usage-ota-and-other-staff/</link>
       <pubDate>Thu, 24 Sep 2009 11:43:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/blackberry-internet-usage-ota-and-other-staff/</guid>
+      <guid>http://blog.vnomad.com/code/blackberry-internet-usage-ota-and-other-staff/</guid>
       <description>Continuing the BlackBerry theme would like to share a few more issues I&amp;#8217;ve ran into recently.
  Internet usage.
 If you subscribe to blackberry service you can optionally buy some &amp;#8220;internet package&amp;#8221; from your provider in order to minimize internet expenses. This a great choice since you&amp;#8217;re going to visit internet pretty often if you&amp;#8217;ve chosen blackberry. Everything goes fine until you start using Java apps on your phone. Java uses it OWN predefined internet connection DIFFERENT from the one the browser uses.</description>
@@ -398,250 +398,250 @@ If you subscribe to blackberry service you can optionally buy some &amp;#8220;in
     
     <item>
       <title>BlackBerry invokeLater and Multimedia.</title>
-      <link>blog.vnomad.com/code/blackberry-invokelater-and-multimedia/</link>
+      <link>http://blog.vnomad.com/code/blackberry-invokelater-and-multimedia/</link>
       <pubDate>Wed, 23 Sep 2009 09:37:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/blackberry-invokelater-and-multimedia/</guid>
+      <guid>http://blog.vnomad.com/code/blackberry-invokelater-and-multimedia/</guid>
       <description>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&amp;#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn&amp;#8217;t lead me anywhere except that I thought that something definitely gets locked.</description>
     </item>
     
     <item>
       <title>Blogger code formatting.</title>
-      <link>blog.vnomad.com/code/blogger-code-formatting/</link>
+      <link>http://blog.vnomad.com/code/blogger-code-formatting/</link>
       <pubDate>Mon, 14 Sep 2009 20:25:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/blogger-code-formatting/</guid>
+      <guid>http://blog.vnomad.com/code/blogger-code-formatting/</guid>
       <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
 using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } }  </description>
     </item>
     
     <item>
       <title>MCTS acquired!</title>
-      <link>blog.vnomad.com/code/mcts-acquired/</link>
+      <link>http://blog.vnomad.com/code/mcts-acquired/</link>
       <pubDate>Sat, 12 Sep 2009 19:44:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/mcts-acquired/</guid>
+      <guid>http://blog.vnomad.com/code/mcts-acquired/</guid>
       <description>One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &amp;amp;#8211; it&amp;amp;#8217;s like a combination of the previous 2 with some logic included- not just simple development components.  Regarding the exam &amp;#8211; not much can be said. Only one thing is worth mentioning &amp;#8211; it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is&amp;#8230; Interesting how would the next one go&amp;#8230;</description>
     </item>
     
     <item>
       <title>Turkey vacation.</title>
-      <link>blog.vnomad.com/travel/tur/turkey-vacation/</link>
+      <link>http://blog.vnomad.com/travel/tur/turkey-vacation/</link>
       <pubDate>Sat, 12 Sep 2009 17:30:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/travel/tur/turkey-vacation/</guid>
+      <guid>http://blog.vnomad.com/travel/tur/turkey-vacation/</guid>
       <description>Amazing. Yes it was really amazing. I traveled with my darling Anya and I didn&amp;amp;#8217;t expect it that good especially keeping in mind that we had to go with a 4 star hotel. However it was really nice and if you consider going to Turkey with a low budget &amp;amp;#8211; I would recommend [Kosdere Exclusive][1](the place we stayed in). First thing I have to mention is our tour agency [Tez Tour][2].</description>
     </item>
     
     <item>
       <title>Ukrainian independence day.</title>
-      <link>blog.vnomad.com/tea/ukrainian-independence-day/</link>
+      <link>http://blog.vnomad.com/tea/ukrainian-independence-day/</link>
       <pubDate>Thu, 27 Aug 2009 19:37:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tea/ukrainian-independence-day/</guid>
+      <guid>http://blog.vnomad.com/tea/ukrainian-independence-day/</guid>
       <description>It&amp;#8217;s funny sometimes how could absolutely non-officially connected news be linked together so tightly that one couldn&amp;#8217;t even imagine. Today, reading the daily news I came across an article describing the Barack Obama&amp;#8217;s attitude towards Ukrainian sovereignty along with greetings regarding this year&amp;#8217;s independence day. Between the other it was stated there that &amp;#8220;USA won&amp;#8217;t abandon Ukraine on its way towards democratic future&amp;#8230;&amp;#8221;. Nice words, always pleased to hear/read such things in the mediapress.</description>
     </item>
     
     <item>
       <title>Windows service accounts.</title>
-      <link>blog.vnomad.com/code/windows-service-accounts/</link>
+      <link>http://blog.vnomad.com/code/windows-service-accounts/</link>
       <pubDate>Fri, 21 Aug 2009 09:14:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/windows-service-accounts/</guid>
+      <guid>http://blog.vnomad.com/code/windows-service-accounts/</guid>
       <description>Recently(probably 2 moths ago, but still &amp;#8211; recently) had to configure a bit of security for our test servers, visible to the web. Of course started with securing services under their own special accounts, limited to a very small amount of rights. Everything went on smoothly except one lil&amp;#8217; thing &amp;#8211; it didn&amp;#8217;t work:) All permissions were set correctly, all relationships assigned well, but services didn&amp;#8217;t start. Resolution(found it in 2 hours) was fairly simple &amp;#8211; while creating accounts for my services I forgot to check the &amp;#8220;Password never expires&amp;#8221; checkbox.</description>
     </item>
     
     <item>
       <title>How do they do it?</title>
-      <link>blog.vnomad.com/tea/how-do-they-do-it/</link>
+      <link>http://blog.vnomad.com/tea/how-do-they-do-it/</link>
       <pubDate>Fri, 21 Aug 2009 09:00:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tea/how-do-they-do-it/</guid>
+      <guid>http://blog.vnomad.com/tea/how-do-they-do-it/</guid>
       <description>It often happens that you have smth. to share with the rest of the world, but you do not have time for it.
 &amp;#8220;You do not have time&amp;#8221;&amp;#8230; sounds pathetic&amp;#8230; I think it happens more because of the laziness&amp;#8230; yeah definitely. Now I begin to understand why podcasts gain more and more popularity these days &amp;#8211; you do not have to organize links, format text. Find errors, reread the written text in order to find ABSOLUTELY ODD sentences 🙂  Interesting how do experienced bloggers keep their notes and where&amp;#8230; My last try is google docs.</description>
     </item>
     
     <item>
       <title>Ukrainians on Times.</title>
-      <link>blog.vnomad.com/tea/ukrainians-on-times/</link>
+      <link>http://blog.vnomad.com/tea/ukrainians-on-times/</link>
       <pubDate>Thu, 20 Aug 2009 19:06:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tea/ukrainians-on-times/</guid>
+      <guid>http://blog.vnomad.com/tea/ukrainians-on-times/</guid>
       <description>Today visited Times. Was interested in one article about (RU+GBR)/UA. To hell the article. I read the comments. OMG.
  OMG again.   &amp;#8220;People, even something that you care for most (democracy?) does not give you the right to lie passionately and ignore facts and invent lies. BTW, Eduard Glushko &amp;#8211; if you are so much afraid of the The Molotov-Ribbentrop Pact, it still can be repaired. Poland has to give back to Germany the territories they got after WW2.</description>
     </item>
     
     <item>
       <title>Damn Symbian errors!</title>
-      <link>blog.vnomad.com/code/damn-symbian-errors/</link>
+      <link>http://blog.vnomad.com/code/damn-symbian-errors/</link>
       <pubDate>Sat, 20 Jun 2009 12:32:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/damn-symbian-errors/</guid>
+      <guid>http://blog.vnomad.com/code/damn-symbian-errors/</guid>
       <description>Now you never know how will modern technology strike you next time&amp;#8230; Experience I&amp;#8217;ve got today is remarkable. It&amp;#8217;s not that something awful happened, but potentially this is really serious. Imagine you have a template in the phone to send SMS quickly with predefined text. And Imagine this piece of software has bugs&amp;#8230; Whatever &amp;#8211; one might think if it won&amp;#8217;t send an sms &amp;#8211; I’ll retype and sent it again.</description>
     </item>
     
     <item>
       <title>MCP aquired…</title>
-      <link>blog.vnomad.com/code/mcp-aquired/</link>
+      <link>http://blog.vnomad.com/code/mcp-aquired/</link>
       <pubDate>Thu, 16 Apr 2009 22:49:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/mcp-aquired/</guid>
+      <guid>http://blog.vnomad.com/code/mcp-aquired/</guid>
       <description>[&amp;lt;img style=&amp;ldquo;float:left; margin:0 10px 10px 0;cursor:pointer; cursor:hand;width: 160px; height: 80px;&amp;rdquo; src=&amp;ldquo;http://2.bp.blogspot.com/_SwypSVIrwAo/See277vd4pI/AAAAAAAADrc/YzPLJ891L2s/s320/MCP(rgb).jpg&amp;quot; border=&amp;ldquo;0&amp;rdquo; alt=&amp;ldquo;&amp;rdquo; id=&amp;ldquo;At last i finally got time to get to that certification center and pass that damn 70-536. You can&amp;#8217;t really work with all of that technology at once to keep all the names of classes and methods in your head, and the projects are swapping fast&amp;#8230; SO it took me more than a year to get from an idea of sitting an axam to actually passing it.</description>
     </item>
     
     <item>
       <title>Java sdk is hacking Window… :)</title>
-      <link>blog.vnomad.com/code/java-sdk-is-hacking-window/</link>
+      <link>http://blog.vnomad.com/code/java-sdk-is-hacking-window/</link>
       <pubDate>Sun, 12 Apr 2009 19:00:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/java-sdk-is-hacking-window/</guid>
+      <guid>http://blog.vnomad.com/code/java-sdk-is-hacking-window/</guid>
       <description>Everybody knows of such a nice tool developed by our precious Google as Google Search. Recently I conducted a search on my computer for a simple word &amp;#8216;Hack&amp;#8217;. I was impressed by the results:
 the word is mostly used in &amp;#8230; !!!Java sdk!!! &amp;#8211; try it out. I saw also some Visusal Studio files and some more but&amp;#8230; I the Sun guys need to hack Windows in orde to get things done&amp;#8230; no fursther comments&amp;#8230;</description>
     </item>
     
     <item>
       <title>X-ray headphones improve</title>
-      <link>blog.vnomad.com/travel/x-ray-headphones-improve/</link>
+      <link>http://blog.vnomad.com/travel/x-ray-headphones-improve/</link>
       <pubDate>Sun, 12 Apr 2009 18:40:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/travel/x-ray-headphones-improve/</guid>
+      <guid>http://blog.vnomad.com/travel/x-ray-headphones-improve/</guid>
       <description>I had to travel to Sweden recently. So probably in 2 hours or so i packed all the necessary things, took my old notebook-bag out of the dusty closet (cleaned it) and packed all the NB-stuff into it. I also included my new KOSS UR-40 headphones in the bag. I have to tell I wasn&amp;#8217;tso much impressed when I bought them. You know &amp;#8211; in Ukraine if want to know how smth sounds you&amp;#8217;ll probably have to buy it first.</description>
     </item>
     
     <item>
       <title>J2ME radio lists trouble</title>
-      <link>blog.vnomad.com/code/j2me-radio-lists-trouble/</link>
+      <link>http://blog.vnomad.com/code/j2me-radio-lists-trouble/</link>
       <pubDate>Thu, 19 Mar 2009 13:05:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/j2me-radio-lists-trouble/</guid>
+      <guid>http://blog.vnomad.com/code/j2me-radio-lists-trouble/</guid>
       <description>Recently I needed to do a simple task &amp;#8211; implement a radio button list with choices under J2ME MIDP 2.0. I started with creating an new view of type javax.microedition.lcdui.List, keeping in mind that I can just construct it with List.EXCLUSIVE and add whatever items i want and everything should work fine. Well almost&amp;#8230; All looked nice and the items showed up very attractively, having transparency and current font set up by default, which looked quite impressive.</description>
     </item>
     
     <item>
       <title>Strange Nokia Music converter.</title>
-      <link>blog.vnomad.com/code/strange-nokia-music-converter/</link>
+      <link>http://blog.vnomad.com/code/strange-nokia-music-converter/</link>
       <pubDate>Wed, 18 Mar 2009 22:02:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/strange-nokia-music-converter/</guid>
+      <guid>http://blog.vnomad.com/code/strange-nokia-music-converter/</guid>
       <description>The nice thing about all Noka phones is that they simply work. No excuses. But seems like putting lts of effort into the phone firmware leaves very little to the supporting software these phones are shipped with. There is a really nice piece of software called &amp;#8220;Nokia PC Suite&amp;#8221;. Though it is 80% useless to my mind it has always been a pleasure for me to know I can manage utmost every feature in my phone throught that shiny UI.</description>
     </item>
     
     <item>
       <title>.NET 1.0 to .NET 2.0 migration…</title>
-      <link>blog.vnomad.com/code/net-1-0-to-net-2-0-migration/</link>
+      <link>http://blog.vnomad.com/code/net-1-0-to-net-2-0-migration/</link>
       <pubDate>Wed, 01 Oct 2008 09:24:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/net-1-0-to-net-2-0-migration/</guid>
+      <guid>http://blog.vnomad.com/code/net-1-0-to-net-2-0-migration/</guid>
       <description>Actually a painfull process it can be if the project you&amp;#8217;re trying to convert has lots of custom stuff. The first problem i stumbled upon was resources. eah yeah &amp;#8211; i mean form resources. They ciompletely refused to work. I know about that separation that came in when VS 2005 was introduced so I did use DeCodEx to make majour conversion and splitting but it still turned out that my forms are not opening :(.</description>
     </item>
     
     <item>
       <title>SVN vs CVS</title>
-      <link>blog.vnomad.com/code/svn-vs-cvs/</link>
+      <link>http://blog.vnomad.com/code/svn-vs-cvs/</link>
       <pubDate>Mon, 29 Sep 2008 15:03:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/svn-vs-cvs/</guid>
+      <guid>http://blog.vnomad.com/code/svn-vs-cvs/</guid>
       <description>About 3 years ago I wash introduced to CVS and from that time I havent stopped using it as it quickly became my daily useage tool. Since than I tried some different tools- just because i had to due to work purposes and one of them was Subversion(SVN). I [ractically don&amp;#8217;t see any difference between the two in usage and moreover in the interface. It has to be said that I use TortoiseCVS/SVN verisons &amp;#8211; maybe standalone apps differ significantly.</description>
     </item>
     
     <item>
       <title>Who the hell is “Next In”?</title>
-      <link>blog.vnomad.com/tea/who-the-hell-is-next-in/</link>
+      <link>http://blog.vnomad.com/tea/who-the-hell-is-next-in/</link>
       <pubDate>Mon, 29 Sep 2008 10:17:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tea/who-the-hell-is-next-in/</guid>
+      <guid>http://blog.vnomad.com/tea/who-the-hell-is-next-in/</guid>
       <description>Recently found myself registered in this wierd system Next In. The most interesting part is I&amp;#8217;ve never made any registrations on this site at all! Looks like those guys&amp;#8217;ve just stolen public info from famous sites like Linked-In. If anyone comes across this one don&amp;#8217;t trust any info they give &amp;#8211; &amp;#8216;case started by stealing i think they will go further. Just want to make official notice of that I have no relation to info that can be found there.</description>
     </item>
     
     <item>
       <title>Google chrome</title>
-      <link>blog.vnomad.com/code/google-chrome/</link>
+      <link>http://blog.vnomad.com/code/google-chrome/</link>
       <pubDate>Fri, 26 Sep 2008 19:36:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/google-chrome/</guid>
+      <guid>http://blog.vnomad.com/code/google-chrome/</guid>
       <description>Now that this fancy prog is available i downloaded and installed it hoping to see all that Google promised it will have. However either &amp;#8217;cause its beta or these things just cant be fixed for browsers &amp;#8211; here &amp;#8216;s my opinion after about half a moth usage.
 Usability &amp;#8211; good, except if one tab hangs &amp;#8211; all tabs entire app hang&amp;#8230;After some time however you get a dialog requesting the stop of some plugin, but in general &amp;#8211; if there is no active items on the page &amp;#8211; it just hangs 🙁</description>
     </item>
     
     <item>
       <title>WISE installation studio</title>
-      <link>blog.vnomad.com/code/wise-installation-studio/</link>
+      <link>http://blog.vnomad.com/code/wise-installation-studio/</link>
       <pubDate>Fri, 26 Sep 2008 19:23:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/wise-installation-studio/</guid>
+      <guid>http://blog.vnomad.com/code/wise-installation-studio/</guid>
       <description>Windows Installer&amp;#8230; nightmare&amp;#8230; WISE &amp;#8211; hurt me plenty. Although this is much simpler and logical to my mind then WI it is still very sensible to changes. What I am trying to say &amp;#8211; if do everything right from the first time e.g. correctly choose all names and dialogs and files e.t.c it works perfectly. But when after 5 minutes you decide to change, say, some script or file destination WISE i making so many actions in background you can&amp;#8217;t even imagine.</description>
     </item>
     
     <item>
       <title>MySQL in .NET</title>
-      <link>blog.vnomad.com/code/mysql-in-net/</link>
+      <link>http://blog.vnomad.com/code/mysql-in-net/</link>
       <pubDate>Fri, 26 Sep 2008 19:13:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/mysql-in-net/</guid>
+      <guid>http://blog.vnomad.com/code/mysql-in-net/</guid>
       <description>Ever thought of using mysql database in .NET app? Obviously you link some other language with this DB format but it can be perfectly handled with MySql connector for .NET you can use standard ADO interfaces and approaches. Now that was the time I REALLY enjoyed working with mysql at last.</description>
     </item>
     
     <item>
       <title>Code highlighting lib missing.</title>
-      <link>blog.vnomad.com/code/code-highlighting-lib-missing/</link>
+      <link>http://blog.vnomad.com/code/code-highlighting-lib-missing/</link>
       <pubDate>Thu, 12 Jun 2008 09:06:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/code-highlighting-lib-missing/</guid>
+      <guid>http://blog.vnomad.com/code/code-highlighting-lib-missing/</guid>
       <description>Yesterday tried to post some code to my technical blog again. What a painfull process was that! Never thought it would be so hard to add some custom javascript to my template. If Google validates input so hard why won&amp;#8217;t they create some custom tag for code? I think many people use code posts in blogger but as far as i&amp;#8217;ve seen all of them look pretty bad. Live space</description>
     </item>
     
     <item>
       <title>Trying out Google base</title>
-      <link>blog.vnomad.com/code/trying-out-google-base/</link>
+      <link>http://blog.vnomad.com/code/trying-out-google-base/</link>
       <pubDate>Tue, 10 Jun 2008 09:44:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/trying-out-google-base/</guid>
+      <guid>http://blog.vnomad.com/code/trying-out-google-base/</guid>
       <description>Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app&amp;#8230; But when finished everything looked very nice!
 class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;quot;; const string BATCH_COUNT_SETTING = &amp;quot;batchCount&amp;quot;; const string CHECK_EXISTANCE_SETTING = &amp;quot;checkExistance&amp;quot;; const string MyItem_ITEMTYPE_SETTING = &amp;quot;MyItemItemType&amp;quot;; const string MyDB_CONNECTION_STRING = &amp;quot;MyDBConnectionString&amp;quot;; static void Main(string[] args) { string appNameG = Utils.</description>
     </item>
     
     <item>
       <title>.NET Marshalling</title>
-      <link>blog.vnomad.com/code/net-marshalling/</link>
+      <link>http://blog.vnomad.com/code/net-marshalling/</link>
       <pubDate>Tue, 22 Jan 2008 11:12:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/net-marshalling/</guid>
+      <guid>http://blog.vnomad.com/code/net-marshalling/</guid>
       <description>Interesting things happen when you try to marshal something in real life&amp;#8230;.Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] extern __declspec(dllexport) int SomeFunc(char** stringArray);  [marshal]</description>
     </item>
     
     <item>
       <title>Display TIFF in picturebox (Adobe plugins)</title>
-      <link>blog.vnomad.com/code/display-tiff-in-picturebox-adobe-plugins/</link>
+      <link>http://blog.vnomad.com/code/display-tiff-in-picturebox-adobe-plugins/</link>
       <pubDate>Mon, 05 Nov 2007 16:50:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/display-tiff-in-picturebox-adobe-plugins/</guid>
+      <guid>http://blog.vnomad.com/code/display-tiff-in-picturebox-adobe-plugins/</guid>
       <description>The previous post highlighted how to accomplish the given task using TIFF-PDF-JPEG-BITMAP conversion. Though this was is complicated it works perfect. But so much code for so little functionality often is not considered good if even eccepted. Recently a new way was found. It has to be said that it is not &amp;#8220;the proper way&amp;#8221;, because it needs some annatural code, but it is considerably lighter than the previous one. SO the idea is to draw direktly on the window using its HWND and SDK drawContentsToFunction.</description>
     </item>
     
     <item>
       <title>Tiff to Picture box in PDF plugin ADM dialog</title>
-      <link>blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</link>
+      <link>http://blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</link>
       <pubDate>Thu, 01 Nov 2007 10:22:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</guid>
+      <guid>http://blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</guid>
       <description>Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef&amp;#8230;Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.</description>
     </item>
     
     <item>
       <title>Custom selection server in PDF plugin</title>
-      <link>blog.vnomad.com/code/custom-selection-server-in-pdf-plugin/</link>
+      <link>http://blog.vnomad.com/code/custom-selection-server-in-pdf-plugin/</link>
       <pubDate>Fri, 19 Oct 2007 14:21:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/custom-selection-server-in-pdf-plugin/</guid>
+      <guid>http://blog.vnomad.com/code/custom-selection-server-in-pdf-plugin/</guid>
       <description>Recently i was developing a feature for the Adobe&amp;reg; Acrobat Reader&amp;reg; plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page&amp;#8230; &amp;#8211; bad you are :). Here i&amp;#8217;ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.</description>
     </item>
     
     <item>
       <title>Nice books to read[OOP,OOD, Agile etc.]</title>
-      <link>blog.vnomad.com/code/nice-books-to-readoopood-agile-etc/</link>
+      <link>http://blog.vnomad.com/code/nice-books-to-readoopood-agile-etc/</link>
       <pubDate>Thu, 27 Sep 2007 20:50:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/nice-books-to-readoopood-agile-etc/</guid>
+      <guid>http://blog.vnomad.com/code/nice-books-to-readoopood-agile-etc/</guid>
       <description>Recently, i started to come across _r e a l l y _nice books about software project management and risks. So friends of mine also share good patterns/best practices books. among them the can be listed :
  _ _Tom DeMarco, “Waltzing with Bears: Managing Risk on Software Projects” Steve McConnell &amp;#8220;Software project survival guide&amp;#8221; &amp;#8220;Analysis Patterns: Reusable Object Models&amp;#8221; Martin Fowler Design Patterns Book
 Design Patterns: Elements of Reusable Object-Oriented Software by ErichGamma, RichardHelm, RalphJohnson, and JohnVlissides Edvard Yourdon &amp;#8216;Death March&amp;#8217;  if someone can contribute to the list &amp;#8211; welcome!</description>

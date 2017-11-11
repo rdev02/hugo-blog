@@ -2,92 +2,92 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Nomad&#39;s reflections</title>
-    <link>blog.vnomad.com/categories/</link>
+    <link>http://blog.vnomad.com/categories/</link>
     <description>Recent content in Categories on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="blog.vnomad.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.vnomad.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Code</title>
-      <link>blog.vnomad.com/categories/code/</link>
+      <link>http://blog.vnomad.com/categories/code/</link>
       <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/categories/code/</guid>
+      <guid>http://blog.vnomad.com/categories/code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gadgets</title>
-      <link>blog.vnomad.com/categories/gadgets/</link>
+      <link>http://blog.vnomad.com/categories/gadgets/</link>
       <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/categories/gadgets/</guid>
+      <guid>http://blog.vnomad.com/categories/gadgets/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Os</title>
-      <link>blog.vnomad.com/categories/os/</link>
+      <link>http://blog.vnomad.com/categories/os/</link>
       <pubDate>Fri, 20 May 2011 21:07:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/categories/os/</guid>
+      <guid>http://blog.vnomad.com/categories/os/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Swe</title>
-      <link>blog.vnomad.com/categories/swe/</link>
+      <link>http://blog.vnomad.com/categories/swe/</link>
       <pubDate>Sun, 12 Apr 2009 18:40:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/categories/swe/</guid>
+      <guid>http://blog.vnomad.com/categories/swe/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tea</title>
-      <link>blog.vnomad.com/categories/tea/</link>
+      <link>http://blog.vnomad.com/categories/tea/</link>
       <pubDate>Sun, 19 Jun 2011 21:16:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/categories/tea/</guid>
+      <guid>http://blog.vnomad.com/categories/tea/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tech</title>
-      <link>blog.vnomad.com/categories/tech/</link>
+      <link>http://blog.vnomad.com/categories/tech/</link>
       <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/categories/tech/</guid>
+      <guid>http://blog.vnomad.com/categories/tech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>blog.vnomad.com/categories/tools/</link>
+      <link>http://blog.vnomad.com/categories/tools/</link>
       <pubDate>Fri, 26 Sep 2008 19:23:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/categories/tools/</guid>
+      <guid>http://blog.vnomad.com/categories/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Travel</title>
-      <link>blog.vnomad.com/categories/travel/</link>
+      <link>http://blog.vnomad.com/categories/travel/</link>
       <pubDate>Sat, 12 Sep 2009 17:30:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/categories/travel/</guid>
+      <guid>http://blog.vnomad.com/categories/travel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tur</title>
-      <link>blog.vnomad.com/categories/tur/</link>
+      <link>http://blog.vnomad.com/categories/tur/</link>
       <pubDate>Sat, 12 Sep 2009 17:30:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/categories/tur/</guid>
+      <guid>http://blog.vnomad.com/categories/tur/</guid>
       <description></description>
     </item>
     

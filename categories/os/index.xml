@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Os on Nomad&#39;s reflections</title>
-    <link>blog.vnomad.com/categories/os/</link>
+    <link>http://blog.vnomad.com/categories/os/</link>
     <description>Recent content in Os on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 May 2011 21:07:00 +0000</lastBuildDate>
     
-	<atom:link href="blog.vnomad.com/categories/os/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.vnomad.com/categories/os/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Avahi and “network service discovery disabled”</title>
-      <link>blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</link>
+      <link>http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</link>
       <pubDate>Fri, 20 May 2011 21:07:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
+      <guid>http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
       <description>Had a real problem with my wifi after moving to Ubuntu from win -&amp;gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
         Having this changed</description>
     </item>

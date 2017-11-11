@@ -2,300 +2,300 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Nomad&#39;s reflections</title>
-    <link>blog.vnomad.com/tags/</link>
+    <link>http://blog.vnomad.com/tags/</link>
     <description>Recent content in Tags on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Oct 2010 15:06:00 +0000</lastBuildDate>
     
-	<atom:link href="blog.vnomad.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.vnomad.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>.Net</title>
-      <link>blog.vnomad.com/tags/.net/</link>
+      <link>http://blog.vnomad.com/tags/.net/</link>
       <pubDate>Wed, 13 Oct 2010 15:06:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/.net/</guid>
+      <guid>http://blog.vnomad.com/tags/.net/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blackberry</title>
-      <link>blog.vnomad.com/tags/blackberry/</link>
+      <link>http://blog.vnomad.com/tags/blackberry/</link>
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/blackberry/</guid>
+      <guid>http://blog.vnomad.com/tags/blackberry/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Books</title>
-      <link>blog.vnomad.com/tags/books/</link>
+      <link>http://blog.vnomad.com/tags/books/</link>
       <pubDate>Thu, 27 Sep 2007 20:50:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/books/</guid>
+      <guid>http://blog.vnomad.com/tags/books/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C#</title>
-      <link>blog.vnomad.com/tags/c#/</link>
+      <link>http://blog.vnomad.com/tags/c#/</link>
       <pubDate>Sat, 12 Dec 2009 23:11:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/c#/</guid>
+      <guid>http://blog.vnomad.com/tags/c#/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C&#43;&#43;</title>
-      <link>blog.vnomad.com/tags/c&#43;&#43;/</link>
+      <link>http://blog.vnomad.com/tags/c&#43;&#43;/</link>
       <pubDate>Mon, 05 Nov 2007 16:50:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/c&#43;&#43;/</guid>
+      <guid>http://blog.vnomad.com/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code</title>
-      <link>blog.vnomad.com/tags/code/</link>
+      <link>http://blog.vnomad.com/tags/code/</link>
       <pubDate>Wed, 14 Sep 2011 06:50:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/code/</guid>
+      <guid>http://blog.vnomad.com/tags/code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Codesod</title>
-      <link>blog.vnomad.com/tags/codesod/</link>
+      <link>http://blog.vnomad.com/tags/codesod/</link>
       <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/codesod/</guid>
+      <guid>http://blog.vnomad.com/tags/codesod/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Csharp</title>
-      <link>blog.vnomad.com/tags/csharp/</link>
+      <link>http://blog.vnomad.com/tags/csharp/</link>
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/csharp/</guid>
+      <guid>http://blog.vnomad.com/tags/csharp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Errata</title>
-      <link>blog.vnomad.com/tags/errata/</link>
+      <link>http://blog.vnomad.com/tags/errata/</link>
       <pubDate>Tue, 09 Mar 2010 22:38:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/errata/</guid>
+      <guid>http://blog.vnomad.com/tags/errata/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Formatting</title>
-      <link>blog.vnomad.com/tags/formatting/</link>
+      <link>http://blog.vnomad.com/tags/formatting/</link>
       <pubDate>Mon, 14 Sep 2009 20:25:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/formatting/</guid>
+      <guid>http://blog.vnomad.com/tags/formatting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hack</title>
-      <link>blog.vnomad.com/tags/hack/</link>
+      <link>http://blog.vnomad.com/tags/hack/</link>
       <pubDate>Mon, 20 Jun 2011 08:34:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/hack/</guid>
+      <guid>http://blog.vnomad.com/tags/hack/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hibernate</title>
-      <link>blog.vnomad.com/tags/hibernate/</link>
+      <link>http://blog.vnomad.com/tags/hibernate/</link>
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/hibernate/</guid>
+      <guid>http://blog.vnomad.com/tags/hibernate/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>blog.vnomad.com/tags/java/</link>
+      <link>http://blog.vnomad.com/tags/java/</link>
       <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/java/</guid>
+      <guid>http://blog.vnomad.com/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Js</title>
-      <link>blog.vnomad.com/tags/js/</link>
+      <link>http://blog.vnomad.com/tags/js/</link>
       <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/js/</guid>
+      <guid>http://blog.vnomad.com/tags/js/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>blog.vnomad.com/tags/linux/</link>
+      <link>http://blog.vnomad.com/tags/linux/</link>
       <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/linux/</guid>
+      <guid>http://blog.vnomad.com/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Maven</title>
-      <link>blog.vnomad.com/tags/maven/</link>
+      <link>http://blog.vnomad.com/tags/maven/</link>
       <pubDate>Thu, 21 Apr 2011 10:52:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/maven/</guid>
+      <guid>http://blog.vnomad.com/tags/maven/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mobile</title>
-      <link>blog.vnomad.com/tags/mobile/</link>
+      <link>http://blog.vnomad.com/tags/mobile/</link>
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/mobile/</guid>
+      <guid>http://blog.vnomad.com/tags/mobile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ms</title>
-      <link>blog.vnomad.com/tags/ms/</link>
+      <link>http://blog.vnomad.com/tags/ms/</link>
       <pubDate>Mon, 16 May 2011 07:35:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/ms/</guid>
+      <guid>http://blog.vnomad.com/tags/ms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mysql</title>
-      <link>blog.vnomad.com/tags/mysql/</link>
+      <link>http://blog.vnomad.com/tags/mysql/</link>
       <pubDate>Wed, 14 Sep 2011 06:50:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/mysql/</guid>
+      <guid>http://blog.vnomad.com/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nas</title>
-      <link>blog.vnomad.com/tags/nas/</link>
+      <link>http://blog.vnomad.com/tags/nas/</link>
       <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/nas/</guid>
+      <guid>http://blog.vnomad.com/tags/nas/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Perf</title>
-      <link>blog.vnomad.com/tags/perf/</link>
+      <link>http://blog.vnomad.com/tags/perf/</link>
       <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/perf/</guid>
+      <guid>http://blog.vnomad.com/tags/perf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rant</title>
-      <link>blog.vnomad.com/tags/rant/</link>
+      <link>http://blog.vnomad.com/tags/rant/</link>
       <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/rant/</guid>
+      <guid>http://blog.vnomad.com/tags/rant/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Social</title>
-      <link>blog.vnomad.com/tags/social/</link>
+      <link>http://blog.vnomad.com/tags/social/</link>
       <pubDate>Sun, 19 Jun 2011 21:16:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/social/</guid>
+      <guid>http://blog.vnomad.com/tags/social/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Symbian</title>
-      <link>blog.vnomad.com/tags/symbian/</link>
+      <link>http://blog.vnomad.com/tags/symbian/</link>
       <pubDate>Sat, 20 Jun 2009 12:32:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/symbian/</guid>
+      <guid>http://blog.vnomad.com/tags/symbian/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>blog.vnomad.com/tags/tools/</link>
+      <link>http://blog.vnomad.com/tags/tools/</link>
       <pubDate>Thu, 12 May 2011 12:34:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/tools/</guid>
+      <guid>http://blog.vnomad.com/tags/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tur</title>
-      <link>blog.vnomad.com/tags/tur/</link>
+      <link>http://blog.vnomad.com/tags/tur/</link>
       <pubDate>Sat, 12 Sep 2009 17:30:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/tur/</guid>
+      <guid>http://blog.vnomad.com/tags/tur/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ubuntu</title>
-      <link>blog.vnomad.com/tags/ubuntu/</link>
+      <link>http://blog.vnomad.com/tags/ubuntu/</link>
       <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/ubuntu/</guid>
+      <guid>http://blog.vnomad.com/tags/ubuntu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ukr</title>
-      <link>blog.vnomad.com/tags/ukr/</link>
+      <link>http://blog.vnomad.com/tags/ukr/</link>
       <pubDate>Fri, 30 Oct 2009 19:10:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/ukr/</guid>
+      <guid>http://blog.vnomad.com/tags/ukr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vcs</title>
-      <link>blog.vnomad.com/tags/vcs/</link>
+      <link>http://blog.vnomad.com/tags/vcs/</link>
       <pubDate>Mon, 29 Sep 2008 15:03:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/vcs/</guid>
+      <guid>http://blog.vnomad.com/tags/vcs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Windows</title>
-      <link>blog.vnomad.com/tags/windows/</link>
+      <link>http://blog.vnomad.com/tags/windows/</link>
       <pubDate>Fri, 21 Aug 2009 09:14:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/windows/</guid>
+      <guid>http://blog.vnomad.com/tags/windows/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Wise</title>
-      <link>blog.vnomad.com/tags/wise/</link>
+      <link>http://blog.vnomad.com/tags/wise/</link>
       <pubDate>Fri, 26 Sep 2008 19:23:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/wise/</guid>
+      <guid>http://blog.vnomad.com/tags/wise/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Wp</title>
-      <link>blog.vnomad.com/tags/wp/</link>
+      <link>http://blog.vnomad.com/tags/wp/</link>
       <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/tags/wp/</guid>
+      <guid>http://blog.vnomad.com/tags/wp/</guid>
       <description></description>
     </item>
     

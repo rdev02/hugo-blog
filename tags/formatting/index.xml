@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Formatting on Nomad&#39;s reflections</title>
-    <link>blog.vnomad.com/tags/formatting/</link>
+    <link>http://blog.vnomad.com/tags/formatting/</link>
     <description>Recent content in Formatting on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 14 Sep 2009 20:25:00 +0000</lastBuildDate>
     
-	<atom:link href="blog.vnomad.com/tags/formatting/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.vnomad.com/tags/formatting/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blogger code formatting.</title>
-      <link>blog.vnomad.com/code/blogger-code-formatting/</link>
+      <link>http://blog.vnomad.com/code/blogger-code-formatting/</link>
       <pubDate>Mon, 14 Sep 2009 20:25:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/blogger-code-formatting/</guid>
+      <guid>http://blog.vnomad.com/code/blogger-code-formatting/</guid>
       <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
 using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } }  </description>
     </item>

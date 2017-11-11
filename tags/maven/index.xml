@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Maven on Nomad&#39;s reflections</title>
-    <link>blog.vnomad.com/tags/maven/</link>
+    <link>http://blog.vnomad.com/tags/maven/</link>
     <description>Recent content in Maven on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 21 Apr 2011 10:52:00 +0000</lastBuildDate>
     
-	<atom:link href="blog.vnomad.com/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.vnomad.com/tags/maven/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>maven-compiler-plugin causing eclipse projects to have j2se 1.4 instead of configured one</title>
-      <link>blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</link>
+      <link>http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</link>
       <pubDate>Thu, 21 Apr 2011 10:52:00 +0000</pubDate>
       
-      <guid>blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</guid>
+      <guid>http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</guid>
       <description>Today was investigating the warnings around some of my eclipse maven projects and noticed that I have a few
  There are no JREs installed in the workspace that are strictly compatible with this environment
  messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine.</description>
