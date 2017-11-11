@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gadgets on Nomad&#39;s reflections</title>
+    <link>rdev02.github.io/hugo-blog/categories/gadgets/</link>
+    <description>Recent content in Gadgets on Nomad&#39;s reflections</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Aug 2013 23:25:00 +0000</lastBuildDate>
+    
+	<atom:link href="rdev02.github.io/hugo-blog/categories/gadgets/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Synology DS413j NAS</title>
+      <link>rdev02.github.io/hugo-blog/code/synology-ds413j-nas/</link>
+      <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/synology-ds413j-nas/</guid>
+      <description>In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&amp;#8217;t duplicate them in this one. But, to keep consistent with the previous review I&amp;#8217;ll go with the same headings/experience areas. That being said &amp;#8211; here we go!  
+ 
+
+Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this time.</description>
+    </item>
+    
+  </channel>
+</rss>

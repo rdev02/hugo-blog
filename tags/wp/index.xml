@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wp on Nomad&#39;s reflections</title>
+    <link>rdev02.github.io/hugo-blog/tags/wp/</link>
+    <description>Recent content in Wp on Nomad&#39;s reflections</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Feb 2012 16:15:00 +0000</lastBuildDate>
+    
+	<atom:link href="rdev02.github.io/hugo-blog/tags/wp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WP7 Mango dive</title>
+      <link>rdev02.github.io/hugo-blog/code/wp7-mango-dive/</link>
+      <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/wp7-mango-dive/</guid>
+      <description>It has been a few month since I started mangling with WP7 platform. The more I learnt about it from the inside the more I wanted to buy new real WP7 phone. Things changed slightly after I have done my very first app(didn&amp;#8217;t make it to the app store as I found plenty of similar ones already there and mine was not adding much :() but still as of now I would really be interested in posessing a WP7 phone and giving it a solid try.</description>
+    </item>
+    
+  </channel>
+</rss>

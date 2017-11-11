@@ -1,0 +1,885 @@
+
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
+    <title>.Net</title>
+    <meta name="author" content="Viktor Halitsyn">
+    <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
+
+    <link rel="icon" href="/favicon.jpg">
+    
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="rdev02.github.io/hugo-blog/tags/.net/index.xml">
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content=".Net">
+    <meta property="og:url" content="rdev02.github.io/hugo-blog/tags/.net/">
+    <meta property="og:site_name" content="Nomad&#39;s reflections">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nomad&#39;s reflections">
+    <meta name="twitter:description" content="">
+    
+      <meta name="twitter:creator" content="@rdev02">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-hn2ecmd5khuhizdlrexpkfukaemqe4ngxqqvizhaylypes8miiytj1tzylb9.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Oswald|Roboto">
+      
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64535001-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="3">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/rdev02.github.io/hugo-blog/">Nomad&#39;s reflections</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="3">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
+        
+          <h5 class="sidebar-profile-bio">Came a long way from Ukraine, still so much to go&hellip;</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+        
+
+      
+      <div id="main" data-behavior="3"
+        class="
+               hasCoverMetaIn
+               ">
+        
+          <section class="postShorten-group main-content-wrap">
+            
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="rdev02.github.io/hugo-blog/code/net-wmi-or-how-do-i-get-all-that-info/">
+          .NET WMI. Or how do I get all that info?
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2010-10-13T15:06:00Z">
+        
+  
+  
+  
+  
+    10/13/2010
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      &nbsp;&nbsp; There&#8217;s a ton of Win properties that your program might want to access/possess/transform and there&#8217;s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there&#8217;s one sigle silver bullet to get them all via
+ Select * From [win_category]
+      <p>
+        <a href="rdev02.github.io/hugo-blog/code/net-wmi-or-how-do-i-get-all-that-info/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="rdev02.github.io/hugo-blog/code/net-tab-control/">
+          .NET tab control.
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2010-10-08T19:39:00Z">
+        
+  
+  
+  
+  
+    10/08/2010
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      &nbsp;&nbsp;&nbsp; Consider some UI that you would like to present as tabs. And you also know that all these tabs would have a considerate amount of code in common. There are some thoughts here but those are more about visual representation. Also creating&nbsp; usercontrols I believe is not an option due to it&#8217;s not expected to have more tah one tab of a kind. The solution has to both utilize the VS designer(otherwise tab creation would take considerably more time) and keep the code separate from the tabcontrol &#8211; holder form.
+      <p>
+        <a href="rdev02.github.io/hugo-blog/code/net-tab-control/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="rdev02.github.io/hugo-blog/code/mcpd-acquired/">
+          MCPD acquired.
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2010-03-28T20:06:00Z">
+        
+  
+  
+  
+  
+    03/28/2010
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      &nbsp;&nbsp; &nbsp;Finally. Now frankly &#8211; preparing for MS exams while doing die-hard java is not a funny thing to do. NEVER practice such a combination&#8230;
+&nbsp;&nbsp; &nbsp;About the exam &#8211; it was better then the previous 2: it obeyed no rules:). What I mean here is that I could have skipped the preparation kit completely! Yes there were a few questions related to the book&#8217;s content, BUT reading it is completely optional IMHO.
+      <p>
+        <a href="rdev02.github.io/hugo-blog/code/mcpd-acquired/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="rdev02.github.io/hugo-blog/code/devenv-crash-from-the-command-line/">
+          Devenv crash from the command line.
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2009-12-24T21:11:00Z">
+        
+  
+  
+  
+  
+    12/24/2009
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      &nbsp;&nbsp; &nbsp; &nbsp;Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &#8211; a standard windows crash appeared with 0xc000005 error code and a &#8220;friendly&#8221; Send/Don&#8217;t send error to Microsoft dialog.
+      <p>
+        <a href="rdev02.github.io/hugo-blog/code/devenv-crash-from-the-command-line/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="rdev02.github.io/hugo-blog/code/creating-dynamic-plugin-architecture-with-c-net/">
+          Creating dynamic plugin architecture with C#.NET
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2009-12-12T23:11:00Z">
+        
+  
+  
+  
+  
+    12/12/2009
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>, 
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/code">code</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.
+      <p>
+        <a href="rdev02.github.io/hugo-blog/code/creating-dynamic-plugin-architecture-with-c-net/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="rdev02.github.io/hugo-blog/code/mcts-acquired/">
+          MCTS acquired!
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2009-09-12T19:44:00Z">
+        
+  
+  
+  
+  
+    09/12/2009
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      &nbsp;&nbsp; &nbsp;One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &#8211; it&#8217;s like a combination of the previous 2 with some logic included- &nbsp;not just simple development components.
+&nbsp;&nbsp; Regarding the exam &#8211; not much can be said. Only one thing is worth mentioning &#8211; it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is&#8230; Interesting how would the next one go&#8230;
+      <p>
+        <a href="rdev02.github.io/hugo-blog/code/mcts-acquired/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="rdev02.github.io/hugo-blog/code/mcp-aquired/">
+          MCP aquired…
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2009-04-16T22:49:00Z">
+        
+  
+  
+  
+  
+    04/16/2009
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      [&lt;img style=&ldquo;float:left; margin:0 10px 10px 0;cursor:pointer; cursor:hand;width: 160px; height: 80px;&rdquo; src=&ldquo;http://2.bp.blogspot.com/_SwypSVIrwAo/See277vd4pI/AAAAAAAADrc/YzPLJ891L2s/s320/MCP(rgb).jpg&quot; border=&ldquo;0&rdquo; alt=&ldquo;&rdquo; id=&ldquo;At last i finally got time to get to that certification center and pass that damn 70-536. You can&#8217;t really work with all of that technology at once to keep all the names of classes and methods in your head, and the projects are swapping fast&#8230; SO it took me more than a year to get from an idea of sitting an axam to actually passing it.
+      <p>
+        <a href="rdev02.github.io/hugo-blog/code/mcp-aquired/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="rdev02.github.io/hugo-blog/code/net-1-0-to-net-2-0-migration/">
+          .NET 1.0 to .NET 2.0 migration…
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2008-10-01T09:24:00Z">
+        
+  
+  
+  
+  
+    10/01/2008
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      Actually a painfull process it can be if the project you&#8217;re trying to convert has lots of custom stuff. The first problem i stumbled upon was resources. eah yeah &#8211; i mean form resources. They ciompletely refused to work. I know about that separation that came in when VS 2005 was introduced so I did use&nbsp;DeCodEx to make majour conversion and splitting but it still turned out that my forms are not opening :(.
+      <p>
+        <a href="rdev02.github.io/hugo-blog/code/net-1-0-to-net-2-0-migration/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="rdev02.github.io/hugo-blog/code/mysql-in-net/">
+          MySQL in .NET
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2008-09-26T19:13:00Z">
+        
+  
+  
+  
+  
+    09/26/2008
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      Ever thought of using mysql database in .NET app? Obviously you link some other language with this DB format but it can be perfectly handled with MySql connector for .NET you can use standard ADO interfaces and approaches. Now that was the time I REALLY enjoyed working with mysql at last.
+      <p>
+        <a href="rdev02.github.io/hugo-blog/code/mysql-in-net/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="rdev02.github.io/hugo-blog/code/net-marshalling/">
+          .NET Marshalling
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2008-01-22T11:12:00Z">
+        
+  
+  
+  
+  
+    01/22/2008
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>, 
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/code">code</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      Interesting things happen when you try to marshal something in real life&#8230;.Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] extern __declspec(dllexport) int SomeFunc(char** stringArray);  [marshal]
+      <p>
+        <a href="rdev02.github.io/hugo-blog/code/net-marshalling/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+            
+
+          </section>
+        
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 Viktor Halitsyn. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Viktor Halitsyn</h4>
+    
+      <div id="about-card-bio">Came a long way from Ukraine, still so much to go&hellip;</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Seattle, WA
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         0 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4m__UITi3O6d78IL15dqz-FH3jb4pDHi6UlZyWMAfF5U_3KwRN8_dz8zeiKaFxoQlDA1dYpNTjn1Qc7ajoVlgFDDMjCu84gDMJEj3bEPBWMeSVcxJpWzB-LcMKQ3BRxlgrV9mxBbdaXeWdzZc5ZVXEJ2APGUhJsGXu6cNX5w0SPByUrPgMzHntFkewms6SgFIXFvmfsNQkiPHe2GmLL8jVUg/wp_back3.jpg?psid=1');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qnzos5sqnu4rohtf6zokzzqkdyxbfe0m9ontx6rqhebzsxhjvpl7renqyqqd.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

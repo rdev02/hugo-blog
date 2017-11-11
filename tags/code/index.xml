@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code on Nomad&#39;s reflections</title>
+    <link>rdev02.github.io/hugo-blog/tags/code/</link>
+    <description>Recent content in Code on Nomad&#39;s reflections</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Sep 2011 06:50:00 +0000</lastBuildDate>
+    
+	<atom:link href="rdev02.github.io/hugo-blog/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySql performance. 5.1 VS 5.5 VS 5.6 (dev)</title>
+      <link>rdev02.github.io/hugo-blog/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</link>
+      <pubDate>Wed, 14 Sep 2011 06:50:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</guid>
+      <description>Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:</description>
+    </item>
+    
+  </channel>
+</rss>

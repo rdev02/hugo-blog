@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/synology-ds413j-nas/</loc>
+    <lastmod>2013-08-28T23:25:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/seagate-blackarmor-nas-400/</loc>
+    <lastmod>2013-02-05T08:20:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/javascript-performance-tests/</loc>
+    <lastmod>2012-08-02T22:35:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/wp7-mango-dive/</loc>
+    <lastmod>2012-02-26T16:15:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</loc>
+    <lastmod>2011-09-14T06:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/java-net-malformedurlexception-no-protocol-and/</loc>
+    <lastmod>2011-09-06T08:06:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/plymouth-fix-for-ubuntu-11-04/</loc>
+    <lastmod>2011-06-28T20:22:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/hackathon-in-lviv/</loc>
+    <lastmod>2011-06-20T08:34:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tea/it-ramblings/</loc>
+    <lastmod>2011-06-19T21:16:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/new-quest-from-microsoft/</loc>
+    <lastmod>2011-06-04T07:54:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/j2ee-sdk-install-hanging-fix/</loc>
+    <lastmod>2011-06-01T18:41:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/avahi-and-network-service-discovery-disabled/</loc>
+    <lastmod>2011-05-20T21:07:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/skype-microsoft/</loc>
+    <lastmod>2011-05-16T07:35:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/tabkit-vertical-tabs/</loc>
+    <lastmod>2011-05-12T12:34:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/lift-ajax-the-proper-way-of-doing-presentations/</loc>
+    <lastmod>2011-04-24T10:43:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/java-to-blazeds-nan-in-double-values/</loc>
+    <lastmod>2011-04-22T09:07:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</loc>
+    <lastmod>2011-04-21T10:52:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</loc>
+    <lastmod>2011-04-19T14:45:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/nokia-ovi-suite-sms-extract/</loc>
+    <lastmod>2010-12-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/net-wmi-or-how-do-i-get-all-that-info/</loc>
+    <lastmod>2010-10-13T15:06:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/net-tab-control/</loc>
+    <lastmod>2010-10-08T19:39:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/org-springframework-oxm-jaxb-jaxb2marshaller/</loc>
+    <lastmod>2010-09-29T15:45:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/mcpd-acquired/</loc>
+    <lastmod>2010-03-28T20:06:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/907-invalid-cod-and-other-blackberry-ota-problems/</loc>
+    <lastmod>2010-03-10T10:37:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</loc>
+    <lastmod>2010-03-09T22:38:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/idea-ant-hanging/</loc>
+    <lastmod>2010-02-11T10:18:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/nokia-ovi-suite/</loc>
+    <lastmod>2010-02-04T22:22:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/switching-to-container-based-datasource/</loc>
+    <lastmod>2010-01-11T12:08:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/devenv-crash-from-the-command-line/</loc>
+    <lastmod>2009-12-24T21:11:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/creating-dynamic-plugin-architecture-with-c-net/</loc>
+    <lastmod>2009-12-12T23:11:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/sad-funny-world-of-mobile-development/</loc>
+    <lastmod>2009-12-07T09:38:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tea/think/</loc>
+    <lastmod>2009-12-01T10:53:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/jetbrains-idea-still-the-best/</loc>
+    <lastmod>2009-11-19T11:12:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tea/femen-must-have-been-doing-that-right/</loc>
+    <lastmod>2009-11-18T13:17:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/intellij-idea-community-edition-now-it-gets-serious/</loc>
+    <lastmod>2009-11-12T10:41:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/intellij-idea-community-edition-first-impressions/</loc>
+    <lastmod>2009-11-05T10:15:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tea/flu-people-and-ukrainian-healthcare-system/</loc>
+    <lastmod>2009-10-30T19:10:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/blackberry-fun/</loc>
+    <lastmod>2009-10-20T14:08:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/blackberry-internet-usage-ota-and-other-staff/</loc>
+    <lastmod>2009-09-24T11:43:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/blackberry-invokelater-and-multimedia/</loc>
+    <lastmod>2009-09-23T09:37:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/blogger-code-formatting/</loc>
+    <lastmod>2009-09-14T20:25:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/mcts-acquired/</loc>
+    <lastmod>2009-09-12T19:44:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tea/turkey-vacation/</loc>
+    <lastmod>2009-09-12T17:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tea/ukrainian-independence-day/</loc>
+    <lastmod>2009-08-27T19:37:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/windows-service-accounts/</loc>
+    <lastmod>2009-08-21T09:14:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tea/how-do-they-do-it/</loc>
+    <lastmod>2009-08-21T09:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tea/ukrainians-on-times/</loc>
+    <lastmod>2009-08-20T19:06:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/damn-symbian-errors/</loc>
+    <lastmod>2009-06-20T12:32:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/mcp-aquired/</loc>
+    <lastmod>2009-04-16T22:49:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/java-sdk-is-hacking-window/</loc>
+    <lastmod>2009-04-12T19:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/travel/x-ray-headphones-improve/</loc>
+    <lastmod>2009-04-12T18:40:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/j2me-radio-lists-trouble/</loc>
+    <lastmod>2009-03-19T13:05:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/strange-nokia-music-converter/</loc>
+    <lastmod>2009-03-18T22:02:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/net-1-0-to-net-2-0-migration/</loc>
+    <lastmod>2008-10-01T09:24:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/svn-vs-cvs/</loc>
+    <lastmod>2008-09-29T15:03:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tea/who-the-hell-is-next-in/</loc>
+    <lastmod>2008-09-29T10:17:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/google-chrome/</loc>
+    <lastmod>2008-09-26T19:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/wise-installation-studio/</loc>
+    <lastmod>2008-09-26T19:23:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/mysql-in-net/</loc>
+    <lastmod>2008-09-26T19:13:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/code-highlighting-lib-missing/</loc>
+    <lastmod>2008-06-12T09:06:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/trying-out-google-base/</loc>
+    <lastmod>2008-06-10T09:44:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/net-marshalling/</loc>
+    <lastmod>2008-01-22T11:12:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/display-tiff-in-picturebox-adobe-plugins/</loc>
+    <lastmod>2007-11-05T16:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</loc>
+    <lastmod>2007-11-01T10:22:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/custom-selection-server-in-pdf-plugin/</loc>
+    <lastmod>2007-10-19T14:21:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/nice-books-to-readoopood-agile-etc/</loc>
+    <lastmod>2007-09-27T20:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/.net/</loc>
+    <lastmod>2010-10-13T15:06:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/archives/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/blackberry/</loc>
+    <lastmod>2010-03-10T10:37:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/books/</loc>
+    <lastmod>2007-09-27T20:50:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/c#/</loc>
+    <lastmod>2009-12-12T23:11:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/c&#43;&#43;/</loc>
+    <lastmod>2007-11-05T16:50:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/categories/code/</loc>
+    <lastmod>2011-09-06T08:06:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/code/</loc>
+    <lastmod>2011-09-14T06:50:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/code/</loc>
+    <lastmod>2013-08-28T23:25:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/codesod/</loc>
+    <lastmod>2011-09-06T08:06:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/csharp/</loc>
+    <lastmod>2011-04-19T14:45:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/errata/</loc>
+    <lastmod>2010-03-09T22:38:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/formatting/</loc>
+    <lastmod>2009-09-14T20:25:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/categories/gadgets/</loc>
+    <lastmod>2013-08-28T23:25:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/hack/</loc>
+    <lastmod>2011-06-20T08:34:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/hibernate/</loc>
+    <lastmod>2010-01-11T12:08:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/java/</loc>
+    <lastmod>2011-09-06T08:06:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/js/</loc>
+    <lastmod>2012-08-02T22:35:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/linux/</loc>
+    <lastmod>2011-06-28T20:22:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/maven/</loc>
+    <lastmod>2011-04-21T10:52:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/mobile/</loc>
+    <lastmod>2010-03-10T10:37:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/ms/</loc>
+    <lastmod>2011-05-16T07:35:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/mysql/</loc>
+    <lastmod>2011-09-14T06:50:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/nas/</loc>
+    <lastmod>2013-08-28T23:25:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/</loc>
+    <lastmod>2013-08-28T23:25:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/categories/os/</loc>
+    <lastmod>2011-05-20T21:07:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/perf/</loc>
+    <lastmod>2012-08-02T22:35:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/rant/</loc>
+    <lastmod>2012-02-26T16:15:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/social/</loc>
+    <lastmod>2011-06-19T21:16:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/categories/swe/</loc>
+    <lastmod>2009-04-12T18:40:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/symbian/</loc>
+    <lastmod>2009-06-20T12:32:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/</loc>
+    <lastmod>2010-10-13T15:06:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/categories/tea/</loc>
+    <lastmod>2011-06-19T21:16:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tea/</loc>
+    <lastmod>2011-06-19T21:16:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/categories/tech/</loc>
+    <lastmod>2013-08-28T23:25:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/categories/tools/</loc>
+    <lastmod>2008-09-26T19:23:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/tools/</loc>
+    <lastmod>2011-05-12T12:34:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/categories/travel/</loc>
+    <lastmod>2009-04-12T18:40:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/travel/</loc>
+    <lastmod>2009-04-12T18:40:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/tur/</loc>
+    <lastmod>2009-09-12T17:30:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/ubuntu/</loc>
+    <lastmod>2011-06-28T20:22:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/ukr/</loc>
+    <lastmod>2009-10-30T19:10:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/vcs/</loc>
+    <lastmod>2008-09-29T15:03:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/windows/</loc>
+    <lastmod>2009-08-21T09:14:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/wise/</loc>
+    <lastmod>2008-09-26T19:23:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>rdev02.github.io/hugo-blog/tags/wp/</loc>
+    <lastmod>2012-02-26T16:15:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

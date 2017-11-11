@@ -1,0 +1,1013 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
+    <title>String.split() VS String.startsWith() VS Regex simple performance comparison.</title>
+    <meta name="author" content="Viktor Halitsyn">
+    <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
+
+    <link rel="icon" href="/favicon.jpg">
+    
+
+    
+    <meta name="description" content="Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100&frasl;1000-line file is not fun and I really think you shouldn&#8217;t bother choosing if you&#8217;re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large &#8211; 320k of CSV data is ~ 12MB performance is considerable.">
+    <meta property="og:description" content="Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100&frasl;1000-line file is not fun and I really think you shouldn&#8217;t bother choosing if you&#8217;re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large &#8211; 320k of CSV data is ~ 12MB performance is considerable.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="String.split() VS String.startsWith() VS Regex simple performance comparison.">
+    <meta property="og:url" content="rdev02.github.io/hugo-blog/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/">
+    <meta property="og:site_name" content="Nomad&#39;s reflections">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nomad&#39;s reflections">
+    <meta name="twitter:description" content="Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100&frasl;1000-line file is not fun and I really think you shouldn&#8217;t bother choosing if you&#8217;re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large &#8211; 320k of CSV data is ~ 12MB performance is considerable.">
+    
+      <meta name="twitter:creator" content="@rdev02">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-hn2ecmd5khuhizdlrexpkfukaemqe4ngxqqvizhaylypes8miiytj1tzylb9.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Oswald|Roboto">
+      
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64535001-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="3">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/rdev02.github.io/hugo-blog/">Nomad&#39;s reflections</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="3">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
+        
+          <h5 class="sidebar-profile-bio">Came a long way from Ukraine, still so much to go&hellip;</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="3"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      String.split() VS String.startsWith() VS Regex simple performance comparison.
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2011-04-19T14:45:00Z">
+        
+  
+  
+  
+  
+    04/19/2011
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>, 
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/code">code</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient <a href="https://blog.vnomad.com/#benchmarks">benchmarks are here</a>.Reading a <sup>100</sup>&frasl;<sub>1000</sub>-line file is not fun and I really think you shouldn&#8217;t bother choosing if you&#8217;re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large &#8211; 320k of CSV data is ~ 12MB performance is considerable. So let&#8217;s start with data definition. Let&#8217;s assume we have data like</p>
+
+<blockquote>
+<p>1812332,&#8221;String1&#8243;,&#8221;String2&#8243;,&#8221;String3&#8243;,16,</p>
+
+<p>1812332,&#8221;String1&#8243;,&#8221;String2&#8243;,&#8221;String3&#8243;,16,</p>
+
+<p>1812332,&#8221;String1&#8243;,&#8221;String2, extra string&#8221;,&#8221;String3&#8243;,16,</p>
+</blockquote>
+
+<p>Also we are going to start with the abstract &#8220;blank&#8221; for csv reading like:</p>
+
+<pre><code class="language-cs">public abstract class CsvStreamReader implements Iterator&lt;CsvData&gt; {
+    protected BufferedReader reader;
+
+    /**
+     * creates an new {@code CsvStreamReader}. Caller is responsible for stream management.
+     *
+     */
+    public CsvStreamReader() {
+    }
+
+    public abstract CsvData next();
+
+    public boolean hasNext() {
+        try {
+            return reader.ready();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Deprecated
+    public void remove() {
+        // not used
+    }
+
+    public void setInputStream(InputStream inputStream){
+        reader = new BufferedReader(new InputStreamReader(inputStream));
+    }
+}
+</code></pre>
+
+<p>And a simple data-holder like:</p>
+
+<pre><code class="language-cs">public class CsvData {
+    private String[] data;
+
+    public CsvData(String... data) {
+        this.data = new String[data.length];
+        System.arraycopy(data, 0, this.data, 0, data.length);
+    }
+
+    public String getColumn(int index) {
+        return data[index];
+    }
+
+    public int getColumnCount() {
+        return data.length;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;CsvData{&quot; +
+          &quot;data=&quot; + (data == null ? null : Arrays.asList(data)) +
+          '}';
+    }
+}
+</code></pre>
+
+<p>Now the first and obvious way to read and parse the CSV would be smth like:</p>
+
+<pre><code class="language-cs">public class SplitBasedReader extends CsvStreamReader {
+
+    public CsvData next() {
+        try {
+            String line = reader.readLine();
+            return new CsvData(line.split(&quot;,&quot;));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
+</code></pre>
+
+<p>This looks fairly good with one lil&#8217; problem: it doesn&#8217;t work good. If we take the last line with &#8220;String2, extra string&#8221; we see that the split would play a bad trick with us breaking the data consistency.</p>
+
+<p>A quick fix would suggest smth like:</p>
+
+<pre><code class="language-cs">public class StringBasedReader extends CsvStreamReader {
+    private static final String QUOTE = &quot;&quot;&quot;;
+
+    @Override
+    public CsvData next() {
+        try {
+            List&lt;String&gt; data = new ArrayList&lt;String&gt;();
+            final String line = reader.readLine();
+            int commaStart = 0;
+            int commaEnd = 0;
+            StringBuffer possibleToken = new StringBuffer();
+
+            while (commaEnd &gt;= 0) {
+                commaEnd = line.indexOf(',', commaStart + 1);
+                if (commaEnd &lt; 0) {
+                    break;
+                }
+                final String possibleColumn = line.substring(commaStart, commaEnd);
+                possibleToken.append(possibleColumn);
+                commaStart = commaEnd + 1;
+
+                final int length = possibleToken.length();
+
+                boolean columnIsOpen = (possibleColumn.startsWith(QUOTE)) &amp;&amp; (!(possibleColumn.endsWith(QUOTE)));
+                if (!columnIsOpen) {
+                    data.add(possibleToken.toString());
+                    possibleToken.delete(0, length);
+                }
+            }
+
+            if (possibleToken.length() != 0) {
+                data.add(possibleToken.toString());
+            }
+
+            return new CsvData(data.toArray(new String[]{}));
+        } catch (IOException ioex) {
+            ioex.printStackTrace();
+        }
+        return null;
+    }
+}
+</code></pre>
+
+<p>Well yeah, but having string.startsWith checking on String all this takes int account variable length which in fact we do not care about&#8230; sounds wasteful. Let&#8217;s improve it.</p>
+
+<pre><code class="language-cs">public class StringBasedReaderImproved extends CsvStreamReader {
+    private static final char QUOTE = '&quot;';
+
+    @Override
+    public CsvData next() {
+        try {
+            List&lt;String&gt; data = new ArrayList&lt;String&gt;();
+            final String line = reader.readLine();
+            int commaStart = 0;
+            int commaEnd = 0;
+            StringBuffer possibleToken = new StringBuffer();
+
+            while (commaEnd &gt;= 0) {
+                commaEnd = line.indexOf(',', commaStart + 1);
+                if (commaEnd &lt; 0) {
+                    break;
+                }
+                possibleToken.append(line.substring(commaStart, commaEnd));
+                commaStart = commaEnd + 1;
+
+                final int length = possibleToken.length();
+                boolean columnIsOpen = (possibleToken.charAt(0) == QUOTE) &amp;&amp; (!(possibleToken.charAt(length - 1) == QUOTE));
+                if (!columnIsOpen) {
+                    data.add(possibleToken.toString());
+                    possibleToken.delete(0, length);
+                }
+            }
+
+            if (possibleToken.length() != 0) {
+                data.add(possibleToken.toString());
+            }
+
+            return new CsvData(data.toArray(new String[]{}));
+        } catch (IOException ioex) {
+            ioex.printStackTrace();
+        }
+        return null;
+    }
+}
+</code></pre>
+
+<p>OKAY! now it a char and <code>StringBuffer</code>. Looks like we&#8217;ve done a great job! Awesome&#8230;. although a bit magical. It&#8217;s not rocket science but still it&#8217;s not pleasant to read. What else might we suggest? Regex.</p>
+
+<pre><code class="language-cs">public class RegexBasedReader extends CsvStreamReader {
+    private static final String RE_ANY_INSIDE_QUOTES = &quot;&quot;([^&quot;]*)&quot;&quot;;
+    private static final String RE_ANY_WITHOUT_COMMAS = &quot;([^,]*)&quot;;
+    private static final String RE_ANY = &quot;(&quot; + RE_ANY_INSIDE_QUOTES + &quot;|&quot; + RE_ANY_WITHOUT_COMMAS + &quot;)&quot;;
+    private static final String RE_6_DIGIT_GROUP = &quot;(\d{6})&quot;;
+
+    private static final String CSV_REGEX = &quot;^&quot; + RE_6_DIGIT_GROUP + &quot;,&quot; + RE_ANY + &quot;,&quot; + RE_ANY + &quot;,&quot; + RE_ANY + &quot;,&quot; + RE_ANY + &quot;,$&quot;;
+
+
+    protected final Pattern pattern;
+
+    /**
+     * {@inheritDoc}
+     */
+    public RegexBasedReader() {
+        pattern = Pattern.compile(CSV_REGEX);
+    }
+
+    public CsvData next() {
+        try {
+            List&lt;String&gt; data = new ArrayList&lt;String&gt;();
+            final String line = reader.readLine();
+            final Matcher matcher = pattern.matcher(line);
+            matchDataToColumns(data, matcher);
+
+            return new CsvData(data.toArray(new String[]{}));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * @param data
+     * @param matcher
+     */
+    protected void matchDataToColumns(List&lt;String&gt; data, Matcher matcher) {
+        if (matcher.matches()) {
+            final int groupCount = matcher.groupCount();
+            assert groupCount == 13 : &quot;Matched an invalid string - regex should be revised&quot;;
+
+            final String data1 = matcher.group(1);
+            assert data1 != null : &quot;data1 should always be present&quot;;
+            data.add(data1);
+
+            String data2 = matcher.group(3);
+            if (data2 == null) {
+                data2 = matcher.group(4);
+            }
+            assert data2 != null : &quot;data2 should somehow be present&quot;;
+            data.add(data2);
+
+            String data3 = matcher.group(6);
+            if (data3 == null) {
+                data3 = matcher.group(7);
+            }
+            assert data3 != null : &quot;data3 should somehow be present&quot;;
+            data.add(data3);
+
+            String data4 = matcher.group(9);
+            if (data4 == null) {
+                data4 = matcher.group(10);
+            }
+            assert data4 != null : &quot;data4 should somehow be present&quot;;
+            data.add(data4);
+
+            String data5 = matcher.group(12);
+            if (data5 == null) {
+                data5 = matcher.group(13);
+            }
+            assert data5 != null : &quot;data5 should somehow be present&quot;;
+            data.add(data5);
+        }
+    }
+}
+</code></pre>
+
+<p>That looks like Chuck Norris would be proud. Strong and reliable checking, precompiled patern, groups of data, many cases handled same way&#8230; room for extension etc.</p>
+
+<ul>
+<li>* *Now lets look at the</li>
+</ul>
+
+<p><strong>benchmarks</strong> reading over <strong>500k</strong> lines:</p>
+
+<p></p></p>
+
+<pre><code>public class Test2 {
+    static List&lt;string&gt; times = new ArrayList&lt;string&gt;(4);
+
+    public static void main(String[] args) throws IOException {
+
+        read320KRecords(new SplitBasedReader());
+        read320KRecords(new StringBasedReader());
+        read320KRecords(new StringBasedReaderImproved());
+        read320KRecords(new RegexBasedReader());
+}
+
+    private static void read320KRecords(CsvStreamReader reader) throws IOException {
+        InputStream inputStream = Test2.class.getResourceAsStream(&quot;/CardInfo.csv&quot;);
+        reader.setInputStream(inputStream);
+        long timeStart = System.currentTimeMillis();
+        while (reader.hasNext()) {
+            CsvData csvData = reader.next();
+        }
+        long timeEnd = System.currentTimeMillis();
+        times.add(reader.toString() + &quot;  time: &quot; + (new DecimalFormat(&quot;#.####&quot;)).format(new Double(
+          (timeEnd - timeStart) / 1000.0)) + &quot; sec.&quot;);
+        inputStream.close();
+    }
+}
+</code></pre>
+
+<p><a href="http://www.blogger.com/post-create.g?blogID=4242186654644920321" name="benchmarks">Output <i>run from IntellyJ Idea</i>:</a></p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    
+    <td>
+      <b>SplitBasedReader</b>
+    </td>
+    
+    <td>
+      <b>StringBasedReader</b>
+    </td>
+    
+    <td>
+      <b>StringBasedReaderImproved</b>
+    </td>
+    
+    <td>
+      <b>RegexBasedReader</b>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      Run 1
+    </td>
+    
+    <td>
+      1.468
+    </td>
+    
+    <td>
+      0.968
+    </td>
+    
+    <td>
+      0.984
+    </td>
+    
+    <td>
+      1.593
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      Run 2
+    </td>
+    
+    <td>
+      1.562
+    </td>
+    
+    <td>
+      0.953
+    </td>
+    
+    <td>
+      0.985
+    </td>
+    
+    <td>
+      1.594
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      Run 3
+    </td>
+    
+    <td>
+      1.531
+    </td>
+    
+    <td>
+      1.031
+    </td>
+    
+    <td>
+      1.047
+    </td>
+    
+    <td>
+      1.625
+    </td>
+  </tr>
+</table>
+
+<p>In a chart:</p>
+
+<div style="clear: both; text-align: center;">
+  <a href="http://3.bp.blogspot.com/-5lMNHzri8vw/Tab1K4lqx1I/AAAAAAAAGB4/z6Kff25CibQ/s1600/csv_comparizon.JPG" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="168" src="http://3.bp.blogspot.com/-5lMNHzri8vw/Tab1K4lqx1I/AAAAAAAAGB4/z6Kff25CibQ/s320/csv_comparizon.JPG" width="320" /></a>
+</div>
+
+<p><em><u>But wait &#8211; there&#8217;s more 🙂</u></em></p>
+
+<p>Now let&#8217;s see if we can get even more results out of this. In the previous benchmark runs we did nothing with the CsvData we obtained, but that is not the case in real world right? now consider we add a single</p>
+
+<pre>System.out.println("csvData = " + csvData);</pre>
+
+<p>and this would always result in &#8220;csvData = myCSvData&#8221;.</p>
+
+<p>Running this in IDEA gives next results:</p>
+
+<p>SplitBasedReader time: 14.634 sec.</p>
+
+<p>StringBasedReader time: 13.086 sec</p>
+
+<p>StringBasedReaderImproved time: 12.118 sec</p>
+
+<p>RegexBasedReader time: 15.244 sec</p>
+
+<p><strong>SAME but in console:&nbsp;</strong></p>
+
+<p>SplitBasedReader time: 138.025 sec.</p>
+
+<p>StringBasedReader time: 136.337 sec.</p>
+
+<p>StringBasedReaderImproved time: 130.975 sec.</p>
+
+<p>RegexBasedReader time: 131.146 sec.</p>
+
+<p>So we see that the buffers and IO impact is immense.</p>
+
+<p>And one more test. Lets assume out toString is smth. a little meaningful like</p>
+
+<blockquote>
+<pre>"CsvData{" + data[0] + data[1] + data[2];
+</pre>
+</blockquote>
+
+<p>Now the times(idea env execution) are:</p>
+
+<p>SplitBasedReader time: 21.655 sec.</p>
+
+<p>StringBasedReader time: 9.772 sec.</p>
+
+<p>StringBasedReaderImproved time: 9.256 sec.</p>
+
+<p>RegexBasedReader time: 12.461 sec.</p>
+
+<hr />
+
+<p><strong>Bottom line:</strong></p></p>
+
+<ul>
+<li>While robust and effective Regex is not the fastest thing in the world;</li>
+<li>working with relatively not-so-complex data is faster with &#8220;smaller&#8221; API&#8217;s;</li>
+
+<li><p>;</p>
+
+<p>IO is a bottleneck, not the parsing, usually.</p></li>
+</ul>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/java/">java</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/perf/">perf</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/csharp/">csharp</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="rdev02.github.io/hugo-blog/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/" data-tooltip="maven-compiler-plugin causing eclipse projects to have j2se 1.4 instead of configured one">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="rdev02.github.io/hugo-blog/code/nokia-ovi-suite-sms-extract/" data-tooltip="Nokia OVI suite &amp; sms extract.">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=rdev02.github.io/hugo-blog/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=rdev02.github.io/hugo-blog/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 Viktor Halitsyn. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="rdev02.github.io/hugo-blog/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/" data-tooltip="maven-compiler-plugin causing eclipse projects to have j2se 1.4 instead of configured one">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="rdev02.github.io/hugo-blog/code/nokia-ovi-suite-sms-extract/" data-tooltip="Nokia OVI suite &amp; sms extract.">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=rdev02.github.io/hugo-blog/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=rdev02.github.io/hugo-blog/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=rdev02.github.io%2Fhugo-blog%2Fcode%2Fstring-split-vs-string-startswith-vs-regex-simple-performance-comparison%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=rdev02.github.io%2Fhugo-blog%2Fcode%2Fstring-split-vs-string-startswith-vs-regex-simple-performance-comparison%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Viktor Halitsyn</h4>
+    
+      <div id="about-card-bio">Came a long way from Ukraine, still so much to go&hellip;</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Seattle, WA
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         0 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4m__UITi3O6d78IL15dqz-FH3jb4pDHi6UlZyWMAfF5U_3KwRN8_dz8zeiKaFxoQlDA1dYpNTjn1Qc7ajoVlgFDDMjCu84gDMJEj3bEPBWMeSVcxJpWzB-LcMKQ3BRxlgrV9mxBbdaXeWdzZc5ZVXEJ2APGUhJsGXu6cNX5w0SPByUrPgMzHntFkewms6SgFIXFvmfsNQkiPHe2GmLL8jVUg/wp_back3.jpg?psid=1');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qnzos5sqnu4rohtf6zokzzqkdyxbfe0m9ontx6rqhebzsxhjvpl7renqyqqd.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'rdev02.github.io\/hugo-blog\/code\/string-split-vs-string-startswith-vs-regex-simple-performance-comparison\/';
+          
+            this.page.identifier = '\/rdev02.github.io\/hugo-blog\/code\/string-split-vs-string-startswith-vs-regex-simple-performance-comparison\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'vnomad';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

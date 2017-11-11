@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>.Net on Nomad&#39;s reflections</title>
+    <link>rdev02.github.io/hugo-blog/tags/.net/</link>
+    <description>Recent content in .Net on Nomad&#39;s reflections</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Oct 2010 15:06:00 +0000</lastBuildDate>
+    
+	<atom:link href="rdev02.github.io/hugo-blog/tags/.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>.NET WMI. Or how do I get all that info?</title>
+      <link>rdev02.github.io/hugo-blog/code/net-wmi-or-how-do-i-get-all-that-info/</link>
+      <pubDate>Wed, 13 Oct 2010 15:06:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/net-wmi-or-how-do-i-get-all-that-info/</guid>
+      <description>&amp;nbsp;&amp;nbsp; There&amp;#8217;s a ton of Win properties that your program might want to access/possess/transform and there&amp;#8217;s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there&amp;#8217;s one sigle silver bullet to get them all via
+ Select * From [win_category]</description>
+    </item>
+    
+    <item>
+      <title>.NET tab control.</title>
+      <link>rdev02.github.io/hugo-blog/code/net-tab-control/</link>
+      <pubDate>Fri, 08 Oct 2010 19:39:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/net-tab-control/</guid>
+      <description>&amp;nbsp;&amp;nbsp;&amp;nbsp; Consider some UI that you would like to present as tabs. And you also know that all these tabs would have a considerate amount of code in common. There are some thoughts here but those are more about visual representation. Also creating&amp;nbsp; usercontrols I believe is not an option due to it&amp;#8217;s not expected to have more tah one tab of a kind. The solution has to both utilize the VS designer(otherwise tab creation would take considerably more time) and keep the code separate from the tabcontrol &amp;#8211; holder form.</description>
+    </item>
+    
+    <item>
+      <title>MCPD acquired.</title>
+      <link>rdev02.github.io/hugo-blog/code/mcpd-acquired/</link>
+      <pubDate>Sun, 28 Mar 2010 20:06:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/mcpd-acquired/</guid>
+      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;Finally. Now frankly &amp;#8211; preparing for MS exams while doing die-hard java is not a funny thing to do. NEVER practice such a combination&amp;#8230;
+&amp;nbsp;&amp;nbsp; &amp;nbsp;About the exam &amp;#8211; it was better then the previous 2: it obeyed no rules:). What I mean here is that I could have skipped the preparation kit completely! Yes there were a few questions related to the book&amp;#8217;s content, BUT reading it is completely optional IMHO.</description>
+    </item>
+    
+    <item>
+      <title>Devenv crash from the command line.</title>
+      <link>rdev02.github.io/hugo-blog/code/devenv-crash-from-the-command-line/</link>
+      <pubDate>Thu, 24 Dec 2009 21:11:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/devenv-crash-from-the-command-line/</guid>
+      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &amp;#8211; a standard windows crash appeared with 0xc000005 error code and a &amp;#8220;friendly&amp;#8221; Send/Don&amp;#8217;t send error to Microsoft dialog.</description>
+    </item>
+    
+    <item>
+      <title>Creating dynamic plugin architecture with C#.NET</title>
+      <link>rdev02.github.io/hugo-blog/code/creating-dynamic-plugin-architecture-with-c-net/</link>
+      <pubDate>Sat, 12 Dec 2009 23:11:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/creating-dynamic-plugin-architecture-with-c-net/</guid>
+      <description>There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.</description>
+    </item>
+    
+    <item>
+      <title>MCTS acquired!</title>
+      <link>rdev02.github.io/hugo-blog/code/mcts-acquired/</link>
+      <pubDate>Sat, 12 Sep 2009 19:44:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/mcts-acquired/</guid>
+      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &amp;#8211; it&amp;#8217;s like a combination of the previous 2 with some logic included- &amp;nbsp;not just simple development components.
+&amp;nbsp;&amp;nbsp; Regarding the exam &amp;#8211; not much can be said. Only one thing is worth mentioning &amp;#8211; it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is&amp;#8230; Interesting how would the next one go&amp;#8230;</description>
+    </item>
+    
+    <item>
+      <title>MCP aquired…</title>
+      <link>rdev02.github.io/hugo-blog/code/mcp-aquired/</link>
+      <pubDate>Thu, 16 Apr 2009 22:49:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/mcp-aquired/</guid>
+      <description>[&amp;lt;img style=&amp;ldquo;float:left; margin:0 10px 10px 0;cursor:pointer; cursor:hand;width: 160px; height: 80px;&amp;rdquo; src=&amp;ldquo;http://2.bp.blogspot.com/_SwypSVIrwAo/See277vd4pI/AAAAAAAADrc/YzPLJ891L2s/s320/MCP(rgb).jpg&amp;quot; border=&amp;ldquo;0&amp;rdquo; alt=&amp;ldquo;&amp;rdquo; id=&amp;ldquo;At last i finally got time to get to that certification center and pass that damn 70-536. You can&amp;#8217;t really work with all of that technology at once to keep all the names of classes and methods in your head, and the projects are swapping fast&amp;#8230; SO it took me more than a year to get from an idea of sitting an axam to actually passing it.</description>
+    </item>
+    
+    <item>
+      <title>.NET 1.0 to .NET 2.0 migration…</title>
+      <link>rdev02.github.io/hugo-blog/code/net-1-0-to-net-2-0-migration/</link>
+      <pubDate>Wed, 01 Oct 2008 09:24:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/net-1-0-to-net-2-0-migration/</guid>
+      <description>Actually a painfull process it can be if the project you&amp;#8217;re trying to convert has lots of custom stuff. The first problem i stumbled upon was resources. eah yeah &amp;#8211; i mean form resources. They ciompletely refused to work. I know about that separation that came in when VS 2005 was introduced so I did use&amp;nbsp;DeCodEx to make majour conversion and splitting but it still turned out that my forms are not opening :(.</description>
+    </item>
+    
+    <item>
+      <title>MySQL in .NET</title>
+      <link>rdev02.github.io/hugo-blog/code/mysql-in-net/</link>
+      <pubDate>Fri, 26 Sep 2008 19:13:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/mysql-in-net/</guid>
+      <description>Ever thought of using mysql database in .NET app? Obviously you link some other language with this DB format but it can be perfectly handled with MySql connector for .NET you can use standard ADO interfaces and approaches. Now that was the time I REALLY enjoyed working with mysql at last.</description>
+    </item>
+    
+    <item>
+      <title>.NET Marshalling</title>
+      <link>rdev02.github.io/hugo-blog/code/net-marshalling/</link>
+      <pubDate>Tue, 22 Jan 2008 11:12:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/net-marshalling/</guid>
+      <description>Interesting things happen when you try to marshal something in real life&amp;#8230;.Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] extern __declspec(dllexport) int SomeFunc(char** stringArray);  [marshal]</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on Nomad&#39;s reflections</title>
+    <link>rdev02.github.io/hugo-blog/tags/tools/</link>
+    <description>Recent content in Tools on Nomad&#39;s reflections</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 May 2011 12:34:00 +0000</lastBuildDate>
+    
+	<atom:link href="rdev02.github.io/hugo-blog/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tabkit =&gt; Vertical tabs</title>
+      <link>rdev02.github.io/hugo-blog/code/tabkit-vertical-tabs/</link>
+      <pubDate>Thu, 12 May 2011 12:34:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/tabkit-vertical-tabs/</guid>
+      <description>A post for those who, once tried, cannot live without vertical tabs in FF.
+I used to have TabKit installed but this unfortunately does not support FF 4. So I even was very reluctant to switch to the new version as having my browsing (or should I say _research ) _organized,&amp;nbsp; __is one of the crucial parts of my productivity. But turns out there is Vertical Tabs which does almost the same thing.</description>
+    </item>
+    
+    <item>
+      <title>JetBrains Idea – still the best.</title>
+      <link>rdev02.github.io/hugo-blog/code/jetbrains-idea-still-the-best/</link>
+      <pubDate>Thu, 19 Nov 2009 11:12:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/jetbrains-idea-still-the-best/</guid>
+      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;Now that I wrote lots of &amp;#8216;bad&amp;#8217; stuff about this new community version &amp;#8211; time to write something fine, as I really enjoy developing in this IDE.
+&amp;nbsp;&amp;nbsp; First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my &amp;#8216;more serious&amp;#8217; still reproduce this is something pleasant, indicating that the work is in progress and I&amp;#8217;m sure all the other stuff will be fixed soon.</description>
+    </item>
+    
+    <item>
+      <title>IntelliJ IDEA Community Edition – now it gets serious.</title>
+      <link>rdev02.github.io/hugo-blog/code/intellij-idea-community-edition-now-it-gets-serious/</link>
+      <pubDate>Thu, 12 Nov 2009 10:41:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/intellij-idea-community-edition-now-it-gets-serious/</guid>
+      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;In my previous post&amp;nbsp;I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along.
+&amp;nbsp;&amp;nbsp; First of all I&amp;#8217;ve ran into an issue with ant Jar task. It refused to work with an &amp;#8216;update&amp;#8217; option set to true. The interesting part of it was that executing the task&amp;nbsp;independently&amp;nbsp;didn&amp;#8217;t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to &amp;#8230; hang.</description>
+    </item>
+    
+    <item>
+      <title>IntelliJ IDEA Community Edition first impressions.</title>
+      <link>rdev02.github.io/hugo-blog/code/intellij-idea-community-edition-first-impressions/</link>
+      <pubDate>Thu, 05 Nov 2009 10:15:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/intellij-idea-community-edition-first-impressions/</guid>
+      <description>&amp;nbsp;&amp;nbsp; &amp;nbsp;Recently JetBrains released the brand new version of IDEA free for all. A few years before I Used this IDE for some projects and was very happy with it &amp;#8211; consequent moving to eclipse&amp;nbsp;disappointed&amp;nbsp;me much. However time passed and I&amp;#8217;ve got used to eclipse &amp;#8211; it&amp;#8217;s not a bad platform after all and it was free. So now when the free version idea came out I was very anxious convincing our customers to switch.</description>
+    </item>
+    
+    <item>
+      <title>Blogger code formatting.</title>
+      <link>rdev02.github.io/hugo-blog/code/blogger-code-formatting/</link>
+      <pubDate>Mon, 14 Sep 2009 20:25:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/blogger-code-formatting/</guid>
+      <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote&amp;nbsp;now I can make such fancy posts as:
+using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } }  </description>
+    </item>
+    
+    <item>
+      <title>WISE installation studio</title>
+      <link>rdev02.github.io/hugo-blog/code/wise-installation-studio/</link>
+      <pubDate>Fri, 26 Sep 2008 19:23:00 +0000</pubDate>
+      
+      <guid>rdev02.github.io/hugo-blog/code/wise-installation-studio/</guid>
+      <description>Windows Installer&amp;#8230; nightmare&amp;#8230; WISE &amp;#8211; hurt me plenty. Although this is much simpler and logical to my mind then WI it is still very sensible to changes. What I am trying to say &amp;#8211; if do everything right from the first time e.g. correctly choose all names and dialogs and files e.t.c it works perfectly. But when after 5 minutes you decide to change, say, some script or file destination WISE i making so many actions in background you can&amp;#8217;t even imagine.</description>
+    </item>
+    
+  </channel>
+</rss>

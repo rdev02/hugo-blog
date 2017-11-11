@@ -1,0 +1,682 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
+    <title>Synology DS413j NAS</title>
+    <meta name="author" content="Viktor Halitsyn">
+    <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
+
+    <link rel="icon" href="/favicon.jpg">
+    
+
+    
+    <meta name="description" content="In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&#8217;t duplicate them in this one. But, to keep consistent with the previous review I&#8217;ll go with the same headings/experience areas. That being said &#8211; here we go!  
+ 
+
+Half a year has passed and I&#8217;ve been using Synology NAS for all this time.">
+    <meta property="og:description" content="In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&#8217;t duplicate them in this one. But, to keep consistent with the previous review I&#8217;ll go with the same headings/experience areas. That being said &#8211; here we go!  
+ 
+
+Half a year has passed and I&#8217;ve been using Synology NAS for all this time.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Synology DS413j NAS">
+    <meta property="og:url" content="rdev02.github.io/hugo-blog/code/synology-ds413j-nas/">
+    <meta property="og:site_name" content="Nomad&#39;s reflections">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nomad&#39;s reflections">
+    <meta name="twitter:description" content="In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&#8217;t duplicate them in this one. But, to keep consistent with the previous review I&#8217;ll go with the same headings/experience areas. That being said &#8211; here we go!  
+ 
+
+Half a year has passed and I&#8217;ve been using Synology NAS for all this time.">
+    
+      <meta name="twitter:creator" content="@rdev02">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-hn2ecmd5khuhizdlrexpkfukaemqe4ngxqqvizhaylypes8miiytj1tzylb9.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Oswald|Roboto">
+      
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64535001-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="3">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/rdev02.github.io/hugo-blog/">Nomad&#39;s reflections</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="3">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
+        
+          <h5 class="sidebar-profile-bio">Came a long way from Ukraine, still so much to go&hellip;</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/rdev02.github.io/hugo-blog/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="3"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Synology DS413j NAS
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2013-08-28T23:25:00Z">
+        
+  
+  
+  
+  
+    08/28/2013
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/tech">tech</a>, 
+    
+      <a class="category-link" href="/rdev02.github.io/hugo-blog/categories/gadgets">gadgets</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <div dir="ltr" style="text-align: left;">
+  <div style="text-align: left;">
+        In my previous post I was rambling about<a href="https://blog.vnomad.com/seagate-blackarmor-nas-400/" target="_blank"> Seagate BlackArmor </a>and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&#8217;t duplicate them in this one. But, to keep consistent with the previous review I&#8217;ll go with the same headings/experience areas. That being said &#8211; here we go!
+  </div>
+  
+
+<p><div style="text-align: left;">
+  </div></p>
+
+<p><div style="clear: both; text-align: center;">
+    <a style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;" href="http://www.synology.com/products/img/top/DS413j.jpg"><img src="https://tse1.mm.bing.net/th?&id=OIP.M4017c0c2804245fc1a410602b0e58597o0&w=300&h=225&c=0&pid=1.9&rs=0&p=0&r=0" border="0" /></a>
+  </div></p>
+
+<p><div style="text-align: left;">
+  </div></p>
+
+<p><div style="text-align: left;">
+        Half a year has passed and I&#8217;ve been using Synology NAS for all this time. I ordered it from Amazon and off it came right in the delivery timeframes, ready for my experiments and scrutiny.
+  </div></p>
+
+<p><h4 style="text-align: left;">
+    Packaging and build quality.
+  </h4></p>
+
+<p><div>
+        I couldn&#8217;t be impressed more. Apple usually is a master in packaging their products, but these guys(synology) can stand up the competition. Everything in the box was perfectly packed a secured in a very little amount of space yet preserving a pleasant unpacking experience. One of the nice things is &#8211; when I was moving I managed to pack it with the box I saved just as if it was never unpackaged. Somehow they thought out the packaging in a way you use all the parts, perfectly seal the device and accessories and you have no junk left:) &#8211; KUDOS!
+  </div></p>
+
+<p><div>
+        Build is a step up from the aforementioned NAS. All the parts that were plastic in seagate are metallic in synology. The drive bay has 2 solid fans and the drives themselves are secured inside the bay with bolts. Accessing the drives is also not that easy &#8211; you have to unscrew 4 bolts at the back, lower the back panel with fans and then get to the drives. This is not as convenient as seagate&#8217;s open-dorr-click-and-take-away system, but how often do you actually want to replace drives inside your NAS? 😉
+  </div></p>
+
+<p><div>
+       Other then that Synology is about the same size and noise, although heavier(due to metal parts). Move on to usage:)
+  </div></p>
+
+<p><h4 style="text-align: left;">
+    UI and Software.
+  </h4></p>
+
+<p><div style="text-align: left;">
+        It comes with <a href="http://www.synology.com/dsm/index.php?lang=us" target="_blank">DSM 4.2</a>. Usually, when you log into the web interface you would expect some semi-lame web app that&#8217;ll link you to the features of your device. Not the case! Not even close! DSM web interface if one of the most(in not just the most) advanced web interfaces I&#8217;ve ever seen. It&#8217;s all ajax and feels like a fine-tuned linux window manager. you literally have a web-like sort-of OS, working on your NAS giving you full control over it. Pages can be written about all the possibilities you have with the built in apps and there&#8217;s even more with thirds party packages. Literally, everything I might have thought/dreamed about that I could combine/use NAS for &#8211; is already there. With a nice, multitasking, rich intuitive and responsive interface. I won&#8217;t go into much details about the apps &#8211; there&#8217;s just too many of them to cover and each and every of them deserves good comments. Those who want to learn more &#8211; I welcome you to use link I mentioned a couple lines up.
+  </div></p>
+
+<p><div style="text-align: left;">
+       In 6 months I&#8217;ve never seen any app crash or misbehave. Neither did I see any hardware faults or reboots. Stable. Reliable.
+  </div></p>
+
+<p><h4 style="text-align: left;">
+    The worx.
+  </h4></p>
+
+<p><div>
+    I did the same tests, that I had done for the previous NAS. They all showed good consistent results, so I went on started configuring and placing my data on it. For some reason new apps did not want to install to second partition, so I had to use the first one for all the apps and the second one for all other stuff which was not my initial plan. Whatever. I checked the read/write speeds and they were almost at what the specs were saying. Later I tested out 2 simultanious clients accessing 1080p video from the device, while one other device was listing pictures from it. They all showed decent performance and that is probably the biggest load I&#8217;ll ever put on this device. So in general &#8211; it worx:).
+  </div></p>
+
+<p><h4 style="text-align: left;">
+    The problems.
+  </h4></p>
+
+<p><div>
+    I did not have them:) There was one problem I had not being able to set up Glacier backup from my NAS after I moved. But luckily they do have <a href="http://forum.synology.com/enu/" target="_blank">support forums</a> which helped me understand that my time was not synchronized. After I fixed the time issue everything worked like a charm.
+  </div></p>
+
+<p><div>
+  </div></p>
+
+<p><h4 style="text-align: left;">
+    Summary.
+  </h4></p>
+
+<p><div>
+    <b>pros:</b>
+  </div></p>
+
+<p><div>
+    + build quality
+  </div></p>
+
+<p><div>
+    + realiability
+  </div></p>
+
+<p><div>
+    + software
+  </div></p>
+
+<p><div>
+    + configurability
+  </div></p>
+
+<p><div>
+    <b> </b>
+  </div></p>
+
+<p><div>
+    <b>cons:</b>
+  </div></p>
+
+<p><div>
+    &#8211; pricey
+  </div></p>
+
+<p><h4 style="text-align: left;">
+    Bonus.
+  </h4></p>
+
+<p><div>
+    <p>
+      It costs around 2.5 times more than seagate, but I&#8217;d say it&#8217;s worth every penny I paid. In fact I was so happy with my purchase that I spread the word around and now a couple of my friends also have similar setups. And neither of them is unhappy. These boxes just work, so far.<span style="background-color: white; color: #333333; font-family: 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 19px;">*all pictures are referenced from </span><a href="http://www.synology.com/">www.synology.com</a>
+    </p>
+  </div>
+</div></p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/nas/">nas</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="rdev02.github.io/hugo-blog/code/seagate-blackarmor-nas-400/" data-tooltip="Seagate BlackArmor NAS 400.">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=rdev02.github.io/hugo-blog/code/synology-ds413j-nas/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=rdev02.github.io/hugo-blog/code/synology-ds413j-nas/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 Viktor Halitsyn. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="rdev02.github.io/hugo-blog/code/seagate-blackarmor-nas-400/" data-tooltip="Seagate BlackArmor NAS 400.">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=rdev02.github.io/hugo-blog/code/synology-ds413j-nas/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=rdev02.github.io/hugo-blog/code/synology-ds413j-nas/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=rdev02.github.io%2Fhugo-blog%2Fcode%2Fsynology-ds413j-nas%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=rdev02.github.io%2Fhugo-blog%2Fcode%2Fsynology-ds413j-nas%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Viktor Halitsyn</h4>
+    
+      <div id="about-card-bio">Came a long way from Ukraine, still so much to go&hellip;</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Seattle, WA
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         0 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://vfybkq.bn1303.livefilestore.com/y4m__UITi3O6d78IL15dqz-FH3jb4pDHi6UlZyWMAfF5U_3KwRN8_dz8zeiKaFxoQlDA1dYpNTjn1Qc7ajoVlgFDDMjCu84gDMJEj3bEPBWMeSVcxJpWzB-LcMKQ3BRxlgrV9mxBbdaXeWdzZc5ZVXEJ2APGUhJsGXu6cNX5w0SPByUrPgMzHntFkewms6SgFIXFvmfsNQkiPHe2GmLL8jVUg/wp_back3.jpg?psid=1');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qnzos5sqnu4rohtf6zokzzqkdyxbfe0m9ontx6rqhebzsxhjvpl7renqyqqd.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'rdev02.github.io\/hugo-blog\/code\/synology-ds413j-nas\/';
+          
+            this.page.identifier = '5152925270';
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'vnomad';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
