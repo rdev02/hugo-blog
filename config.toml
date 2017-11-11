@@ -1,4 +1,4 @@
-baseURL                = "localhost"
+baseURL                = "blog.vnomad.com"
 defaultContentLanguage = "en-us"
 description            = "tea | travel | code"
 languageCode           = "en-us"
