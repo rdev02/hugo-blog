@@ -22,32 +22,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
-    <title>Synology DS413j NAS</title>
+    <title>Migrating wordpress blog to hugo and hosting it with GitHub Pages</title>
     <meta name="author" content="Viktor Halitsyn">
-    <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
+    <meta name="keywords" content="wordpress, hugo, github, blog, code, travel, immigration, ukraine, washington">
 
     <link rel="icon" href="/favicon.jpg">
     
 
     
-    <meta name="description" content="In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&#8217;t duplicate them in this one. But, to keep consistent with the previous review I&#8217;ll go with the same headings/experience areas. That being said &#8211; here we go!  
- DSJ413j   
+    <meta name="description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.
 
-Half a year has passed and I&#8217;ve been using Synology NAS for all this time.">
-    <meta property="og:description" content="In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&#8217;t duplicate them in this one. But, to keep consistent with the previous review I&#8217;ll go with the same headings/experience areas. That being said &#8211; here we go!  
- DSJ413j   
+">
+    <meta property="og:description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.
 
-Half a year has passed and I&#8217;ve been using Synology NAS for all this time.">
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Synology DS413j NAS">
-    <meta property="og:url" content="/code/synology-ds413j-nas/">
+    <meta property="og:title" content="Migrating wordpress blog to hugo and hosting it with GitHub Pages">
+    <meta property="og:url" content="/code/2017/migrate-wordpress-to-hugo-github-pages/">
     <meta property="og:site_name" content="Nomad&#39;s reflections">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&#8217;t duplicate them in this one. But, to keep consistent with the previous review I&#8217;ll go with the same headings/experience areas. That being said &#8211; here we go!  
- DSJ413j   
+    <meta name="twitter:description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.
 
-Half a year has passed and I&#8217;ve been using Synology NAS for all this time.">
+">
     
       <meta name="twitter:creator" content="@rdev02">
     
@@ -61,7 +58,7 @@ Half a year has passed and I&#8217;ve been using Synology NAS for all this time.
     
 
     
-      <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/dsj413j/dsj413j-thumb.jpg">
+      <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/wptohugothumb.png">
     
     
     
@@ -228,19 +225,19 @@ ga('send', 'pageview');
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Synology DS413j NAS
+      Migrating wordpress blog to hugo and hosting it with GitHub Pages
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2013-08-28T23:25:00Z">
+      <time itemprop="datePublished" datetime="2017-11-12T09:59:00-07:00">
         
   
   
   
   
-    08/28/2013
+    11/12/2017
   
 
       </time>
@@ -252,7 +249,7 @@ ga('send', 'pageview');
     
       <a class="category-link" href="/categories/tech">tech</a>, 
     
-      <a class="category-link" href="/categories/gadgets">gadgets</a>
+      <a class="category-link" href="/categories/tools">tools</a>
     
   
 
@@ -262,32 +259,15 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <div dir="ltr" style="text-align: left;">
-  <div style="text-align: left;">
-        In my previous post I was rambling about<a href="https://blog.vnomad.com/seagate-blackarmor-nas-400/" target="_blank"> Seagate BlackArmor </a>and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&#8217;t duplicate them in this one. But, to keep consistent with the previous review I&#8217;ll go with the same headings/experience areas. That being said &#8211; here we go!
-  </div>
-  
+              <p>Two weeks ago my blog was hosted on a 10$/mo vps instance in <a href="https://www.digitalocean.com">DigitalOcean</a>, powered by a couple docker containers, running an ever dynamic <a href="http://wordpress.com">Wordpress</a> platform. Now it&rsquo;s completely static, served from <a href="https://pages.github.com/">GitHub Pages</a> servers free. What follows is a small experience reco/guide on how to make this happen.</p>
 
-<p><div style="text-align: left;">
-  </div></p>
+<p></p>
 
-<p><div style="clear: both; text-align: center;">
-    
- 
-  
-  
-  
-  
-    
-      
-    
-  
-    
-      
-    
-  
-    
-  
+<p>TL;DR <a href="#migration">link</a> explaining the process.</p>
+
+<h1 id="motivation">Motivation</h1>
+
+
 
  
   
@@ -301,124 +281,149 @@ ga('send', 'pageview');
     
   
 
-<div class="figure center" >
+<div class="figure right" >
   
-    <a class="fancybox" href="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/dsj413j/dsj413j.jpg" title="DSJ413j" data-fancybox-group="">
+    <a class="fancybox" href="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/Wordpress_logo_8.png" data-fancybox-group="">
   
-    <img class="fig-img" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/dsj413j/dsj413j.jpg"  alt="DSJ413j">
+    <img class="fig-img" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/Wordpress_logo_8.png" style="width: 128px;height: 128px;">
   
     </a>
   
-   
-    <span class="caption">DSJ413j</span>
   
 </div>
 
-  <div style="clear:both;"></div>
 
-  </div></p>
+<p>Running on a small vps with wordpress was nice, but not inspiring: I moved there from (google)blogger platform, which at that time was one of the fastest ways to bootstrap a blog, seeking something, that is more editor/code/content friendly. After all, Wordpress, with the heritage of catering to bloggers around the world, was a promising platform to look at. The things that I was looking for included:</p>
 
-<p><div style="text-align: left;">
-  </div></p>
+<ul>
+<li>clean readable design/theme</li>
+<li>easy to use editor, preferably wysiwyg</li>
+<li>easy basics: tags, archive, search, comments, bio etc.</li>
+</ul>
 
-<p><div style="text-align: left;">
-        Half a year has passed and I&#8217;ve been using Synology NAS for all this time. I ordered it from Amazon and off it came right in the delivery timeframes, ready for my experiments and scrutiny.
-  </div></p>
+<p>After getting a closer look it turned out that Wordpress is a very bare-bones platform: plugins+themes are the things that make it beautiful and functional. I spent a lot of time looking for a functional simple free themes/plugins that would make my blog look readable on both mobile and desktop. I found one, but ultimately I wasn&rsquo;t happy with it. On top of that my vps docker system kept asking for more RAM to keep MySQL, Varnish and a couple NGinxs satisfied. It was the time I realized I need something way simpler and more developer - oriented.</p>
 
-<p><h4 style="text-align: left;">
-    Packaging and build quality.
-  </h4></p>
+<h1 id="enter-hugo-hahahugoshortcode-3hbhb">Enter HUGO 
 
-<p><div>
-        I couldn&#8217;t be impressed more. Apple usually is a master in packaging their products, but these guys(synology) can stand up the competition. Everything in the box was perfectly packed a secured in a very little amount of space yet preserving a pleasant unpacking experience. One of the nice things is &#8211; when I was moving I managed to pack it with the box I saved just as if it was never unpackaged. Somehow they thought out the packaging in a way you use all the parts, perfectly seal the device and accessories and you have no junk left:) &#8211; KUDOS!
-  </div></p>
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
 
-<p><div>
-        Build is a step up from the aforementioned NAS. All the parts that were plastic in seagate are metallic in synology. The drive bay has 2 solid fans and the drives themselves are secured inside the bay with bolts. Accessing the drives is also not that easy &#8211; you have to unscrew 4 bolts at the back, lower the back panel with fans and then get to the drives. This is not as convenient as seagate&#8217;s open-dorr-click-and-take-away system, but how often do you actually want to replace drives inside your NAS? 😉
-  </div></p>
+<div class="figure right" >
+  
+    <a class="fancybox" href="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/hugologo.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/hugologo.png" style="height: 64px;">
+  
+    </a>
+  
+  
+</div>
+</h1>
 
-<p><div>
-       Other then that Synology is about the same size and noise, although heavier(due to metal parts). Move on to usage:)
-  </div></p>
+<p><a href="https://gohugo.io/">HUGO</a> is static pages generator, written in Go. It comes with a fast server, that takes about <strong>30</strong> MB mem to run on site of this size(which is not large, but not exactly empty either). You write your posts in markdown, which is currently what I breathe, and you can literally program you pages(with go-like syntax), should you really want to. You need to keep in mind everything is static in the end, thus, should you want your site to be responsive, you&rsquo;ll have to use javascript.</p>
 
-<p><h4 style="text-align: left;">
-    UI and Software.
-  </h4></p>
+<p>Hugo has <em>support</em> for most things you&rsquo;d want to have: tags(taxonomies), categories, metadata, templates for different types of content, ready to use themes and internationalization support. That being said <strong><em>support</em> !== <em>ready to use out of the box</em></strong>. In other words one can build pages that have all the features mentioned, using the framework, but you need to do the legwork&hellip; or not ).</p>
 
-<p><div style="text-align: left;">
-        It comes with <a href="http://www.synology.com/dsm/index.php?lang=us" target="_blank">DSM 4.2</a>. Usually, when you log into the web interface you would expect some semi-lame web app that&#8217;ll link you to the features of your device. Not the case! Not even close! DSM web interface if one of the most(in not just the most) advanced web interfaces I&#8217;ve ever seen. It&#8217;s all ajax and feels like a fine-tuned linux window manager. you literally have a web-like sort-of OS, working on your NAS giving you full control over it. Pages can be written about all the possibilities you have with the built in apps and there&#8217;s even more with thirds party packages. Literally, everything I might have thought/dreamed about that I could combine/use NAS for &#8211; is already there. With a nice, multitasking, rich intuitive and responsive interface. I won&#8217;t go into much details about the apps &#8211; there&#8217;s just too many of them to cover and each and every of them deserves good comments. Those who want to learn more &#8211; I welcome you to use link I mentioned a couple lines up.
-  </div></p>
+<h2 id="enter-tranquilpeak-theme">Enter TranquilPeak theme</h2>
 
-<p><div style="text-align: left;">
-       In 6 months I&#8217;ve never seen any app crash or misbehave. Neither did I see any hardware faults or reboots. Stable. Reliable.
-  </div></p>
+<p><a href="https://themes.gohugo.io/hugo-tranquilpeak-theme/">TranquilPeak</a> is an <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">open-source</a> theme that has most of the basics implemented for you, using hugo&rsquo;s framework. You can easily <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/.github/CONTRIBUTING.md">extend</a> it if you wish. Thus blog runs it, so feel free to look around, but there is a showcase available as well. I won&rsquo;t talk much about it here, as the <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md">docs</a> are quite exhaustive, suffices to say that the theme comes loaded with goodness like</p>
 
-<p><h4 style="text-align: left;">
-    The worx.
-  </h4></p>
+<ul>
+<li><a href="https://disqus.com/">disquss</a> for comments</li>
+<li><a href="http://fancybox.net/">fancybox</a> for images</li>
+<li><a href="https://fonts.google.com/">google fonts</a> support (essentially any custom css/js support)</li>
+<li><a href="http://fontawesome.io/">font-awesome</a> icons</li>
+<li><a href="https://highlightjs.org/">highlight.js</a> compatible</li>
+</ul>
 
-<p><div>
-    I did the same tests, that I had done for the previous NAS. They all showed good consistent results, so I went on started configuring and placing my data on it. For some reason new apps did not want to install to second partition, so I had to use the first one for all the apps and the second one for all other stuff which was not my initial plan. Whatever. I checked the read/write speeds and they were almost at what the specs were saying. Later I tested out 2 simultanious clients accessing 1080p video from the device, while one other device was listing pictures from it. They all showed decent performance and that is probably the biggest load I&#8217;ll ever put on this device. So in general &#8211; it worx:).
-  </div></p>
+<p><a name="migration"></a></p>
 
-<p><h4 style="text-align: left;">
-    The problems.
-  </h4></p>
+<h1 id="migration-experience">Migration experience</h1>
 
-<p><div>
-    I did not have them:) There was one problem I had not being able to set up Glacier backup from my NAS after I moved. But luckily they do have <a href="http://forum.synology.com/enu/" target="_blank">support forums</a> which helped me understand that my time was not synchronized. After I fixed the time issue everything worked like a charm.
-  </div></p>
 
-<p><div>
-  </div></p>
 
-<p><h4 style="text-align: left;">
-    Summary.
-  </h4></p>
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
 
-<p><div>
-    <b>pros:</b>
-  </div></p>
+<div class="figure right" >
+  
+    <a class="fancybox" href="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/githubpageslogo.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/githubpageslogo.png" style="width: 128px;height: 128px;">
+  
+    </a>
+  
+  
+</div>
 
-<p><div>
-    + build quality
-  </div></p>
 
-<p><div>
-    + realiability
-  </div></p>
+<p>The goal was to get my wordpress running on GitHub Pages, with a custom domain. I also prefer my content to be versioned separately from the framework, therefore I went with git worktrees workflow as described below.
+<br><br></p>
 
-<p><div>
-    + software
-  </div></p>
+<ol>
+<li><p>As described <a href="https://gohugo.io/tools/migrations/">here</a>, use the <a href="https://github.com/SchumacherFM/wordpress-to-hugo-exporter">exporter plugin</a> to get your content out of wordpress. <br>
+I&rsquo;ve hit problems right there, on step one:<br>
+<strong>Fatal error: Class &lsquo;ZipArchive&rsquo; not found in /var/www/html/wp-content/plugins/hugo-export.php on line 403</strong>
+<br>
+<em>Solution</em>: make sure you have zip installed and enabled(in php.ini) on your machine. php info would be you guiding light. I was running an old <code>wordpress:4.6.1-fpm</code> bare container hence <code>apt-get</code> was useless. If you are in the same or similar boat that I was - upgrade to latest <code>wordpress:4.8.3-php7.0-fpm</code>  then use
+<br><strong>docker-php-ext-install zip</strong><br>
+inside the container. Restart the container - now it(export) should work.</p></li>
 
-<p><div>
-    + configurability
-  </div></p>
+<li><p>Install <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">tranquipeak theme</a><br>
+There were no problems for me doing this. Configuring the theme takes a while, especially if you decide to change fonts, highlights etc.</p></li>
 
-<p><div>
-    <b> </b>
-  </div></p>
+<li><p>Test everything works by running <code>hugo server</code> or <code>hugo</code> to generate files.</p></li>
 
-<p><div>
-    <b>cons:</b>
-  </div></p>
+<li><p>Now host the thing on GitHub Pages, using <a href="https://pages.github.com/">this guide</a><br>
+I had several problems here where I could not select the branch to publish from on github, or my CNAME was not working. The remedy was to follow the steps and instructions <em><em>exactly</em></em> as prescribed by github, namely:</p>
 
-<p><div>
-    &#8211; pricey
-  </div></p>
+<ol>
+<li><p>Create a new project.</p></li>
 
-<p><h4 style="text-align: left;">
-    Bonus.
-  </h4></p>
+<li><p>Create the index.html page</p></li>
 
-<p><div>
-    <p>
-      It costs around 2.5 times more than seagate, but I&#8217;d say it&#8217;s worth every penny I paid. In fact I was so happy with my purchase that I spread the word around and now a couple of my friends also have similar setups. And neither of them is unhappy. These boxes just work, so far.<span style="background-color: white; color: #333333; font-family: 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 19px;">*all pictures are referenced from </span><a href="http://www.synology.com/">www.synology.com</a>
-    </p>
-  </div>
-</div></p>
+<li><p>Set your project to be GitHub pages in Settings.</p></li>
 
+<li><p>Pull your project from GitHub.</p></li>
+
+<li><p>Make sure you have latest git installed and follow the <a href="https://pages.github.com/">guide</a><br>
+I had a problem here where wit git worktree:
+<code>fatal: Refusing to point HEAD outside of refs/</code>
+solved, by updating to the latest git.</p></li>
+</ol>
+
+<p>6 <em>Add CNAME file, containing your domain name to your gh-pages branch root</em></p></li>
+
+<li><p><strong>Profit!</strong></p></li>
+</ol>
+
+<p>Hope this helps people, should they have trouble. Also, if you have problems following these instructions - let me know in comments.</p>
+
+<p>PS: In my NGinx:Varnish:NGinx:Php-fpm:MySQL Wordpress setup I went overzealous on the HSTS header</p>
+
+<pre><code># Set HSTS to 365 days
+add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; preload&quot;;
+</code></pre>
+
+<p>So now people, that visited my blog a year ago, and haven&rsquo;t cleared their cache since, will be forced to https, which would yield nothing, since custom domains are not served through https yet from GitHub Pages. Oh well&hellip;</p>
               
             </div>
           </div>
@@ -430,7 +435,11 @@ ga('send', 'pageview');
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="/tags/nas/">nas</a>
+  <a class="tag tag--primary tag--small" href="/tags/hugo/">hugo</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/wordpress/">wordpress</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/github/">github</a>
 
                   </div>
                 
@@ -443,7 +452,7 @@ ga('send', 'pageview');
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/code/2017/migrate-wordpress-to-hugo-github-pages/" data-tooltip="Migrating wordpress blog to hugo and hosting it with GitHub Pages">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -451,7 +460,7 @@ ga('send', 'pageview');
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/code/seagate-blackarmor-nas-400/" data-tooltip="Seagate BlackArmor NAS 400.">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/code/synology-ds413j-nas/" data-tooltip="Synology DS413j NAS">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -469,13 +478,13 @@ ga('send', 'pageview');
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vnomad.com/code/synology-ds413j-nas/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.vnomad.com/code/synology-ds413j-nas/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -523,7 +532,7 @@ ga('send', 'pageview');
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/code/2017/migrate-wordpress-to-hugo-github-pages/" data-tooltip="Migrating wordpress blog to hugo and hosting it with GitHub Pages">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -531,7 +540,7 @@ ga('send', 'pageview');
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/code/seagate-blackarmor-nas-400/" data-tooltip="Seagate BlackArmor NAS 400.">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/code/synology-ds413j-nas/" data-tooltip="Synology DS413j NAS">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -549,13 +558,13 @@ ga('send', 'pageview');
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vnomad.com/code/synology-ds413j-nas/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.vnomad.com/code/synology-ds413j-nas/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -585,13 +594,13 @@ ga('send', 'pageview');
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fblog.vnomad.com%2Fcode%2Fsynology-ds413j-nas%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fblog.vnomad.com%2Fcode%2F2017%2Fmigrate-wordpress-to-hugo-github-pages%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fblog.vnomad.com%2Fcode%2Fsynology-ds413j-nas%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fblog.vnomad.com%2Fcode%2F2017%2Fmigrate-wordpress-to-hugo-github-pages%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
@@ -697,9 +706,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'http:\/\/blog.vnomad.com\/code\/synology-ds413j-nas\/';
+          this.page.url = 'http:\/\/blog.vnomad.com\/code\/2017\/migrate-wordpress-to-hugo-github-pages\/';
           
-            this.page.identifier = '5152925270';
+            this.page.identifier = '\/code\/2017\/migrate-wordpress-to-hugo-github-pages\/'
           
         };
         (function() {

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/</loc>
+    <lastmod>2017-11-12T09:59:00-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.vnomad.com/code/synology-ds413j-nas/</loc>
     <lastmod>2013-08-28T23:25:00+00:00</lastmod>
   </url>
@@ -386,7 +391,7 @@
   
   <url>
     <loc>http://blog.vnomad.com/code/</loc>
-    <lastmod>2013-08-28T23:25:00+00:00</lastmod>
+    <lastmod>2017-11-12T09:59:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -421,6 +426,12 @@
   </url>
   
   <url>
+    <loc>http://blog.vnomad.com/tags/github/</loc>
+    <lastmod>2017-11-12T09:59:00-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.vnomad.com/tags/hack/</loc>
     <lastmod>2011-06-20T08:34:00+00:00</lastmod>
     <priority>0</priority>
@@ -429,6 +440,12 @@
   <url>
     <loc>http://blog.vnomad.com/tags/hibernate/</loc>
     <lastmod>2010-01-11T12:08:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.vnomad.com/tags/hugo/</loc>
+    <lastmod>2017-11-12T09:59:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -482,7 +499,7 @@
   
   <url>
     <loc>http://blog.vnomad.com/</loc>
-    <lastmod>2013-08-28T23:25:00+00:00</lastmod>
+    <lastmod>2017-11-12T09:59:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -542,7 +559,7 @@
   
   <url>
     <loc>http://blog.vnomad.com/categories/tech/</loc>
-    <lastmod>2013-08-28T23:25:00+00:00</lastmod>
+    <lastmod>2017-11-12T09:59:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -554,7 +571,7 @@
   
   <url>
     <loc>http://blog.vnomad.com/categories/tools/</loc>
-    <lastmod>2008-09-26T19:23:00+00:00</lastmod>
+    <lastmod>2017-11-12T09:59:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -609,6 +626,12 @@
   <url>
     <loc>http://blog.vnomad.com/tags/wise/</loc>
     <lastmod>2008-09-26T19:23:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.vnomad.com/tags/wordpress/</loc>
+    <lastmod>2017-11-12T09:59:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,10 +6,21 @@
     <description>Recent content in Codes on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Aug 2013 23:25:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Nov 2017 09:59:00 -0700</lastBuildDate>
     
 	<atom:link href="http://blog.vnomad.com/code/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Migrating wordpress blog to hugo and hosting it with GitHub Pages</title>
+      <link>http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/</link>
+      <pubDate>Sun, 12 Nov 2017 09:59:00 -0700</pubDate>
+      
+      <guid>http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/</guid>
+      <description>&lt;p&gt;Two weeks ago my blog was hosted on a 10$/mo vps instance in &lt;a href=&#34;https://www.digitalocean.com&#34;&gt;DigitalOcean&lt;/a&gt;, powered by a couple docker containers, running an ever dynamic &lt;a href=&#34;http://wordpress.com&#34;&gt;Wordpress&lt;/a&gt; platform. Now it&amp;rsquo;s completely static, served from &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; servers free. What follows is a small experience reco/guide on how to make this happen.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Synology DS413j NAS</title>

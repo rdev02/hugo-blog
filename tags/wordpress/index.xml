@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tools on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/categories/tools/</link>
-    <description>Recent content in Tools on Nomad&#39;s reflections</description>
+    <title>Wordpress on Nomad&#39;s reflections</title>
+    <link>http://blog.vnomad.com/tags/wordpress/</link>
+    <description>Recent content in Wordpress on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Nov 2017 09:59:00 -0700</lastBuildDate>
     
-	<atom:link href="http://blog.vnomad.com/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.vnomad.com/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,15 +20,6 @@
       <description>&lt;p&gt;Two weeks ago my blog was hosted on a 10$/mo vps instance in &lt;a href=&#34;https://www.digitalocean.com&#34;&gt;DigitalOcean&lt;/a&gt;, powered by a couple docker containers, running an ever dynamic &lt;a href=&#34;http://wordpress.com&#34;&gt;Wordpress&lt;/a&gt; platform. Now it&amp;rsquo;s completely static, served from &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; servers free. What follows is a small experience reco/guide on how to make this happen.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>WISE installation studio</title>
-      <link>http://blog.vnomad.com/code/wise-installation-studio/</link>
-      <pubDate>Fri, 26 Sep 2008 19:23:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/wise-installation-studio/</guid>
-      <description>Windows Installer&amp;#8230; nightmare&amp;#8230; WISE &amp;#8211; hurt me plenty. Although this is much simpler and logical to my mind then WI it is still very sensible to changes. What I am trying to say &amp;#8211; if do everything right from the first time e.g. correctly choose all names and dialogs and files e.t.c it works perfectly. But when after 5 minutes you decide to change, say, some script or file destination WISE i making so many actions in background you can&amp;#8217;t even imagine.</description>
     </item>
     
   </channel>
