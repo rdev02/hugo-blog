@@ -1,5 +1,5 @@
 ---
-title: 'Migrating wordpress blog to hugo and hosting it on GitHub Pages'
+title: 'Migrating wordpress blog to hugo and hosting it with GitHub Pages'
 author: Viktor Halitsyn
 date: 2017-11-12T09:59:00-07:00
 type: post
