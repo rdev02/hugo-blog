@@ -6,10 +6,21 @@
     <description>Recent content in Tech on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Nov 2017 09:59:00 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 18 Nov 2017 21:37:00 -0700</lastBuildDate>
     
 	<atom:link href="http://blog.vnomad.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CDN image hosting for blog&#39;</title>
+      <link>http://blog.vnomad.com/code/2017/blog-images-using-cdn/</link>
+      <pubDate>Sat, 18 Nov 2017 21:37:00 -0700</pubDate>
+      
+      <guid>http://blog.vnomad.com/code/2017/blog-images-using-cdn/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s rare that a blog has 0 images. Hosting them on the same box as the blog instance is the easiest solution, but it comes at a cost: disk space and page load speed. Unless you are a professional blogger, you are also not ready shell out many $$ for a CDN, so what options are there?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Migrating wordpress blog to hugo and hosting it with GitHub Pages</title>

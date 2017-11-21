@@ -22,27 +22,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
-    <title>Migrating wordpress blog to hugo and hosting it with GitHub Pages</title>
+    <title>CDN image hosting for blog&#39;</title>
     <meta name="author" content="Viktor Halitsyn">
-    <meta name="keywords" content="wordpress, hugo, github, blog, code, travel, immigration, ukraine, washington">
+    <meta name="keywords" content="cdn, hugo, aws, blog, image, iCloud, OneDrive, Cloudinary, code, travel, immigration, ukraine, washington">
 
     <link rel="icon" href="/favicon.jpg">
     
 
     
-    <meta name="description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.
+    <meta name="description" content="It&rsquo;s rare that a blog has 0 images. Hosting them on the same box as the blog instance is the easiest solution, but it comes at a cost: disk space and page load speed. Unless you are a professional blogger, you are also not ready shell out many $$ for a CDN, so what options are there?
 
 ">
-    <meta property="og:description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.
+    <meta property="og:description" content="It&rsquo;s rare that a blog has 0 images. Hosting them on the same box as the blog instance is the easiest solution, but it comes at a cost: disk space and page load speed. Unless you are a professional blogger, you are also not ready shell out many $$ for a CDN, so what options are there?
 
 ">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Migrating wordpress blog to hugo and hosting it with GitHub Pages">
-    <meta property="og:url" content="/code/2017/migrate-wordpress-to-hugo-github-pages/">
+    <meta property="og:title" content="CDN image hosting for blog&#39;">
+    <meta property="og:url" content="/code/2017/blog-images-using-cdn/">
     <meta property="og:site_name" content="Nomad&#39;s reflections">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.
+    <meta name="twitter:description" content="It&rsquo;s rare that a blog has 0 images. Hosting them on the same box as the blog instance is the easiest solution, but it comes at a cost: disk space and page load speed. Unless you are a professional blogger, you are also not ready shell out many $$ for a CDN, so what options are there?
 
 ">
     
@@ -57,8 +57,6 @@
       <meta property="og:image" content="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
     
 
-    
-      <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/wptohugothumb.png">
     
     
     
@@ -225,19 +223,19 @@ ga('send', 'pageview');
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Migrating wordpress blog to hugo and hosting it with GitHub Pages
+      CDN image hosting for blog&#39;
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2017-11-12T09:59:00-07:00">
+      <time itemprop="datePublished" datetime="2017-11-18T21:37:00-07:00">
         
   
   
   
   
-    11/12/2017
+    11/18/2017
   
 
       </time>
@@ -259,171 +257,45 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Two weeks ago my blog was hosted on a 10$/mo vps instance in <a href="https://www.digitalocean.com">DigitalOcean</a>, powered by a couple docker containers, running an ever dynamic <a href="http://wordpress.com">Wordpress</a> platform. Now it&rsquo;s completely static, served from <a href="https://pages.github.com/">GitHub Pages</a> servers free. What follows is a small experience reco/guide on how to make this happen.</p>
+              <p>It&rsquo;s rare that a blog has 0 images. Hosting them on the same box as the blog instance is the easiest solution, but it comes at a cost: disk space and page load speed. Unless you are a professional blogger, you are also not ready shell out many $$ for a CDN, so what options are there?</p>
 
 <p></p>
 
-<p>TL;DR <a href="#migration">link</a> explaining the process.</p>
+<h1 id="1-reference-images-on-the-web">1. Reference images on the web.</h1>
 
-<h1 id="motivation">Motivation</h1>
+<p>That works well in the beginning, but soon some of the urls start to die(server moved/content updated/etc). Thus this is not a great solution, especially when you have your custom content to share. Enter..</p>
 
+<h1 id="2-use-a-cloud-file-storage-service-e-g-gdrive-1-onedrive-2-icloud-3-dropbox-4-etc">2. Use a cloud file storage service, e.g. <a href="https://drive.google.com">GDrive</a>/<a href="https://onedrive.live.com">OneDrive</a>/<a href="https://www.icloud.com/">iCloud</a>/<a href="https://www.dropbox.com/">DropBox</a>/etc.</h1>
 
+<h2 id="googledrive">GoogleDrive</h2>
 
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
+<p>I used to store my content on <strong>GoogleDrive</strong>. There is a way to get a <a href="https://productforums.google.com/forum/#!topic/drive/EBjKgPLGSMc">url</a> for your content, and it will most likely work. Until google decides to change the way it serves content or closes the API altogether. At the moment, the worst thing about this method is having to manually parse/create urls for your content.</p>
 
-<div class="figure right" >
-  
-    <a class="fancybox" href="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/Wordpress_logo_8.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/Wordpress_logo_8.png" style="width: 128px;height: 128px;">
-  
-    </a>
-  
-  
-</div>
+<h2 id="onedrive">OneDrive</h2>
 
+<p><strong>OneDrive</strong> offers similar <a href="https://support.office.com/en-us/article/Embed-files-directly-into-your-website-or-blog-ed07dd52-8bdb-431d-96a5-cbe8a80b7418">functionality</a> without url manipulation. It works well and even offers some dynamic sizing options for your content, however I quickly ran into problems:</p>
 
-<p>Running on a small vps with wordpress was nice, but not inspiring: I moved there from (google)blogger platform, which at that time was one of the fastest ways to bootstrap a blog, seeking something, that is more editor/code/content friendly. After all, Wordpress, with the heritage of catering to bloggers around the world, was a promising platform to look at. The things that I was looking for included:</p>
+<p>a) links are absurdly long. Here is a sample link, OneDrive generated for me: <a href="https://vfybkq.bn1303.livefilestore.com/y4mGqBlcQGSIsuw6OFD-MyiXqy5dq-7DqQCgrXbP8kko6a9YT1Fr8ggCKZtEAdbDOqQa1eLNBJs9ZrWtimhlGd9Kum54jI9nWD-XvxFXe82LAKj11EtvUynlpcA6w__DOYjkaDPllOF-Xrs5acIf_p5kh7S9c8p_kGs3qjzXwko2tXxqSDt1Oe9himcpdzjiofihRH_N4cHAKRqiHvGui1g?width=3072&amp;height=1728&amp;cropmode=none">https://vfybkq.bn1303.livefilestore.com/y4mGqBlcQGSIsuw6OFD-MyiXqy5dq-7DqQCgrXbP8kko6a9YT1Fr8ggCKZtEAdbDOqQa1eLNBJs9ZrWtimhlGd9Kum54jI9nWD-XvxFXe82LAKj11EtvUynlpcA6w__DOYjkaDPllOF-Xrs5acIf_p5kh7S9c8p_kGs3qjzXwko2tXxqSDt1Oe9himcpdzjiofihRH_N4cHAKRqiHvGui1g?width=3072&amp;height=1728&amp;cropmode=none</a>
+gnarly, eh?</p>
 
-<ul>
-<li>clean readable design/theme</li>
-<li>easy to use editor, preferably wysiwyg</li>
-<li>easy basics: tags, archive, search, comments, bio etc.</li>
-</ul>
+<p>b) OneDrive screws up your PNGs. Filed a bug about that, so this should get fixed eventually, but for now PNGs are served with a black background.</p>
 
-<p>After getting a closer look it turned out that Wordpress is a very bare-bones platform: plugins+themes are the things that make it beautiful and functional. I spent a lot of time looking for a functional simple free themes/plugins that would make my blog look readable on both mobile and desktop. I found one, but ultimately I wasn&rsquo;t happy with it. On top of that my vps docker system kept asking for more RAM to keep MySQL, Varnish and a couple NGinxs satisfied. It was the time I realized I need something way simpler and more developer - oriented.</p>
+<h2 id="icloud-and-dropbox">iCloud and DropBox</h2>
 
-<h1 id="enter-hugo-hahahugoshortcode-3hbhb">Enter HUGO 
+<p>do not really provide embed functionality. Or at least I was not able to find it readily. They provide you a way to share your content in a form of an album or a link (like this one
+<a href="https://www.dropbox.com/s/f0xeaz2asdwi31lv/IMG_1710.JPG?dl=0">https://www.dropbox.com/s/f0xeaz2asdwi31lv/IMG_1710.JPG?dl=0</a> ) to a specific photo, but that(link) would load the whole website and also, probably, sell some ads).</p>
 
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
+<p>Out of all these gdrive was the only working, but also quite painful solution. I needed something better&hellip;</p>
 
-<div class="figure right" >
-  
-    <a class="fancybox" href="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/hugologo.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/hugologo.png" style="height: 64px;">
-  
-    </a>
-  
-  
-</div>
-</h1>
+<h1 id="3-aws-s3">3. AWS S3.</h1>
 
-<p><a href="https://gohugo.io/">HUGO</a> is static pages generator, written in Go. It comes with a fast server, that takes about <strong>30</strong> MB mem to run on site of this size(which is not large, but not exactly empty either). You write your posts in markdown, which is currently what I breathe, and you can literally program you pages(with go-like syntax), should you really want to. You need to keep in mind everything is static in the end, thus, should you want your site to be responsive, you&rsquo;ll have to use javascript.</p>
+<p>Is a very simple service. You might argue it&rsquo;s not free, but I&rsquo;d counter that it&rsquo;s not super expensive(cents per GB of storage/transfer/requests). However it is very simple and pleasant work with: you can use a variety of tools for getting your content into the bucket. Once there, sharing is as simple as <code>https://s3-dc-name.amazonaws.com/bucket-name/resource_name.jpg</code>. That is it! You can just use that url and you content would load correctly and reasonably fast(depending on your requirements). All of that would cost you cents a month if your site is not content heavy.</p>
 
-<p>Hugo has <em>support</em> for most things you&rsquo;d want to have: tags(taxonomies), categories, metadata, templates for different types of content, ready to use themes and internationalization support. That being said <strong><em>support</em> !== <em>ready to use out of the box</em></strong>. In other words one can build pages that have all the features mentioned, using the framework, but you need to do the legwork&hellip; or not ).</p>
+<p>Imo, this should satisfy most developers. If you want to go further,</p>
 
-<h2 id="enter-tranquilpeak-theme">Enter TranquilPeak theme</h2>
+<h1 id="4-aws-cloudfront-cloudinary-and-other-cdn-s">4. AWS CloudFront, Cloudinary and other CDN&rsquo;s.</h1>
 
-<p><a href="https://themes.gohugo.io/hugo-tranquilpeak-theme/">TranquilPeak</a> is an <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">open-source</a> theme that has most of the basics implemented for you, using hugo&rsquo;s framework. You can easily <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/.github/CONTRIBUTING.md">extend</a> it if you wish. Thus blog runs it, so feel free to look around, but there is a showcase available as well. I won&rsquo;t talk much about it here, as the <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md">docs</a> are quite exhaustive, suffices to say that the theme comes loaded with goodness like</p>
-
-<ul>
-<li><a href="https://disqus.com/">disquss</a> for comments</li>
-<li><a href="http://fancybox.net/">fancybox</a> for images</li>
-<li><a href="https://fonts.google.com/">google fonts</a> support (essentially any custom css/js support)</li>
-<li><a href="http://fontawesome.io/">font-awesome</a> icons</li>
-<li><a href="https://highlightjs.org/">highlight.js</a> compatible</li>
-</ul>
-
-<p><a name="migration"></a></p>
-
-<h1 id="migration-experience">Migration experience</h1>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure right" >
-  
-    <a class="fancybox" href="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/githubpageslogo.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/githubpageslogo.png" style="width: 128px;height: 128px;">
-  
-    </a>
-  
-  
-</div>
-
-
-<p>The goal was to get my wordpress running on GitHub Pages, with a custom domain. I also prefer my content to be versioned separately from the framework, therefore I went with git worktrees workflow as described below.
-<br><br></p>
-
-<ol>
-<li><p>As described <a href="https://gohugo.io/tools/migrations/">here</a>, use the <a href="https://github.com/SchumacherFM/wordpress-to-hugo-exporter">exporter plugin</a> to get your content out of wordpress. <br>
-I&rsquo;ve hit problems right there, on step one:<br>
-<strong>Fatal error: Class &lsquo;ZipArchive&rsquo; not found in /var/www/html/wp-content/plugins/hugo-export.php on line 403</strong>
-<br>
-<em>Solution</em>: make sure you have zip installed and enabled(in php.ini) on your machine. php info would be you guiding light. I was running an old <code>wordpress:4.6.1-fpm</code> bare container hence <code>apt-get</code> was useless. If you are in the same or similar boat that I was - upgrade to latest <code>wordpress:4.8.3-php7.0-fpm</code>  then use
-<br><strong>docker-php-ext-install zip</strong><br>
-inside the container. Restart the container - now it(export) should work.</p></li>
-
-<li><p>Install <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">tranquipeak theme</a><br>
-There were no problems for me doing this. Configuring the theme takes a while, especially if you decide to change fonts, highlights etc.</p></li>
-
-<li><p>Test everything works by running <code>hugo server</code> or <code>hugo</code> to generate files.</p></li>
-
-<li><p>Now host the thing on GitHub Pages, using <a href="https://pages.github.com/">this guide</a><br>
-I had several problems here where I could not select the branch to publish from on github, or my CNAME was not working. The remedy was to follow the steps and instructions <em><em>exactly</em></em> as prescribed by github, namely:</p>
-
-<ol>
-<li><p>Create a new project.</p></li>
-
-<li><p>Create the index.html page</p></li>
-
-<li><p>Set your project to be GitHub pages in Settings.</p></li>
-
-<li><p>Pull your project from GitHub.</p></li>
-
-<li><p>Make sure you have latest git installed and follow the <a href="https://pages.github.com/">guide</a><br>
-I had a problem here where wit git worktree:
-<code>fatal: Refusing to point HEAD outside of refs/</code>
-solved, by updating to the latest git.</p></li>
-</ol>
-
-<p>6 <em>Add CNAME file, containing your domain name to your gh-pages branch root</em></p></li>
-
-<li><p><strong>Profit!</strong></p></li>
-</ol>
-
-<p>Hope this helps people, should they have trouble. Also, if you have problems following these instructions - let me know in comments.</p>
-
-<p>PS: In my NGinx:Varnish:NGinx:Php-fpm:MySQL Wordpress setup I went overzealous on the HSTS header</p>
-
-<pre><code># Set HSTS to 365 days
-add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; preload&quot;;
-</code></pre>
-
-<p>So now people, that visited my blog a year ago, and haven&rsquo;t cleared their cache since, will be forced to https, which would yield nothing, since custom domains are not served through https yet from GitHub Pages. Oh well&hellip;</p>
+<p>AWS is great in a way it is simple, well-priced and reliable. However it might not be the best solution for you: if AWS is just something you do not feel good about, <a href="https://cloudinary.com/pricing">Cloudinary</a> is a great place to start. They have a free tier that should satisfy a medium blogger and, most importantly, they have an absolutely lovely <a href="https://cloudinary.com/documentation/image_transformations">url api</a> for content transformations.</p>
               
             </div>
           </div>
@@ -435,11 +307,11 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
+  <a class="tag tag--primary tag--small" href="/tags/cdn/">cdn</a>
+
   <a class="tag tag--primary tag--small" href="/tags/hugo/">hugo</a>
 
-  <a class="tag tag--primary tag--small" href="/tags/wordpress/">wordpress</a>
-
-  <a class="tag tag--primary tag--small" href="/tags/github/">github</a>
+  <a class="tag tag--primary tag--small" href="/tags/aws/">aws</a>
 
                   </div>
                 
@@ -452,7 +324,7 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/code/2017/blog-images-using-cdn/" data-tooltip="CDN image hosting for blog&#39;">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -460,7 +332,7 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/code/synology-ds413j-nas/" data-tooltip="Synology DS413j NAS">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/code/2017/migrate-wordpress-to-hugo-github-pages/" data-tooltip="Migrating wordpress blog to hugo and hosting it with GitHub Pages">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -478,13 +350,13 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vnomad.com/code/2017/blog-images-using-cdn/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.vnomad.com/code/2017/blog-images-using-cdn/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -532,7 +404,7 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/code/2017/blog-images-using-cdn/" data-tooltip="CDN image hosting for blog&#39;">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -540,7 +412,7 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/code/synology-ds413j-nas/" data-tooltip="Synology DS413j NAS">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/code/2017/migrate-wordpress-to-hugo-github-pages/" data-tooltip="Migrating wordpress blog to hugo and hosting it with GitHub Pages">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -558,13 +430,13 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vnomad.com/code/2017/blog-images-using-cdn/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.vnomad.com/code/2017/blog-images-using-cdn/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -594,13 +466,13 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fblog.vnomad.com%2Fcode%2F2017%2Fmigrate-wordpress-to-hugo-github-pages%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fblog.vnomad.com%2Fcode%2F2017%2Fblog-images-using-cdn%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fblog.vnomad.com%2Fcode%2F2017%2Fmigrate-wordpress-to-hugo-github-pages%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fblog.vnomad.com%2Fcode%2F2017%2Fblog-images-using-cdn%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
@@ -706,9 +578,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'http:\/\/blog.vnomad.com\/code\/2017\/migrate-wordpress-to-hugo-github-pages\/';
+          this.page.url = 'http:\/\/blog.vnomad.com\/code\/2017\/blog-images-using-cdn\/';
           
-            this.page.identifier = '\/code\/2017\/migrate-wordpress-to-hugo-github-pages\/'
+            this.page.identifier = '\/code\/2017\/blog-images-using-cdn\/'
           
         };
         (function() {

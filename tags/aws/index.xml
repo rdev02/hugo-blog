@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aws on Nomad&#39;s reflections</title>
+    <link>http://blog.vnomad.com/tags/aws/</link>
+    <description>Recent content in Aws on Nomad&#39;s reflections</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Nov 2017 21:37:00 -0700</lastBuildDate>
+    
+	<atom:link href="http://blog.vnomad.com/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CDN image hosting for blog&#39;</title>
+      <link>http://blog.vnomad.com/code/2017/blog-images-using-cdn/</link>
+      <pubDate>Sat, 18 Nov 2017 21:37:00 -0700</pubDate>
+      
+      <guid>http://blog.vnomad.com/code/2017/blog-images-using-cdn/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s rare that a blog has 0 images. Hosting them on the same box as the blog instance is the easiest solution, but it comes at a cost: disk space and page load speed. Unless you are a professional blogger, you are also not ready shell out many $$ for a CDN, so what options are there?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
