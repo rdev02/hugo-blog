@@ -37,7 +37,7 @@ googleAnalytics        = "UA-64535001-2"
     favicon = "/favicon.jpg" 
     imageGallery = true
     hierarchicalCategories = true
-    syntaxHighlighter = "highligth.js"
+    syntaxHighlighter = "highlight.js"
     
     [[params.customCSS]]
         href = "https://fonts.googleapis.com/css?family=Oswald|Roboto"
@@ -55,49 +55,49 @@ googleAnalytics        = "UA-64535001-2"
   weight = 1
   identifier = "home"
   name = "Home"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
+  pre = "<i style=\"color:black\" class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
   url = "/"
 [[menu.main]]
   weight = 2
   identifier = "categories"
   name = "Categories"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
+  pre = "<i style=\"color:black\" class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
   url = "/categories"
 [[menu.main]]
   weight = 3
   identifier = "tags"
   name = "Tags"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-tags\"></i>"
+  pre = "<i style=\"color:black\" class=\"sidebar-button-icon fa fa-lg fa-tags\"></i>"
   url = "/tags"
 [[menu.main]]
   weight = 4
   identifier = "archives"
   name = "Archives"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-archive\"></i>"
+  pre = "<i style=\"color:black\" class=\"sidebar-button-icon fa fa-lg fa-archive\"></i>"
   url = "/archives"
 [[menu.main]]
   weight = 5
   identifier = "about"
   name = "About"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
+  pre = "<i style=\"color:black\" class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
   url = "/#about"
 
 [[menu.links]]
   weight = 1
   identifier = "github"
   name = "GitHub"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-github\"></i>"
+  pre = "<i style=\"color:black\" class=\"sidebar-button-icon fa fa-lg fa-github\"></i>"
   url = "https://github.com/rdev02"
 [[menu.links]]
   weight = 2
   identifier = "twitter"
   name = "Twitter"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-twitter\"></i>"
+  pre = "<i style=\"color:black\" class=\"sidebar-button-icon fa fa-lg fa-twitter\"></i>"
   url = "https://twitter.com/rdev02"
 
 [[menu.misc]]
   weight = 0
   identifier = "rss"
   name = "RSS"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-rss\"></i>"
+  pre = "<i style=\"color:black\" class=\"sidebar-button-icon fa fa-lg fa-rss\"></i>"
   url = "/index.xml"

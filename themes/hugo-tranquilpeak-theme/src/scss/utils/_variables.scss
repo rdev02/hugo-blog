@@ -6,21 +6,19 @@ $open-sans:            'Open Sans';
 $open-sans-sans-serif: 'Open Sans', sans-serif;
 $merriweather-serif:   'Merriweather', serif;
 $menlo:                 Menlo, Consolas, monospace;
-$roboto-sans-serif:    'Roboto', sans-serif;
-$oswald-sans-serif:    'Oswald', sans-serif;
 
 $font-family-base: $open-sans-sans-serif;
 
 $font-families: (
    // base
-   'headings':          $oswald-sans-serif,
+   'headings':          $open-sans-sans-serif,
    // components
    'code':              $menlo,
    'caption':           $merriweather-serif,
    'image-gallery':     $open-sans,
    'post-header-cover': $merriweather-serif,
-   'post-meta':         $roboto-sans-serif,//$open-sans-sans-serif,
-   'post-content':      $roboto-sans-serif,//$merriweather-serif,
+   'post-meta':         $open-sans-sans-serif,
+   'post-content':      $merriweather-serif,
    'post-excerpt-link': $open-sans-sans-serif,
    'highlight':         $menlo,
    // layout
@@ -152,7 +150,7 @@ $sidebar: (
     'lg-screen-width':  250px,
     'xlg-screen-width': 500px,
     'background':       rgba(17, 26, 35, 0),
-    'color':            #050000
+    'color':            #ebebeb
 );
 
 // Main
@@ -221,6 +219,7 @@ $main-content: (
     'max-width':          750px,
     'padding-right-left': 20px,
 );
+$main-width: map-get($main-content, max-width) + map-get($main-content, padding-right-left) * 2;
 
 // Mardown
 // These variables are use to have headings smaller than general headings title
