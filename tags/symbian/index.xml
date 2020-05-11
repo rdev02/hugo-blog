@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Symbian on Nomad&#39;s reflections</title>
+    <title>symbian on Nomad&#39;s reflections</title>
     <link>http://blog.vnomad.com/tags/symbian/</link>
-    <description>Recent content in Symbian on Nomad&#39;s reflections</description>
+    <description>Recent content in symbian on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 20 Jun 2009 12:32:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Sat, 20 Jun 2009 12:32:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/damn-symbian-errors/</guid>
-      <description>Now you never know how will modern technology strike you next time&amp;#8230; Experience I&amp;#8217;ve got today is remarkable. It&amp;#8217;s not that something awful happened, but potentially this is really serious. Imagine you have a template in the phone to send SMS quickly with predefined text. And Imagine this piece of software has bugs&amp;#8230; Whatever &amp;#8211; one might think if it won&amp;#8217;t send an sms &amp;#8211; I’ll retype and sent it again.</description>
+      <description>Now you never know how will modern technology strike you next time… Experience I’ve got today is remarkable. It’s not that something awful happened, but potentially this is really serious. Imagine you have a template in the phone to send SMS quickly with predefined text. And Imagine this piece of software has bugs… Whatever – one might think if it won’t send an sms – I’ll retype and sent it again.</description>
     </item>
     
   </channel>

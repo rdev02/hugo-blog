@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tech on Nomad&#39;s reflections</title>
+    <title>tech on Nomad&#39;s reflections</title>
     <link>http://blog.vnomad.com/categories/tech/</link>
-    <description>Recent content in Tech on Nomad&#39;s reflections</description>
+    <description>Recent content in tech on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 18 Nov 2017 21:37:00 -0700</lastBuildDate>
@@ -17,9 +17,7 @@
       <pubDate>Sat, 18 Nov 2017 21:37:00 -0700</pubDate>
       
       <guid>http://blog.vnomad.com/code/2017/blog-images-using-cdn/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s rare that a blog has 0 images. Hosting them on the same box as the blog instance is the easiest solution, but it comes at a cost: disk space and page load speed. Unless you are a professional blogger, you are also not ready shell out many $$ for a CDN, so what options are there?&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;It&amp;rsquo;s rare that a blog has 0 images. Hosting them on the same box as the blog instance is the easiest solution, but it comes at a cost: disk space and page load speed. Unless you are a professional blogger, you are also not ready shell out many $$ for a CDN, so what options are there?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28,9 +26,7 @@
       <pubDate>Sun, 12 Nov 2017 09:59:00 -0700</pubDate>
       
       <guid>http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/</guid>
-      <description>&lt;p&gt;Two weeks ago my blog was hosted on a 10$/mo vps instance in &lt;a href=&#34;https://www.digitalocean.com&#34;&gt;DigitalOcean&lt;/a&gt;, powered by a couple docker containers, running an ever dynamic &lt;a href=&#34;http://wordpress.com&#34;&gt;Wordpress&lt;/a&gt; platform. Now it&amp;rsquo;s completely static, served from &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; servers free. What follows is a small experience reco/guide on how to make this happen.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Two weeks ago my blog was hosted on a 10$/mo vps instance in &lt;a href=&#34;https://www.digitalocean.com&#34;&gt;DigitalOcean&lt;/a&gt;, powered by a couple docker containers, running an ever dynamic &lt;a href=&#34;http://wordpress.com&#34;&gt;Wordpress&lt;/a&gt; platform. Now it&amp;rsquo;s completely static, served from &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; servers free. What follows is a small experience reco/guide on how to make this happen.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -39,10 +35,7 @@
       <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/synology-ds413j-nas/</guid>
-      <description>In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&amp;#8217;t duplicate them in this one. But, to keep consistent with the previous review I&amp;#8217;ll go with the same headings/experience areas. That being said &amp;#8211; here we go!  
- DSJ413j   
-
-Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this time.</description>
+      <description></description>
     </item>
     
     <item>
@@ -51,7 +44,7 @@ Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this t
       <pubDate>Tue, 05 Feb 2013 08:20:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/seagate-blackarmor-nas-400/</guid>
-      <description>So I decided that I&amp;#8217;m sick and tired of plugging in and out usb drives. Be it my tiny 16GB daily thumb drive, or store-it-all 2TB external seagate &amp;#8211; this is a pain&amp;#8230; And to make sure everything is stored you have to &amp;#8220;detach/remove&amp;#8221; them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money.</description>
+      <description>&amp;lt;/div&amp;gt;   UI Console look  More images below in the gallery.</description>
     </item>
     
     <item>
@@ -60,7 +53,7 @@ Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this t
       <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/javascript-performance-tests/</guid>
-      <description>I&amp;#8217;m dealing a lot with javascript nowadays and obviously I have to take performance into account. One way of doing this is writing a bunch of test code and record the time for your scripts, but what if you wanted to quickly test out some approaches and do not really want to invest a lot into them? Today I was pointed to a solution: http://jsperf.com/. This awesome tool does not just give you the framework to easily test out javascript but also provides and already created library of tests other people created when investigating their performance issues.</description>
+      <description></description>
     </item>
     
     <item>
@@ -69,7 +62,7 @@ Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this t
       <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/wp7-mango-dive/</guid>
-      <description>It has been a few month since I started mangling with WP7 platform. The more I learnt about it from the inside the more I wanted to buy new real WP7 phone. Things changed slightly after I have done my very first app(didn&amp;#8217;t make it to the app store as I found plenty of similar ones already there and mine was not adding much :() but still as of now I would really be interested in posessing a WP7 phone and giving it a solid try.</description>
+      <description></description>
     </item>
     
     <item>
@@ -88,8 +81,8 @@ Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this t
       
       <guid>http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</guid>
       <description>Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:
-Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is: java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780) at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627) at javax.naming.InitialContext.lookup(InitialContext.java:392) at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154)  I was sure I configured it right as I have
-&amp;lt;jee:jndi-lookup id=&amp;quot;JBossMQ&amp;quot; jndi-name=&amp;quot;XAConnectionFactory&amp;quot; proxy-interface=&amp;quot;javax.jms.ConnectionFactory&amp;quot; environment-ref=&amp;quot;jndiProps&amp;quot; resource-ref=&amp;quot;true&amp;quot;/&amp;gt; &amp;lt;util:properties id=&amp;quot;jndiProps&amp;quot; location=&amp;quot;META-INF/spring/jndi.</description>
+Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is: java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780) at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627) at javax.naming.InitialContext.lookup(InitialContext.java:392) at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154) I was sure I configured it right as I have
+&amp;lt;jee:jndi-lookup id=&amp;#34;JBossMQ&amp;#34; jndi-name=&amp;#34;XAConnectionFactory&amp;#34; proxy-interface=&amp;#34;javax.jms.ConnectionFactory&amp;#34; environment-ref=&amp;#34;jndiProps&amp;#34; resource-ref=&amp;#34;true&amp;#34;/&amp;gt; &amp;lt;util:properties id=&amp;#34;jndiProps&amp;#34; location=&amp;#34;META-INF/spring/jndi.</description>
     </item>
     
     <item>
@@ -98,7 +91,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</guid>
-      <description>If you&amp;#8217;re in the same trouble as I was with black screen during boot(plymouth has the theme installed and even displays it during shutdown) then there is a small thing that has to be edited in order to get rid of this annoyance. Go to
+      <description>If you’re in the same trouble as I was with black screen during boot(plymouth has the theme installed and even displays it during shutdown) then there is a small thing that has to be edited in order to get rid of this annoyance. Go to
  /etc/grub.d/10_linux
  and remove the **handoff=7 **parameter. Inspired by this and also this(pretty nice tool for configuring plymouth for dummies).</description>
     </item>
@@ -109,7 +102,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Mon, 20 Jun 2011 08:34:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/hackathon-in-lviv/</guid>
-      <description>Great news! Best Hackathon traditions to invade Lviv. DOU is planning a hackathon @ June 9 — 10. Location is not set yet, but people are welcome to join now, so that we know there&amp;#8217;ll be enough people comming. More details here. If anyone interested to create a team &amp;#8211; reach me via comments here or on IMs&amp;#8230;</description>
+      <description>Great news! Best Hackathon traditions to invade Lviv. DOU is planning a hackathon @ June 9 — 10. Location is not set yet, but people are welcome to join now, so that we know there’ll be enough people comming. More details here. If anyone interested to create a team – reach me via comments here or on IMs…</description>
     </item>
     
     <item>
@@ -127,7 +120,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Wed, 01 Jun 2011 18:41:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/j2ee-sdk-install-hanging-fix/</guid>
-      <description>Spent about 3 hours trying to install the latest java ee sdk on my natty narwhal with no luck. It usually hang with 45% and 5seconds left forever. Might be I&amp;#8217;m a bad googler but turned out that there is a bug in the installer which prevents the installation from continuing. The workaround is to disable the network connections before the installation begins(disabling while it is hanging did not work for me).</description>
+      <description>Spent about 3 hours trying to install the latest java ee sdk on my natty narwhal with no luck. It usually hang with 45% and 5seconds left forever. Might be I’m a bad googler but turned out that there is a bug in the installer which prevents the installation from continuing. The workaround is to disable the network connections before the installation begins(disabling while it is hanging did not work for me).</description>
     </item>
     
     <item>
@@ -137,7 +130,9 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       
       <guid>http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
       <description>Had a real problem with my wifi after moving to Ubuntu from win -&amp;gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
-        Having this changed</description>
+   Having this changed
+ _AVAHI_DAEMON_DETECT_LOCAL=1
+ to</description>
     </item>
     
     <item>
@@ -146,11 +141,9 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Mon, 16 May 2011 07:35:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/skype-microsoft/</guid>
-      <description>I really, really do not know if that&amp;#8217;s accidental or on-purpose and whether it&amp;#8217;s connected with the fact that Microsoft bought Skype, but this morning I received a wonderful email:
+      <description>I really, really do not know if that’s accidental or on-purpose and whether it’s connected with the fact that Microsoft bought Skype, but this morning I received a wonderful email:
   Now 3 things about this:
-1. I **am **a skype user.
-2. Who the hell is Natalia??? And why, and when and WTF?!
-3. I love to use skype. It would be sad if this is the turning point.</description>
+ I **am **a skype user. Who the hell is Natalia??? And why, and when and WTF?! I love to use skype. It would be sad if this is theturning point. 🙁  </description>
     </item>
     
     <item>
@@ -169,8 +162,8 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Sun, 24 Apr 2011 10:43:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/lift-ajax-the-proper-way-of-doing-presentations/</guid>
-      <description>24-th seconds rules&amp;#8230;
- This mostly ru-zone compliant 🙂</description>
+      <description>24-th seconds rules…
+This mostly ru-zone compliant 🙂</description>
     </item>
     
     <item>
@@ -179,7 +172,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Fri, 22 Apr 2011 09:07:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/</guid>
-      <description>Internet is basically full of subj but vice-versa(BlazeDS to java). So the problem I had was that when the object is &amp;#8220;translated&amp;#8221; from java via BlazeDS to flex application it had NAN&amp;#8217;s in the double fields. The transfer object was a simple POJO I passed via the interface. First thing I checked were the getters &amp;#8211; all present and valid. I took quite a lot of time till we figured out that it was the missing setters which made the code malfunction.</description>
+      <description>Internet is basically full of subj but vice-versa(BlazeDS to java). So the problem I had was that when the object is “translated” from java via BlazeDS to flex application it had NAN’s in the double fields. The transfer object was a simple POJO I passed via the interface. First thing I checked were the getters – all present and valid. I took quite a lot of time till we figured out that it was the missing setters which made the code malfunction.</description>
     </item>
     
     <item>
@@ -199,7 +192,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
-      <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100&amp;frasl;1000-line file is not fun and I really think you shouldn&amp;#8217;t bother choosing if you&amp;#8217;re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large &amp;#8211; 320k of CSV data is ~ 12MB performance is considerable.</description>
+      <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable.</description>
     </item>
     
     <item>
@@ -208,7 +201,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Mon, 27 Dec 2010 00:00:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/nokia-ovi-suite-sms-extract/</guid>
-      <description>There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before &amp;#8211; nice piece of software if we forget about all the &amp;#8220;store&amp;#8221; thing. But it has one important for me thing missing &amp;#8211; sms extracting mechanism. You can&amp;#8217;t just take all of your sms and store to the file you want.</description>
+      <description>There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want.</description>
     </item>
     
     <item>
@@ -217,8 +210,8 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Wed, 13 Oct 2010 15:06:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/</guid>
-      <description>There&amp;#8217;s a ton of Win properties that your program might want to access/possess/transform and there&amp;#8217;s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there&amp;#8217;s one sigle silver bullet to get them all via
- Select * From [win_category]</description>
+      <description>There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
+ Select * From [win_category] The problem is there are tons of &amp;amp;#8220;win_category]&amp;amp;#8217; and * values.</description>
     </item>
     
     <item>
@@ -227,7 +220,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Fri, 08 Oct 2010 19:39:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/net-tab-control/</guid>
-      <description>Consider some UI that you would like to present as tabs. And you also know that all these tabs would have a considerate amount of code in common. There are some thoughts here but those are more about visual representation. Also creating usercontrols I believe is not an option due to it&amp;#8217;s not expected to have more tah one tab of a kind. The solution has to both utilize the VS designer(otherwise tab creation would take considerably more time) and keep the code separate from the tabcontrol &amp;#8211; holder form.</description>
+      <description>Consider some UI that you would like to present as tabs. And you also know that all these tabs would have a considerate amount of code in common. There are some thoughts [here][1] but those are more about visual representation. Also creating usercontrols I believe is not an option due to it&amp;amp;#8217;s not expected to have more tah one tab of a kind. The solution has to both utilize the VS designer(otherwise tab creation would take considerably more time) and keep the code separate from the tabcontrol &amp;amp;#8211; holder form.</description>
     </item>
     
     <item>
@@ -236,7 +229,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Wed, 29 Sep 2010 15:45:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/</guid>
-      <description>There is a nice tutorial here on how to create spring web services using jax-b. Works just fine but it&amp;#8217;s hell lots of issues you would run into while making it actually work. The most frustrating for me as of today was the absence of Jaxb2Marshaller. in the std &amp;#8220;spring-ws-core&amp;#8221; artifact package. It&amp;#8217;s just not there and noone would tell you. Only _**Jaxb1Marshaller **_is. After an hour googling found this (BTW very simple and straightforward) post where spotted the &amp;#8220;spring-oxm-tiger&amp;#8221; artifact.</description>
+      <description>There is a nice tutorial here on how to create spring web services using jax-b. Works just fine but it’s hell lots of issues you would run into while making it actually work. The most frustrating for me as of today was the absence of Jaxb2Marshaller. in the std “spring-ws-core” artifact package. It’s just not there and noone would tell you. Only _**Jaxb1Marshaller **_is. After an hour googling found this (BTW very simple and straightforward) post where spotted the “spring-oxm-tiger” artifact.</description>
     </item>
     
     <item>
@@ -254,8 +247,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</guid>
-      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K.
-Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
+      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;amp;#8220;descriptive&amp;amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;amp;#8217;m going to describe here is when the size of the cod file is more than 64K.  Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
     </item>
     
     <item>
@@ -264,9 +256,9 @@ Finding out if you have this problem is fairly easy: just look into the final co
       <pubDate>Tue, 09 Mar 2010 22:38:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</guid>
-      <description>A lil&amp;#8217; bit nerdy here. So if anyone does not like all that computer stuff skip to the LAST LINE.
+      <description>A lil’ bit nerdy here. So if anyone does not like all that computer stuff skip to the LAST LINE.
 The trouble.
-It all started when I bought my first wireless router D-Link DIR 320. It looked fine. Started working in seconds and was pretty easy to configure. I was really happy but the I suddenly saw that I can&amp;#8217;t reach my favorite finance site. Sites may be down, I thought.</description>
+It all started when I bought my first wireless router D-Link DIR 320. It looked fine. Started working in seconds and was pretty easy to configure. I was really happy but the I suddenly saw that I can’t reach my favorite finance site. Sites may be down, I thought.</description>
     </item>
     
     <item>
@@ -275,7 +267,7 @@ It all started when I bought my first wireless router D-Link DIR 320. It looked 
       <pubDate>Thu, 11 Feb 2010 10:18:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/idea-ant-hanging/</guid>
-      <description>I had a very &amp;#8216;uncomfortable&amp;#8217; issue with Idea when using it for ant builds &amp;#8211; it hang in certain places like jar update task, rename task or similar.
+      <description>I had a very ‘uncomfortable’ issue with Idea when using it for ant builds – it hang in certain places like jar update task, rename task or similar.
 All my struggle can be found on Idea track. Fortunately Carl Abramsson found a workaround for that issue using
  -noinput
  switch to ant launch. Now everything works like a charm. Decided to create this post in case some one will be desperately googling for a solution in the wrong place 🙂</description>
@@ -287,9 +279,9 @@ All my struggle can be found on Idea track. Fortunately Carl Abramsson found a w
       <pubDate>Thu, 04 Feb 2010 22:22:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/nokia-ovi-suite/</guid>
-      <description>Installed, played with it a bit&amp;#8230; Looks nice 🙂
+      <description>Installed, played with it a bit… Looks nice 🙂
 Among significant pluses(IMHO of course):
- smoother experience nice improved and thought out UI sms log deserves additional applause (clap)(clap)(clap) back(PC-&amp;gt;phone) synchronization improved(both speed and reliability) working(at last) maps(NavTech)   among things I miss:     full control over the phone&amp;#8217;s file system   application install   media(other then mp3) transfer    But for those the are great news: Good ol&amp;#8217; PC Suite is not removed with Ovi upgrade 🙂 So you can still use it if you wish to&amp;#8230;   Generally Ovi is a much better tool for daily sync then PC Suite was.</description>
+ smoother experience nice improved and thought out UI sms log deserves additional applause (clap)(clap)(clap) back(PC-&amp;gt;phone) synchronization improved(both speed and reliability) working(at last) maps(NavTech)  </description>
     </item>
     
     <item>
@@ -298,8 +290,7 @@ Among significant pluses(IMHO of course):
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/switching-to-container-based-datasource/</guid>
-      <description>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
-First of all lets assume we use JBoss app server.</description>
+      <description>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server.</description>
     </item>
     
     <item>
@@ -308,7 +299,7 @@ First of all lets assume we use JBoss app server.</description>
       <pubDate>Thu, 24 Dec 2009 21:11:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/devenv-crash-from-the-command-line/</guid>
-      <description>Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &amp;#8211; a standard windows crash appeared with 0xc000005 error code and a &amp;#8220;friendly&amp;#8221; Send/Don&amp;#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.</description>
+      <description>Those of you who use devenv for building VS solutions(although you are discouraged to [here][1]) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &amp;amp;#8211; a standard windows crash appeared with 0xc000005 error code and a &amp;amp;#8220;friendly&amp;amp;#8221; Send/Don&amp;amp;#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.</description>
     </item>
     
     <item>
@@ -326,7 +317,7 @@ First of all lets assume we use JBoss app server.</description>
       <pubDate>Mon, 07 Dec 2009 09:38:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/sad-funny-world-of-mobile-development/</guid>
-      <description>Being a &amp;#8216;mobile&amp;#8217; developer is definitely fun. Although sometimes, when you think about it &amp;#8216;deeper&amp;#8217; you&amp;#8217;d rather drink a pint of whiskey:). Take a look at the enterprise Symbian OS:  http://www.codeproject.com/KB/mobile/Symbian_OS_design_faults.aspx  Reliable, huh? 😉 And it&amp;#8217;s not just Symbian &amp;#8211; in my point of view it&amp;#8217;s MIDP itself. You just can&amp;#8217;t rely on it unless you test, test and once again &amp;#8211; test. For me it feels like implementation usually just do not care about about what does the specification say.</description>
+      <description></description>
     </item>
     
     <item>
@@ -335,8 +326,7 @@ First of all lets assume we use JBoss app server.</description>
       <pubDate>Thu, 19 Nov 2009 11:12:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/jetbrains-idea-still-the-best/</guid>
-      <description>Now that I wrote lots of &amp;#8216;bad&amp;#8217; stuff about this new community version &amp;#8211; time to write something fine, as I really enjoy developing in this IDE.
-First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my &amp;#8216;more serious&amp;#8217; still reproduce this is something pleasant, indicating that the work is in progress and I&amp;#8217;m sure all the other stuff will be fixed soon.</description>
+      <description>Now that I wrote lots of &amp;amp;#8216;bad&amp;amp;#8217; stuff about this new community version &amp;amp;#8211; time to write something fine, as I really enjoy developing in this IDE.  First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my ‘more serious’ still reproduce this is something pleasant, indicating that the work is in progress and I’m sure all the other stuff will be fixed soon.</description>
     </item>
     
     <item>
@@ -345,8 +335,7 @@ First of all I downloaded a new 90.193 version and noticed that UI issues are al
       <pubDate>Thu, 12 Nov 2009 10:41:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/intellij-idea-community-edition-now-it-gets-serious/</guid>
-      <description>In my previous post I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along.
-First of all I&amp;#8217;ve ran into an issue with ant Jar task. It refused to work with an &amp;#8216;update&amp;#8217; option set to true. The interesting part of it was that executing the task independently didn&amp;#8217;t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to &amp;#8230; hang.</description>
+      <description>In my &amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;[&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;previous pos][1][&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;t&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;][2] I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along.  First of all I’ve ran into an issue with ant Jar task. It refused to work with an ‘update’ option set to true. The interesting part of it was that executing the task independently didn’t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to … hang.</description>
     </item>
     
     <item>
@@ -355,7 +344,7 @@ First of all I&amp;#8217;ve ran into an issue with ant Jar task. It refused to w
       <pubDate>Thu, 05 Nov 2009 10:15:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/intellij-idea-community-edition-first-impressions/</guid>
-      <description>Recently JetBrains released the brand new version of IDEA free for all. A few years before I Used this IDE for some projects and was very happy with it &amp;#8211; consequent moving to eclipse disappointed me much. However time passed and I&amp;#8217;ve got used to eclipse &amp;#8211; it&amp;#8217;s not a bad platform after all and it was free. So now when the free version idea came out I was very anxious convincing our customers to switch.</description>
+      <description>Recently JetBrains [released the brand new version of IDEA][1] free for all. A few years before I Used this IDE for some projects and was very happy with it &amp;amp;#8211; consequent moving to eclipse disappointed me much. However time passed and I&amp;amp;#8217;ve got used to eclipse &amp;amp;#8211; it&amp;amp;#8217;s not a bad platform after all and it was free. So now when the free version idea came out I was very anxious convincing our customers to switch.</description>
     </item>
     
     <item>
@@ -364,9 +353,8 @@ First of all I&amp;#8217;ve ran into an issue with ant Jar task. It refused to w
       <pubDate>Tue, 20 Oct 2009 14:08:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/blackberry-fun/</guid>
-      <description>Reading the developers guide on BlackBerry you may come across astonishing things. I&amp;#8217;m impressed. When I started doing little things in the blackberry app I soon got used to it and considered the platform to be well organized. Now that I&amp;#8217;m reading a book I get more and more confused about what I should do and what I shan&amp;#8217;t! Take a look at this masterpiece
- 
-Why it is not necessary to obfuscate applications  The compiler for the BlackBerry® Java™ Development Environment is set to minimize the size of the application.</description>
+      <description>Reading the developers guide on BlackBerry you may come across astonishing things. I’m impressed. When I started doing little things in the blackberry app I soon got used to it and considered the platform to be well organized. Now that I’m reading a book I get more and more confused about what I should do and what I shan’t! Take a look at this masterpiece
+    </description>
     </item>
     
     <item>
@@ -375,9 +363,9 @@ Why it is not necessary to obfuscate applications  The compiler for the BlackBer
       <pubDate>Thu, 24 Sep 2009 11:43:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/blackberry-internet-usage-ota-and-other-staff/</guid>
-      <description>Continuing the BlackBerry theme would like to share a few more issues I&amp;#8217;ve ran into recently.
+      <description>Continuing the BlackBerry theme would like to share a few more issues I’ve ran into recently.
  Internet usage.
-If you subscribe to blackberry service you can optionally buy some &amp;#8220;internet package&amp;#8221; from your provider in order to minimize internet expenses. This a great choice since you&amp;#8217;re going to visit internet pretty often if you&amp;#8217;ve chosen blackberry. Everything goes fine until you start using Java apps on your phone. Java uses it OWN predefined internet connection DIFFERENT from the one the browser uses.</description>
+If you subscribe to blackberry service you can optionally buy some “internet package” from your provider in order to minimize internet expenses. This a great choice since you’re going to visit internet pretty often if you’ve chosen blackberry. Everything goes fine until you start using Java apps on your phone. Java uses it OWN predefined internet connection DIFFERENT from the one the browser uses.</description>
     </item>
     
     <item>
@@ -386,7 +374,7 @@ If you subscribe to blackberry service you can optionally buy some &amp;#8220;in
       <pubDate>Wed, 23 Sep 2009 09:37:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/blackberry-invokelater-and-multimedia/</guid>
-      <description>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&amp;#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn&amp;#8217;t lead me anywhere except that I thought that something definitely gets locked.</description>
+      <description>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn’t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn’t lead me anywhere except that I thought that something definitely gets locked.</description>
     </item>
     
     <item>
@@ -396,7 +384,7 @@ If you subscribe to blackberry service you can optionally buy some &amp;#8220;in
       
       <guid>http://blog.vnomad.com/code/blogger-code-formatting/</guid>
       <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
-using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } }  </description>
+using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { //  // TODO: Add constructor logic here  //  int x = 10; } } </description>
     </item>
     
     <item>
@@ -405,7 +393,7 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Sat, 12 Sep 2009 19:44:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/mcts-acquired/</guid>
-      <description>One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &amp;amp;#8211; it&amp;amp;#8217;s like a combination of the previous 2 with some logic included- not just simple development components.  Regarding the exam &amp;#8211; not much can be said. Only one thing is worth mentioning &amp;#8211; it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is&amp;#8230; Interesting how would the next one go&amp;#8230;</description>
+      <description>One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &amp;amp;#8211; it&amp;amp;#8217;s like a combination of the previous 2 with some logic included- not just simple development components.  Regarding the exam – not much can be said. Only one thing is worth mentioning – it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is… Interesting how would the next one go…</description>
     </item>
     
     <item>
@@ -414,7 +402,7 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Fri, 21 Aug 2009 09:14:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/windows-service-accounts/</guid>
-      <description>Recently(probably 2 moths ago, but still &amp;#8211; recently) had to configure a bit of security for our test servers, visible to the web. Of course started with securing services under their own special accounts, limited to a very small amount of rights. Everything went on smoothly except one lil&amp;#8217; thing &amp;#8211; it didn&amp;#8217;t work:) All permissions were set correctly, all relationships assigned well, but services didn&amp;#8217;t start. Resolution(found it in 2 hours) was fairly simple &amp;#8211; while creating accounts for my services I forgot to check the &amp;#8220;Password never expires&amp;#8221; checkbox.</description>
+      <description>Recently(probably 2 moths ago, but still – recently) had to configure a bit of security for our test servers, visible to the web. Of course started with securing services under their own special accounts, limited to a very small amount of rights. Everything went on smoothly except one lil’ thing – it didn’t work:) All permissions were set correctly, all relationships assigned well, but services didn’t start. Resolution(found it in 2 hours) was fairly simple – while creating accounts for my services I forgot to check the “Password never expires” checkbox.</description>
     </item>
     
     <item>
@@ -423,7 +411,7 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Sat, 20 Jun 2009 12:32:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/damn-symbian-errors/</guid>
-      <description>Now you never know how will modern technology strike you next time&amp;#8230; Experience I&amp;#8217;ve got today is remarkable. It&amp;#8217;s not that something awful happened, but potentially this is really serious. Imagine you have a template in the phone to send SMS quickly with predefined text. And Imagine this piece of software has bugs&amp;#8230; Whatever &amp;#8211; one might think if it won&amp;#8217;t send an sms &amp;#8211; I’ll retype and sent it again.</description>
+      <description>Now you never know how will modern technology strike you next time… Experience I’ve got today is remarkable. It’s not that something awful happened, but potentially this is really serious. Imagine you have a template in the phone to send SMS quickly with predefined text. And Imagine this piece of software has bugs… Whatever – one might think if it won’t send an sms – I’ll retype and sent it again.</description>
     </item>
     
     <item>
@@ -432,7 +420,7 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Thu, 16 Apr 2009 22:49:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/mcp-aquired/</guid>
-      <description>[&amp;lt;img style=&amp;ldquo;float:left; margin:0 10px 10px 0;cursor:pointer; cursor:hand;width: 160px; height: 80px;&amp;rdquo; src=&amp;ldquo;http://2.bp.blogspot.com/_SwypSVIrwAo/See277vd4pI/AAAAAAAADrc/YzPLJ891L2s/s320/MCP(rgb).jpg&amp;quot; border=&amp;ldquo;0&amp;rdquo; alt=&amp;ldquo;&amp;rdquo; id=&amp;ldquo;At last i finally got time to get to that certification center and pass that damn 70-536. You can&amp;#8217;t really work with all of that technology at once to keep all the names of classes and methods in your head, and the projects are swapping fast&amp;#8230; SO it took me more than a year to get from an idea of sitting an axam to actually passing it.</description>
+      <description>[&amp;lt;img style=&amp;quot;float:left; margin:0 10px 10px 0;cursor:pointer; cursor:hand;width: 160px; height: 80px;&amp;rdquo; src=&amp;quot;http://2.bp.blogspot.com/_SwypSVIrwAo/See277vd4pI/AAAAAAAADrc/YzPLJ891L2s/s320/MCP(rgb).jpg&amp;rdquo; border=&amp;quot;0&amp;rdquo; alt=&amp;rdquo;&amp;rdquo; id=&amp;quot;At last i finally got time to get to that certification center and pass that damn 70-536. You can’t really work with all of that technology at once to keep all the names of classes and methods in your head, and the projects are swapping fast… SO it took me more than a year to get from an idea of sitting an axam to actually passing it.</description>
     </item>
     
     <item>
@@ -441,8 +429,8 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Sun, 12 Apr 2009 19:00:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/java-sdk-is-hacking-window/</guid>
-      <description>Everybody knows of such a nice tool developed by our precious Google as Google Search. Recently I conducted a search on my computer for a simple word &amp;#8216;Hack&amp;#8217;. I was impressed by the results:
-the word is mostly used in &amp;#8230; !!!Java sdk!!! &amp;#8211; try it out. I saw also some Visusal Studio files and some more but&amp;#8230; I the Sun guys need to hack Windows in orde to get things done&amp;#8230; no fursther comments&amp;#8230;</description>
+      <description>Everybody knows of such a nice tool developed by our precious Google as Google Search. Recently I conducted a search on my computer for a simple word ‘Hack’. I was impressed by the results:
+the word is mostly used in … !!!Java sdk!!! – try it out. I saw also some Visusal Studio files and some more but… I the Sun guys need to hack Windows in orde to get things done… no fursther comments…</description>
     </item>
     
     <item>
@@ -451,7 +439,7 @@ the word is mostly used in &amp;#8230; !!!Java sdk!!! &amp;#8211; try it out. I 
       <pubDate>Thu, 19 Mar 2009 13:05:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/j2me-radio-lists-trouble/</guid>
-      <description>Recently I needed to do a simple task &amp;#8211; implement a radio button list with choices under J2ME MIDP 2.0. I started with creating an new view of type javax.microedition.lcdui.List, keeping in mind that I can just construct it with List.EXCLUSIVE and add whatever items i want and everything should work fine. Well almost&amp;#8230; All looked nice and the items showed up very attractively, having transparency and current font set up by default, which looked quite impressive.</description>
+      <description>Recently I needed to do a simple task – implement a radio button list with choices under J2ME MIDP 2.0. I started with creating an new view of type javax.microedition.lcdui.List, keeping in mind that I can just construct it with List.EXCLUSIVE and add whatever items i want and everything should work fine. Well almost… All looked nice and the items showed up very attractively, having transparency and current font set up by default, which looked quite impressive.</description>
     </item>
     
     <item>
@@ -460,7 +448,7 @@ the word is mostly used in &amp;#8230; !!!Java sdk!!! &amp;#8211; try it out. I 
       <pubDate>Wed, 18 Mar 2009 22:02:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/strange-nokia-music-converter/</guid>
-      <description>The nice thing about all Noka phones is that they simply work. No excuses. But seems like putting lts of effort into the phone firmware leaves very little to the supporting software these phones are shipped with. There is a really nice piece of software called &amp;#8220;Nokia PC Suite&amp;#8221;. Though it is 80% useless to my mind it has always been a pleasure for me to know I can manage utmost every feature in my phone throught that shiny UI.</description>
+      <description>The nice thing about all Noka phones is that they simply work. No excuses. But seems like putting lts of effort into the phone firmware leaves very little to the supporting software these phones are shipped with. There is a really nice piece of software called “Nokia PC Suite”. Though it is 80% useless to my mind it has always been a pleasure for me to know I can manage utmost every feature in my phone throught that shiny UI.</description>
     </item>
     
     <item>
@@ -469,7 +457,7 @@ the word is mostly used in &amp;#8230; !!!Java sdk!!! &amp;#8211; try it out. I 
       <pubDate>Wed, 01 Oct 2008 09:24:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/net-1-0-to-net-2-0-migration/</guid>
-      <description>Actually a painfull process it can be if the project you&amp;#8217;re trying to convert has lots of custom stuff. The first problem i stumbled upon was resources. eah yeah &amp;#8211; i mean form resources. They ciompletely refused to work. I know about that separation that came in when VS 2005 was introduced so I did use DeCodEx to make majour conversion and splitting but it still turned out that my forms are not opening :(.</description>
+      <description>Actually a painfull process it can be if the project you’re trying to convert has lots of custom stuff. The first problem i stumbled upon was resources. eah yeah – i mean form resources. They ciompletely refused to work. I know about that separation that came in when VS 2005 was introduced so I did use DeCodEx to make majour conversion and splitting but it still turned out that my forms are not opening :(.</description>
     </item>
     
     <item>
@@ -478,7 +466,7 @@ the word is mostly used in &amp;#8230; !!!Java sdk!!! &amp;#8211; try it out. I 
       <pubDate>Mon, 29 Sep 2008 15:03:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/svn-vs-cvs/</guid>
-      <description>About 3 years ago I wash introduced to CVS and from that time I havent stopped using it as it quickly became my daily useage tool. Since than I tried some different tools- just because i had to due to work purposes and one of them was Subversion(SVN). I [ractically don&amp;#8217;t see any difference between the two in usage and moreover in the interface. It has to be said that I use TortoiseCVS/SVN verisons &amp;#8211; maybe standalone apps differ significantly.</description>
+      <description>About 3 years ago I wash introduced to CVS and from that time I havent stopped using it as it quickly became my daily useage tool. Since than I tried some different tools- just because i had to due to work purposes and one of them was Subversion(SVN). I [ractically don’t see any difference between the two in usage and moreover in the interface. It has to be said that I use TortoiseCVS/SVN verisons – maybe standalone apps differ significantly.</description>
     </item>
     
     <item>
@@ -487,8 +475,8 @@ the word is mostly used in &amp;#8230; !!!Java sdk!!! &amp;#8211; try it out. I 
       <pubDate>Fri, 26 Sep 2008 19:36:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/google-chrome/</guid>
-      <description>Now that this fancy prog is available i downloaded and installed it hoping to see all that Google promised it will have. However either &amp;#8217;cause its beta or these things just cant be fixed for browsers &amp;#8211; here &amp;#8216;s my opinion after about half a moth usage.
-Usability &amp;#8211; good, except if one tab hangs &amp;#8211; all tabs entire app hang&amp;#8230;After some time however you get a dialog requesting the stop of some plugin, but in general &amp;#8211; if there is no active items on the page &amp;#8211; it just hangs 🙁</description>
+      <description>Now that this fancy prog is available i downloaded and installed it hoping to see all that Google promised it will have. However either ’cause its beta or these things just cant be fixed for browsers – here ‘s my opinion after about half a moth usage.
+Usability– good, except if one tab hangs – all tabs entire app hang…After some time however you get a dialog requesting the stop of some plugin, but in general – if there is no active items on the page – it just hangs 🙁</description>
     </item>
     
     <item>
@@ -497,7 +485,7 @@ Usability &amp;#8211; good, except if one tab hangs &amp;#8211; all tabs entire 
       <pubDate>Fri, 26 Sep 2008 19:23:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/wise-installation-studio/</guid>
-      <description>Windows Installer&amp;#8230; nightmare&amp;#8230; WISE &amp;#8211; hurt me plenty. Although this is much simpler and logical to my mind then WI it is still very sensible to changes. What I am trying to say &amp;#8211; if do everything right from the first time e.g. correctly choose all names and dialogs and files e.t.c it works perfectly. But when after 5 minutes you decide to change, say, some script or file destination WISE i making so many actions in background you can&amp;#8217;t even imagine.</description>
+      <description>Windows Installer… nightmare… WISE – hurt me plenty. Although this is much simpler and logical to my mind then WI it is still very sensible to changes. What I am trying to say – if do everything right from the first time e.g. correctly choose all names and dialogs and files e.t.c it works perfectly. But when after 5 minutes you decide to change, say, some script or file destination WISE i making so many actions in background you can’t even imagine.</description>
     </item>
     
     <item>
@@ -515,7 +503,7 @@ Usability &amp;#8211; good, except if one tab hangs &amp;#8211; all tabs entire 
       <pubDate>Thu, 12 Jun 2008 09:06:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/code-highlighting-lib-missing/</guid>
-      <description>Yesterday tried to post some code to my technical blog again. What a painfull process was that! Never thought it would be so hard to add some custom javascript to my template. If Google validates input so hard why won&amp;#8217;t they create some custom tag for code? I think many people use code posts in blogger but as far as i&amp;#8217;ve seen all of them look pretty bad. Live space</description>
+      <description>Yesterday tried to post some code to my technical blog again. What a painfull process was that! Never thought it would be so hard to add some custom javascript to my template. If Google validates input so hard why won’t they create some custom tag for code? I think many people use code posts in blogger but as far as i’ve seen all of them look pretty bad. Live space</description>
     </item>
     
     <item>
@@ -524,8 +512,8 @@ Usability &amp;#8211; good, except if one tab hangs &amp;#8211; all tabs entire 
       <pubDate>Tue, 10 Jun 2008 09:44:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/trying-out-google-base/</guid>
-      <description>Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app&amp;#8230; But when finished everything looked very nice!
-class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;quot;; const string BATCH_COUNT_SETTING = &amp;quot;batchCount&amp;quot;; const string CHECK_EXISTANCE_SETTING = &amp;quot;checkExistance&amp;quot;; const string MyItem_ITEMTYPE_SETTING = &amp;quot;MyItemItemType&amp;quot;; const string MyDB_CONNECTION_STRING = &amp;quot;MyDBConnectionString&amp;quot;; static void Main(string[] args) { string appNameG = Utils.</description>
+      <description>Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app… But when finished everything looked very nice!
+class Program { const string GOOGLE_LOGIN_SECTION = &amp;#34;googleLogin&amp;#34;; const string BATCH_COUNT_SETTING = &amp;#34;batchCount&amp;#34;; const string CHECK_EXISTANCE_SETTING = &amp;#34;checkExistance&amp;#34;; const string MyItem_ITEMTYPE_SETTING = &amp;#34;MyItemItemType&amp;#34;; const string MyDB_CONNECTION_STRING = &amp;#34;MyDBConnectionString&amp;#34;; static void Main(string[] args) { string appNameG = Utils.</description>
     </item>
     
     <item>
@@ -534,7 +522,7 @@ class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;qu
       <pubDate>Tue, 22 Jan 2008 11:12:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/net-marshalling/</guid>
-      <description>Interesting things happen when you try to marshal something in real life&amp;#8230;.Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] extern __declspec(dllexport) int SomeFunc(char** stringArray);  [marshal]</description>
+      <description>Interesting things happen when you try to marshal something in real life….Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] extern __declspec(dllexport) int SomeFunc(char** stringArray); [marshal]</description>
     </item>
     
     <item>
@@ -543,7 +531,7 @@ class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;qu
       <pubDate>Mon, 05 Nov 2007 16:50:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/display-tiff-in-picturebox-adobe-plugins/</guid>
-      <description>The previous post highlighted how to accomplish the given task using TIFF-PDF-JPEG-BITMAP conversion. Though this was is complicated it works perfect. But so much code for so little functionality often is not considered good if even eccepted. Recently a new way was found. It has to be said that it is not &amp;#8220;the proper way&amp;#8221;, because it needs some annatural code, but it is considerably lighter than the previous one. SO the idea is to draw direktly on the window using its HWND and SDK drawContentsToFunction.</description>
+      <description>The previous post highlighted how to accomplish the given task using TIFF-PDF-JPEG-BITMAP conversion. Though this was is complicated it works perfect. But so much code for so little functionality often is not considered good if even eccepted. Recently a new way was found. It has to be said that it is not “the proper way”, because it needs some annatural code, but it is considerably lighter than the previous one. SO the idea is to draw direktly on the window using its HWND and SDK drawContentsToFunction.</description>
     </item>
     
     <item>
@@ -552,7 +540,7 @@ class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;qu
       <pubDate>Thu, 01 Nov 2007 10:22:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</guid>
-      <description>Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef&amp;#8230;Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.</description>
+      <description>Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.</description>
     </item>
     
     <item>
@@ -561,7 +549,7 @@ class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;qu
       <pubDate>Fri, 19 Oct 2007 14:21:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/custom-selection-server-in-pdf-plugin/</guid>
-      <description>Recently i was developing a feature for the Adobe&amp;reg; Acrobat Reader&amp;reg; plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page&amp;#8230; &amp;#8211; bad you are :). Here i&amp;#8217;ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.</description>
+      <description>Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.</description>
     </item>
     
     <item>
@@ -571,8 +559,8 @@ class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;qu
       
       <guid>http://blog.vnomad.com/code/nice-books-to-readoopood-agile-etc/</guid>
       <description>Recently, i started to come across _r e a l l y _nice books about software project management and risks. So friends of mine also share good patterns/best practices books. among them the can be listed :
- _ _Tom DeMarco, “Waltzing with Bears: Managing Risk on Software Projects” Steve McConnell &amp;#8220;Software project survival guide&amp;#8221; &amp;#8220;Analysis Patterns: Reusable Object Models&amp;#8221; Martin Fowler Design Patterns Book
-Design Patterns: Elements of Reusable Object-Oriented Software by ErichGamma, RichardHelm, RalphJohnson, and JohnVlissides Edvard Yourdon &amp;#8216;Death March&amp;#8217;  if someone can contribute to the list &amp;#8211; welcome!</description>
+ _ _Tom DeMarco, “Waltzing with Bears: Managing Risk on Software Projects” Steve McConnell “Software project survival guide” “Analysis Patterns: Reusable Object Models” Martin Fowler Design Patterns Book
+Design Patterns: Elements of Reusable Object-Oriented Software by ErichGamma, RichardHelm, RalphJohnson, and JohnVlissides Edvard Yourdon ‘Death March’  if someone can contribute to the list – welcome!</description>
     </item>
     
   </channel>

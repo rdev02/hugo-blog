@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Perf on Nomad&#39;s reflections</title>
+    <title>perf on Nomad&#39;s reflections</title>
     <link>http://blog.vnomad.com/tags/perf/</link>
-    <description>Recent content in Perf on Nomad&#39;s reflections</description>
+    <description>Recent content in perf on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 02 Aug 2012 22:35:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/javascript-performance-tests/</guid>
-      <description>I&amp;#8217;m dealing a lot with javascript nowadays and obviously I have to take performance into account. One way of doing this is writing a bunch of test code and record the time for your scripts, but what if you wanted to quickly test out some approaches and do not really want to invest a lot into them? Today I was pointed to a solution: http://jsperf.com/. This awesome tool does not just give you the framework to easily test out javascript but also provides and already created library of tests other people created when investigating their performance issues.</description>
+      <description></description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
-      <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100&amp;frasl;1000-line file is not fun and I really think you shouldn&amp;#8217;t bother choosing if you&amp;#8217;re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large &amp;#8211; 320k of CSV data is ~ 12MB performance is considerable.</description>
+      <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable.</description>
     </item>
     
   </channel>

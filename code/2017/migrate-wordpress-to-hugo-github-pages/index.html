@@ -1,69 +1,85 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-  
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Viktor Halitsyn">
+<meta name="keywords" content="wordpress, hugo, github, blog, code, travel, immigration, ukraine, washington">
+<meta name="description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.">
+
+
+<meta property="og:description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Migrating wordpress blog to hugo and hosting it with GitHub Pages">
+<meta name="twitter:title" content="Migrating wordpress blog to hugo and hosting it with GitHub Pages">
+<meta property="og:url" content="http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
+<meta property="twitter:url" content="http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
+<meta property="og:site_name" content="Nomad&#39;s reflections">
+<meta property="og:description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.">
+<meta name="twitter:description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2017-11-12T09:59:00">
+  
+  
+    <meta property="article:modified_time" content="2017-11-12T09:59:00">
+  
+  
+  
+    
+      <meta property="article:section" content="tech">
+    
+      <meta property="article:section" content="tools">
+    
+  
+  
+    
+      <meta property="article:tag" content="hugo">
+    
+      <meta property="article:tag" content="wordpress">
+    
+      <meta property="article:tag" content="github">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@rdev02">
+
+
+  <meta name="twitter:creator" content="@rdev02">
+
+
+
+
+
+
+  <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/wptohugothumb.png">
+  <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/wptohugothumb.png">
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+
+
     <title>Migrating wordpress blog to hugo and hosting it with GitHub Pages</title>
-    <meta name="author" content="Viktor Halitsyn">
-    <meta name="keywords" content="wordpress, hugo, github, blog, code, travel, immigration, ukraine, washington">
 
     <link rel="icon" href="/favicon.jpg">
     
 
     
-    <meta name="description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.
-
-">
-    <meta property="og:description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.
-
-">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Migrating wordpress blog to hugo and hosting it with GitHub Pages">
-    <meta property="og:url" content="/code/2017/migrate-wordpress-to-hugo-github-pages/">
-    <meta property="og:site_name" content="Nomad&#39;s reflections">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.
-
-">
-    
-      <meta name="twitter:creator" content="@rdev02">
-    
+      <link rel="publisher" href="https://plus.google.com/&#43;victorhalitsyn">
     
 
-    
-    
-
-    
-      <meta property="og:image" content="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-    
-
-    
-      <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2017/wptohugo/wptohugothumb.png">
-    
-    
-    
-
-    
+    <link rel="canonical" href="http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -71,7 +87,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
       
@@ -81,14 +97,17 @@
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-64535001-2', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64535001-2', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     
@@ -110,7 +129,7 @@ ga('send', 'pageview');
     
       <div class="sidebar-profile">
         <a href="/#about">
-          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
         
@@ -260,13 +279,8 @@ ga('send', 'pageview');
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Two weeks ago my blog was hosted on a 10$/mo vps instance in <a href="https://www.digitalocean.com">DigitalOcean</a>, powered by a couple docker containers, running an ever dynamic <a href="http://wordpress.com">Wordpress</a> platform. Now it&rsquo;s completely static, served from <a href="https://pages.github.com/">GitHub Pages</a> servers free. What follows is a small experience reco/guide on how to make this happen.</p>
-
-<p></p>
-
 <p>TL;DR <a href="#migration">link</a> explaining the process.</p>
-
 <h1 id="motivation">Motivation</h1>
-
 
 
  
@@ -292,18 +306,14 @@ ga('send', 'pageview');
   
 </div>
 
-
 <p>Running on a small vps with wordpress was nice, but not inspiring: I moved there from (google)blogger platform, which at that time was one of the fastest ways to bootstrap a blog, seeking something, that is more editor/code/content friendly. After all, Wordpress, with the heritage of catering to bloggers around the world, was a promising platform to look at. The things that I was looking for included:</p>
-
 <ul>
 <li>clean readable design/theme</li>
 <li>easy to use editor, preferably wysiwyg</li>
 <li>easy basics: tags, archive, search, comments, bio etc.</li>
 </ul>
-
 <p>After getting a closer look it turned out that Wordpress is a very bare-bones platform: plugins+themes are the things that make it beautiful and functional. I spent a lot of time looking for a functional simple free themes/plugins that would make my blog look readable on both mobile and desktop. I found one, but ultimately I wasn&rsquo;t happy with it. On top of that my vps docker system kept asking for more RAM to keep MySQL, Varnish and a couple NGinxs satisfied. It was the time I realized I need something way simpler and more developer - oriented.</p>
-
-<h1 id="enter-hugo-hahahugoshortcode-3hbhb">Enter HUGO 
+<h1 id="enter-hugo-hahahugoshortcode-s2-hbhb">Enter HUGO 
 
  
   
@@ -328,15 +338,10 @@ ga('send', 'pageview');
   
 </div>
 </h1>
-
 <p><a href="https://gohugo.io/">HUGO</a> is static pages generator, written in Go. It comes with a fast server, that takes about <strong>30</strong> MB mem to run on site of this size(which is not large, but not exactly empty either). You write your posts in markdown, which is currently what I breathe, and you can literally program you pages(with go-like syntax), should you really want to. You need to keep in mind everything is static in the end, thus, should you want your site to be responsive, you&rsquo;ll have to use javascript.</p>
-
 <p>Hugo has <em>support</em> for most things you&rsquo;d want to have: tags(taxonomies), categories, metadata, templates for different types of content, ready to use themes and internationalization support. That being said <strong><em>support</em> !== <em>ready to use out of the box</em></strong>. In other words one can build pages that have all the features mentioned, using the framework, but you need to do the legwork&hellip; or not ).</p>
-
 <h2 id="enter-tranquilpeak-theme">Enter TranquilPeak theme</h2>
-
 <p><a href="https://themes.gohugo.io/hugo-tranquilpeak-theme/">TranquilPeak</a> is an <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">open-source</a> theme that has most of the basics implemented for you, using hugo&rsquo;s framework. You can easily <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/.github/CONTRIBUTING.md">extend</a> it if you wish. Thus blog runs it, so feel free to look around, but there is a showcase available as well. I won&rsquo;t talk much about it here, as the <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md">docs</a> are quite exhaustive, suffices to say that the theme comes loaded with goodness like</p>
-
 <ul>
 <li><a href="https://disqus.com/">disquss</a> for comments</li>
 <li><a href="http://fancybox.net/">fancybox</a> for images</li>
@@ -344,11 +349,8 @@ ga('send', 'pageview');
 <li><a href="http://fontawesome.io/">font-awesome</a> icons</li>
 <li><a href="https://highlightjs.org/">highlight.js</a> compatible</li>
 </ul>
-
-<p><a name="migration"></a></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h1 id="migration-experience">Migration experience</h1>
-
 
 
  
@@ -374,56 +376,59 @@ ga('send', 'pageview');
   
 </div>
 
-
 <p>The goal was to get my wordpress running on GitHub Pages, with a custom domain. I also prefer my content to be versioned separately from the framework, therefore I went with git worktrees workflow as described below.
-<br><br></p>
-
+<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <ol>
-<li><p>As described <a href="https://gohugo.io/tools/migrations/">here</a>, use the <a href="https://github.com/SchumacherFM/wordpress-to-hugo-exporter">exporter plugin</a> to get your content out of wordpress. <br>
-I&rsquo;ve hit problems right there, on step one:<br>
+<li>
+<p>As described <a href="https://gohugo.io/tools/migrations/">here</a>, use the <a href="https://github.com/SchumacherFM/wordpress-to-hugo-exporter">exporter plugin</a> to get your content out of wordpress. <!-- raw HTML omitted -->
+I&rsquo;ve hit problems right there, on step one:<!-- raw HTML omitted -->
 <strong>Fatal error: Class &lsquo;ZipArchive&rsquo; not found in /var/www/html/wp-content/plugins/hugo-export.php on line 403</strong>
-<br>
+<!-- raw HTML omitted -->
 <em>Solution</em>: make sure you have zip installed and enabled(in php.ini) on your machine. php info would be you guiding light. I was running an old <code>wordpress:4.6.1-fpm</code> bare container hence <code>apt-get</code> was useless. If you are in the same or similar boat that I was - upgrade to latest <code>wordpress:4.8.3-php7.0-fpm</code>  then use
-<br><strong>docker-php-ext-install zip</strong><br>
-inside the container. Restart the container - now it(export) should work.</p></li>
-
-<li><p>Install <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">tranquipeak theme</a><br>
-There were no problems for me doing this. Configuring the theme takes a while, especially if you decide to change fonts, highlights etc.</p></li>
-
-<li><p>Test everything works by running <code>hugo server</code> or <code>hugo</code> to generate files.</p></li>
-
-<li><p>Now host the thing on GitHub Pages, using <a href="https://pages.github.com/">this guide</a><br>
+<!-- raw HTML omitted --><strong>docker-php-ext-install zip</strong><!-- raw HTML omitted -->
+inside the container. Restart the container - now it(export) should work.</p>
+</li>
+<li>
+<p>Install <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">tranquipeak theme</a><!-- raw HTML omitted -->
+There were no problems for me doing this. Configuring the theme takes a while, especially if you decide to change fonts, highlights etc.</p>
+</li>
+<li>
+<p>Test everything works by running <code>hugo server</code> or <code>hugo</code> to generate files.</p>
+</li>
+<li>
+<p>Now host the thing on GitHub Pages, using <a href="https://pages.github.com/">this guide</a><!-- raw HTML omitted -->
 I had several problems here where I could not select the branch to publish from on github, or my CNAME was not working. The remedy was to follow the steps and instructions <em><em>exactly</em></em> as prescribed by github, namely:</p>
-
 <ol>
-<li><p>Create a new project.</p></li>
-
-<li><p>Create the index.html page</p></li>
-
-<li><p>Set your project to be GitHub pages in Settings.</p></li>
-
-<li><p>Pull your project from GitHub.</p></li>
-
-<li><p>Make sure you have latest git installed and follow the <a href="https://pages.github.com/">guide</a><br>
+<li>
+<p>Create a new project.</p>
+</li>
+<li>
+<p>Create the index.html page</p>
+</li>
+<li>
+<p>Set your project to be GitHub pages in Settings.</p>
+</li>
+<li>
+<p>Pull your project from GitHub.</p>
+</li>
+<li>
+<p>Make sure you have latest git installed and follow the <a href="https://pages.github.com/">guide</a><!-- raw HTML omitted -->
 I had a problem here where wit git worktree:
 <code>fatal: Refusing to point HEAD outside of refs/</code>
-solved, by updating to the latest git.</p></li>
+solved, by updating to the latest git.</p>
+</li>
 </ol>
-
-<p>6 <em>Add CNAME file, containing your domain name to your gh-pages branch root</em></p></li>
-
-<li><p><strong>Profit!</strong></p></li>
+<p>6 <em>Add CNAME file, containing your domain name to your gh-pages branch root</em></p>
+</li>
+<li>
+<p><strong>Profit!</strong></p>
+</li>
 </ol>
-
 <p>Hope this helps people, should they have trouble. Also, if you have problems following these instructions - let me know in comments.</p>
-
 <p>PS: In my NGinx:Varnish:NGinx:Php-fpm:MySQL Wordpress setup I went overzealous on the HSTS header</p>
-
 <pre><code># Set HSTS to 365 days
 add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; preload&quot;;
-</code></pre>
-
-<p>So now people, that visited my blog a year ago, and haven&rsquo;t cleared their cache since, will be forced to https, which would yield nothing, since custom domains are not served through https yet from GitHub Pages. Oh well&hellip;</p>
+</code></pre><p>So now people, that visited my blog a year ago, and haven&rsquo;t cleared their cache since, will be forced to https, which would yield nothing, since custom domains are not served through https yet from GitHub Pages. Oh well&hellip;</p>
               
             </div>
           </div>
@@ -445,8 +450,8 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -505,8 +510,8 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -519,14 +524,14 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2017 Viktor Halitsyn. All Rights Reserved
+    &copy; 2020 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -585,8 +590,8 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="3">
@@ -616,7 +621,7 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
       <i class="fa fa-remove"></i>
     </div>
     
-      <img id="about-card-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
     
     <h4 id="about-card-name">Viktor Halitsyn</h4>
     
@@ -639,40 +644,10 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         0 posts found
-      </p>
-    </div>
-  </div>
-</div>
+    
+
     
   
-    
     <div id="cover" style="background-image:url('https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg');"></div>
   
 
@@ -680,25 +655,25 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
-
-<script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
-    }
-    hljs.highlightBlock(block);
-  });
-});
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
 </script>
 
 
@@ -727,6 +702,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

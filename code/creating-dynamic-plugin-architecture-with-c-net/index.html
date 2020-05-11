@@ -1,61 +1,80 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-  
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Viktor Halitsyn">
+<meta name="keywords" content=", code, travel, immigration, ukraine, washington">
+<meta name="description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.">
+
+
+<meta property="og:description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Creating dynamic plugin architecture with C#.NET">
+<meta name="twitter:title" content="Creating dynamic plugin architecture with C#.NET">
+<meta property="og:url" content="http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/">
+<meta property="twitter:url" content="http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/">
+<meta property="og:site_name" content="Nomad&#39;s reflections">
+<meta property="og:description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.">
+<meta name="twitter:description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2009-12-12T23:11:00">
+  
+  
+    <meta property="article:modified_time" content="2009-12-12T23:11:00">
+  
+  
+  
+    
+      <meta property="article:section" content="tech">
+    
+      <meta property="article:section" content="code">
+    
+  
+  
+    
+      <meta property="article:tag" content=".net">
+    
+      <meta property="article:tag" content="c#">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@rdev02">
+
+
+  <meta name="twitter:creator" content="@rdev02">
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+
+
     <title>Creating dynamic plugin architecture with C#.NET</title>
-    <meta name="author" content="Viktor Halitsyn">
-    <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 
     <link rel="icon" href="/favicon.jpg">
     
 
     
-    <meta name="description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.">
-    <meta property="og:description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Creating dynamic plugin architecture with C#.NET">
-    <meta property="og:url" content="/code/creating-dynamic-plugin-architecture-with-c-net/">
-    <meta property="og:site_name" content="Nomad&#39;s reflections">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.">
-    
-      <meta name="twitter:creator" content="@rdev02">
-    
+      <link rel="publisher" href="https://plus.google.com/&#43;victorhalitsyn">
     
 
-    
-    
-
-    
-      <meta property="og:image" content="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-    
-
-    
-    
-    
-
-    
+    <link rel="canonical" href="http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -63,7 +82,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
       
@@ -73,14 +92,17 @@
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-64535001-2', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64535001-2', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     
@@ -102,7 +124,7 @@ ga('send', 'pageview');
     
       <div class="sidebar-profile">
         <a href="/#about">
-          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
         
@@ -251,160 +273,142 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application. Also Loading dll&#8217;s in the main application domain is very risky in terms of security concerns. But back to the problem &#8211; as long as your assembly is loaded into any domain it is locked, meaning that you can&#8217;t replace it with the newer version.</p>
-
-<p>Naturally you&#8217;ll turn to creating a separate app domain. and try to AppDomain.load() assembly there&#8230; Now that&#8217;s the time you&#8217;ll start experiencing problems. <a href="http://msdn.microsoft.com/en-us/library/36az8x58.aspx">Here </a>we can get smth like &#8220;<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 11px;">This method should only be used to load an assembly into the current application domain. This method is defined for interoperability callers who cannot call the static <a href="http://msdn.microsoft.com/en-us/library/system.reflection.assembly.load.aspx" style="color: #0033cc; text-decoration: none;">Load</a> method.<span style="font-family: 'Times New Roman'; font-size: medium;">&#8221; In short &#8211; you&#8217;ll fail to load the assembly having its path. Well, actually what you really need is to be able to get some object out of there, right? Suppose you use simple &#8220;middle-tier-interface&#8221; assembly like<br /> </span></span></p>
-
-<pre><code class="language-cs">namespace PInterface
+              <p>There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application. Also Loading dll’s in the main application domain is very risky in terms of security concerns. But back to the problem – as long as your assembly is loaded into any domain it is locked, meaning that you can’t replace it with the newer version.</p>
+<p>Naturally you’ll turn to creating a separate app domain. and try to AppDomain.load() assembly there… Now that’s the time you’ll start experiencing problems. <a href="http://msdn.microsoft.com/en-us/library/36az8x58.aspx">Here </a>we can get smth like “<!-- raw HTML omitted -->This method should only be used to load an assembly into the current application domain. This method is defined for interoperability callers who cannot call the static <!-- raw HTML omitted -->Load<!-- raw HTML omitted --> method.<!-- raw HTML omitted -->” In short – you’ll fail to load the assembly having its path. Well, actually what you really need is to be able to get some object out of there, right? Suppose you use simple “middle-tier-interface” assembly like<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">namespace</span> PInterface
 {
-    public interface PluginInterface
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> PluginInterface
     {
-        string DoSmth();
+        <span style="color:#66d9ef">string</span> DoSmth();
     }
 }
-</code></pre>
-
-<p>Then when you want to load Some type, let it be like this:</p>
-
-<pre><code class="language-cs">namespace SamplePlugin
+</code></pre></div><p>Then when you want to load Some type, let it be like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">namespace</span> SamplePlugin
 {
-    public class Plugin1 :MarshalByRefObject, PluginInterface
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Plugin1</span> :MarshalByRefObject, PluginInterface
     {
-        #region PluginInterface
-
-        public string DoSmth()
+        <span style="color:#75715e">#region PluginInterface
+</span><span style="color:#75715e"></span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> DoSmth()
         {
-            return &quot;Hello!&quot;;
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello!&#34;</span>;
         }
 
-        #endregion
-    }
+        <span style="color:#75715e">#endregion
+</span><span style="color:#75715e"></span>    }
 }
-</code></pre>
-
-<p>You would simply do it like:</p>
-
-<pre><code class="language-cs">AppDomain newDomain = AppDomain.CreateDomain(&quot;newDOmain&quot;);
+</code></pre></div><p>You would simply do it like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">AppDomain newDomain = AppDomain.CreateDomain(<span style="color:#e6db74">&#34;newDOmain&#34;</span>);
 newDomain.CreateInstanceFromAndUnwrap(pathToDLL, pluginClassName);
-</code></pre>
+</code></pre></div><p>Assuming you know the class name(s) of course:). If you don’t, then it’s 2 choices: either you specify that the plugin assembly has to have a “marker” type (say “class PluginType{}”) and then after loading an assembly into app domain execute the callback on it to get the class names via reflection load OR you might end up with a crossDomain walker like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">using</span> System;
+<span style="color:#66d9ef">using</span> System.Collections.Generic;
+<span style="color:#66d9ef">using</span> System.Windows.Forms;
+<span style="color:#66d9ef">using</span> System.Reflection;
 
-<p>Assuming you know the class name(s) of course:). If you don&#8217;t, then it&#8217;s 2 choices: either you specify that the plugin assembly has to have a &#8220;marker&#8221; type (say &#8220;class PluginType{}&#8221;) and then after loading an assembly into app domain execute the callback on it to get the class names via reflection load OR you might end up with a crossDomain walker like this:</p>
-
-<pre><code class="language-cs">using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Reflection;
-
-namespace WindowsApplication1
+<span style="color:#66d9ef">namespace</span> WindowsApplication1
 {
-    static class Program
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
     {
-        private readonly static string PLUGIN_INTERFACE_NAME = &quot;PluginInterfaceName&quot;;
-        private readonly static string PLUGIN_CLASSES_NAMES = &quot;PluginClasses&quot;;
-        /// &lt;summary&gt;
-        /// The main entry point for the application.
-        /// &lt;/summary&gt;
-        [STAThread]
-        static int Main(String[] args)
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_INTERFACE_NAME = <span style="color:#e6db74">&#34;PluginInterfaceName&#34;</span>;
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_CLASSES_NAMES = <span style="color:#e6db74">&#34;PluginClasses&#34;</span>;
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// The main entry point for the application.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">        [STAThread]</span>
+        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> Main(String[] args)
         {
-            object interfaceName =  AppDomain.CurrentDomain.GetData(PLUGIN_INTERFACE_NAME);
-            List&lt;string&gt; pluginClassesNames = new List&lt;string&gt;(3);
-            if (args.Length &gt; 0)
+            <span style="color:#66d9ef">object</span> interfaceName =  AppDomain.CurrentDomain.GetData(PLUGIN_INTERFACE_NAME);
+            List&lt;<span style="color:#66d9ef">string</span>&gt; pluginClassesNames = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;(<span style="color:#ae81ff">3</span>);
+            <span style="color:#66d9ef">if</span> (args.Length &gt; <span style="color:#ae81ff">0</span>)
             {
-                string sInterfaceName = (string)interfaceName;
-                foreach(string arg in args)
-                try
+                <span style="color:#66d9ef">string</span> sInterfaceName = (<span style="color:#66d9ef">string</span>)interfaceName;
+                <span style="color:#66d9ef">foreach</span>(<span style="color:#66d9ef">string</span> arg <span style="color:#66d9ef">in</span> args)
+                <span style="color:#66d9ef">try</span>
                 {
                     Assembly asm = Assembly.LoadFrom(arg);
                     Type[] possiblePlugins = asm.GetTypes();
-                    List&lt;Type&gt; realCandidates = new List&lt;Type&gt;(3);
-                    foreach (Type t in possiblePlugins)
+                    List&lt;Type&gt; realCandidates = <span style="color:#66d9ef">new</span> List&lt;Type&gt;(<span style="color:#ae81ff">3</span>);
+                    <span style="color:#66d9ef">foreach</span> (Type t <span style="color:#66d9ef">in</span> possiblePlugins)
                     {
-                        if (!t.IsAbstract &amp;&amp; !t.IsInterface &amp;&amp; (t.GetInterface(sInterfaceName) != null))
+                        <span style="color:#66d9ef">if</span> (!t.IsAbstract &amp;&amp; !t.IsInterface &amp;&amp; (t.GetInterface(sInterfaceName) != <span style="color:#66d9ef">null</span>))
                             pluginClassesNames.Add(t.FullName);
                     }
                 }
-                catch (Exception ex)
+                <span style="color:#66d9ef">catch</span> (Exception ex)
                 {
-                    pluginClassesNames.Add(&quot;Exception &quot; + ex.ToString());
+                    pluginClassesNames.Add(<span style="color:#e6db74">&#34;Exception &#34;</span> + ex.ToString());
                 }
             }
 
             AppDomain.CurrentDomain.SetData(PLUGIN_CLASSES_NAMES, pluginClassesNames.ToArray());
-            return pluginClassesNames.Count;            
+            <span style="color:#66d9ef">return</span> pluginClassesNames.Count;            
         }
     }
 }
-</code></pre>
-
-<p>using it won&#8217;t be a problem:</p>
-
-<pre><code class="language-cs">int execRes = newDomain.ExecuteAssembly(_classFinderAssemblyPath, AppDomain.CurrentDomain.Evidence, new string[] { path });
-if (execRes &lt;= 0)
-    throw new Exception(&quot;No plugins found in &quot; + path);
-string[] pluginClasses = (string[])newDomain.GetData(PLUGIN_CLASSES_NAMES);
-</code></pre>
-
-<p>Then calling a simple AppDomain.Unload(); would solve your problem. If you are lucky enough to have a pure .NET world and are not concerned about security, then you&#8217;re definitely lucky. And I am not :):(.</p>
-
+</code></pre></div><p>using it won’t be a problem:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">int</span> execRes = newDomain.ExecuteAssembly(_classFinderAssemblyPath, AppDomain.CurrentDomain.Evidence, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">string</span>[] { path });
+<span style="color:#66d9ef">if</span> (execRes &lt;= <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;No plugins found in &#34;</span> + path);
+<span style="color:#66d9ef">string</span>[] pluginClasses = (<span style="color:#66d9ef">string</span>[])newDomain.GetData(PLUGIN_CLASSES_NAMES);
+</code></pre></div><p>Then calling a simple AppDomain.Unload(); would solve your problem. If you are lucky enough to have a pure .NET world and are not concerned about security, then you’re definitely lucky. And I am not :):(.</p>
 <pre><code>Let us now assume you want those plugins to be consumable from the c++ application. Suppose your client has a big c++ app and now realized developing plugins in .NET would be easier. Then your natural choice is to make it as much less painful for c++ app to use you code as possible. A solution to that would be to have a .NET plugin manager, exposed to c++ app via the COM object. You may end up with smth. like this:
 </code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">using</span> System;
+<span style="color:#66d9ef">using</span> System.Collections.Generic;
+<span style="color:#66d9ef">using</span> System.Text;
+<span style="color:#66d9ef">using</span> System.Runtime.InteropServices;
+<span style="color:#66d9ef">using</span> System.Reflection;
+<span style="color:#66d9ef">using</span> System.IO;
+<span style="color:#66d9ef">using</span> System.Runtime.Remoting;
+<span style="color:#66d9ef">using</span> System.Security.Policy;
+<span style="color:#66d9ef">using</span> System.Security;
+<span style="color:#66d9ef">using</span> System.Security.Permissions;
 
-<pre><code class="language-cs">using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.InteropServices;
-using System.Reflection;
-using System.IO;
-using System.Runtime.Remoting;
-using System.Security.Policy;
-using System.Security;
-using System.Security.Permissions;
-
-namespace ComPluginManager
+<span style="color:#66d9ef">namespace</span> ComPluginManager
 {
-    [ComVisible(true)]
-    public class PluginManger: IPluginManager
+<span style="color:#a6e22e">    [ComVisible(true)]</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PluginManger</span>: IPluginManager
     {
-        private IDictionary&lt;String, AppDomain&gt; _pluginStore;
-        private String _interfaceName = &quot;PluginInterface&quot;;
-        private String _classFinderAssemblyPath;
-        private readonly static string PLUGIN_INTERFACE_NAME = &quot;PluginInterfaceName&quot;;
-        private readonly static string PLUGIN_CLASSES_NAMES = &quot;PluginClasses&quot;;
+        <span style="color:#66d9ef">private</span> IDictionary&lt;String, AppDomain&gt; _pluginStore;
+        <span style="color:#66d9ef">private</span> String _interfaceName = <span style="color:#e6db74">&#34;PluginInterface&#34;</span>;
+        <span style="color:#66d9ef">private</span> String _classFinderAssemblyPath;
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_INTERFACE_NAME = <span style="color:#e6db74">&#34;PluginInterfaceName&#34;</span>;
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_CLASSES_NAMES = <span style="color:#e6db74">&#34;PluginClasses&#34;</span>;
 
-        public PluginManger()
+        <span style="color:#66d9ef">public</span> PluginManger()
         {
-            _pluginStore = new Dictionary&lt;String, AppDomain&gt;(5);
+            _pluginStore = <span style="color:#66d9ef">new</span> Dictionary&lt;String, AppDomain&gt;(<span style="color:#ae81ff">5</span>);
         }
 
-        public object[] LoadPlugin(string path) {
-            List&lt;object&gt; result = new List&lt;object&gt;(3);
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span>[] LoadPlugin(<span style="color:#66d9ef">string</span> path) {
+            List&lt;<span style="color:#66d9ef">object</span>&gt; result = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">object</span>&gt;(<span style="color:#ae81ff">3</span>);
             
-            AppDomainSetup setup = new AppDomainSetup();
-            setup.ApplicationBase = Path.GetDirectoryName(path); // plugin path
-            PermissionSet trustPermissionSet = new PermissionSet(PermissionState.Unrestricted);
+            AppDomainSetup setup = <span style="color:#66d9ef">new</span> AppDomainSetup();
+            setup.ApplicationBase = Path.GetDirectoryName(path); <span style="color:#75715e">// plugin path
+</span><span style="color:#75715e"></span>            PermissionSet trustPermissionSet = <span style="color:#66d9ef">new</span> PermissionSet(PermissionState.Unrestricted);
             AppDomain newDomain = AppDomain.CreateDomain(
-                String.Format(&quot;Domain{0}&quot;, Path.GetFileName(path)),
-                null,
+                String.Format(<span style="color:#e6db74">&#34;Domain{0}&#34;</span>, Path.GetFileName(path)),
+                <span style="color:#66d9ef">null</span>,
                 setup,
                 trustPermissionSet);
 
-            try
+            <span style="color:#66d9ef">try</span>
             {
-                newDomain.SetData(PLUGIN_INTERFACE_NAME, &quot;PluginInterface&quot;);
-                int execRes = newDomain.ExecuteAssembly(_classFinderAssemblyPath, AppDomain.CurrentDomain.Evidence, new string[] { path });
-                if (execRes &lt;= 0)
-                    throw new Exception(&quot;No plugins found in &quot; + path);
-                string[] pluginClasses = (string[])newDomain.GetData(PLUGIN_CLASSES_NAMES);
+                newDomain.SetData(PLUGIN_INTERFACE_NAME, <span style="color:#e6db74">&#34;PluginInterface&#34;</span>);
+                <span style="color:#66d9ef">int</span> execRes = newDomain.ExecuteAssembly(_classFinderAssemblyPath, AppDomain.CurrentDomain.Evidence, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">string</span>[] { path });
+                <span style="color:#66d9ef">if</span> (execRes &lt;= <span style="color:#ae81ff">0</span>)
+                    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;No plugins found in &#34;</span> + path);
+                <span style="color:#66d9ef">string</span>[] pluginClasses = (<span style="color:#66d9ef">string</span>[])newDomain.GetData(PLUGIN_CLASSES_NAMES);
 
                 _pluginStore[path] = newDomain;
-                foreach (string pluginClass in pluginClasses)
+                <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">string</span> pluginClass <span style="color:#66d9ef">in</span> pluginClasses)
              {
                     ObjectHandle objHandle = Activator.CreateInstanceFrom(newDomain, path, pluginClass);
 
-                    if (objHandle != null)
+                    <span style="color:#66d9ef">if</span> (objHandle != <span style="color:#66d9ef">null</span>)
                     {
-                        object unwrappedInstance = objHandle.Unwrap();
+                        <span style="color:#66d9ef">object</span> unwrappedInstance = objHandle.Unwrap();
                         result.Add(unwrappedInstance);
                     }
 
@@ -412,64 +416,53 @@ namespace ComPluginManager
              }
                 
             }
-            catch (Exception ex) { 
+            <span style="color:#66d9ef">catch</span> (Exception ex) { 
                 result.Add(ex);
             }       
-            return result.ToArray();
+            <span style="color:#66d9ef">return</span> result.ToArray();
         }     
 
-        public void UnloadPlugin(string path) {
-            try
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> UnloadPlugin(<span style="color:#66d9ef">string</span> path) {
+            <span style="color:#66d9ef">try</span>
             {
                 AppDomain domain = _pluginStore[path];
                 _pluginStore.Remove(path);
                 AppDomain.Unload(domain);
             }
-            catch (Exception ex)
+            <span style="color:#66d9ef">catch</span> (Exception ex)
             { ;}
         }
 
-        public String InterfaceName { get { return _interfaceName; } set { _interfaceName = value; } }
+        <span style="color:#66d9ef">public</span> String InterfaceName { <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> _interfaceName; } <span style="color:#66d9ef">set</span> { _interfaceName = <span style="color:#66d9ef">value</span>; } }
 
-        public String ClassFinderAssemblyPath { get { return _classFinderAssemblyPath; } set { _classFinderAssemblyPath = value; } }
+        <span style="color:#66d9ef">public</span> String ClassFinderAssemblyPath { <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> _classFinderAssemblyPath; } <span style="color:#66d9ef">set</span> { _classFinderAssemblyPath = <span style="color:#66d9ef">value</span>; } }
         
     }
 }
-</code></pre>
+</code></pre></div><p>And it’s interface of course like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">using</span> System;
+<span style="color:#66d9ef">using</span> System.Collections.Generic;
+<span style="color:#66d9ef">using</span> System.Text;
+<span style="color:#66d9ef">using</span> System.Runtime.InteropServices;
 
-<p>And it&#8217;s interface of course like:</p>
-
-<pre><code class="language-cs">using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.InteropServices;
-
-namespace ComPluginManager
+<span style="color:#66d9ef">namespace</span> ComPluginManager
 {
-    [ComVisible(true)]
-    public interface IPluginManager
+<span style="color:#a6e22e">    [ComVisible(true)]</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IPluginManager
     {
-        String InterfaceName { get; set; }
+        String InterfaceName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
 
-        String ClassFinderAssemblyPath { get; set;}
-        void UnloadPlugin(String path);
+        String ClassFinderAssemblyPath { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>;}
+        <span style="color:#66d9ef">void</span> UnloadPlugin(String path);
         Object[] LoadPlugin(String path);
     }
 }
-</code></pre>
-
-<p>Two things to notice here: I haven&#8217;t managed to get the plain class&#8217;s public methods visible to C++ so I used an interface. And second, probably the most important &#8211; <span style="font-family: monospace; white-space: pre;">PermissionSet.</span> If you do not set this you wont be able to anything inside you app domain, except the very basic things like calculations and maybe some other data manipulation. You can find more info on this <a href="http://blogs.msdn.com/shawnfa/archive/2004/11/02/251239.aspx">here</a> and <a href="http://blogs.msdn.com/shawnfa/archive/2004/10/26/248114.aspx">here</a>.</p>
-
-<p>Another important thing is that as long as your code is going to be executed from an unmanaged environment and want to do smth with partially trusted code &#8211; you have to use</p>
-
-<pre><code class="language-cs">[assembly: AllowPartiallyTrustedCallersAttribute()]
-</code></pre>
-
-<p>In both manager and plugin assemblies. Further explanation on how it works can be found <a href="http://msdn.microsoft.com/en-us/magazine/cc163701.aspx">here</a>.</p>
-
-<p>Now if you <span style="text-decoration: line-through;">crossed your fingers at the right moment</span> did everything wright this plugin manager would load assemblies for you, return you the instantiated objects and free the dlls on your request flawlesly.</p>
-
-<p>And you will be able to put that shiny &#8220;Update&#8221; button on the toolbar without asking the user to reboot/restart an application whenever you need the  plugin update. And not bother with temporary files and &#8220;special&#8221; startup routines&#8230; etc. I think the idea is clear 🙂</p>
+</code></pre></div><p>Two things to notice here: I haven’t managed to get the plain class’s public methods visible to C++ so I used an interface. And second, probably the most important – <!-- raw HTML omitted -->PermissionSet.<!-- raw HTML omitted --> If you do not set this you wont be able to anything inside you app domain, except the very basic things like calculations and maybe some other data manipulation. You can find more info on this <a href="http://blogs.msdn.com/shawnfa/archive/2004/11/02/251239.aspx">here</a> and <a href="http://blogs.msdn.com/shawnfa/archive/2004/10/26/248114.aspx">here</a>.</p>
+<p>Another important thing is that as long as your code is going to be executed from an unmanaged environment and want to do smth with partially trusted code – you have to use</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#a6e22e">[assembly: AllowPartiallyTrustedCallersAttribute()]</span>
+</code></pre></div><p>In both manager and plugin assemblies. Further explanation on how it works can be found <a href="http://msdn.microsoft.com/en-us/magazine/cc163701.aspx">here</a>.</p>
+<p>Now if you <!-- raw HTML omitted -->crossed your fingers at the right moment<!-- raw HTML omitted --> did everything wright this plugin manager would load assemblies for you, return you the instantiated objects and free the dlls on your request flawlesly.</p>
+<p>And you will be able to put that shiny “Update” button on the toolbar without asking the user to reboot/restart an application whenever you need the  plugin update. And not bother with temporary files and “special” startup routines… etc. I think the idea is clear 🙂</p>
 
               
             </div>
@@ -490,8 +483,8 @@ namespace ComPluginManager
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -550,8 +543,8 @@ namespace ComPluginManager
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -564,14 +557,14 @@ namespace ComPluginManager
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2017 Viktor Halitsyn. All Rights Reserved
+    &copy; 2020 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -630,8 +623,8 @@ namespace ComPluginManager
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="3">
@@ -661,7 +654,7 @@ namespace ComPluginManager
       <i class="fa fa-remove"></i>
     </div>
     
-      <img id="about-card-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
     
     <h4 id="about-card-name">Viktor Halitsyn</h4>
     
@@ -684,40 +677,10 @@ namespace ComPluginManager
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         0 posts found
-      </p>
-    </div>
-  </div>
-</div>
+    
+
     
   
-    
     <div id="cover" style="background-image:url('https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg');"></div>
   
 
@@ -725,25 +688,25 @@ namespace ComPluginManager
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
-
-<script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
-    }
-    hljs.highlightBlock(block);
-  });
-});
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
 </script>
 
 
@@ -772,6 +735,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

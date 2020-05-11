@@ -1,64 +1,80 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-  
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Viktor Halitsyn">
+<meta name="keywords" content=", code, travel, immigration, ukraine, washington">
+<meta name="description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server.">
+
+
+<meta property="og:description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Switching to  container based datasource…">
+<meta name="twitter:title" content="Switching to  container based datasource…">
+<meta property="og:url" content="http://blog.vnomad.com/code/switching-to-container-based-datasource/">
+<meta property="twitter:url" content="http://blog.vnomad.com/code/switching-to-container-based-datasource/">
+<meta property="og:site_name" content="Nomad&#39;s reflections">
+<meta property="og:description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server.">
+<meta name="twitter:description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2010-01-11T12:08:00">
+  
+  
+    <meta property="article:modified_time" content="2010-01-11T12:08:00">
+  
+  
+  
+    
+      <meta property="article:section" content="tech">
+    
+      <meta property="article:section" content="code">
+    
+  
+  
+    
+      <meta property="article:tag" content="java">
+    
+      <meta property="article:tag" content="hibernate">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@rdev02">
+
+
+  <meta name="twitter:creator" content="@rdev02">
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+
+
     <title>Switching to  container based datasource…</title>
-    <meta name="author" content="Viktor Halitsyn">
-    <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 
     <link rel="icon" href="/favicon.jpg">
     
 
     
-    <meta name="description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
-First of all lets assume we use JBoss app server.">
-    <meta property="og:description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
-First of all lets assume we use JBoss app server.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Switching to  container based datasource…">
-    <meta property="og:url" content="/code/switching-to-container-based-datasource/">
-    <meta property="og:site_name" content="Nomad&#39;s reflections">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.
-First of all lets assume we use JBoss app server.">
-    
-      <meta name="twitter:creator" content="@rdev02">
-    
+      <link rel="publisher" href="https://plus.google.com/&#43;victorhalitsyn">
     
 
-    
-    
-
-    
-      <meta property="og:image" content="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-    
-
-    
-    
-    
-
-    
+    <link rel="canonical" href="http://blog.vnomad.com/code/switching-to-container-based-datasource/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -66,7 +82,7 @@ First of all lets assume we use JBoss app server.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
       
@@ -76,14 +92,17 @@ First of all lets assume we use JBoss app server.">
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-64535001-2', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64535001-2', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     
@@ -105,7 +124,7 @@ ga('send', 'pageview');
     
       <div class="sidebar-profile">
         <a href="/#about">
-          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
         
@@ -254,76 +273,56 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&#8217;ll describe the way it worked for me with some additional comments.</p>
+              <pre><code>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
 
-<pre><code>First of all lets assume we use JBoss app server. Different versions of JBoss have their own configuration &amp;#8220;specials&amp;#8221; so I&amp;#8217;ll stick to 5.0.1 jdk 6. First of all we need to register the desired datasource withing the container obtaining a JNDI name. Example configurtion files for registration can be found in [JBoss install dir]/docsexamplesjca. The resulting config file which has to be pout under server/[configuration_name]/deploy would look like
+First of all lets assume we use JBoss app server. Different versions of JBoss have their own configuration &amp;#8220;specials&amp;#8221; so I&amp;#8217;ll stick to 5.0.1 jdk 6. First of all we need to register the desired datasource withing the container obtaining a JNDI name. Example configurtion files for registration can be found in [JBoss install dir]/docsexamplesjca. The resulting config file which has to be pout under server/[configuration_name]/deploy would look like
 </code></pre>
-
-<pre><code class="language-xml">&lt;local-tx-datasource&gt;
-    &lt;jndi-name&gt;MySqlDS&lt;/jndi-name&gt;
-    &lt;connection-url&gt;jdbc:mysql://localhost:3306/mydatasource&lt;/connection-url&gt;
-    &lt;driver-class&gt;com.mysql.jdbc.Driver&lt;/driver-class&gt;
-    &lt;user-name&gt;user&lt;/user-name&gt;
-    &lt;password&gt;pwd&lt;/password&gt;
-    &lt;exception-sorter-class-name&gt;org.jboss.resource.adapter.jdbc.vendor.MySQLExceptionSorter&lt;/exception-sorter-class-name&gt;
-    &lt;metadata&gt;
-       &lt;type-mapping&gt;mySQL&lt;/type-mapping&gt;
-    &lt;/metadata&gt;
- &lt;/local-tx-datasource&gt;
-</code></pre>
-
-<p>Then in hibernate properties</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;local-tx-datasource&gt;</span>
+    <span style="color:#f92672">&lt;jndi-name&gt;</span>MySqlDS<span style="color:#f92672">&lt;/jndi-name&gt;</span>
+    <span style="color:#f92672">&lt;connection-url&gt;</span>jdbc:mysql://localhost:3306/mydatasource<span style="color:#f92672">&lt;/connection-url&gt;</span>
+    <span style="color:#f92672">&lt;driver-class&gt;</span>com.mysql.jdbc.Driver<span style="color:#f92672">&lt;/driver-class&gt;</span>
+    <span style="color:#f92672">&lt;user-name&gt;</span>user<span style="color:#f92672">&lt;/user-name&gt;</span>
+    <span style="color:#f92672">&lt;password&gt;</span>pwd<span style="color:#f92672">&lt;/password&gt;</span>
+    <span style="color:#f92672">&lt;exception-sorter-class-name&gt;</span>org.jboss.resource.adapter.jdbc.vendor.MySQLExceptionSorter<span style="color:#f92672">&lt;/exception-sorter-class-name&gt;</span>
+    <span style="color:#f92672">&lt;metadata&gt;</span>
+       <span style="color:#f92672">&lt;type-mapping&gt;</span>mySQL<span style="color:#f92672">&lt;/type-mapping&gt;</span>
+    <span style="color:#f92672">&lt;/metadata&gt;</span>
+ <span style="color:#f92672">&lt;/local-tx-datasource&gt;</span>
+</code></pre></div><p>Then in hibernate properties</p>
 <pre><code>###### JNDI std JBOSS connection ####################
 hibernate.connection.datasource = java:MySqlDS  
 hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFactory
 hibernate.transaction.manager\_lookup\_class = org.hibernate.transaction.JBossTransactionManagerLookup
-</code></pre>
-
-<p>Deploying your app, especially if you deployed with Tomcat compatibility you might see the next exception on startup:</p>
-
+</code></pre><p>Deploying your app, especially if you deployed with Tomcat compatibility you might see the next exception on startup:</p>
 <pre><code>ERROR [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/mydb]] (main) Exception starting filter ServiceFilter
 java.lang.&lt;b&gt;ClassCastException&lt;/b&gt;: com.arjuna.ats.jbossatx.jta.TransactionManagerDelegate cannot be cast to javax.transaction.TransactionManager
 at org.hibernate.transaction.JNDITransactionManagerLookup.getTransactionManager(JNDITransactionManagerLookup.java:23)
 at org.hibernate.impl.SessionFactoryImpl.SessionFactoryImpl.java:264)
 at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1055)
-</code></pre>
-
-<p>In short this means that you have a classloader issue having loaded the wrong manager first. Most likely you have the javax-transaction.jar in your bin. Remove it and everything will work fine :).</p>
-
+</code></pre><p>In short this means that you have a classloader issue having loaded the wrong manager first. Most likely you have the javax-transaction.jar in your bin. Remove it and everything will work fine :).</p>
 <p>If you need to set up the very same thing on Tomcat, then you have to keep in mind the next thing</p>
-
 <blockquote>
 <p>Tomcat is a hybrid sort of environment (neither fish nor fowl) from the standpoint of Hibernate. Tomcat provides a JNDI and DataSource, unlike a standalone application. The DataSource facility should facilitate portability among application servers. But like a standalone environment, Tomcat provides no Transaction Manager. Hence your code must use the Hibernate Transaction Manager, as it would in a standalone application environment</p>
 </blockquote>
-
-<p>With this in mind you&#8217;ll have to configure the server.xml with</p>
-
-<pre><code class="language-xml">&lt;Resource name=&quot;jdbc/testdb&quot; auth=&quot;Container&quot; 
-type=&quot;javax.sql.DataSource&quot;
-maxActive=&quot;100&quot; maxIdle=&quot;30&quot; maxWait=&quot;10000&quot;
-username=&quot;user&quot; password=&quot;pwd&quot; 
-driverClassName=&quot;com.mysql.jdbc.Driver&quot;
-url=&quot;jdbc:mysql://localhost:3306/mydatasource?autoReconnect=true&quot;/&gt;
-</code></pre>
-
-<p>And web.xml with</p>
-
-<pre><code class="language-xml">&lt;resource-ref&gt;
-&lt;description&gt;My datasource&lt;/description&gt;
-&lt;res-ref-name&gt;jdbc/testdb&lt;/res-ref-name&gt;
-&lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
-&lt;res-auth&gt;Container&lt;/res-auth&gt;
-&lt;/resource-ref&gt;
-</code></pre>
-
-<p>Then your hibernate.properties configuration would look like:</p>
-
-<pre><code class="language-ini">hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
-hibernate.connection.datasource = java:comp/env/jdbc/testdb
-hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFactory
-</code></pre>
-
+<p>With this in mind you’ll have to configure the server.xml with</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Resource</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;jdbc/testdb&#34;</span> <span style="color:#a6e22e">auth=</span><span style="color:#e6db74">&#34;Container&#34;</span> 
+<span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;javax.sql.DataSource&#34;</span>
+<span style="color:#a6e22e">maxActive=</span><span style="color:#e6db74">&#34;100&#34;</span> <span style="color:#a6e22e">maxIdle=</span><span style="color:#e6db74">&#34;30&#34;</span> <span style="color:#a6e22e">maxWait=</span><span style="color:#e6db74">&#34;10000&#34;</span>
+<span style="color:#a6e22e">username=</span><span style="color:#e6db74">&#34;user&#34;</span> <span style="color:#a6e22e">password=</span><span style="color:#e6db74">&#34;pwd&#34;</span> 
+<span style="color:#a6e22e">driverClassName=</span><span style="color:#e6db74">&#34;com.mysql.jdbc.Driver&#34;</span>
+<span style="color:#a6e22e">url=</span><span style="color:#e6db74">&#34;jdbc:mysql://localhost:3306/mydatasource?autoReconnect=true&#34;</span><span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>And web.xml with</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;resource-ref&gt;</span>
+<span style="color:#f92672">&lt;description&gt;</span>My datasource<span style="color:#f92672">&lt;/description&gt;</span>
+<span style="color:#f92672">&lt;res-ref-name&gt;</span>jdbc/testdb<span style="color:#f92672">&lt;/res-ref-name&gt;</span>
+<span style="color:#f92672">&lt;res-type&gt;</span>javax.sql.DataSource<span style="color:#f92672">&lt;/res-type&gt;</span>
+<span style="color:#f92672">&lt;res-auth&gt;</span>Container<span style="color:#f92672">&lt;/res-auth&gt;</span>
+<span style="color:#f92672">&lt;/resource-ref&gt;</span>
+</code></pre></div><p>Then your hibernate.properties configuration would look like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">hibernate.dialect</span><span style="color:#f92672">=</span><span style="color:#e6db74">org.hibernate.dialect.MySQLInnoDBDialect</span>
+<span style="color:#a6e22e">hibernate.connection.datasource</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">java:comp/env/jdbc/testdb</span>
+<span style="color:#a6e22e">hibernate.transaction.factory_class</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">org.hibernate.transaction.JTATransactionFactory</span>
+</code></pre></div>
               
             </div>
           </div>
@@ -343,8 +342,8 @@ hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFa
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -403,8 +402,8 @@ hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFa
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -417,14 +416,14 @@ hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFa
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2017 Viktor Halitsyn. All Rights Reserved
+    &copy; 2020 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -483,8 +482,8 @@ hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFa
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="3">
@@ -514,7 +513,7 @@ hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFa
       <i class="fa fa-remove"></i>
     </div>
     
-      <img id="about-card-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
     
     <h4 id="about-card-name">Viktor Halitsyn</h4>
     
@@ -537,40 +536,10 @@ hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFa
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         0 posts found
-      </p>
-    </div>
-  </div>
-</div>
+    
+
     
   
-    
     <div id="cover" style="background-image:url('https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg');"></div>
   
 
@@ -578,25 +547,25 @@ hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFa
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
-
-<script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
-    }
-    hljs.highlightBlock(block);
-  });
-});
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
 </script>
 
 
@@ -625,6 +594,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

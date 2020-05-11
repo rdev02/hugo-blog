@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on Nomad&#39;s reflections</title>
+    <title>linux on Nomad&#39;s reflections</title>
     <link>http://blog.vnomad.com/tags/linux/</link>
-    <description>Recent content in Linux on Nomad&#39;s reflections</description>
+    <description>Recent content in linux on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 28 Jun 2011 20:22:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</guid>
-      <description>If you&amp;#8217;re in the same trouble as I was with black screen during boot(plymouth has the theme installed and even displays it during shutdown) then there is a small thing that has to be edited in order to get rid of this annoyance. Go to
+      <description>If you’re in the same trouble as I was with black screen during boot(plymouth has the theme installed and even displays it during shutdown) then there is a small thing that has to be edited in order to get rid of this annoyance. Go to
  /etc/grub.d/10_linux
  and remove the **handoff=7 **parameter. Inspired by this and also this(pretty nice tool for configuring plymouth for dummies).</description>
     </item>
@@ -29,7 +29,9 @@
       
       <guid>http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
       <description>Had a real problem with my wifi after moving to Ubuntu from win -&amp;gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
-        Having this changed</description>
+   Having this changed
+ _AVAHI_DAEMON_DETECT_LOCAL=1
+ to</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tools on Nomad&#39;s reflections</title>
+    <title>tools on Nomad&#39;s reflections</title>
     <link>http://blog.vnomad.com/tags/tools/</link>
-    <description>Recent content in Tools on Nomad&#39;s reflections</description>
+    <description>Recent content in tools on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 12 May 2011 12:34:00 +0000</lastBuildDate>
@@ -27,8 +27,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Thu, 19 Nov 2009 11:12:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/jetbrains-idea-still-the-best/</guid>
-      <description>Now that I wrote lots of &amp;#8216;bad&amp;#8217; stuff about this new community version &amp;#8211; time to write something fine, as I really enjoy developing in this IDE.
-First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my &amp;#8216;more serious&amp;#8217; still reproduce this is something pleasant, indicating that the work is in progress and I&amp;#8217;m sure all the other stuff will be fixed soon.</description>
+      <description>Now that I wrote lots of &amp;amp;#8216;bad&amp;amp;#8217; stuff about this new community version &amp;amp;#8211; time to write something fine, as I really enjoy developing in this IDE.  First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my ‘more serious’ still reproduce this is something pleasant, indicating that the work is in progress and I’m sure all the other stuff will be fixed soon.</description>
     </item>
     
     <item>
@@ -37,8 +36,7 @@ First of all I downloaded a new 90.193 version and noticed that UI issues are al
       <pubDate>Thu, 12 Nov 2009 10:41:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/intellij-idea-community-edition-now-it-gets-serious/</guid>
-      <description>In my previous post I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along.
-First of all I&amp;#8217;ve ran into an issue with ant Jar task. It refused to work with an &amp;#8216;update&amp;#8217; option set to true. The interesting part of it was that executing the task independently didn&amp;#8217;t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to &amp;#8230; hang.</description>
+      <description>In my &amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;[&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;previous pos][1][&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;t&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;][2] I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along.  First of all I’ve ran into an issue with ant Jar task. It refused to work with an ‘update’ option set to true. The interesting part of it was that executing the task independently didn’t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to … hang.</description>
     </item>
     
     <item>
@@ -47,7 +45,7 @@ First of all I&amp;#8217;ve ran into an issue with ant Jar task. It refused to w
       <pubDate>Thu, 05 Nov 2009 10:15:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/intellij-idea-community-edition-first-impressions/</guid>
-      <description>Recently JetBrains released the brand new version of IDEA free for all. A few years before I Used this IDE for some projects and was very happy with it &amp;#8211; consequent moving to eclipse disappointed me much. However time passed and I&amp;#8217;ve got used to eclipse &amp;#8211; it&amp;#8217;s not a bad platform after all and it was free. So now when the free version idea came out I was very anxious convincing our customers to switch.</description>
+      <description>Recently JetBrains [released the brand new version of IDEA][1] free for all. A few years before I Used this IDE for some projects and was very happy with it &amp;amp;#8211; consequent moving to eclipse disappointed me much. However time passed and I&amp;amp;#8217;ve got used to eclipse &amp;amp;#8211; it&amp;amp;#8217;s not a bad platform after all and it was free. So now when the free version idea came out I was very anxious convincing our customers to switch.</description>
     </item>
     
     <item>
@@ -57,7 +55,7 @@ First of all I&amp;#8217;ve ran into an issue with ant Jar task. It refused to w
       
       <guid>http://blog.vnomad.com/code/blogger-code-formatting/</guid>
       <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
-using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } }  </description>
+using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { //  // TODO: Add constructor logic here  //  int x = 10; } } </description>
     </item>
     
     <item>
@@ -66,7 +64,7 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Fri, 26 Sep 2008 19:23:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/wise-installation-studio/</guid>
-      <description>Windows Installer&amp;#8230; nightmare&amp;#8230; WISE &amp;#8211; hurt me plenty. Although this is much simpler and logical to my mind then WI it is still very sensible to changes. What I am trying to say &amp;#8211; if do everything right from the first time e.g. correctly choose all names and dialogs and files e.t.c it works perfectly. But when after 5 minutes you decide to change, say, some script or file destination WISE i making so many actions in background you can&amp;#8217;t even imagine.</description>
+      <description>Windows Installer… nightmare… WISE – hurt me plenty. Although this is much simpler and logical to my mind then WI it is still very sensible to changes. What I am trying to say – if do everything right from the first time e.g. correctly choose all names and dialogs and files e.t.c it works perfectly. But when after 5 minutes you decide to change, say, some script or file destination WISE i making so many actions in background you can’t even imagine.</description>
     </item>
     
   </channel>

@@ -1,61 +1,78 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-  
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Viktor Halitsyn">
+<meta name="keywords" content=", code, travel, immigration, ukraine, washington">
+<meta name="description" content="Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:">
+
+
+<meta property="og:description" content="Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySql performance. 5.1 VS 5.5 VS 5.6 (dev)">
+<meta name="twitter:title" content="MySql performance. 5.1 VS 5.5 VS 5.6 (dev)">
+<meta property="og:url" content="http://blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/">
+<meta property="twitter:url" content="http://blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/">
+<meta property="og:site_name" content="Nomad&#39;s reflections">
+<meta property="og:description" content="Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:">
+<meta name="twitter:description" content="Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2011-09-14T06:50:00">
+  
+  
+    <meta property="article:modified_time" content="2011-09-14T06:50:00">
+  
+  
+  
+    
+      <meta property="article:section" content="tech">
+    
+  
+  
+    
+      <meta property="article:tag" content="code">
+    
+      <meta property="article:tag" content="mysql">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@rdev02">
+
+
+  <meta name="twitter:creator" content="@rdev02">
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+
+
     <title>MySql performance. 5.1 VS 5.5 VS 5.6 (dev)</title>
-    <meta name="author" content="Viktor Halitsyn">
-    <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 
     <link rel="icon" href="/favicon.jpg">
     
 
     
-    <meta name="description" content="Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:">
-    <meta property="og:description" content="Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="MySql performance. 5.1 VS 5.5 VS 5.6 (dev)">
-    <meta property="og:url" content="/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/">
-    <meta property="og:site_name" content="Nomad&#39;s reflections">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:">
-    
-      <meta name="twitter:creator" content="@rdev02">
-    
+      <link rel="publisher" href="https://plus.google.com/&#43;victorhalitsyn">
     
 
-    
-    
-
-    
-      <meta property="og:image" content="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-    
-
-    
-    
-    
-
-    
+    <link rel="canonical" href="http://blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -63,7 +80,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
       
@@ -73,14 +90,17 @@
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-64535001-2', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64535001-2', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     
@@ -102,7 +122,7 @@ ga('send', 'pageview');
     
       <div class="sidebar-profile">
         <a href="/#about">
-          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
         
@@ -252,7 +272,6 @@ ga('send', 'pageview');
               <p>Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:</p>
 
 
-
  
   
   
@@ -276,272 +295,197 @@ ga('send', 'pageview');
   
 </div>
 
-
-<p>As a quick summary &#8211; interestingly enough I do not see any speed improvement since 5.1:) there is one between 5.5 and 5.6 but it&#8217;s nowhere near the 5.1.</p>
-
+<p>As a quick summary – interestingly enough I do not see any speed improvement since 5.1:) there is one between 5.5 and 5.6 but it’s nowhere near the 5.1.</p>
 <p>Now just a quick overview of what I used to actually get this chart.</p>
-
 <p>The testTable:</p>
-
 <p>The queries:</p>
-
-<table border="1">
-  <tr>
-    <td>
-      Q1
-    </td>
-    
-    <td>
-      select count(*) from test.testtable;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q2
-    </td>
-    
-    <td>
-      select count(*) from testtable;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q3
-    </td>
-    
-    <td>
-      SELECT * FROM testtable tst WHERE tst.id>1000 AND tst.id<10000;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q4
-    </td>
-    
-    <td>
-      SELECT COUNT(*) FROM testtable tst WHERE tst.id>1000 AND tst.id<10000;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q5
-    </td>
-    
-    <td>
-      SELECT * FROM testtable tst WHERE tst.testInt between 10000 AND 100000 ;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q6
-    </td>
-    
-    <td>
-      SELECT COUNT(*) FROM testtable tst WHERE tst.testInt between 10000 AND 100000 ;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q7
-    </td>
-    
-    <td>
-      SELECT * FROM testtable tst WHERE tst.testDouble between 0.1 AND 0.5 ;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q8
-    </td>
-    
-    <td>
-      SELECT COUNT(*) FROM testtable tst WHERE tst.testDouble between 0.1 AND 0.5 ;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q9
-    </td>
-    
-    <td>
-      SELECT * FROM testtable tst WHERE tst.testDouble <= 0.1 AND tst.testDouble > 0.5 ;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q10
-    </td>
-    
-    <td>
-      SELECT COUNT(*) FROM testtable tst WHERE tst.testDouble >= 0.1 AND tst.testDouble < 0.5 ;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q11
-    </td>
-    
-    <td>
-      SELECT * FROM testtable tst WHERE tst.testDate > &#8216;2005/08/04 07:00&#8217;;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q12
-    </td>
-    
-    <td>
-      SELECT COUNT(*) FROM testtable tst WHERE tst.testDate > &#8216;2005/08/04 07:00&#8217;;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q13
-    </td>
-    
-    <td>
-      SELECT * FROM testtable tst WHERE tst.testVarchar LIKE &#8216;%AAAAAA&#8217;;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q14
-    </td>
-    
-    <td>
-      SELECT * FROM testtable tst WHERE tst.testVarchar LIKE &#8216;%AAAAAA&#8217; OR tst.testVarchar LIKE &#8216;BBBBBB%&#8217;;
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q15
-    </td>
-    
-    <td>
-      SELECT * FROM testtable tst WHERE tst.testInt between 10000 AND 100000 AND tst.testDouble between 0.1 AND 0.5 AND tst.testDate > &#8216;2005/08/04 07:00&#8217; OR tst.id> 9000000
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Q16
-    </td>
-    
-    <td>
-      SELECT COUNT(*) FROM testtable tst WHERE tst.testInt between 10000 AND 100000 AND tst.testDouble between 0.1 AND 0.5 AND tst.testDate > &#8216;2005/08/04 07:00&#8217; OR tst.id> 9000000
-    </td>
-  </tr>
-</table>
-
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  select count(*) from test.testtable;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  select count(*) from testtable;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT * FROM testtable tst WHERE tst.id&gt;1000 AND tst.id&lt;10000;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT COUNT(*) FROM testtable tst WHERE tst.id&gt;1000 AND tst.id&lt;10000;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT * FROM testtable tst WHERE tst.testInt between 10000 AND 100000 ;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT COUNT(*) FROM testtable tst WHERE tst.testInt between 10000 AND 100000 ;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT * FROM testtable tst WHERE tst.testDouble between 0.1 AND 0.5 ;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT COUNT(*) FROM testtable tst WHERE tst.testDouble between 0.1 AND 0.5 ;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT * FROM testtable tst WHERE tst.testDouble &lt;= 0.1 AND tst.testDouble &gt; 0.5 ;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT COUNT(*) FROM testtable tst WHERE tst.testDouble &gt;= 0.1 AND tst.testDouble &lt; 0.5 ;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT * FROM testtable tst WHERE tst.testDate &gt; &amp;#8216;2005/08/04 07:00&amp;#8217;;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT COUNT(*) FROM testtable tst WHERE tst.testDate &gt; &amp;#8216;2005/08/04 07:00&amp;#8217;;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT * FROM testtable tst WHERE tst.testVarchar LIKE &amp;#8216;%AAAAAA&amp;#8217;;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT * FROM testtable tst WHERE tst.testVarchar LIKE &amp;#8216;%AAAAAA&amp;#8217; OR tst.testVarchar LIKE &amp;#8216;BBBBBB%&amp;#8217;;
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT * FROM testtable tst WHERE tst.testInt between 10000 AND 100000 AND tst.testDouble between 0.1 AND 0.5 AND tst.testDate &gt; &amp;#8216;2005/08/04 07:00&amp;#8217; OR tst.id&gt; 9000000
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;td&gt;
+  SELECT COUNT(*) FROM testtable tst WHERE tst.testInt between 10000 AND 100000 AND tst.testDouble between 0.1 AND 0.5 AND tst.testDate &gt; &amp;#8216;2005/08/04 07:00&amp;#8217; OR tst.id&gt; 9000000
+&lt;/td&gt;
+</code></pre>
+<!-- raw HTML omitted -->
 <p>Absolute times and machine spec can be found <a href="https://docs.google.com/spreadsheet/ccc?key=0AtItSpPjhRWvdDlDbklHUzZxNFBFNkRya3RNbng5ZWc&amp;hl=en_US">here</a>.</p>
+<p>Of course this is the developer machine setup and ran on one virtual machine, but still I thought that would be interesting for other to know. Ireally looking forward to making some more production-like tests now…</p>
+<p>One more thing in case interested – the code snippet I used for generating the data:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateTestTableSql</span> {
 
-<p>Of course this is the developer machine setup and ran on one virtual machine, but still I thought that would be interesting for other to know. Ireally looking forward to making some more production-like tests now&#8230;</p>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final <span style="color:#66d9ef">int</span> QUERY_ROWS = <span style="color:#ae81ff">10</span> * <span style="color:#ae81ff">1000</span> * <span style="color:#ae81ff">1000</span>;
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final <span style="color:#66d9ef">int</span> BATCH_SIZE = <span style="color:#ae81ff">10</span> * <span style="color:#ae81ff">1000</span>;
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final boolean USE_BATCH = <span style="color:#66d9ef">true</span>;
 
-<p>One more thing in case interested &#8211; the code snippet I used for generating the data:</p>
+    <span style="color:#66d9ef">static</span> Random r = <span style="color:#66d9ef">new</span> Random();
+    <span style="color:#66d9ef">static</span> SimpleDateFormat sdf = <span style="color:#66d9ef">new</span> SimpleDateFormat(<span style="color:#e6db74">&#34;yyyy/MM/dd HH:mm&#34;</span>);
 
-<pre><code class="language-cs">public class CreateTestTableSql {
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> main(String[] args) throws Exception {
 
-    private static final int QUERY_ROWS = 10 * 1000 * 1000;
-    private static final int BATCH_SIZE = 10 * 1000;
-    private static final boolean USE_BATCH = true;
-
-    static Random r = new Random();
-    static SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy/MM/dd HH:mm&quot;);
-
-    public static void main(String[] args) throws Exception {
-
-        StringBuilder spotTradeSQLRow = new StringBuilder();
+        StringBuilder spotTradeSQLRow = <span style="color:#66d9ef">new</span> StringBuilder();
 
 
-        File f = new File(USE_BATCH ? &quot;batchmysql.sql&quot; : &quot;mysql.sql&quot;);
-        if (f.exists()) {
+        File f = <span style="color:#66d9ef">new</span> File(USE_BATCH ? <span style="color:#e6db74">&#34;batchmysql.sql&#34;</span> : <span style="color:#e6db74">&#34;mysql.sql&#34;</span>);
+        <span style="color:#66d9ef">if</span> (f.exists()) {
             f.delete();
         }
 
         assert f.createNewFile();
 
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
+        BufferedWriter <span style="color:#66d9ef">out</span> = <span style="color:#66d9ef">new</span> BufferedWriter(<span style="color:#66d9ef">new</span> OutputStreamWriter(<span style="color:#66d9ef">new</span> FileOutputStream(f)));
 
-        System.out.println(&quot;Start&quot;);
-        int batchCounter = 0;
-        for (int i = 0; i &lt; QUERY_ROWS; i++) {
-            if (USE_BATCH) {
-                if (batchCounter == BATCH_SIZE) {
-                    spotTradeSQLRow.append(&quot;;n&quot;);
-                    batchCounter = 0;
+        System.<span style="color:#66d9ef">out</span>.println(<span style="color:#e6db74">&#34;Start&#34;</span>);
+        <span style="color:#66d9ef">int</span> batchCounter = <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; QUERY_ROWS; i++) {
+            <span style="color:#66d9ef">if</span> (USE_BATCH) {
+                <span style="color:#66d9ef">if</span> (batchCounter == BATCH_SIZE) {
+                    spotTradeSQLRow.append(<span style="color:#e6db74">&#34;;n&#34;</span>);
+                    batchCounter = <span style="color:#ae81ff">0</span>;
                 }
-                if (batchCounter == 0) {
-                    spotTradeSQLRow.append(&quot;INSERT INTO test.testtable VALUES(&quot;);
-                } else {
-                    spotTradeSQLRow.append(&quot;,(&quot;);
+                <span style="color:#66d9ef">if</span> (batchCounter == <span style="color:#ae81ff">0</span>) {
+                    spotTradeSQLRow.append(<span style="color:#e6db74">&#34;INSERT INTO test.testtable VALUES(&#34;</span>);
+                } <span style="color:#66d9ef">else</span> {
+                    spotTradeSQLRow.append(<span style="color:#e6db74">&#34;,(&#34;</span>);
                 }
-            } else {
-                spotTradeSQLRow.append(&quot;INSERT INTO test.testtable VALUES(&quot;);
+            } <span style="color:#66d9ef">else</span> {
+                spotTradeSQLRow.append(<span style="color:#e6db74">&#34;INSERT INTO test.testtable VALUES(&#34;</span>);
             }
-            spotTradeSQLRow.append(i + &quot;,&quot;); //id
-            spotTradeSQLRow.append((r.nextBoolean() ?( &quot;'&quot; +getRandomString() + &quot;'&quot;): &quot;NULL&quot;) + &quot;,&quot;); //testVarchar
-            spotTradeSQLRow.append((r.nextBoolean() ? r.nextInt() : &quot;NULL&quot;) + &quot;,&quot;); //testInt
-            spotTradeSQLRow.append((r.nextBoolean() ? r.nextDouble() : &quot;NULL&quot;) + &quot;,&quot;); //testInt
-            spotTradeSQLRow.append((r.nextBoolean() ? (&quot;'&quot; + getRandomDate() + &quot;'&quot;) : &quot;NULL&quot;) +
-              &quot;)&quot;); //testInt
-            if (!USE_BATCH) {
-                spotTradeSQLRow.append(&quot;;&quot;);
+            spotTradeSQLRow.append(i + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//id
+</span><span style="color:#75715e"></span>            spotTradeSQLRow.append((r.nextBoolean() ?( <span style="color:#e6db74">&#34;&#39;&#34;</span> +getRandomString() + <span style="color:#e6db74">&#34;&#39;&#34;</span>): <span style="color:#e6db74">&#34;NULL&#34;</span>) + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//testVarchar
+</span><span style="color:#75715e"></span>            spotTradeSQLRow.append((r.nextBoolean() ? r.nextInt() : <span style="color:#e6db74">&#34;NULL&#34;</span>) + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//testInt
+</span><span style="color:#75715e"></span>            spotTradeSQLRow.append((r.nextBoolean() ? r.nextDouble() : <span style="color:#e6db74">&#34;NULL&#34;</span>) + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//testInt
+</span><span style="color:#75715e"></span>            spotTradeSQLRow.append((r.nextBoolean() ? (<span style="color:#e6db74">&#34;&#39;&#34;</span> + getRandomDate() + <span style="color:#e6db74">&#34;&#39;&#34;</span>) : <span style="color:#e6db74">&#34;NULL&#34;</span>) +
+              <span style="color:#e6db74">&#34;)&#34;</span>); <span style="color:#75715e">//testInt
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (!USE_BATCH) {
+                spotTradeSQLRow.append(<span style="color:#e6db74">&#34;;&#34;</span>);
             }
-            out.write(spotTradeSQLRow.toString());
-            out.write(&quot;n&quot;);
-            spotTradeSQLRow.delete(0, spotTradeSQLRow.length());
+            <span style="color:#66d9ef">out</span>.write(spotTradeSQLRow.toString());
+            <span style="color:#66d9ef">out</span>.write(<span style="color:#e6db74">&#34;n&#34;</span>);
+            spotTradeSQLRow.delete(<span style="color:#ae81ff">0</span>, spotTradeSQLRow.length());
             batchCounter++;
 
         }
-        if (USE_BATCH) {
-           out.write(&quot;;&quot;);
+        <span style="color:#66d9ef">if</span> (USE_BATCH) {
+           <span style="color:#66d9ef">out</span>.write(<span style="color:#e6db74">&#34;;&#34;</span>);
         }
 
-        out.close();
-        System.out.println(&quot;end&quot;);
+        <span style="color:#66d9ef">out</span>.close();
+        System.<span style="color:#66d9ef">out</span>.println(<span style="color:#e6db74">&#34;end&#34;</span>);
 
     }
 
-    private static String getRandomDate() {
-        int rand = r.nextInt(10);
-        rand *= (r.nextBoolean() ? -1 : 1);
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String getRandomDate() {
+        <span style="color:#66d9ef">int</span> rand = r.nextInt(<span style="color:#ae81ff">10</span>);
+        rand *= (r.nextBoolean() ? -<span style="color:#ae81ff">1</span> : <span style="color:#ae81ff">1</span>);
         final Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, rand);
-        cal.add(Calendar.DAY_OF_YEAR, rand);
-        cal.add(Calendar.HOUR_OF_DAY, rand);
+        cal.<span style="color:#66d9ef">add</span>(Calendar.YEAR, rand);
+        cal.<span style="color:#66d9ef">add</span>(Calendar.DAY_OF_YEAR, rand);
+        cal.<span style="color:#66d9ef">add</span>(Calendar.HOUR_OF_DAY, rand);
 
-        return sdf.format(cal.getTime());
+        <span style="color:#66d9ef">return</span> sdf.format(cal.getTime());
 
     }
 
-    private static String getRandomString() {
-        final int rand = r.nextInt(10);
-        if (rand &lt; 3) {
-            return &quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;;
-        } else if (rand &gt;= 3 &amp;&amp; rand &lt; 6) {
-            return &quot;BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB&quot;;
-        } else {
-            return &quot;CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC&quot;;
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String getRandomString() {
+        final <span style="color:#66d9ef">int</span> rand = r.nextInt(<span style="color:#ae81ff">10</span>);
+        <span style="color:#66d9ef">if</span> (rand &lt; <span style="color:#ae81ff">3</span>) {
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#34;</span>;
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (rand &gt;= <span style="color:#ae81ff">3</span> &amp;&amp; rand &lt; <span style="color:#ae81ff">6</span>) {
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB&#34;</span>;
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC&#34;</span>;
         }
     }
 }
 
-</code></pre>
-
+</code></pre></div>
               
             </div>
           </div>
@@ -561,8 +505,8 @@ ga('send', 'pageview');
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -621,8 +565,8 @@ ga('send', 'pageview');
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -635,14 +579,14 @@ ga('send', 'pageview');
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2017 Viktor Halitsyn. All Rights Reserved
+    &copy; 2020 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -701,8 +645,8 @@ ga('send', 'pageview');
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="3">
@@ -732,7 +676,7 @@ ga('send', 'pageview');
       <i class="fa fa-remove"></i>
     </div>
     
-      <img id="about-card-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
     
     <h4 id="about-card-name">Viktor Halitsyn</h4>
     
@@ -755,40 +699,10 @@ ga('send', 'pageview');
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         0 posts found
-      </p>
-    </div>
-  </div>
-</div>
+    
+
     
   
-    
     <div id="cover" style="background-image:url('https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg');"></div>
   
 
@@ -796,25 +710,25 @@ ga('send', 'pageview');
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
-
-<script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
-    }
-    hljs.highlightBlock(block);
-  });
-});
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
 </script>
 
 
@@ -843,6 +757,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

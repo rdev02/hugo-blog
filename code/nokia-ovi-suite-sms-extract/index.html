@@ -1,61 +1,76 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-  
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Viktor Halitsyn">
+<meta name="keywords" content=", code, travel, immigration, ukraine, washington">
+<meta name="description" content="There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want.">
+
+
+<meta property="og:description" content="There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nokia OVI suite &amp; sms extract.">
+<meta name="twitter:title" content="Nokia OVI suite &amp; sms extract.">
+<meta property="og:url" content="http://blog.vnomad.com/code/nokia-ovi-suite-sms-extract/">
+<meta property="twitter:url" content="http://blog.vnomad.com/code/nokia-ovi-suite-sms-extract/">
+<meta property="og:site_name" content="Nomad&#39;s reflections">
+<meta property="og:description" content="There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want.">
+<meta name="twitter:description" content="There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2010-12-27T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2010-12-27T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="tech">
+    
+  
+  
+    
+      <meta property="article:tag" content="hack">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@rdev02">
+
+
+  <meta name="twitter:creator" content="@rdev02">
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+
+
     <title>Nokia OVI suite &amp; sms extract.</title>
-    <meta name="author" content="Viktor Halitsyn">
-    <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 
     <link rel="icon" href="/favicon.jpg">
     
 
     
-    <meta name="description" content="There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before &#8211; nice piece of software if we forget about all the &#8220;store&#8221; thing. But it has one important for me thing missing &#8211; sms extracting mechanism. You can&#8217;t just take all of your sms and store to the file you want.">
-    <meta property="og:description" content="There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before &#8211; nice piece of software if we forget about all the &#8220;store&#8221; thing. But it has one important for me thing missing &#8211; sms extracting mechanism. You can&#8217;t just take all of your sms and store to the file you want.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Nokia OVI suite &amp; sms extract.">
-    <meta property="og:url" content="/code/nokia-ovi-suite-sms-extract/">
-    <meta property="og:site_name" content="Nomad&#39;s reflections">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before &#8211; nice piece of software if we forget about all the &#8220;store&#8221; thing. But it has one important for me thing missing &#8211; sms extracting mechanism. You can&#8217;t just take all of your sms and store to the file you want.">
-    
-      <meta name="twitter:creator" content="@rdev02">
-    
+      <link rel="publisher" href="https://plus.google.com/&#43;victorhalitsyn">
     
 
-    
-    
-
-    
-      <meta property="og:image" content="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-    
-
-    
-    
-    
-
-    
+    <link rel="canonical" href="http://blog.vnomad.com/code/nokia-ovi-suite-sms-extract/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -63,7 +78,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
       
@@ -73,14 +88,17 @@
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-64535001-2', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64535001-2', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     
@@ -102,7 +120,7 @@ ga('send', 'pageview');
     
       <div class="sidebar-profile">
         <a href="/#about">
-          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
         
@@ -249,63 +267,57 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I <a href="http://revengebloggings.blogspot.com/2010/02/nokia-ovi-suite.html">mentioned</a> before &#8211; nice piece of software if we forget about all the &#8220;store&#8221; thing. But it has one important for me thing missing &#8211; sms extracting mechanism. You can&#8217;t just take all of your sms and store to the file you want. It will either go into backup file or will be stored on you PC. I was really disappointed to learn that so I tried to find where exactly is that info stored on my PC. First search revealed that they use the SQLite db for storing all data located in</p>
-
-<p>&#8220;c:Users[username]AppDataLocalNokiaNokia Data StoreDataBaseMDataStore.db3&#8221;</p>
-
-<p>The DB is not in any way protected or encrypted so I felt free to dig into my own data. Downloaded a splendid <a href="https://addons.mozilla.org/en-US/firefox/addon/5817/">SQLiteManager</a> plugin and started seeking my sms&#8217;s. Didn&#8217;t take long to find. Whereas the DB structure might be a subject of argue I&#8217;ll post some code I used to get the info I needed out of the DB:</p>
-
-<pre><code class="language-cs">class Program
+              <p>There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I <a href="http://revengebloggings.blogspot.com/2010/02/nokia-ovi-suite.html">mentioned</a> before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want. It will either go into backup file or will be stored on you PC. I was really disappointed to learn that so I tried to find where exactly is that info stored on my PC. First search revealed that they use the SQLite db for storing all data located in</p>
+<p>“c:Users[username]AppDataLocalNokiaNokia Data StoreDataBaseMDataStore.db3”</p>
+<p>The DB is not in any way protected or encrypted so I felt free to dig into my own data. Downloaded a splendid <a href="https://addons.mozilla.org/en-US/firefox/addon/5817/">SQLiteManager</a> plugin and started seeking my sms’s. Didn’t take long to find. Whereas the DB structure might be a subject of argue I’ll post some code I used to get the info I needed out of the DB:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
     {
-        static void Main(string[] args)
+        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
         {
-            if (args == null || args.Length &lt; 1)
+            <span style="color:#66d9ef">if</span> (args == <span style="color:#66d9ef">null</span> || args.Length &lt; <span style="color:#ae81ff">1</span>)
             {
-                Console.Out.WriteLine(&quot;Please specify db3 file path as an argument&quot;);
-                return;
+                Console.Out.WriteLine(<span style="color:#e6db74">&#34;Please specify db3 file path as an argument&#34;</span>);
+                <span style="color:#66d9ef">return</span>;
             }
-            string baseName = args[0];
-            StreamWriter writer = null;
-            try
+            <span style="color:#66d9ef">string</span> baseName = args[<span style="color:#ae81ff">0</span>];
+            StreamWriter writer = <span style="color:#66d9ef">null</span>;
+            <span style="color:#66d9ef">try</span>
             {
-                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory(&quot;System.Data.SQLite&quot;);
-                using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
+                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory(<span style="color:#e6db74">&#34;System.Data.SQLite&#34;</span>);
+                <span style="color:#66d9ef">using</span> (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
                 {
-                    connection.ConnectionString = &quot;Data Source = &quot; + baseName;
+                    connection.ConnectionString = <span style="color:#e6db74">&#34;Data Source = &#34;</span> + baseName;
                     connection.Open();
-                    Console.WriteLine(&quot;Connection opened..&quot;);
-                    using (SQLiteCommand command = new SQLiteCommand(connection))
+                    Console.WriteLine(<span style="color:#e6db74">&#34;Connection opened..&#34;</span>);
+                    <span style="color:#66d9ef">using</span> (SQLiteCommand command = <span style="color:#66d9ef">new</span> SQLiteCommand(connection))
                     {
-                        command.CommandText = @&quot;SELECT MessageEx.Sender, MessageEx.Text, MessageEx.SentReceivedTimestamp, Item.CreationDate FROM MessageEx INNER JOIN Item ON MessageEx.GUID = Item.GUID ORDER BY MessageEx.SentReceivedTimestamp;&quot;;
-                        var reader = command.ExecuteReader();
-                        FileInfo outF = new FileInfo(&quot;result&quot; + DateTime.Now.Date.ToString(&quot;dd_mm_yyyy&quot;) + &quot;.txt&quot;);
-                        writer = new StreamWriter(outF.Open(FileMode.Create));
-                        writer.WriteLine(&quot;Sender, Text, Timestamp, Created&quot;);
-                        while (reader.Read())
+                        command.CommandText = <span style="color:#e6db74">@&#34;SELECT MessageEx.Sender, MessageEx.Text, MessageEx.SentReceivedTimestamp, Item.CreationDate FROM MessageEx INNER JOIN Item ON MessageEx.GUID = Item.GUID ORDER BY MessageEx.SentReceivedTimestamp;&#34;</span>;
+                        <span style="color:#66d9ef">var</span> reader = command.ExecuteReader();
+                        FileInfo outF = <span style="color:#66d9ef">new</span> FileInfo(<span style="color:#e6db74">&#34;result&#34;</span> + DateTime.Now.Date.ToString(<span style="color:#e6db74">&#34;dd_mm_yyyy&#34;</span>) + <span style="color:#e6db74">&#34;.txt&#34;</span>);
+                        writer = <span style="color:#66d9ef">new</span> StreamWriter(outF.Open(FileMode.Create));
+                        writer.WriteLine(<span style="color:#e6db74">&#34;Sender, Text, Timestamp, Created&#34;</span>);
+                        <span style="color:#66d9ef">while</span> (reader.Read())
                         {
-                            writer.WriteLine(String.Format(&quot;{0}, {1}, {2}, {3}&quot;, reader.GetString(0), reader.GetString(1), reader.GetDouble(2), reader.GetDouble(3)));
-                            Console.Write(&quot;.&quot;);
+                            writer.WriteLine(String.Format(<span style="color:#e6db74">&#34;{0}, {1}, {2}, {3}&#34;</span>, reader.GetString(<span style="color:#ae81ff">0</span>), reader.GetString(<span style="color:#ae81ff">1</span>), reader.GetDouble(<span style="color:#ae81ff">2</span>), reader.GetDouble(<span style="color:#ae81ff">3</span>)));
+                            Console.Write(<span style="color:#e6db74">&#34;.&#34;</span>);
                         }
-                        Console.WriteLine(&quot;Done! Press eny Key to continue.&quot;);
+                        Console.WriteLine(<span style="color:#e6db74">&#34;Done! Press eny Key to continue.&#34;</span>);
                     }
                 }
             }
-            catch (Exception ex)
+            <span style="color:#66d9ef">catch</span> (Exception ex)
             {
-                Console.WriteLine(&quot;OOPS:&quot; + ex.Message);
+                Console.WriteLine(<span style="color:#e6db74">&#34;OOPS:&#34;</span> + ex.Message);
             }
-            finally {
-                if (writer != null)
+            <span style="color:#66d9ef">finally</span> {
+                <span style="color:#66d9ef">if</span> (writer != <span style="color:#66d9ef">null</span>)
                     writer.Close();
             }
 
         }
     }
-</code></pre>
-
-<p>This is pretty much all needed to get a well-formed CSV. There is still some work left to get the date from Real to date/time, but I thought it can wait until I really need that info. CSV is easily processed:). Some of this sourcecode is borrowed from <a href="http://habrahabr.ru/blogs/net/56694/">here</a>. Personally wouldn&#8217;t ever dig into such software peripherals, but they literally forced me to, not providing the info I actually poses.</p>
-
-<p>Hope that helps someone who needs data synchronized from the phone &#8211; the DB is a pretty much comprehensible structure and tables and with the mentioned above plugin and a lil&#8217; SQL it&#8217;s quite easy to get your data even without programming.</p>
+</code></pre></div><p>This is pretty much all needed to get a well-formed CSV. There is still some work left to get the date from Real to date/time, but I thought it can wait until I really need that info. CSV is easily processed:). Some of this sourcecode is borrowed from <a href="http://habrahabr.ru/blogs/net/56694/">here</a>. Personally wouldn’t ever dig into such software peripherals, but they literally forced me to, not providing the info I actually poses.</p>
+<p>Hope that helps someone who needs data synchronized from the phone – the DB is a pretty much comprehensible structure and tables and with the mentioned above plugin and a lil’ SQL it’s quite easy to get your data even without programming.</p>
 
               
             </div>
@@ -324,8 +336,8 @@ ga('send', 'pageview');
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -384,8 +396,8 @@ ga('send', 'pageview');
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -398,14 +410,14 @@ ga('send', 'pageview');
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2017 Viktor Halitsyn. All Rights Reserved
+    &copy; 2020 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -464,8 +476,8 @@ ga('send', 'pageview');
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="3">
@@ -495,7 +507,7 @@ ga('send', 'pageview');
       <i class="fa fa-remove"></i>
     </div>
     
-      <img id="about-card-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
     
     <h4 id="about-card-name">Viktor Halitsyn</h4>
     
@@ -518,40 +530,10 @@ ga('send', 'pageview');
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         0 posts found
-      </p>
-    </div>
-  </div>
-</div>
+    
+
     
   
-    
     <div id="cover" style="background-image:url('https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg');"></div>
   
 
@@ -559,25 +541,25 @@ ga('send', 'pageview');
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
-
-<script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
-    }
-    hljs.highlightBlock(block);
-  });
-});
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
 </script>
 
 
@@ -606,6 +588,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

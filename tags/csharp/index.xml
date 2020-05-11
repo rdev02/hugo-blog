@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Csharp on Nomad&#39;s reflections</title>
+    <title>csharp on Nomad&#39;s reflections</title>
     <link>http://blog.vnomad.com/tags/csharp/</link>
-    <description>Recent content in Csharp on Nomad&#39;s reflections</description>
+    <description>Recent content in csharp on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 19 Apr 2011 14:45:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
-      <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100&amp;frasl;1000-line file is not fun and I really think you shouldn&amp;#8217;t bother choosing if you&amp;#8217;re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large &amp;#8211; 320k of CSV data is ~ 12MB performance is considerable.</description>
+      <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable.</description>
     </item>
     
   </channel>

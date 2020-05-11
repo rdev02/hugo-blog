@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Code on Nomad&#39;s reflections</title>
+    <title>code on Nomad&#39;s reflections</title>
     <link>http://blog.vnomad.com/categories/code/</link>
-    <description>Recent content in Code on Nomad&#39;s reflections</description>
+    <description>Recent content in code on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 06 Sep 2011 08:06:00 +0000</lastBuildDate>
@@ -18,8 +18,8 @@
       
       <guid>http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</guid>
       <description>Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:
-Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is: java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780) at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627) at javax.naming.InitialContext.lookup(InitialContext.java:392) at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154)  I was sure I configured it right as I have
-&amp;lt;jee:jndi-lookup id=&amp;quot;JBossMQ&amp;quot; jndi-name=&amp;quot;XAConnectionFactory&amp;quot; proxy-interface=&amp;quot;javax.jms.ConnectionFactory&amp;quot; environment-ref=&amp;quot;jndiProps&amp;quot; resource-ref=&amp;quot;true&amp;quot;/&amp;gt; &amp;lt;util:properties id=&amp;quot;jndiProps&amp;quot; location=&amp;quot;META-INF/spring/jndi.</description>
+Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is: java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780) at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627) at javax.naming.InitialContext.lookup(InitialContext.java:392) at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154) I was sure I configured it right as I have
+&amp;lt;jee:jndi-lookup id=&amp;#34;JBossMQ&amp;#34; jndi-name=&amp;#34;XAConnectionFactory&amp;#34; proxy-interface=&amp;#34;javax.jms.ConnectionFactory&amp;#34; environment-ref=&amp;#34;jndiProps&amp;#34; resource-ref=&amp;#34;true&amp;#34;/&amp;gt; &amp;lt;util:properties id=&amp;#34;jndiProps&amp;#34; location=&amp;#34;META-INF/spring/jndi.</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
-      <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100&amp;frasl;1000-line file is not fun and I really think you shouldn&amp;#8217;t bother choosing if you&amp;#8217;re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large &amp;#8211; 320k of CSV data is ~ 12MB performance is considerable.</description>
+      <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable.</description>
     </item>
     
     <item>
@@ -37,8 +37,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</guid>
-      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K.
-Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
+      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;amp;#8220;descriptive&amp;amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;amp;#8217;m going to describe here is when the size of the cod file is more than 64K.  Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
     </item>
     
     <item>
@@ -47,8 +46,7 @@ Finding out if you have this problem is fairly easy: just look into the final co
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/switching-to-container-based-datasource/</guid>
-      <description>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments.
-First of all lets assume we use JBoss app server.</description>
+      <description>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server.</description>
     </item>
     
     <item>
@@ -67,7 +65,7 @@ First of all lets assume we use JBoss app server.</description>
       
       <guid>http://blog.vnomad.com/code/blogger-code-formatting/</guid>
       <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
-using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } }  </description>
+using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { //  // TODO: Add constructor logic here  //  int x = 10; } } </description>
     </item>
     
     <item>
@@ -76,8 +74,8 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Tue, 10 Jun 2008 09:44:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/trying-out-google-base/</guid>
-      <description>Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app&amp;#8230; But when finished everything looked very nice!
-class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;quot;; const string BATCH_COUNT_SETTING = &amp;quot;batchCount&amp;quot;; const string CHECK_EXISTANCE_SETTING = &amp;quot;checkExistance&amp;quot;; const string MyItem_ITEMTYPE_SETTING = &amp;quot;MyItemItemType&amp;quot;; const string MyDB_CONNECTION_STRING = &amp;quot;MyDBConnectionString&amp;quot;; static void Main(string[] args) { string appNameG = Utils.</description>
+      <description>Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app… But when finished everything looked very nice!
+class Program { const string GOOGLE_LOGIN_SECTION = &amp;#34;googleLogin&amp;#34;; const string BATCH_COUNT_SETTING = &amp;#34;batchCount&amp;#34;; const string CHECK_EXISTANCE_SETTING = &amp;#34;checkExistance&amp;#34;; const string MyItem_ITEMTYPE_SETTING = &amp;#34;MyItemItemType&amp;#34;; const string MyDB_CONNECTION_STRING = &amp;#34;MyDBConnectionString&amp;#34;; static void Main(string[] args) { string appNameG = Utils.</description>
     </item>
     
     <item>
@@ -86,7 +84,7 @@ class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;qu
       <pubDate>Tue, 22 Jan 2008 11:12:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/net-marshalling/</guid>
-      <description>Interesting things happen when you try to marshal something in real life&amp;#8230;.Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] extern __declspec(dllexport) int SomeFunc(char** stringArray);  [marshal]</description>
+      <description>Interesting things happen when you try to marshal something in real life….Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] extern __declspec(dllexport) int SomeFunc(char** stringArray); [marshal]</description>
     </item>
     
     <item>
@@ -95,7 +93,7 @@ class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;qu
       <pubDate>Mon, 05 Nov 2007 16:50:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/display-tiff-in-picturebox-adobe-plugins/</guid>
-      <description>The previous post highlighted how to accomplish the given task using TIFF-PDF-JPEG-BITMAP conversion. Though this was is complicated it works perfect. But so much code for so little functionality often is not considered good if even eccepted. Recently a new way was found. It has to be said that it is not &amp;#8220;the proper way&amp;#8221;, because it needs some annatural code, but it is considerably lighter than the previous one. SO the idea is to draw direktly on the window using its HWND and SDK drawContentsToFunction.</description>
+      <description>The previous post highlighted how to accomplish the given task using TIFF-PDF-JPEG-BITMAP conversion. Though this was is complicated it works perfect. But so much code for so little functionality often is not considered good if even eccepted. Recently a new way was found. It has to be said that it is not “the proper way”, because it needs some annatural code, but it is considerably lighter than the previous one. SO the idea is to draw direktly on the window using its HWND and SDK drawContentsToFunction.</description>
     </item>
     
     <item>
@@ -104,7 +102,7 @@ class Program { const string GOOGLE_LOGIN_SECTION = &amp;quot;googleLogin&amp;qu
       <pubDate>Thu, 01 Nov 2007 10:22:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</guid>
-      <description>Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef&amp;#8230;Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.</description>
+      <description>Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.</description>
     </item>
     
   </channel>

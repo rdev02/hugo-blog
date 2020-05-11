@@ -1,61 +1,78 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-  
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.2-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Viktor Halitsyn">
+<meta name="keywords" content=", code, travel, immigration, ukraine, washington">
+<meta name="description" content="Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.">
+
+
+<meta property="og:description" content="Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tiff to Picture box in PDF plugin ADM dialog">
+<meta name="twitter:title" content="Tiff to Picture box in PDF plugin ADM dialog">
+<meta property="og:url" content="http://blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/">
+<meta property="twitter:url" content="http://blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/">
+<meta property="og:site_name" content="Nomad&#39;s reflections">
+<meta property="og:description" content="Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.">
+<meta name="twitter:description" content="Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2007-11-01T10:22:00">
+  
+  
+    <meta property="article:modified_time" content="2007-11-01T10:22:00">
+  
+  
+  
+    
+      <meta property="article:section" content="tech">
+    
+      <meta property="article:section" content="code">
+    
+  
+  
+    
+      <meta property="article:tag" content="c&#43;&#43;">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@rdev02">
+
+
+  <meta name="twitter:creator" content="@rdev02">
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+
+
     <title>Tiff to Picture box in PDF plugin ADM dialog</title>
-    <meta name="author" content="Viktor Halitsyn">
-    <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 
     <link rel="icon" href="/favicon.jpg">
     
 
     
-    <meta name="description" content="Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef&#8230;Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.">
-    <meta property="og:description" content="Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef&#8230;Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Tiff to Picture box in PDF plugin ADM dialog">
-    <meta property="og:url" content="/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/">
-    <meta property="og:site_name" content="Nomad&#39;s reflections">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nomad&#39;s reflections">
-    <meta name="twitter:description" content="Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef&#8230;Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.">
-    
-      <meta name="twitter:creator" content="@rdev02">
-    
+      <link rel="publisher" href="https://plus.google.com/&#43;victorhalitsyn">
     
 
-    
-    
-
-    
-      <meta property="og:image" content="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-    
-
-    
-    
-    
-
-    
+    <link rel="canonical" href="http://blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -63,7 +80,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-ryfmhpwcrntdiqds73k83etnsgyuksxmb6l5il9lddsjvmnzglrvqyzidzjl.min.css" />
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
       
@@ -73,14 +90,17 @@
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-64535001-2', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64535001-2', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     
@@ -102,7 +122,7 @@ ga('send', 'pageview');
     
       <div class="sidebar-profile">
         <a href="/#about">
-          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
         
@@ -251,81 +271,79 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef&#8230;Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had. There i used some nice piece of code found on <a href="http://www.codeguru.com/cpp/g-m/bitmap/specialeffects/article.php/c4897/">http://www.codeguru.com/cpp/g-m/bitmap/specialeffects/article.php/c4897/</a>. So here is the code i used.</p>
-
+              <p>Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had. There i used some nice piece of code found on <a href="http://www.codeguru.com/cpp/g-m/bitmap/specialeffects/article.php/c4897/">http://www.codeguru.com/cpp/g-m/bitmap/specialeffects/article.php/c4897/</a>. So here is the code i used.</p>
 <p>//header file for TIFF-PDF-JPEG-HBITMAP conversion</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> 
 
-<pre><code class="language-cpp">#include 
-
-&lt;map&gt;
-  #include &lt;olectl.h&gt;
-  #include &lt;cstring&gt;
-  #include &quot;AVCmdDefs.h&quot;
-  /*
-  * PDF to HBITMAP conversion classes
-  */
-  typedef map&lt;int,string&gt; TiffToJPGMap;
-  class TiFFDialogPrivewHelper
+<span style="color:#75715e">&lt;map&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;olectl.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstring&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;AVCmdDefs.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">/*
+</span><span style="color:#75715e">  * PDF to HBITMAP conversion classes
+</span><span style="color:#75715e">  */</span>
+  <span style="color:#66d9ef">typedef</span> map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,string<span style="color:#f92672">&gt;</span> TiffToJPGMap;
+  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TiFFDialogPrivewHelper</span>
   {
-  public: 
-  static HBITMAP getBitmapFromPDF(int documentIndex,WORD width, WORD height);
-  static void initTempFolder();
-  static void cleanTempFolder();
-  private:
-  static TiffToJPGMap m_convertedPDFs;
-  static bool m_isTempFolderInit;
-  static string m_tempFolderName;
-  static void convertPDFToJPG(int documentIndex, string jpegFullPath);
-  static HBITMAP resizeBitmap(HBITMAP hBmp, WORD wNewWidth, WORD wNewHeight);
-  static HBITMAP getJPEGFromPDF(string jpegName);
-  static HBITMAP getBitmapFromJPEG(string jpegFullPath);
-  /*
-  * Classt tha provides PDF to JPEG file conversion via AVConversion API
-  */
-  class ConversionFromPDFProvider
+  <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span> 
+  <span style="color:#66d9ef">static</span> HBITMAP getBitmapFromPDF(<span style="color:#66d9ef">int</span> documentIndex,WORD width, WORD height);
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initTempFolder</span>();
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cleanTempFolder</span>();
+  <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">static</span> TiffToJPGMap m_convertedPDFs;
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">bool</span> m_isTempFolderInit;
+  <span style="color:#66d9ef">static</span> string m_tempFolderName;
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">convertPDFToJPG</span>(<span style="color:#66d9ef">int</span> documentIndex, string jpegFullPath);
+  <span style="color:#66d9ef">static</span> HBITMAP <span style="color:#a6e22e">resizeBitmap</span>(HBITMAP hBmp, WORD wNewWidth, WORD wNewHeight);
+  <span style="color:#66d9ef">static</span> HBITMAP <span style="color:#a6e22e">getJPEGFromPDF</span>(string jpegName);
+  <span style="color:#66d9ef">static</span> HBITMAP <span style="color:#a6e22e">getBitmapFromJPEG</span>(string jpegFullPath);
+  <span style="color:#75715e">/*
+</span><span style="color:#75715e">  * Classt tha provides PDF to JPEG file conversion via AVConversion API
+</span><span style="color:#75715e">  */</span>
+  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConversionFromPDFProvider</span>
   {
-  private:
-  static AVConversionFromPDFHandler gConversionHandler;
-  PDEContent volatile pdeContent;
+  <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  <span style="color:#66d9ef">static</span> AVConversionFromPDFHandler gConversionHandler;
+  PDEContent <span style="color:#66d9ef">volatile</span> pdeContent;
   
-  void GetJPEGHandler(); 
-  public:
-  ACCB1 void ACCB2 Convert (int documentIndex, string jpegFullpath);
-  static ACCB1 ASBool ACCB2 fromPDFEnumProc(AVConversionFromPDFHandler handler, AVConversionEnumProcData data);
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">GetJPEGHandler</span>(); 
+  <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+  ACCB1 <span style="color:#66d9ef">void</span> ACCB2 Convert (<span style="color:#66d9ef">int</span> documentIndex, string jpegFullpath);
+  <span style="color:#66d9ef">static</span> ACCB1 ASBool ACCB2 <span style="color:#a6e22e">fromPDFEnumProc</span>(AVConversionFromPDFHandler handler, AVConversionEnumProcData data);
   };
-  /*
-  * BITMAP resize functions
-  */
-  //
-  // Functions for smooth bitmap resize
-  //
-  // Improvement: float calculations changed to int.
-  //
-  // Ivaylo Byalkov, January 24, 2000
-  // e-mail: ivob@i-n.net
-  //
-  // helper function prototypes
-  static BITMAPINFO *PrepareRGBBitmapInfo(WORD wWidth, WORD wHeight);
-  static void ShrinkDataInt(BYTE *pInBuff,WORD wWidth,WORD wHeight,BYTE *pOutBuff,WORD wNewWidth,WORD wNewHeight);
-  static void EnlargeDataInt(BYTE *pInBuff,WORD wWidth,WORD wHeight,BYTE *pOutBuff,WORD wNewWidth,WORD wNewHeight);
-  static int *CreateCoeffInt(int nLen, int nNewLen, BOOL bShrink);
-  ///////////////////////////////////////////////////////////
-  // Main resize function
-  static HBITMAP ScaleBitmapInt(HBITMAP hBmp,WORD wNewWidth,WORD wNewHeight);
+  <span style="color:#75715e">/*
+</span><span style="color:#75715e">  * BITMAP resize functions
+</span><span style="color:#75715e">  */</span>
+  <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// Functions for smooth bitmap resize
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// Improvement: float calculations changed to int.
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// Ivaylo Byalkov, January 24, 2000
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// e-mail: ivob@i-n.net
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// helper function prototypes
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">static</span> BITMAPINFO <span style="color:#f92672">*</span><span style="color:#a6e22e">PrepareRGBBitmapInfo</span>(WORD wWidth, WORD wHeight);
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ShrinkDataInt</span>(BYTE <span style="color:#f92672">*</span>pInBuff,WORD wWidth,WORD wHeight,BYTE <span style="color:#f92672">*</span>pOutBuff,WORD wNewWidth,WORD wNewHeight);
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">EnlargeDataInt</span>(BYTE <span style="color:#f92672">*</span>pInBuff,WORD wWidth,WORD wHeight,BYTE <span style="color:#f92672">*</span>pOutBuff,WORD wNewWidth,WORD wNewHeight);
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">CreateCoeffInt</span>(<span style="color:#66d9ef">int</span> nLen, <span style="color:#66d9ef">int</span> nNewLen, BOOL bShrink);
+  <span style="color:#75715e">///////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// Main resize function
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">static</span> HBITMAP <span style="color:#a6e22e">ScaleBitmapInt</span>(HBITMAP hBmp,WORD wNewWidth,WORD wNewHeight);
   };
    
-  /*
-  //// realization is quite big but it works 😉
-  /*
-  * PDF to HBITMAP conversion implementation code
-  */
-  /*
-  * TiFFDialogPrivewHelper function implementation
-  */
-  string TiFFDialogPrivewHelper::m_tempFolderName;
-  HBITMAP TiFFDialogPrivewHelper::getBitmapFromJPEG(string jpegFullPath)
+  <span style="color:#75715e">/*
+</span><span style="color:#75715e">  //// realization is quite big but it works 😉
+</span><span style="color:#75715e">  /*
+</span><span style="color:#75715e">  * PDF to HBITMAP conversion implementation code
+</span><span style="color:#75715e">  */</span>
+  <span style="color:#75715e">/*
+</span><span style="color:#75715e">  * TiFFDialogPrivewHelper function implementation
+</span><span style="color:#75715e">  */</span>
+  string TiFFDialogPrivewHelper<span style="color:#f92672">::</span>m_tempFolderName;
+  HBITMAP TiFFDialogPrivewHelper<span style="color:#f92672">::</span>getBitmapFromJPEG(string jpegFullPath)
   {
-  LPSTR pFile = new char[jpegFullPath.length() + 1];
+  LPSTR pFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[jpegFullPath.length() <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
   strcpy(pFile,jpegFullPath.c_str());
   HANDLE hFile; 
   HBITMAP hBmp; 
@@ -335,552 +353,551 @@ ga('send', 'pageview');
   LPSTREAM lpStream; 
   OLE_HANDLE hJpegBmp; 
   HRESULT hr; 
-  LPPICTURE lpPicture = NULL; 
-  void *pMemJpeg; 
+  LPPICTURE lpPicture <span style="color:#f92672">=</span> NULL; 
+  <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>pMemJpeg; 
   
-  /* Open the file and get the size. */ 
-  if((hFile = CreateFile(pFile, GENERIC_READ, FILE_SHARE_READ, 
-  NULL, OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE) 
-  return NULL; 
-  if((dwSize = GetFileSize(hFile, NULL)) == 0xFFFFFFFF) 
+  <span style="color:#75715e">/* Open the file and get the size. */</span> 
+  <span style="color:#66d9ef">if</span>((hFile <span style="color:#f92672">=</span> CreateFile(pFile, GENERIC_READ, FILE_SHARE_READ, 
+  NULL, OPEN_EXISTING, <span style="color:#ae81ff">0</span>, NULL)) <span style="color:#f92672">==</span> INVALID_HANDLE_VALUE) 
+  <span style="color:#66d9ef">return</span> NULL; 
+  <span style="color:#66d9ef">if</span>((dwSize <span style="color:#f92672">=</span> GetFileSize(hFile, NULL)) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xFFFFFFFF</span>) 
   { 
   CloseHandle(hFile); 
-  return NULL; 
+  <span style="color:#66d9ef">return</span> NULL; 
   } 
   
-  /* Allocate space for file, read it in, and then close the file again. */ 
-  if((hMemJpeg = GlobalAlloc(GMEM_MOVEABLE, dwSize)) == NULL) 
+  <span style="color:#75715e">/* Allocate space for file, read it in, and then close the file again. */</span> 
+  <span style="color:#66d9ef">if</span>((hMemJpeg <span style="color:#f92672">=</span> GlobalAlloc(GMEM_MOVEABLE, dwSize)) <span style="color:#f92672">==</span> NULL) 
   { 
   CloseHandle(hFile); 
-  return NULL; 
+  <span style="color:#66d9ef">return</span> NULL; 
   } 
-  if((pMemJpeg = GlobalLock(hMemJpeg)) == NULL) 
+  <span style="color:#66d9ef">if</span>((pMemJpeg <span style="color:#f92672">=</span> GlobalLock(hMemJpeg)) <span style="color:#f92672">==</span> NULL) 
   { 
   CloseHandle(hFile); 
   GlobalFree(hMemJpeg); 
-  return NULL; 
+  <span style="color:#66d9ef">return</span> NULL; 
   } 
-  if(!ReadFile(hFile, pMemJpeg, dwSize, &amp;dwRead, NULL)) 
+  <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>ReadFile(hFile, pMemJpeg, dwSize, <span style="color:#f92672">&amp;</span>dwRead, NULL)) 
   { 
   CloseHandle(hFile); 
   GlobalFree(hMemJpeg); 
-  return NULL; 
+  <span style="color:#66d9ef">return</span> NULL; 
   } 
   CloseHandle(hFile); 
   GlobalUnlock(hMemJpeg); 
   
-  /* Create the stream and load the picture. */ 
-  if((hr = CreateStreamOnHGlobal(hMemJpeg, TRUE, &amp;lpStream)) != S_OK) 
+  <span style="color:#75715e">/* Create the stream and load the picture. */</span> 
+  <span style="color:#66d9ef">if</span>((hr <span style="color:#f92672">=</span> CreateStreamOnHGlobal(hMemJpeg, TRUE, <span style="color:#f92672">&amp;</span>lpStream)) <span style="color:#f92672">!=</span> S_OK) 
   { 
   GlobalFree(hMemJpeg); 
-  return NULL; 
+  <span style="color:#66d9ef">return</span> NULL; 
   } 
-  if(OleLoadPicture(lpStream, dwSize, FALSE, IID_IPicture,(void**) &amp;lpPicture) != S_OK) 
+  <span style="color:#66d9ef">if</span>(OleLoadPicture(lpStream, dwSize, FALSE, IID_IPicture,(<span style="color:#66d9ef">void</span><span style="color:#f92672">**</span>) <span style="color:#f92672">&amp;</span>lpPicture) <span style="color:#f92672">!=</span> S_OK) 
   { 
   GlobalFree(hMemJpeg); 
-  lpStream-&gt;Release(); 
-  return NULL; 
-  } 
-  
-  /* Get the handle to the image, and then copy it. */ 
-  if((lpPicture-&gt;get_Handle( &amp;hJpegBmp)) != S_OK) 
-  { 
-  GlobalFree(hMemJpeg); 
-  lpStream-&gt;Release(); 
-  lpPicture-&gt;Release(); 
-  return NULL; 
-  } 
-  if((hBmp = (HBITMAP)CopyImage((HANDLE *) hJpegBmp, IMAGE_BITMAP, 0, 0, LR_COPYRETURNORG)) == NULL) 
-  { 
-  GlobalFree(hMemJpeg); 
-  lpStream-&gt;Release(); 
-  lpPicture-&gt;Release(); 
-  return NULL; 
+  lpStream<span style="color:#f92672">-&gt;</span>Release(); 
+  <span style="color:#66d9ef">return</span> NULL; 
   } 
   
-  /* Free the original image and memory. */ 
+  <span style="color:#75715e">/* Get the handle to the image, and then copy it. */</span> 
+  <span style="color:#66d9ef">if</span>((lpPicture<span style="color:#f92672">-&gt;</span>get_Handle( <span style="color:#f92672">&amp;</span>hJpegBmp)) <span style="color:#f92672">!=</span> S_OK) 
+  { 
   GlobalFree(hMemJpeg); 
-  lpStream-&gt;Release(); 
-  lpPicture-&gt;Release(); 
-  return hBmp; 
+  lpStream<span style="color:#f92672">-&gt;</span>Release(); 
+  lpPicture<span style="color:#f92672">-&gt;</span>Release(); 
+  <span style="color:#66d9ef">return</span> NULL; 
+  } 
+  <span style="color:#66d9ef">if</span>((hBmp <span style="color:#f92672">=</span> (HBITMAP)CopyImage((HANDLE <span style="color:#f92672">*</span>) hJpegBmp, IMAGE_BITMAP, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, LR_COPYRETURNORG)) <span style="color:#f92672">==</span> NULL) 
+  { 
+  GlobalFree(hMemJpeg); 
+  lpStream<span style="color:#f92672">-&gt;</span>Release(); 
+  lpPicture<span style="color:#f92672">-&gt;</span>Release(); 
+  <span style="color:#66d9ef">return</span> NULL; 
+  } 
+  
+  <span style="color:#75715e">/* Free the original image and memory. */</span> 
+  GlobalFree(hMemJpeg); 
+  lpStream<span style="color:#f92672">-&gt;</span>Release(); 
+  lpPicture<span style="color:#f92672">-&gt;</span>Release(); 
+  <span style="color:#66d9ef">return</span> hBmp; 
   }
-  void TiFFDialogPrivewHelper::initTempFolder()
+  <span style="color:#66d9ef">void</span> TiFFDialogPrivewHelper<span style="color:#f92672">::</span>initTempFolder()
   {
-  ASFileSys currentFS = ASGetDefaultFileSys();
-  ASPathName asPath = ASFileSysGetTempPathName(currentFS, NULL);
-  if (asPath == NULL)
+  ASFileSys currentFS <span style="color:#f92672">=</span> ASGetDefaultFileSys();
+  ASPathName asPath <span style="color:#f92672">=</span> ASFileSysGetTempPathName(currentFS, NULL);
+  <span style="color:#66d9ef">if</span> (asPath <span style="color:#f92672">==</span> NULL)
   {
-  m_tempFolderName = &quot;c:&quot;;
+  m_tempFolderName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;c:&#34;</span>;
   }
-  // convert pathname from Acrobat pathname to char
-  char *path = ASFileSysDisplayStringFromPath(currentFS, asPath); // buffer should be freed
-  ASFileSysReleasePath(currentFS, asPath);
-  if (path == NULL)
+  <span style="color:#75715e">// convert pathname from Acrobat pathname to char
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>path <span style="color:#f92672">=</span> ASFileSysDisplayStringFromPath(currentFS, asPath); <span style="color:#75715e">// buffer should be freed
+</span><span style="color:#75715e"></span>  ASFileSysReleasePath(currentFS, asPath);
+  <span style="color:#66d9ef">if</span> (path <span style="color:#f92672">==</span> NULL)
   {
-  m_tempFolderName = &quot;c:&quot;;
+  m_tempFolderName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;c:&#34;</span>;
   }
-  string pathString = path;
+  string pathString <span style="color:#f92672">=</span> path;
   ASfree(path);
-  //remove the temp file name
-  int slashIndex = pathString.find_last_of('\');
-  if (slashIndex &lt;= 0) {
-  slashIndex = pathString.find_last_of('/');
+  <span style="color:#75715e">//remove the temp file name
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> slashIndex <span style="color:#f92672">=</span> pathString.find_last_of(<span style="color:#960050;background-color:#1e0010">&#39;\&#39;</span>);
+  <span style="color:#66d9ef">if</span> (slashIndex <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>) {
+  slashIndex <span style="color:#f92672">=</span> pathString.find_last_of(<span style="color:#e6db74">&#39;/&#39;</span>);
   }
-  pathString.erase(slashIndex,pathString.length() - slashIndex);
-  m_tempFolderName = pathString + &quot;//JPEGsFromPDfs//&quot;;
-  ASFileSysCreateFolder(currentFS,ASFileSysCreatePathName(currentFS, ASAtomFromString(&quot;Cstring&quot;), m_tempFolderName.c_str(), 0),false);
-  m_isTempFolderInit = true;
+  pathString.erase(slashIndex,pathString.length() <span style="color:#f92672">-</span> slashIndex);
+  m_tempFolderName <span style="color:#f92672">=</span> pathString <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;//JPEGsFromPDfs//&#34;</span>;
+  ASFileSysCreateFolder(currentFS,ASFileSysCreatePathName(currentFS, ASAtomFromString(<span style="color:#e6db74">&#34;Cstring&#34;</span>), m_tempFolderName.c_str(), <span style="color:#ae81ff">0</span>),false);
+  m_isTempFolderInit <span style="color:#f92672">=</span> true;
   }
-  void TiFFDialogPrivewHelper::cleanTempFolder()
+  <span style="color:#66d9ef">void</span> TiFFDialogPrivewHelper<span style="color:#f92672">::</span>cleanTempFolder()
   {
-  ASFileSys currentFS = ASGetDefaultFileSys();
-  ASPathName tempFolderName = ASFileSysCreatePathName(currentFS, ASAtomFromString(&quot;Cstring&quot;), m_tempFolderName.c_str(), 0);
-  for(TiffToJPGMap::iterator it = m_convertedPDFs.begin(); it != m_convertedPDFs.end(); it++)
+  ASFileSys currentFS <span style="color:#f92672">=</span> ASGetDefaultFileSys();
+  ASPathName tempFolderName <span style="color:#f92672">=</span> ASFileSysCreatePathName(currentFS, ASAtomFromString(<span style="color:#e6db74">&#34;Cstring&#34;</span>), m_tempFolderName.c_str(), <span style="color:#ae81ff">0</span>);
+  <span style="color:#66d9ef">for</span>(TiffToJPGMap<span style="color:#f92672">::</span>iterator it <span style="color:#f92672">=</span> m_convertedPDFs.begin(); it <span style="color:#f92672">!=</span> m_convertedPDFs.end(); it<span style="color:#f92672">++</span>)
   {
-  ASPathName convertedJPEG = ASFileSysCreatePathName(currentFS, ASAtomFromString(&quot;Cstring&quot;), ((pair&lt;int,string&gt;)(*it)).second.c_str(), 0);
+  ASPathName convertedJPEG <span style="color:#f92672">=</span> ASFileSysCreatePathName(currentFS, ASAtomFromString(<span style="color:#e6db74">&#34;Cstring&#34;</span>), ((pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,string<span style="color:#f92672">&gt;</span>)(<span style="color:#f92672">*</span>it)).second.c_str(), <span style="color:#ae81ff">0</span>);
   ASFileSysRemoveFile(currentFS,convertedJPEG);
   ASFileSysReleasePath(currentFS,convertedJPEG);
   }
   ASFileSysRemoveFolder(currentFS,tempFolderName);
   ASFileSysReleasePath(currentFS,tempFolderName);
   m_convertedPDFs.clear();
-  m_isTempFolderInit = false;
+  m_isTempFolderInit <span style="color:#f92672">=</span> false;
   }
-  TiffToJPGMap TiFFDialogPrivewHelper::m_convertedPDFs;
-  bool TiFFDialogPrivewHelper::m_isTempFolderInit = false;
-  void TiFFDialogPrivewHelper::convertPDFToJPG(int documentIndex, string jpegFullPath)
+  TiffToJPGMap TiFFDialogPrivewHelper<span style="color:#f92672">::</span>m_convertedPDFs;
+  <span style="color:#66d9ef">bool</span> TiFFDialogPrivewHelper<span style="color:#f92672">::</span>m_isTempFolderInit <span style="color:#f92672">=</span> false;
+  <span style="color:#66d9ef">void</span> TiFFDialogPrivewHelper<span style="color:#f92672">::</span>convertPDFToJPG(<span style="color:#66d9ef">int</span> documentIndex, string jpegFullPath)
   {
   ConversionFromPDFProvider provider;
   provider.Convert(documentIndex,jpegFullPath);
   }
-  HBITMAP TiFFDialogPrivewHelper::resizeBitmap(HBITMAP hBmp, WORD wNewWidth, WORD wNewHeight)
+  HBITMAP TiFFDialogPrivewHelper<span style="color:#f92672">::</span>resizeBitmap(HBITMAP hBmp, WORD wNewWidth, WORD wNewHeight)
   {
-  HBITMAP result = ScaleBitmapInt(hBmp,wNewWidth,wNewWidth);
-  return result;
+  HBITMAP result <span style="color:#f92672">=</span> ScaleBitmapInt(hBmp,wNewWidth,wNewWidth);
+  <span style="color:#66d9ef">return</span> result;
   }
-  HBITMAP TiFFDialogPrivewHelper::getBitmapFromPDF(int documentIndex,WORD width, WORD height)
+  HBITMAP TiFFDialogPrivewHelper<span style="color:#f92672">::</span>getBitmapFromPDF(<span style="color:#66d9ef">int</span> documentIndex,WORD width, WORD height)
   {
-  if(m_isTempFolderInit)
+  <span style="color:#66d9ef">if</span>(m_isTempFolderInit)
   {
-  TiffToJPGMap::iterator it = m_convertedPDFs.find(documentIndex);
-  if (it == m_convertedPDFs.end()) {
-  //evaluate corresponding jpeg path
-  string combinedJpegPath;
-  combinedJpegPath.insert(0,m_tempFolderName);
-  combinedJpegPath += &quot;ConvertedPDF&quot;;
-  std::stringstream ss;
-  std::string stringIndex;
-  ss &lt;&lt; documentIndex;
-  ss &gt;&gt; stringIndex;
-  combinedJpegPath += stringIndex;
-  combinedJpegPath += &quot;.jpeg&quot;; 
+  TiffToJPGMap<span style="color:#f92672">::</span>iterator it <span style="color:#f92672">=</span> m_convertedPDFs.find(documentIndex);
+  <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">==</span> m_convertedPDFs.end()) {
+  <span style="color:#75715e">//evaluate corresponding jpeg path
+</span><span style="color:#75715e"></span>  string combinedJpegPath;
+  combinedJpegPath.insert(<span style="color:#ae81ff">0</span>,m_tempFolderName);
+  combinedJpegPath <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;ConvertedPDF&#34;</span>;
+  std<span style="color:#f92672">::</span>stringstream ss;
+  std<span style="color:#f92672">::</span>string stringIndex;
+  ss <span style="color:#f92672">&lt;&lt;</span> documentIndex;
+  ss <span style="color:#f92672">&gt;&gt;</span> stringIndex;
+  combinedJpegPath <span style="color:#f92672">+=</span> stringIndex;
+  combinedJpegPath <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;.jpeg&#34;</span>; 
   convertPDFToJPG(documentIndex,combinedJpegPath);
-  m_convertedPDFs.insert(pair&lt;int,string&gt;(documentIndex,combinedJpegPath));
-  it = m_convertedPDFs.find(documentIndex);
+  m_convertedPDFs.insert(pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,string<span style="color:#f92672">&gt;</span>(documentIndex,combinedJpegPath));
+  it <span style="color:#f92672">=</span> m_convertedPDFs.find(documentIndex);
   }
-  HBITMAP jpg = getBitmapFromJPEG(((pair&lt;int,string&gt;)(*it)).second);
-  return resizeBitmap(jpg,width,height);
+  HBITMAP jpg <span style="color:#f92672">=</span> getBitmapFromJPEG(((pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,string<span style="color:#f92672">&gt;</span>)(<span style="color:#f92672">*</span>it)).second);
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">resizeBitmap</span>(jpg,width,height);
   }
-  return NULL;
+  <span style="color:#66d9ef">return</span> NULL;
   }
-  //////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////
-  /*
-  * ConversionFromPDFProvider functions
-  */
-  AVConversionFromPDFHandler TiFFDialogPrivewHelper::ConversionFromPDFProvider::gConversionHandler = NULL;
+  <span style="color:#75715e">//////////////////////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//////////////////////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//////////////////////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">/*
+</span><span style="color:#75715e">  * ConversionFromPDFProvider functions
+</span><span style="color:#75715e">  */</span>
+  AVConversionFromPDFHandler TiFFDialogPrivewHelper<span style="color:#f92672">::</span>ConversionFromPDFProvider<span style="color:#f92672">::</span>gConversionHandler <span style="color:#f92672">=</span> NULL;
   
-  ACCB1 void ACCB2 TiFFDialogPrivewHelper::ConversionFromPDFProvider::Convert(int documentIndex, string jpegFullPath)
+  ACCB1 <span style="color:#66d9ef">void</span> ACCB2 TiFFDialogPrivewHelper<span style="color:#f92672">::</span>ConversionFromPDFProvider<span style="color:#f92672">::</span>Convert(<span style="color:#66d9ef">int</span> documentIndex, string jpegFullPath)
   {
   ASAtom cmdName;
   AVCommand cmd;
-  AVConversionFlags flags=0;
-  const int MAX_PATH_LENGTH = 255;
-  char temp[MAX_PATH_LENGTH]=&quot;&quot;;
+  AVConversionFlags flags<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> MAX_PATH_LENGTH <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>;
+  <span style="color:#66d9ef">char</span> temp[MAX_PATH_LENGTH]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>;
   PDDoc pdDoc;
   
-  //filename for the jpeg output file
-  char* outFileName = new char[jpegFullPath.length() + 1];
+  <span style="color:#75715e">//filename for the jpeg output file
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> outFileName <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[jpegFullPath.length() <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
   strcpy(outFileName, jpegFullPath.c_str());
   
   DURING 
-  Dialog::getStatement()-&gt;ConvertTiffToPdf(&amp;pdDoc,documentIndex);
-  ASPathName jpgPathName = ASFileSysCreatePathName(ASGetDefaultFileSys(), ASAtomFromString(&quot;Cstring&quot;), outFileName, 0);
-  cmdName=ASAtomFromString(&quot;GeneralInfo&quot;);
-  cmd=AVCommandNew(cmdName);
-  volatile ASCab settings=ASCabNew();
-  ASCab inputs = ASCabNew();
+  Dialog<span style="color:#f92672">::</span>getStatement()<span style="color:#f92672">-&gt;</span>ConvertTiffToPdf(<span style="color:#f92672">&amp;</span>pdDoc,documentIndex);
+  ASPathName jpgPathName <span style="color:#f92672">=</span> ASFileSysCreatePathName(ASGetDefaultFileSys(), ASAtomFromString(<span style="color:#e6db74">&#34;Cstring&#34;</span>), outFileName, <span style="color:#ae81ff">0</span>);
+  cmdName<span style="color:#f92672">=</span>ASAtomFromString(<span style="color:#e6db74">&#34;GeneralInfo&#34;</span>);
+  cmd<span style="color:#f92672">=</span>AVCommandNew(cmdName);
+  <span style="color:#66d9ef">volatile</span> ASCab settings<span style="color:#f92672">=</span>ASCabNew();
+  ASCab inputs <span style="color:#f92672">=</span> ASCabNew();
   ASCabPutPointer (inputs, kAVCommandKeyPDDoc, PDDoc, pdDoc, NULL);
-  if (kAVCommandReady != AVCommandSetInputs (cmd, inputs)) 
+  <span style="color:#66d9ef">if</span> (kAVCommandReady <span style="color:#f92672">!=</span> AVCommandSetInputs (cmd, inputs)) 
   {
-  //some error handling;
-  }
-  ASCab config = ASCabNew();
-  ASCabPutInt (config, &quot;UIPolicy&quot;, kAVCommandUIInteractive);
-  if(kAVCommandReady!=AVCommandSetConfig (cmd, config))
+  <span style="color:#75715e">//some error handling;
+</span><span style="color:#75715e"></span>  }
+  ASCab config <span style="color:#f92672">=</span> ASCabNew();
+  ASCabPutInt (config, <span style="color:#e6db74">&#34;UIPolicy&#34;</span>, kAVCommandUIInteractive);
+  <span style="color:#66d9ef">if</span>(kAVCommandReady<span style="color:#f92672">!=</span>AVCommandSetConfig (cmd, config))
   {
-  //some error handling;
-  }
+  <span style="color:#75715e">//some error handling;
+</span><span style="color:#75715e"></span>  }
   ASCabPutInt (settings, kExtractImgCmdKeyConvFormat, kImgConversionFormatJpeg);
   ASCabPutInt (settings, kExtractJpegCmdKeyCompression, kJpegCompressionLow);
   ASCabPutInt (settings, kExtractJpegCmdKeyFormat, kJpegFormatOptimized);
   ASCabPutInt (settings, kExtractImgCmdKeyColorSpace, kColorSpaceGrayscale);
   ASCabPutInt (settings, kExtractImgCmdKeyResolution, kImgResolution300);
   
-  if(kAVCommandReady!=AVCommandSetParams (cmd, settings))
+  <span style="color:#66d9ef">if</span>(kAVCommandReady<span style="color:#f92672">!=</span>AVCommandSetParams (cmd, settings))
   {
-  //some error handling;
-  }
+  <span style="color:#75715e">//some error handling;
+</span><span style="color:#75715e"></span>  }
   GetJPEGHandler();
-  //handler for jpeg
-  if(kAVConversionFailed == AVConversionConvertFromPDFWithHandler (gConversionHandler,
-  settings,//param settings 
-  kAVConversionNoFlags, 
-  pdDoc//active pddoc
-  , jpgPathName//destn filename
-  , ASGetDefaultFileSys(), NULL))
+  <span style="color:#75715e">//handler for jpeg
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span>(kAVConversionFailed <span style="color:#f92672">==</span> AVConversionConvertFromPDFWithHandler (gConversionHandler,
+  settings,<span style="color:#75715e">//param settings 
+</span><span style="color:#75715e"></span>  kAVConversionNoFlags, 
+  pdDoc<span style="color:#75715e">//active pddoc
+</span><span style="color:#75715e"></span>  , jpgPathName<span style="color:#75715e">//destn filename
+</span><span style="color:#75715e"></span>  , ASGetDefaultFileSys(), NULL))
   { 
-  //some error logging
-  }
+  <span style="color:#75715e">//some error logging
+</span><span style="color:#75715e"></span>  }
   PDDocClose(pdDoc);
   HANDLER
   END_HANDLER
   }
-  /* fromPDFEnumProc
-  * ----------------------------------------------------------------------
-  *
-  * Called by Acrobat as it cycles through each FromPDF handler.
-  */ 
-  ACCB1 ASBool ACCB2 TiFFDialogPrivewHelper::ConversionFromPDFProvider::fromPDFEnumProc(AVConversionFromPDFHandler handler, AVConversionEnumProcData data)
+  <span style="color:#75715e">/* fromPDFEnumProc
+</span><span style="color:#75715e">  * ----------------------------------------------------------------------
+</span><span style="color:#75715e">  *
+</span><span style="color:#75715e">  * Called by Acrobat as it cycles through each FromPDF handler.
+</span><span style="color:#75715e">  */</span> 
+  ACCB1 ASBool ACCB2 TiFFDialogPrivewHelper<span style="color:#f92672">::</span>ConversionFromPDFProvider<span style="color:#f92672">::</span>fromPDFEnumProc(AVConversionFromPDFHandler handler, AVConversionEnumProcData data)
   {
   DURING
-  //Get the name of this filter
-  ASInt32 len = 255;
-  AVFileFilterRec filterRec = handler-&gt;convFilter;
-  char * filterName = ASTextGetPDTextCopy(filterRec.filterDescription, &amp;len);
-  //If it's the JPEG handler, then set our global handler to it.
-  //Name changed to just &quot;JPEG&quot; in 6.0
-  if ((!strcmp(filterName, &quot;JPEG Files&quot;)) || (!strcmp(filterName, &quot;JPEG&quot;)))
+  <span style="color:#75715e">//Get the name of this filter
+</span><span style="color:#75715e"></span>  ASInt32 len <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>;
+  AVFileFilterRec filterRec <span style="color:#f92672">=</span> handler<span style="color:#f92672">-&gt;</span>convFilter;
+  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> filterName <span style="color:#f92672">=</span> ASTextGetPDTextCopy(filterRec.filterDescription, <span style="color:#f92672">&amp;</span>len);
+  <span style="color:#75715e">//If it&#39;s the JPEG handler, then set our global handler to it.
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//Name changed to just &#34;JPEG&#34; in 6.0
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> ((<span style="color:#f92672">!</span>strcmp(filterName, <span style="color:#e6db74">&#34;JPEG Files&#34;</span>)) <span style="color:#f92672">||</span> (<span style="color:#f92672">!</span>strcmp(filterName, <span style="color:#e6db74">&#34;JPEG&#34;</span>)))
   {
-  gConversionHandler = handler;
+  gConversionHandler <span style="color:#f92672">=</span> handler;
   }
   HANDLER
-  return false;
+  <span style="color:#66d9ef">return</span> false;
   END_HANDLER
-  return true;
+  <span style="color:#66d9ef">return</span> true;
   }
   
-  void TiFFDialogPrivewHelper::ConversionFromPDFProvider::GetJPEGHandler()
+  <span style="color:#66d9ef">void</span> TiFFDialogPrivewHelper<span style="color:#f92672">::</span>ConversionFromPDFProvider<span style="color:#f92672">::</span>GetJPEGHandler()
   {
-  AVConversionFromPDFEnumProc fromPDFEnumProcCB =
-  ASCallbackCreateProto(AVConversionFromPDFEnumProc, &amp;TiFFDialogPrivewHelper::ConversionFromPDFProvider::fromPDFEnumProc);
+  AVConversionFromPDFEnumProc fromPDFEnumProcCB <span style="color:#f92672">=</span>
+  ASCallbackCreateProto(AVConversionFromPDFEnumProc, <span style="color:#f92672">&amp;</span>TiFFDialogPrivewHelper<span style="color:#f92672">::</span>ConversionFromPDFProvider<span style="color:#f92672">::</span>fromPDFEnumProc);
   AVConversionEnumFromPDFConverters (fromPDFEnumProcCB, NULL);
   ASCallbackDestroy(fromPDFEnumProcCB);
   }
   
-  //////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////
-  /*
-  * In memory bitmap resizing functions realizations
-  */
-  HBITMAP TiFFDialogPrivewHelper::ScaleBitmapInt(HBITMAP hBmp,WORD wNewWidth,WORD wNewHeight)
+  <span style="color:#75715e">//////////////////////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//////////////////////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//////////////////////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">/*
+</span><span style="color:#75715e">  * In memory bitmap resizing functions realizations
+</span><span style="color:#75715e">  */</span>
+  HBITMAP TiFFDialogPrivewHelper<span style="color:#f92672">::</span>ScaleBitmapInt(HBITMAP hBmp,WORD wNewWidth,WORD wNewHeight)
   {
   BITMAP bmp;
-  ::GetObject(hBmp, sizeof(BITMAP), &amp;bmp);
-  // check for valid size
-  if((bmp.bmWidth &gt; wNewWidth
-  &amp;&amp; bmp.bmHeight &lt; wNewHeight)
-  || (bmp.bmWidth &lt; wNewWidth
-  &amp;&amp; bmp.bmHeight &gt; wNewHeight))
-  return NULL;
-  HDC hDC = ::GetDC(NULL);
-  BITMAPINFO *pbi = PrepareRGBBitmapInfo((WORD)bmp.bmWidth,
+  <span style="color:#f92672">::</span>GetObject(hBmp, <span style="color:#66d9ef">sizeof</span>(BITMAP), <span style="color:#f92672">&amp;</span>bmp);
+  <span style="color:#75715e">// check for valid size
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span>((bmp.bmWidth <span style="color:#f92672">&gt;</span> wNewWidth
+  <span style="color:#f92672">&amp;&amp;</span> bmp.bmHeight <span style="color:#f92672">&lt;</span> wNewHeight)
+  <span style="color:#f92672">||</span> (bmp.bmWidth <span style="color:#f92672">&lt;</span> wNewWidth
+  <span style="color:#f92672">&amp;&amp;</span> bmp.bmHeight <span style="color:#f92672">&gt;</span> wNewHeight))
+  <span style="color:#66d9ef">return</span> NULL;
+  HDC hDC <span style="color:#f92672">=</span> <span style="color:#f92672">::</span>GetDC(NULL);
+  BITMAPINFO <span style="color:#f92672">*</span>pbi <span style="color:#f92672">=</span> PrepareRGBBitmapInfo((WORD)bmp.bmWidth,
   (WORD)bmp.bmHeight);
-  BYTE *pData = new BYTE[pbi-&gt;bmiHeader.biSizeImage];
-  ::GetDIBits(hDC, hBmp, 0, bmp.bmHeight, pData, pbi, DIB_RGB_COLORS);
-  delete pbi;
-  pbi = PrepareRGBBitmapInfo(wNewWidth, wNewHeight);
-  BYTE *pData2 = new BYTE[pbi-&gt;bmiHeader.biSizeImage];
-  if(bmp.bmWidth &gt;= wNewWidth
-  &amp;&amp; bmp.bmHeight &gt;= wNewHeight)
+  BYTE <span style="color:#f92672">*</span>pData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BYTE[pbi<span style="color:#f92672">-&gt;</span>bmiHeader.biSizeImage];
+  <span style="color:#f92672">::</span>GetDIBits(hDC, hBmp, <span style="color:#ae81ff">0</span>, bmp.bmHeight, pData, pbi, DIB_RGB_COLORS);
+  <span style="color:#66d9ef">delete</span> pbi;
+  pbi <span style="color:#f92672">=</span> PrepareRGBBitmapInfo(wNewWidth, wNewHeight);
+  BYTE <span style="color:#f92672">*</span>pData2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BYTE[pbi<span style="color:#f92672">-&gt;</span>bmiHeader.biSizeImage];
+  <span style="color:#66d9ef">if</span>(bmp.bmWidth <span style="color:#f92672">&gt;=</span> wNewWidth
+  <span style="color:#f92672">&amp;&amp;</span> bmp.bmHeight <span style="color:#f92672">&gt;=</span> wNewHeight)
   ShrinkDataInt(pData,
   (WORD)bmp.bmWidth,
   (WORD)bmp.bmHeight,
   pData2,
   wNewWidth,
   wNewHeight);
-  else
-  EnlargeDataInt(pData,
+  <span style="color:#66d9ef">else</span>
+  <span style="color:#a6e22e">EnlargeDataInt</span>(pData,
   (WORD)bmp.bmWidth,
   (WORD)bmp.bmHeight,
   pData2,
   wNewWidth,
   wNewHeight);
-  delete pData;
-  HBITMAP hResBmp = ::CreateCompatibleBitmap(hDC,
+  <span style="color:#66d9ef">delete</span> pData;
+  HBITMAP hResBmp <span style="color:#f92672">=</span> <span style="color:#f92672">::</span>CreateCompatibleBitmap(hDC,
   wNewWidth,
   wNewHeight);
-  ::SetDIBits(hDC,
+  <span style="color:#f92672">::</span>SetDIBits(hDC,
   hResBmp,
-  0,
+  <span style="color:#ae81ff">0</span>,
   wNewHeight,
   pData2,
   pbi,
   DIB_RGB_COLORS);
-  ::ReleaseDC(NULL, hDC);
-  delete pbi;
-  delete pData2;
-  return hResBmp;
+  <span style="color:#f92672">::</span>ReleaseDC(NULL, hDC);
+  <span style="color:#66d9ef">delete</span> pbi;
+  <span style="color:#66d9ef">delete</span> pData2;
+  <span style="color:#66d9ef">return</span> hResBmp;
   }
-  ///////////////////////////////////////////////////////////
-  BITMAPINFO *TiFFDialogPrivewHelper::PrepareRGBBitmapInfo(WORD wWidth, WORD wHeight)
+  <span style="color:#75715e">///////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  BITMAPINFO <span style="color:#f92672">*</span>TiFFDialogPrivewHelper<span style="color:#f92672">::</span>PrepareRGBBitmapInfo(WORD wWidth, WORD wHeight)
   {
-  BITMAPINFO *pRes = new BITMAPINFO;
-  ::ZeroMemory(pRes, sizeof(BITMAPINFO));
-  pRes-&gt;bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-  pRes-&gt;bmiHeader.biWidth = wWidth;
-  pRes-&gt;bmiHeader.biHeight = wHeight;
-  pRes-&gt;bmiHeader.biPlanes = 1;
-  pRes-&gt;bmiHeader.biBitCount = 24;
-  pRes-&gt;bmiHeader.biSizeImage =
-  ((3 * wWidth + 3) &amp; ~3) * wHeight;
-  return pRes;
+  BITMAPINFO <span style="color:#f92672">*</span>pRes <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BITMAPINFO;
+  <span style="color:#f92672">::</span>ZeroMemory(pRes, <span style="color:#66d9ef">sizeof</span>(BITMAPINFO));
+  pRes<span style="color:#f92672">-&gt;</span>bmiHeader.biSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(BITMAPINFOHEADER);
+  pRes<span style="color:#f92672">-&gt;</span>bmiHeader.biWidth <span style="color:#f92672">=</span> wWidth;
+  pRes<span style="color:#f92672">-&gt;</span>bmiHeader.biHeight <span style="color:#f92672">=</span> wHeight;
+  pRes<span style="color:#f92672">-&gt;</span>bmiHeader.biPlanes <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  pRes<span style="color:#f92672">-&gt;</span>bmiHeader.biBitCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">24</span>;
+  pRes<span style="color:#f92672">-&gt;</span>bmiHeader.biSizeImage <span style="color:#f92672">=</span>
+  ((<span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> wWidth <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">&amp;</span> <span style="color:#f92672">~</span><span style="color:#ae81ff">3</span>) <span style="color:#f92672">*</span> wHeight;
+  <span style="color:#66d9ef">return</span> pRes;
   }
-  ///////////////////////////////////////////////////////////
-  int *TiFFDialogPrivewHelper::CreateCoeffInt(int nLen, int nNewLen, BOOL bShrink)
+  <span style="color:#75715e">///////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>TiFFDialogPrivewHelper<span style="color:#f92672">::</span>CreateCoeffInt(<span style="color:#66d9ef">int</span> nLen, <span style="color:#66d9ef">int</span> nNewLen, BOOL bShrink)
   {
-  int nSum = 0, nSum2;
-  int *pRes = new int[2 * nLen];
-  int *pCoeff = pRes;
-  int nNorm = (bShrink)
-  ? (nNewLen &lt;&lt; 12) / nLen : 0x1000;
-  int nDenom = (bShrink)? nLen : nNewLen;
-  ::ZeroMemory(pRes, 2 * nLen * sizeof(int));
-  for(int i = 0; i &lt; nLen; i++, pCoeff += 2)
+  <span style="color:#66d9ef">int</span> nSum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, nSum2;
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>pRes <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> nLen];
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>pCoeff <span style="color:#f92672">=</span> pRes;
+  <span style="color:#66d9ef">int</span> nNorm <span style="color:#f92672">=</span> (bShrink)
+  <span style="color:#f92672">?</span> (nNewLen <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">12</span>) <span style="color:#f92672">/</span> nLen : <span style="color:#ae81ff">0x1000</span>;
+  <span style="color:#66d9ef">int</span> nDenom <span style="color:#f92672">=</span> (bShrink)<span style="color:#f92672">?</span> nLen : nNewLen;
+  <span style="color:#f92672">::</span>ZeroMemory(pRes, <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> nLen <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>));
+  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nLen; i<span style="color:#f92672">++</span>, pCoeff <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>)
   {
-  nSum2 = nSum + nNewLen;
-  if(nSum2 &gt; nLen)
+  nSum2 <span style="color:#f92672">=</span> nSum <span style="color:#f92672">+</span> nNewLen;
+  <span style="color:#66d9ef">if</span>(nSum2 <span style="color:#f92672">&gt;</span> nLen)
   {
-  *pCoeff = ((nLen - nSum) &lt;&lt; 12) / nDenom;
-  pCoeff[1] = ((nSum2 - nLen) &lt;&lt; 12) / nDenom;
-  nSum2 -= nLen;
+  <span style="color:#f92672">*</span>pCoeff <span style="color:#f92672">=</span> ((nLen <span style="color:#f92672">-</span> nSum) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">12</span>) <span style="color:#f92672">/</span> nDenom;
+  pCoeff[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> ((nSum2 <span style="color:#f92672">-</span> nLen) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">12</span>) <span style="color:#f92672">/</span> nDenom;
+  nSum2 <span style="color:#f92672">-=</span> nLen;
   }
-  else
+  <span style="color:#66d9ef">else</span>
   {
-  *pCoeff = nNorm;
-  if(nSum2 == nLen)
+  <span style="color:#f92672">*</span>pCoeff <span style="color:#f92672">=</span> nNorm;
+  <span style="color:#66d9ef">if</span>(nSum2 <span style="color:#f92672">==</span> nLen)
   {
-  pCoeff[1] = -1;
-  nSum2 = 0;
+  pCoeff[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+  nSum2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
   }
   }
-  nSum = nSum2;
+  nSum <span style="color:#f92672">=</span> nSum2;
   }
-  return pRes;
+  <span style="color:#66d9ef">return</span> pRes;
   }
-  ///////////////////////////////////////////////////////////
-  void TiFFDialogPrivewHelper::ShrinkDataInt(BYTE *pInBuff,
+  <span style="color:#75715e">///////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">void</span> TiFFDialogPrivewHelper<span style="color:#f92672">::</span>ShrinkDataInt(BYTE <span style="color:#f92672">*</span>pInBuff,
   WORD wWidth,
   WORD wHeight,
-  BYTE *pOutBuff,
+  BYTE <span style="color:#f92672">*</span>pOutBuff,
   WORD wNewWidth,
   WORD wNewHeight)
   {
-  BYTE *pLine = pInBuff, *pPix;
-  BYTE *pOutLine = pOutBuff;
-  DWORD dwInLn = (3 * wWidth + 3) &amp; ~3;
-  DWORD dwOutLn = (3 * wNewWidth + 3) &amp; ~3;
-  int x, y, i, ii;
+  BYTE <span style="color:#f92672">*</span>pLine <span style="color:#f92672">=</span> pInBuff, <span style="color:#f92672">*</span>pPix;
+  BYTE <span style="color:#f92672">*</span>pOutLine <span style="color:#f92672">=</span> pOutBuff;
+  DWORD dwInLn <span style="color:#f92672">=</span> (<span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> wWidth <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">&amp;</span> <span style="color:#f92672">~</span><span style="color:#ae81ff">3</span>;
+  DWORD dwOutLn <span style="color:#f92672">=</span> (<span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> wNewWidth <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">&amp;</span> <span style="color:#f92672">~</span><span style="color:#ae81ff">3</span>;
+  <span style="color:#66d9ef">int</span> x, y, i, ii;
   BOOL bCrossRow, bCrossCol;
-  int *pRowCoeff = CreateCoeffInt(wWidth,
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>pRowCoeff <span style="color:#f92672">=</span> CreateCoeffInt(wWidth,
   wNewWidth,
   TRUE);
-  int *pColCoeff = CreateCoeffInt(wHeight,
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>pColCoeff <span style="color:#f92672">=</span> CreateCoeffInt(wHeight,
   wNewHeight,
   TRUE);
-  int *pXCoeff, *pYCoeff = pColCoeff;
-  DWORD dwBuffLn = 3 * wNewWidth * sizeof(DWORD);
-  DWORD *pdwBuff = new DWORD[6 * wNewWidth];
-  DWORD *pdwCurrLn = pdwBuff,
-  *pdwCurrPix,
-  *pdwNextLn = pdwBuff + 3 * wNewWidth;
-  DWORD dwTmp, *pdwNextPix;
-  ::ZeroMemory(pdwBuff, 2 * dwBuffLn);
-  y = 0;
-  while(y &lt; wNewHeight)
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>pXCoeff, <span style="color:#f92672">*</span>pYCoeff <span style="color:#f92672">=</span> pColCoeff;
+  DWORD dwBuffLn <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> wNewWidth <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(DWORD);
+  DWORD <span style="color:#f92672">*</span>pdwBuff <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DWORD[<span style="color:#ae81ff">6</span> <span style="color:#f92672">*</span> wNewWidth];
+  DWORD <span style="color:#f92672">*</span>pdwCurrLn <span style="color:#f92672">=</span> pdwBuff,
+  <span style="color:#f92672">*</span>pdwCurrPix,
+  <span style="color:#f92672">*</span>pdwNextLn <span style="color:#f92672">=</span> pdwBuff <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> wNewWidth;
+  DWORD dwTmp, <span style="color:#f92672">*</span>pdwNextPix;
+  <span style="color:#f92672">::</span>ZeroMemory(pdwBuff, <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> dwBuffLn);
+  y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">while</span>(y <span style="color:#f92672">&lt;</span> wNewHeight)
   {
-  pPix = pLine;
-  pLine += dwInLn;
-  pdwCurrPix = pdwCurrLn;
-  pdwNextPix = pdwNextLn;
-  x = 0;
-  pXCoeff = pRowCoeff;
-  bCrossRow = pYCoeff[1] &gt; 0;
-  while(x &lt; wNewWidth)
+  pPix <span style="color:#f92672">=</span> pLine;
+  pLine <span style="color:#f92672">+=</span> dwInLn;
+  pdwCurrPix <span style="color:#f92672">=</span> pdwCurrLn;
+  pdwNextPix <span style="color:#f92672">=</span> pdwNextLn;
+  x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  pXCoeff <span style="color:#f92672">=</span> pRowCoeff;
+  bCrossRow <span style="color:#f92672">=</span> pYCoeff[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">while</span>(x <span style="color:#f92672">&lt;</span> wNewWidth)
   {
-  dwTmp = *pXCoeff * *pYCoeff;
-  for(i = 0; i &lt; 3; i++)
-  pdwCurrPix[i] += dwTmp * pPix[i];
-  bCrossCol = pXCoeff[1] &gt; 0;
-  if(bCrossCol)
+  dwTmp <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>pXCoeff <span style="color:#f92672">*</span> <span style="color:#f92672">*</span>pYCoeff;
+  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>)
+  pdwCurrPix[i] <span style="color:#f92672">+=</span> dwTmp <span style="color:#f92672">*</span> pPix[i];
+  bCrossCol <span style="color:#f92672">=</span> pXCoeff[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">if</span>(bCrossCol)
   {
-  dwTmp = pXCoeff[1] * *pYCoeff;
-  for(i = 0, ii = 3; i &lt; 3; i++, ii++)
-  pdwCurrPix[ii] += dwTmp * pPix[i];
+  dwTmp <span style="color:#f92672">=</span> pXCoeff[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> <span style="color:#f92672">*</span>pYCoeff;
+  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, ii <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>, ii<span style="color:#f92672">++</span>)
+  pdwCurrPix[ii] <span style="color:#f92672">+=</span> dwTmp <span style="color:#f92672">*</span> pPix[i];
   }
-  if(bCrossRow)
+  <span style="color:#66d9ef">if</span>(bCrossRow)
   {
-  dwTmp = *pXCoeff * pYCoeff[1];
-  for(i = 0; i &lt; 3; i++)
-  pdwNextPix[i] += dwTmp * pPix[i];
-  if(bCrossCol)
+  dwTmp <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>pXCoeff <span style="color:#f92672">*</span> pYCoeff[<span style="color:#ae81ff">1</span>];
+  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>)
+  pdwNextPix[i] <span style="color:#f92672">+=</span> dwTmp <span style="color:#f92672">*</span> pPix[i];
+  <span style="color:#66d9ef">if</span>(bCrossCol)
   {
-  dwTmp = pXCoeff[1] * pYCoeff[1];
-  for(i = 0, ii = 3; i &lt; 3; i++, ii++)
-  pdwNextPix[ii] += dwTmp * pPix[i];
+  dwTmp <span style="color:#f92672">=</span> pXCoeff[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> pYCoeff[<span style="color:#ae81ff">1</span>];
+  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, ii <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>, ii<span style="color:#f92672">++</span>)
+  pdwNextPix[ii] <span style="color:#f92672">+=</span> dwTmp <span style="color:#f92672">*</span> pPix[i];
   }
   }
-  if(pXCoeff[1])
+  <span style="color:#66d9ef">if</span>(pXCoeff[<span style="color:#ae81ff">1</span>])
   {
-  x++;
-  pdwCurrPix += 3;
-  pdwNextPix += 3;
+  x<span style="color:#f92672">++</span>;
+  pdwCurrPix <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span>;
+  pdwNextPix <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span>;
   }
-  pXCoeff += 2;
-  pPix += 3;
+  pXCoeff <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>;
+  pPix <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span>;
   }
-  if(pYCoeff[1])
+  <span style="color:#66d9ef">if</span>(pYCoeff[<span style="color:#ae81ff">1</span>])
   {
-  // set result line
-  pdwCurrPix = pdwCurrLn;
-  pPix = pOutLine;
-  for(i = 3 * wNewWidth; i &gt; 0; i--, pdwCurrPix++, pPix++)
-  *pPix = ((LPBYTE)pdwCurrPix)[3];
-  // prepare line buffers
-  pdwCurrPix = pdwNextLn;
-  pdwNextLn = pdwCurrLn;
-  pdwCurrLn = pdwCurrPix;
-  ::ZeroMemory(pdwNextLn, dwBuffLn);
-  y++;
-  pOutLine += dwOutLn;
+  <span style="color:#75715e">// set result line
+</span><span style="color:#75715e"></span>  pdwCurrPix <span style="color:#f92672">=</span> pdwCurrLn;
+  pPix <span style="color:#f92672">=</span> pOutLine;
+  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> wNewWidth; i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; i<span style="color:#f92672">--</span>, pdwCurrPix<span style="color:#f92672">++</span>, pPix<span style="color:#f92672">++</span>)
+  <span style="color:#f92672">*</span>pPix <span style="color:#f92672">=</span> ((LPBYTE)pdwCurrPix)[<span style="color:#ae81ff">3</span>];
+  <span style="color:#75715e">// prepare line buffers
+</span><span style="color:#75715e"></span>  pdwCurrPix <span style="color:#f92672">=</span> pdwNextLn;
+  pdwNextLn <span style="color:#f92672">=</span> pdwCurrLn;
+  pdwCurrLn <span style="color:#f92672">=</span> pdwCurrPix;
+  <span style="color:#f92672">::</span>ZeroMemory(pdwNextLn, dwBuffLn);
+  y<span style="color:#f92672">++</span>;
+  pOutLine <span style="color:#f92672">+=</span> dwOutLn;
   }
-  pYCoeff += 2;
+  pYCoeff <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>;
   }
-  delete [] pRowCoeff;
-  delete [] pColCoeff;
-  delete [] pdwBuff;
+  <span style="color:#66d9ef">delete</span> [] pRowCoeff;
+  <span style="color:#66d9ef">delete</span> [] pColCoeff;
+  <span style="color:#66d9ef">delete</span> [] pdwBuff;
   }
-  ///////////////////////////////////////////////////////////
-  void TiFFDialogPrivewHelper::EnlargeDataInt(BYTE *pInBuff,
+  <span style="color:#75715e">///////////////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">void</span> TiFFDialogPrivewHelper<span style="color:#f92672">::</span>EnlargeDataInt(BYTE <span style="color:#f92672">*</span>pInBuff,
   WORD wWidth,
   WORD wHeight,
-  BYTE *pOutBuff,
+  BYTE <span style="color:#f92672">*</span>pOutBuff,
   WORD wNewWidth,
   WORD wNewHeight)
   {
-  BYTE *pLine = pInBuff,
-  *pPix = pLine,
-  *pPixOld,
-  *pUpPix,
-  *pUpPixOld;
-  BYTE *pOutLine = pOutBuff, *pOutPix;
-  DWORD dwInLn = (3 * wWidth + 3) &amp; ~3;
-  DWORD dwOutLn = (3 * wNewWidth + 3) &amp; ~3;
-  int x, y, i;
+  BYTE <span style="color:#f92672">*</span>pLine <span style="color:#f92672">=</span> pInBuff,
+  <span style="color:#f92672">*</span>pPix <span style="color:#f92672">=</span> pLine,
+  <span style="color:#f92672">*</span>pPixOld,
+  <span style="color:#f92672">*</span>pUpPix,
+  <span style="color:#f92672">*</span>pUpPixOld;
+  BYTE <span style="color:#f92672">*</span>pOutLine <span style="color:#f92672">=</span> pOutBuff, <span style="color:#f92672">*</span>pOutPix;
+  DWORD dwInLn <span style="color:#f92672">=</span> (<span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> wWidth <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">&amp;</span> <span style="color:#f92672">~</span><span style="color:#ae81ff">3</span>;
+  DWORD dwOutLn <span style="color:#f92672">=</span> (<span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> wNewWidth <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">&amp;</span> <span style="color:#f92672">~</span><span style="color:#ae81ff">3</span>;
+  <span style="color:#66d9ef">int</span> x, y, i;
   BOOL bCrossRow, bCrossCol;
-  int *pRowCoeff = CreateCoeffInt(wNewWidth,
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>pRowCoeff <span style="color:#f92672">=</span> CreateCoeffInt(wNewWidth,
   wWidth,
   FALSE);
-  int *pColCoeff = CreateCoeffInt(wNewHeight,
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>pColCoeff <span style="color:#f92672">=</span> CreateCoeffInt(wNewHeight,
   wHeight,
   FALSE);
-  int *pXCoeff, *pYCoeff = pColCoeff;
-  DWORD dwTmp, dwPtTmp[3];
-  y = 0;
-  while(y &lt; wHeight)
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>pXCoeff, <span style="color:#f92672">*</span>pYCoeff <span style="color:#f92672">=</span> pColCoeff;
+  DWORD dwTmp, dwPtTmp[<span style="color:#ae81ff">3</span>];
+  y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">while</span>(y <span style="color:#f92672">&lt;</span> wHeight)
   {
-  bCrossRow = pYCoeff[1] &gt; 0;
-  x = 0;
-  pXCoeff = pRowCoeff;
-  pOutPix = pOutLine;
-  pOutLine += dwOutLn;
-  pUpPix = pLine;
-  if(pYCoeff[1])
+  bCrossRow <span style="color:#f92672">=</span> pYCoeff[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>;
+  x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  pXCoeff <span style="color:#f92672">=</span> pRowCoeff;
+  pOutPix <span style="color:#f92672">=</span> pOutLine;
+  pOutLine <span style="color:#f92672">+=</span> dwOutLn;
+  pUpPix <span style="color:#f92672">=</span> pLine;
+  <span style="color:#66d9ef">if</span>(pYCoeff[<span style="color:#ae81ff">1</span>])
   {
-  y++;
-  pLine += dwInLn;
-  pPix = pLine;
+  y<span style="color:#f92672">++</span>;
+  pLine <span style="color:#f92672">+=</span> dwInLn;
+  pPix <span style="color:#f92672">=</span> pLine;
   }
-  while(x &lt; wWidth)
+  <span style="color:#66d9ef">while</span>(x <span style="color:#f92672">&lt;</span> wWidth)
   {
-  bCrossCol = pXCoeff[1] &gt; 0;
-  pUpPixOld = pUpPix;
-  pPixOld = pPix;
-  if(pXCoeff[1])
+  bCrossCol <span style="color:#f92672">=</span> pXCoeff[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>;
+  pUpPixOld <span style="color:#f92672">=</span> pUpPix;
+  pPixOld <span style="color:#f92672">=</span> pPix;
+  <span style="color:#66d9ef">if</span>(pXCoeff[<span style="color:#ae81ff">1</span>])
   {
-  x++;
-  pUpPix += 3;
-  pPix += 3;
+  x<span style="color:#f92672">++</span>;
+  pUpPix <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span>;
+  pPix <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span>;
   }
-  dwTmp = *pXCoeff * *pYCoeff;
-  for(i = 0; i &lt; 3; i++)
-  dwPtTmp[i] = dwTmp * pUpPixOld[i];
-  if(bCrossCol)
+  dwTmp <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>pXCoeff <span style="color:#f92672">*</span> <span style="color:#f92672">*</span>pYCoeff;
+  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>)
+  dwPtTmp[i] <span style="color:#f92672">=</span> dwTmp <span style="color:#f92672">*</span> pUpPixOld[i];
+  <span style="color:#66d9ef">if</span>(bCrossCol)
   {
-  dwTmp = pXCoeff[1] * *pYCoeff;
-  for(i = 0; i &lt; 3; i++)
-  dwPtTmp[i] += dwTmp * pUpPix[i];
+  dwTmp <span style="color:#f92672">=</span> pXCoeff[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> <span style="color:#f92672">*</span>pYCoeff;
+  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>)
+  dwPtTmp[i] <span style="color:#f92672">+=</span> dwTmp <span style="color:#f92672">*</span> pUpPix[i];
   }
-  if(bCrossRow)
+  <span style="color:#66d9ef">if</span>(bCrossRow)
   {
-  dwTmp = *pXCoeff * pYCoeff[1];
-  for(i = 0; i &lt; 3; i++)
-  dwPtTmp[i] += dwTmp * pPixOld[i];
-  if(bCrossCol)
+  dwTmp <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>pXCoeff <span style="color:#f92672">*</span> pYCoeff[<span style="color:#ae81ff">1</span>];
+  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>)
+  dwPtTmp[i] <span style="color:#f92672">+=</span> dwTmp <span style="color:#f92672">*</span> pPixOld[i];
+  <span style="color:#66d9ef">if</span>(bCrossCol)
   {
-  dwTmp = pXCoeff[1] * pYCoeff[1];
-  for(i = 0; i &lt; 3; i++)
-  dwPtTmp[i] += dwTmp * pPix[i];
+  dwTmp <span style="color:#f92672">=</span> pXCoeff[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> pYCoeff[<span style="color:#ae81ff">1</span>];
+  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>)
+  dwPtTmp[i] <span style="color:#f92672">+=</span> dwTmp <span style="color:#f92672">*</span> pPix[i];
   }
   }
-  for(i = 0; i &lt; 3; i++, pOutPix++)
-  *pOutPix = ((LPBYTE)(dwPtTmp + i))[3];
-  pXCoeff += 2;
+  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>, pOutPix<span style="color:#f92672">++</span>)
+  <span style="color:#f92672">*</span>pOutPix <span style="color:#f92672">=</span> ((LPBYTE)(dwPtTmp <span style="color:#f92672">+</span> i))[<span style="color:#ae81ff">3</span>];
+  pXCoeff <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>;
   }
-  pYCoeff += 2;
+  pYCoeff <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>;
   }
-  delete [] pRowCoeff;
-  delete [] pColCoeff;
+  <span style="color:#66d9ef">delete</span> [] pRowCoeff;
+  <span style="color:#66d9ef">delete</span> [] pColCoeff;
   }
-  //finally the Dialog::getStatement()-&gt;ConvertTiffToPdf(&amp;pdDoc,documentIndex); which could cause questios. Here is realization of ConvertTiffToPdf function
-   
-  bool ConvertTiffToPdf(PDDoc *TargetPdDoc, unsigned long aIndex)
+  <span style="color:#75715e">//finally the Dialog::getStatement()-&gt;ConvertTiffToPdf(&amp;pdDoc,documentIndex); which could cause questios. Here is realization of ConvertTiffToPdf function
+</span><span style="color:#75715e"></span>   
+  <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">ConvertTiffToPdf</span>(PDDoc <span style="color:#f92672">*</span>TargetPdDoc, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> aIndex)
   {
-  std::string aFileName = getFilenameByIndex(aIndex);
-  if(aFileName.empty()) return false;
-  std::string ImageFilePath = getDirectoryName() + aFileName;
-  ASPathName File_To_Be_Converted_To_PDF =
+  std<span style="color:#f92672">::</span>string aFileName <span style="color:#f92672">=</span> getFilenameByIndex(aIndex);
+  <span style="color:#66d9ef">if</span>(aFileName.empty()) <span style="color:#66d9ef">return</span> false;
+  std<span style="color:#f92672">::</span>string ImageFilePath <span style="color:#f92672">=</span> getDirectoryName() <span style="color:#f92672">+</span> aFileName;
+  ASPathName File_To_Be_Converted_To_PDF <span style="color:#f92672">=</span>
   ASFileSysCreatePathName(
   ASGetDefaultFileSys(),
-  ASAtomFromString(&quot;Cstring&quot;), 
+  ASAtomFromString(<span style="color:#e6db74">&#34;Cstring&#34;</span>), 
   ImageFilePath.c_str(),
   NULL);
-  AVConversionStatus status = AVConversionConvertToPDF(
+  AVConversionStatus status <span style="color:#f92672">=</span> AVConversionConvertToPDF(
   kAVConversionNoFlags, 
   File_To_Be_Converted_To_PDF, 
   ASGetDefaultFileSys(), 
   TargetPdDoc, 
   NULL);
   ASFileSysReleasePath (ASGetDefaultFileSys(), File_To_Be_Converted_To_PDF);
-  if(status != kAVConversionSuccess) return false;
-  return true;
+  <span style="color:#66d9ef">if</span>(status <span style="color:#f92672">!=</span> kAVConversionSuccess) <span style="color:#66d9ef">return</span> false;
+  <span style="color:#66d9ef">return</span> true;
   }
-  &lt;/int,string&gt;&lt;/int,string&gt;&lt;/int,string&gt;&lt;/int,string&gt;&lt;/cstring&gt;&lt;/olectl.h&gt;
-&lt;/map&gt;
-</code></pre>
-
+  <span style="color:#f92672">&lt;/</span><span style="color:#66d9ef">int</span>,string<span style="color:#f92672">&gt;&lt;/</span><span style="color:#66d9ef">int</span>,string<span style="color:#f92672">&gt;&lt;/</span><span style="color:#66d9ef">int</span>,string<span style="color:#f92672">&gt;&lt;/</span><span style="color:#66d9ef">int</span>,string<span style="color:#f92672">&gt;&lt;/</span>cstring<span style="color:#f92672">&gt;&lt;/</span>olectl.h<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;/</span>map<span style="color:#f92672">&gt;</span>
+</code></pre></div>
               
             </div>
           </div>
@@ -898,8 +915,8 @@ ga('send', 'pageview');
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -958,8 +975,8 @@ ga('send', 'pageview');
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -972,14 +989,14 @@ ga('send', 'pageview');
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2017 Viktor Halitsyn. All Rights Reserved
+    &copy; 2020 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -1038,8 +1055,8 @@ ga('send', 'pageview');
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="3">
@@ -1069,7 +1086,7 @@ ga('send', 'pageview');
       <i class="fa fa-remove"></i>
     </div>
     
-      <img id="about-card-picture" src="//www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
     
     <h4 id="about-card-name">Viktor Halitsyn</h4>
     
@@ -1092,40 +1109,10 @@ ga('send', 'pageview');
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         0 posts found
-      </p>
-    </div>
-  </div>
-</div>
+    
+
     
   
-    
     <div id="cover" style="background-image:url('https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg');"></div>
   
 
@@ -1133,25 +1120,25 @@ ga('send', 'pageview');
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-yyopfo91nlhsxloqmnv4kvhxmnpmf7skhat5xwodlb2g9r5xvoc4cqqrobdj.min.js"></script>
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
-
-<script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
-    }
-    hljs.highlightBlock(block);
-  });
-});
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
 </script>
 
 
@@ -1180,6 +1167,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

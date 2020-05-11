@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ms on Nomad&#39;s reflections</title>
+    <title>ms on Nomad&#39;s reflections</title>
     <link>http://blog.vnomad.com/tags/ms/</link>
-    <description>Recent content in Ms on Nomad&#39;s reflections</description>
+    <description>Recent content in ms on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 16 May 2011 07:35:00 +0000</lastBuildDate>
@@ -17,11 +17,9 @@
       <pubDate>Mon, 16 May 2011 07:35:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/skype-microsoft/</guid>
-      <description>I really, really do not know if that&amp;#8217;s accidental or on-purpose and whether it&amp;#8217;s connected with the fact that Microsoft bought Skype, but this morning I received a wonderful email:
+      <description>I really, really do not know if that’s accidental or on-purpose and whether it’s connected with the fact that Microsoft bought Skype, but this morning I received a wonderful email:
   Now 3 things about this:
-1. I **am **a skype user.
-2. Who the hell is Natalia??? And why, and when and WTF?!
-3. I love to use skype. It would be sad if this is the turning point.</description>
+ I **am **a skype user. Who the hell is Natalia??? And why, and when and WTF?! I love to use skype. It would be sad if this is theturning point. 🙁  </description>
     </item>
     
     <item>
@@ -39,7 +37,7 @@
       <pubDate>Thu, 24 Dec 2009 21:11:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/devenv-crash-from-the-command-line/</guid>
-      <description>Those of you who use devenv for building VS solutions(although you are discouraged to here) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &amp;#8211; a standard windows crash appeared with 0xc000005 error code and a &amp;#8220;friendly&amp;#8221; Send/Don&amp;#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.</description>
+      <description>Those of you who use devenv for building VS solutions(although you are discouraged to [here][1]) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &amp;amp;#8211; a standard windows crash appeared with 0xc000005 error code and a &amp;amp;#8220;friendly&amp;amp;#8221; Send/Don&amp;amp;#8217;t send error to Microsoft dialog. Also I noticed that the VS cl.</description>
     </item>
     
     <item>
@@ -48,7 +46,7 @@
       <pubDate>Sat, 12 Sep 2009 19:44:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/mcts-acquired/</guid>
-      <description>One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &amp;amp;#8211; it&amp;amp;#8217;s like a combination of the previous 2 with some logic included- not just simple development components.  Regarding the exam &amp;#8211; not much can be said. Only one thing is worth mentioning &amp;#8211; it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is&amp;#8230; Interesting how would the next one go&amp;#8230;</description>
+      <description>One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &amp;amp;#8211; it&amp;amp;#8217;s like a combination of the previous 2 with some logic included- not just simple development components.  Regarding the exam – not much can be said. Only one thing is worth mentioning – it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is… Interesting how would the next one go…</description>
     </item>
     
     <item>
@@ -57,7 +55,7 @@
       <pubDate>Thu, 16 Apr 2009 22:49:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/mcp-aquired/</guid>
-      <description>[&amp;lt;img style=&amp;ldquo;float:left; margin:0 10px 10px 0;cursor:pointer; cursor:hand;width: 160px; height: 80px;&amp;rdquo; src=&amp;ldquo;http://2.bp.blogspot.com/_SwypSVIrwAo/See277vd4pI/AAAAAAAADrc/YzPLJ891L2s/s320/MCP(rgb).jpg&amp;quot; border=&amp;ldquo;0&amp;rdquo; alt=&amp;ldquo;&amp;rdquo; id=&amp;ldquo;At last i finally got time to get to that certification center and pass that damn 70-536. You can&amp;#8217;t really work with all of that technology at once to keep all the names of classes and methods in your head, and the projects are swapping fast&amp;#8230; SO it took me more than a year to get from an idea of sitting an axam to actually passing it.</description>
+      <description>[&amp;lt;img style=&amp;quot;float:left; margin:0 10px 10px 0;cursor:pointer; cursor:hand;width: 160px; height: 80px;&amp;rdquo; src=&amp;quot;http://2.bp.blogspot.com/_SwypSVIrwAo/See277vd4pI/AAAAAAAADrc/YzPLJ891L2s/s320/MCP(rgb).jpg&amp;rdquo; border=&amp;quot;0&amp;rdquo; alt=&amp;rdquo;&amp;rdquo; id=&amp;quot;At last i finally got time to get to that certification center and pass that damn 70-536. You can’t really work with all of that technology at once to keep all the names of classes and methods in your head, and the projects are swapping fast… SO it took me more than a year to get from an idea of sitting an axam to actually passing it.</description>
     </item>
     
   </channel>

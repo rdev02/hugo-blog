@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mobile on Nomad&#39;s reflections</title>
+    <title>mobile on Nomad&#39;s reflections</title>
     <link>http://blog.vnomad.com/tags/mobile/</link>
-    <description>Recent content in Mobile on Nomad&#39;s reflections</description>
+    <description>Recent content in mobile on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 10 Mar 2010 10:37:00 +0000</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</guid>
-      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K.
-Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
+      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;amp;#8220;descriptive&amp;amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;amp;#8217;m going to describe here is when the size of the cod file is more than 64K.  Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
     </item>
     
     <item>
@@ -27,9 +26,9 @@ Finding out if you have this problem is fairly easy: just look into the final co
       <pubDate>Thu, 04 Feb 2010 22:22:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/nokia-ovi-suite/</guid>
-      <description>Installed, played with it a bit&amp;#8230; Looks nice 🙂
+      <description>Installed, played with it a bit… Looks nice 🙂
 Among significant pluses(IMHO of course):
- smoother experience nice improved and thought out UI sms log deserves additional applause (clap)(clap)(clap) back(PC-&amp;gt;phone) synchronization improved(both speed and reliability) working(at last) maps(NavTech)   among things I miss:     full control over the phone&amp;#8217;s file system   application install   media(other then mp3) transfer    But for those the are great news: Good ol&amp;#8217; PC Suite is not removed with Ovi upgrade 🙂 So you can still use it if you wish to&amp;#8230;   Generally Ovi is a much better tool for daily sync then PC Suite was.</description>
+ smoother experience nice improved and thought out UI sms log deserves additional applause (clap)(clap)(clap) back(PC-&amp;gt;phone) synchronization improved(both speed and reliability) working(at last) maps(NavTech)  </description>
     </item>
     
     <item>
@@ -38,7 +37,7 @@ Among significant pluses(IMHO of course):
       <pubDate>Mon, 07 Dec 2009 09:38:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/sad-funny-world-of-mobile-development/</guid>
-      <description>Being a &amp;#8216;mobile&amp;#8217; developer is definitely fun. Although sometimes, when you think about it &amp;#8216;deeper&amp;#8217; you&amp;#8217;d rather drink a pint of whiskey:). Take a look at the enterprise Symbian OS:  http://www.codeproject.com/KB/mobile/Symbian_OS_design_faults.aspx  Reliable, huh? 😉 And it&amp;#8217;s not just Symbian &amp;#8211; in my point of view it&amp;#8217;s MIDP itself. You just can&amp;#8217;t rely on it unless you test, test and once again &amp;#8211; test. For me it feels like implementation usually just do not care about about what does the specification say.</description>
+      <description></description>
     </item>
     
     <item>
@@ -47,9 +46,8 @@ Among significant pluses(IMHO of course):
       <pubDate>Tue, 20 Oct 2009 14:08:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/blackberry-fun/</guid>
-      <description>Reading the developers guide on BlackBerry you may come across astonishing things. I&amp;#8217;m impressed. When I started doing little things in the blackberry app I soon got used to it and considered the platform to be well organized. Now that I&amp;#8217;m reading a book I get more and more confused about what I should do and what I shan&amp;#8217;t! Take a look at this masterpiece
- 
-Why it is not necessary to obfuscate applications  The compiler for the BlackBerry® Java™ Development Environment is set to minimize the size of the application.</description>
+      <description>Reading the developers guide on BlackBerry you may come across astonishing things. I’m impressed. When I started doing little things in the blackberry app I soon got used to it and considered the platform to be well organized. Now that I’m reading a book I get more and more confused about what I should do and what I shan’t! Take a look at this masterpiece
+    </description>
     </item>
     
     <item>
@@ -58,9 +56,9 @@ Why it is not necessary to obfuscate applications  The compiler for the BlackBer
       <pubDate>Thu, 24 Sep 2009 11:43:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/blackberry-internet-usage-ota-and-other-staff/</guid>
-      <description>Continuing the BlackBerry theme would like to share a few more issues I&amp;#8217;ve ran into recently.
+      <description>Continuing the BlackBerry theme would like to share a few more issues I’ve ran into recently.
  Internet usage.
-If you subscribe to blackberry service you can optionally buy some &amp;#8220;internet package&amp;#8221; from your provider in order to minimize internet expenses. This a great choice since you&amp;#8217;re going to visit internet pretty often if you&amp;#8217;ve chosen blackberry. Everything goes fine until you start using Java apps on your phone. Java uses it OWN predefined internet connection DIFFERENT from the one the browser uses.</description>
+If you subscribe to blackberry service you can optionally buy some “internet package” from your provider in order to minimize internet expenses. This a great choice since you’re going to visit internet pretty often if you’ve chosen blackberry. Everything goes fine until you start using Java apps on your phone. Java uses it OWN predefined internet connection DIFFERENT from the one the browser uses.</description>
     </item>
     
     <item>
@@ -69,7 +67,7 @@ If you subscribe to blackberry service you can optionally buy some &amp;#8220;in
       <pubDate>Wed, 23 Sep 2009 09:37:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/blackberry-invokelater-and-multimedia/</guid>
-      <description>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn&amp;#8217;t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn&amp;#8217;t lead me anywhere except that I thought that something definitely gets locked.</description>
+      <description>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn’t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn’t lead me anywhere except that I thought that something definitely gets locked.</description>
     </item>
     
     <item>
@@ -78,7 +76,7 @@ If you subscribe to blackberry service you can optionally buy some &amp;#8220;in
       <pubDate>Sat, 20 Jun 2009 12:32:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/damn-symbian-errors/</guid>
-      <description>Now you never know how will modern technology strike you next time&amp;#8230; Experience I&amp;#8217;ve got today is remarkable. It&amp;#8217;s not that something awful happened, but potentially this is really serious. Imagine you have a template in the phone to send SMS quickly with predefined text. And Imagine this piece of software has bugs&amp;#8230; Whatever &amp;#8211; one might think if it won&amp;#8217;t send an sms &amp;#8211; I’ll retype and sent it again.</description>
+      <description>Now you never know how will modern technology strike you next time… Experience I’ve got today is remarkable. It’s not that something awful happened, but potentially this is really serious. Imagine you have a template in the phone to send SMS quickly with predefined text. And Imagine this piece of software has bugs… Whatever – one might think if it won’t send an sms – I’ll retype and sent it again.</description>
     </item>
     
     <item>
@@ -87,7 +85,7 @@ If you subscribe to blackberry service you can optionally buy some &amp;#8220;in
       <pubDate>Thu, 19 Mar 2009 13:05:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/j2me-radio-lists-trouble/</guid>
-      <description>Recently I needed to do a simple task &amp;#8211; implement a radio button list with choices under J2ME MIDP 2.0. I started with creating an new view of type javax.microedition.lcdui.List, keeping in mind that I can just construct it with List.EXCLUSIVE and add whatever items i want and everything should work fine. Well almost&amp;#8230; All looked nice and the items showed up very attractively, having transparency and current font set up by default, which looked quite impressive.</description>
+      <description>Recently I needed to do a simple task – implement a radio button list with choices under J2ME MIDP 2.0. I started with creating an new view of type javax.microedition.lcdui.List, keeping in mind that I can just construct it with List.EXCLUSIVE and add whatever items i want and everything should work fine. Well almost… All looked nice and the items showed up very attractively, having transparency and current font set up by default, which looked quite impressive.</description>
     </item>
     
   </channel>
