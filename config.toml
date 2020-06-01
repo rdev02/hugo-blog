@@ -8,6 +8,9 @@ watch                  = true
 disqusShortname        = "vnomad" 
 googleAnalytics        = "UA-64535001-2"
 
+[markup.goldmark.renderer]
+unsafe = true
+
 [taxonomies]
   tag = "tags"
   category = "categories"
