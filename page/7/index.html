@@ -118,7 +118,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/">
     
-      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-home"></i>
       
       <span class="sidebar-button-desc">Home</span>
     </a>
@@ -128,7 +128,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/categories">
     
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
       <span class="sidebar-button-desc">Categories</span>
     </a>
@@ -138,7 +138,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/tags">
     
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
       <span class="sidebar-button-desc">Tags</span>
     </a>
@@ -148,7 +148,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/archives">
     
-      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-archive"></i>
       
       <span class="sidebar-button-desc">Archives</span>
     </a>
@@ -158,7 +158,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/#about">
     
-      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-question"></i>
       
       <span class="sidebar-button-desc">About</span>
     </a>
@@ -172,7 +172,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -182,7 +182,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-twitter"></i>
       
       <span class="sidebar-button-desc">Twitter</span>
     </a>
@@ -196,7 +196,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/index.xml">
     
-      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-rss"></i>
       
       <span class="sidebar-button-desc">RSS</span>
     </a>
@@ -215,6 +215,64 @@ if (!doNotTrack) {
                ">
         <section class="postShorten-group main-content-wrap">
           
+          
+            
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://blog.vnomad.com/code/google-chrome/">
+          Google chrome
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2008-09-26T19:36:00Z">
+        
+  
+  
+  
+  
+    09/26/2008
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        Now that this fancy prog is available i downloaded and installed it hoping to see all that Google promised it will have. However either ’cause its beta or these things just cant be fixed for browsers – here ‘s my opinion after about half a moth usage.
+Usability – good, except if one tab hangs – all tabs entire app hang…After some time however you get a dialog requesting the stop of some plugin, but in general – if there is no active items on the page – it just hangs 🙁
+      
+      <p>
+        <a href="http://blog.vnomad.com/code/google-chrome/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
           
             
   
@@ -811,6 +869,8 @@ Design Patterns: Elements of Reusable Object-Oriented Software by ErichGamma, Ri
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
@@ -830,6 +890,18 @@ function updateMinWidth() {
   var w3 = getComputedStyle(sidebar).getPropertyValue("left");
   main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
 }
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
 </script>
 
 

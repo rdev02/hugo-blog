@@ -6,10 +6,19 @@
     <description>Recent content on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Dec 2017 09:48:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2020 19:36:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.vnomad.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DiskTest in go and Synology NAS</title>
+      <link>http://blog.vnomad.com/code/2020/disktest-go-and-synology-nas/</link>
+      <pubDate>Sun, 31 May 2020 19:36:00 +0000</pubDate>
+      
+      <guid>http://blog.vnomad.com/code/2020/disktest-go-and-synology-nas/</guid>
+      <description>Back in 2013 I got myself a Synology DS413j, which has proven to be a reliable companion for me though these 7 years. I used it for file backup, media streaming and as a TimeMachine destination pretty successfully. Any such station needs good drives to provide value, and drives, as many of us know, are pretty unreliable. In 7 years I replaced about 6: 2 were bad right after arrival, and another 4 went bad as the years went by.</description>
+    </item>
     
     <item>
       <title>&#34;Порохоботи VS зрадофіли&#34;, або медійна інформаційна війна триває.</title>
@@ -17,8 +26,10 @@
       <pubDate>Sat, 09 Dec 2017 09:48:00 -0500</pubDate>
       
       <guid>http://blog.vnomad.com/tea/zradofila-vs-porohobot/</guid>
-      <description>Учітеся, брати мої,Учітесь, читайте ,І чужому научайтесь ,Свого не цурайтесь!       [Т. Г. Шевченко]    На днях на очі потрапила чудова стаття, що непогано підсумовує міркування багатьох людей навколо мене(не дарма поширена більше 9 тис. раз). Текст відносно короткий, проте коментарів викликає чимало і, щоб, як то кажуть, &amp;ldquo;три рази не вставати&amp;rdquo;, я вирішив викласти свої коментарі сюди&amp;hellip;
- Але, з початку, невеличкий ліричний відступ :)</description>
+      <description>Учітеся, брати мої,
+Учітесь, читайте ,
+І чужому научайтесь ,
+Свого не цурайтесь!       [Т. Г. Шевченко]    На днях на очі потрапила чудова стаття, що непогано підсумовує міркування багатьох людей навколо мене(не дарма поширена більше 9 тис. раз). Текст відносно короткий, проте коментарів викликає чимало і, щоб, як то кажуть, &amp;ldquo;три рази не вставати&amp;rdquo;, я вирішив викласти свої коментарі сюди&amp;hellip;</description>
     </item>
     
     <item>
@@ -45,7 +56,7 @@
       <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/synology-ds413j-nas/</guid>
-      <description></description>
+      <description>In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&amp;#8217;t duplicate them in this one. But, to keep consistent with the previous review I&amp;#8217;ll go with the same headings/experience areas. That being said &amp;#8211; here we go!    DSJ413j     Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this time.</description>
     </item>
     
     <item>
@@ -54,7 +65,7 @@
       <pubDate>Tue, 05 Feb 2013 08:20:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/seagate-blackarmor-nas-400/</guid>
-      <description>&amp;lt;/div&amp;gt;   UI Console look  More images below in the gallery.</description>
+      <description>So I decided that I&amp;#8217;m sick and tired of plugging in and out usb drives. Be it my tiny 16GB daily thumb drive, or store-it-all 2TB external seagate &amp;#8211; this is a pain&amp;#8230; And to make sure everything is stored you have to &amp;#8220;detach/remove&amp;#8221; them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money.</description>
     </item>
     
     <item>
@@ -63,7 +74,7 @@
       <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/javascript-performance-tests/</guid>
-      <description></description>
+      <description>I&amp;#8217;m dealing a lot with javascript nowadays and obviously I have to take performance into account. One way of doing this is writing a bunch of test code and record the time for your scripts, but what if you wanted to quickly test out some approaches and do not really want to invest a lot into them? Today I was pointed to a solution: http://jsperf.com/. This awesome tool does not just give you the framework to easily test out javascript but also provides and already created library of tests other people created when investigating their performance issues.</description>
     </item>
     
     <item>
@@ -72,7 +83,7 @@
       <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/wp7-mango-dive/</guid>
-      <description></description>
+      <description>It has been a few month since I started mangling with WP7 platform. The more I learnt about it from the inside the more I wanted to buy new real WP7 phone. Things changed slightly after I have done my very first app(didn&amp;#8217;t make it to the app store as I found plenty of similar ones already there and mine was not adding much :() but still as of now I would really be interested in posessing a WP7 phone and giving it a solid try.</description>
     </item>
     
     <item>
@@ -149,9 +160,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       
       <guid>http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
       <description>Had a real problem with my wifi after moving to Ubuntu from win -&amp;gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
-   Having this changed
- _AVAHI_DAEMON_DETECT_LOCAL=1
- to</description>
+        Having this changed</description>
     </item>
     
     <item>
@@ -162,7 +171,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <guid>http://blog.vnomad.com/code/skype-microsoft/</guid>
       <description>I really, really do not know if that’s accidental or on-purpose and whether it’s connected with the fact that Microsoft bought Skype, but this morning I received a wonderful email:
   Now 3 things about this:
- I **am **a skype user. Who the hell is Natalia??? And why, and when and WTF?! I love to use skype. It would be sad if this is theturning point. 🙁  </description>
+ I **am **a skype user. Who the hell is Natalia??? And why, and when and WTF?! I love to use skype. It would be sad if this is the turning point. 🙁  </description>
     </item>
     
     <item>
@@ -182,7 +191,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       
       <guid>http://blog.vnomad.com/code/lift-ajax-the-proper-way-of-doing-presentations/</guid>
       <description>24-th seconds rules…
-This mostly ru-zone compliant 🙂</description>
+ This mostly ru-zone compliant 🙂</description>
     </item>
     
     <item>
@@ -230,7 +239,7 @@ This mostly ru-zone compliant 🙂</description>
       
       <guid>http://blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/</guid>
       <description>There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
- Select * From [win_category] The problem is there are tons of &amp;amp;#8220;win_category]&amp;amp;#8217; and * values.</description>
+ Select * From [win_category]</description>
     </item>
     
     <item>
@@ -300,7 +309,7 @@ All my struggle can be found on Idea track. Fortunately Carl Abramsson found a w
       <guid>http://blog.vnomad.com/code/nokia-ovi-suite/</guid>
       <description>Installed, played with it a bit… Looks nice 🙂
 Among significant pluses(IMHO of course):
- smoother experience nice improved and thought out UI sms log deserves additional applause (clap)(clap)(clap) back(PC-&amp;gt;phone) synchronization improved(both speed and reliability) working(at last) maps(NavTech)  </description>
+ smoother experience nice improved and thought out UI sms log deserves additional applause (clap)(clap)(clap) back(PC-&amp;gt;phone) synchronization improved(both speed and reliability) working(at last) maps(NavTech)   among things I miss:     full control over the phone&amp;#8217;s file system   application install   media(other then mp3) transfer    But for those the are great news: Good ol&amp;#8217; PC Suite is not removed with Ovi upgrade 🙂 So you can still use it if you wish to&amp;#8230;   Generally Ovi is a much better tool for daily sync then PC Suite was.</description>
     </item>
     
     <item>
@@ -336,7 +345,7 @@ Among significant pluses(IMHO of course):
       <pubDate>Mon, 07 Dec 2009 09:38:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/sad-funny-world-of-mobile-development/</guid>
-      <description></description>
+      <description>Being a &amp;#8216;mobile&amp;#8217; developer is definitely fun. Although sometimes, when you think about it &amp;#8216;deeper&amp;#8217; you&amp;#8217;d rather drink a pint of whiskey:). Take a look at the enterprise Symbian OS:  http://www.codeproject.com/KB/mobile/Symbian_OS_design_faults.aspx  Reliable, huh? 😉 And it&amp;#8217;s not just Symbian &amp;#8211; in my point of view it&amp;#8217;s MIDP itself. You just can&amp;#8217;t rely on it unless you test, test and once again &amp;#8211; test. For me it feels like implementation usually just do not care about about what does the specification say.</description>
     </item>
     
     <item>
@@ -364,7 +373,7 @@ Among significant pluses(IMHO of course):
       
       <guid>http://blog.vnomad.com/tea/femen-must-have-been-doing-that-right/</guid>
       <description>Now seriously smth HAS to be done about Ukrainian girls reputation in Europe and generally throughout the world. Now I can’t speak for whole Ukraine but it seems to me that at least Western Ukraine girls are not that money-loving. Today walking to work I saw this
-  </description>
+  All this stuff means &amp;#8220;I am a wealthy entrepreneur from USA looking for a nice whore wife from Ukraine aging 19-27&amp;#8243;. Now I&amp;#8217;ve seen this in newspapers and message boards etc.</description>
     </item>
     
     <item>
@@ -391,7 +400,8 @@ Among significant pluses(IMHO of course):
       <pubDate>Fri, 30 Oct 2009 19:10:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/</guid>
-      <description>THEY ALL SUCK!!! a big deal.I will start with the last one. Having just recovered from the flu I decided to go to the hospital in order to check if I’ve totally recovered and that there is nothing “under the hood” which would strike me in the back in few days. The normal procedure here is to have a blood analysis and a few more tests. Step one – find the doctor.</description>
+      <description>THEY ALL SUCK!!! a big deal.
+I will start with the last one. Having just recovered from the flu I decided to go to the hospital in order to check if I’ve totally recovered and that there is nothing “under the hood” which would strike me in the back in few days. The normal procedure here is to have a blood analysis and a few more tests. Step one – find the doctor.</description>
     </item>
     
     <item>
@@ -401,7 +411,8 @@ Among significant pluses(IMHO of course):
       
       <guid>http://blog.vnomad.com/code/blackberry-fun/</guid>
       <description>Reading the developers guide on BlackBerry you may come across astonishing things. I’m impressed. When I started doing little things in the blackberry app I soon got used to it and considered the platform to be well organized. Now that I’m reading a book I get more and more confused about what I should do and what I shan’t! Take a look at this masterpiece
-    </description>
+ 
+      Why it is not necessary to obfuscate applications      The compiler for the BlackBerry® Java™ Development Environment is set to minimize the size of the application.</description>
     </item>
     
     <item>
@@ -476,7 +487,8 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Fri, 21 Aug 2009 09:00:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/tea/how-do-they-do-it/</guid>
-      <description>It often happens that you have smth. to share with the rest of the world, but you do not have time for it.</description>
+      <description>It often happens that you have smth. to share with the rest of the world, but you do not have time for it.
+&amp;#8220;You do not have time&amp;#8221;&amp;#8230; sounds pathetic&amp;#8230; I think it happens more because of the laziness&amp;#8230; yeah definitely. Now I begin to understand why podcasts gain more and more popularity these days &amp;#8211; you do not have to organize links, format text. Find errors, reread the written text in order to find ABSOLUTELY ODD sentences 🙂  Interesting how do experienced bloggers keep their notes and where&amp;#8230; My last try is google docs.</description>
     </item>
     
     <item>
@@ -485,7 +497,8 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Thu, 20 Aug 2009 19:06:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/tea/ukrainians-on-times/</guid>
-      <description>Today visited Times. Was interested in one article about (RU+GBR)/UA. To hell the article. I read the comments. OMG.</description>
+      <description>Today visited Times. Was interested in one article about (RU+GBR)/UA. To hell the article. I read the comments. OMG.
+ OMG again.   &amp;#8220;People, even something that you care for most (democracy?) does not give you the right to lie passionately and ignore facts and invent lies. BTW, Eduard Glushko &amp;#8211; if you are so much afraid of the The Molotov-Ribbentrop Pact, it still can be repaired. Poland has to give back to Germany the territories they got after WW2.</description>
     </item>
     
     <item>
@@ -577,7 +590,7 @@ the word is mostly used in … !!!Java sdk!!! – try it out. I saw also some Vi
       
       <guid>http://blog.vnomad.com/code/google-chrome/</guid>
       <description>Now that this fancy prog is available i downloaded and installed it hoping to see all that Google promised it will have. However either ’cause its beta or these things just cant be fixed for browsers – here ‘s my opinion after about half a moth usage.
-Usability– good, except if one tab hangs – all tabs entire app hang…After some time however you get a dialog requesting the stop of some plugin, but in general – if there is no active items on the page – it just hangs 🙁</description>
+Usability – good, except if one tab hangs – all tabs entire app hang…After some time however you get a dialog requesting the stop of some plugin, but in general – if there is no active items on the page – it just hangs 🙁</description>
     </item>
     
     <item>

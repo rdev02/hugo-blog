@@ -29,9 +29,7 @@
       
       <guid>http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
       <description>Had a real problem with my wifi after moving to Ubuntu from win -&amp;gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
-   Having this changed
- _AVAHI_DAEMON_DETECT_LOCAL=1
- to</description>
+        Having this changed</description>
     </item>
     
   </channel>

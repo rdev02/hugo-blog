@@ -134,7 +134,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/">
     
-      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-home"></i>
       
       <span class="sidebar-button-desc">Home</span>
     </a>
@@ -144,7 +144,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/categories">
     
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
       <span class="sidebar-button-desc">Categories</span>
     </a>
@@ -154,7 +154,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/tags">
     
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
       <span class="sidebar-button-desc">Tags</span>
     </a>
@@ -164,7 +164,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/archives">
     
-      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-archive"></i>
       
       <span class="sidebar-button-desc">Archives</span>
     </a>
@@ -174,7 +174,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/#about">
     
-      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-question"></i>
       
       <span class="sidebar-button-desc">About</span>
     </a>
@@ -188,7 +188,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -198,7 +198,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-twitter"></i>
       
       <span class="sidebar-button-desc">Twitter</span>
     </a>
@@ -212,7 +212,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/index.xml">
     
-      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-rss"></i>
       
       <span class="sidebar-button-desc">RSS</span>
     </a>
@@ -267,13 +267,21 @@ if (!doNotTrack) {
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Actually a painfull process it can be if the project you’re trying to convert has lots of custom stuff. The first problem i stumbled upon was resources. eah yeah – i mean form resources. They ciompletely refused to work. I know about that separation that came in when VS 2005 was introduced so I did use <a href="http://coolsoft.altervista.org/DeCodEx">DeCodEx </a>to make majour conversion and splitting but it still turned out that my forms are not opening :(. So here  is what i did – i converted the resource files using ‘resgen’ tool to and from *.resx files. Some of them twice. yeah <!-- raw HTML omitted -->twice.<!-- raw HTML omitted --> I don’t know why but it turned out that converting once may not help and making this twice solves the problem… Also don’t forget to reload VS every time you do such conversions ’cause you might not see the resuult. I know that sounds odd but thats real life and experience and finally that worked out for me.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+              <p>Actually a painfull process it can be if the project you’re trying to convert has lots of custom stuff. The first problem i stumbled upon was resources. eah yeah – i mean form resources. They ciompletely refused to work. I know about that separation that came in when VS 2005 was introduced so I did use <a href="http://coolsoft.altervista.org/DeCodEx">DeCodEx </a>to make majour conversion and splitting but it still turned out that my forms are not opening :(. So here  is what i did – i converted the resource files using ‘resgen’ tool to and from *.resx files. Some of them twice. yeah <span style="font-weight: bold;">twice.</span> I don’t know why but it turned out that converting once may not help and making this twice solves the problem… Also don’t forget to reload VS every time you do such conversions ’cause you might not see the resuult. I know that sounds odd but thats real life and experience and finally that worked out for me.</p>
+<div>
+  Another awful thing i had to fight was error like <span style="font-style: italic;">&#8220;object &#8230;  returned null &#8230; but this is not allowed &#8220;</span>. After some googling and investigating i found the solution like this:
+</div>
+<div>
+  properties which caused that eroor were decorated with
+</div>
+<div>
+</div>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#a6e22e">  [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]</span>
-</code></pre></div><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+</code></pre></div><div>
+</div>
+<div>
+  After removing this decoration all works good. There is quite a usefull <a href="http://msdn.microsoft.com/en-us/library/ms735923.aspx">article of this on MSDN</a>.
+</div>
 
               
             </div>
@@ -497,6 +505,8 @@ if (!doNotTrack) {
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
@@ -516,6 +526,18 @@ function updateMinWidth() {
   var w3 = getComputedStyle(sidebar).getPropertyValue("left");
   main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
 }
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
 </script>
 
 

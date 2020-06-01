@@ -134,7 +134,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/">
     
-      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-home"></i>
       
       <span class="sidebar-button-desc">Home</span>
     </a>
@@ -144,7 +144,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/categories">
     
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
       <span class="sidebar-button-desc">Categories</span>
     </a>
@@ -154,7 +154,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/tags">
     
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
       <span class="sidebar-button-desc">Tags</span>
     </a>
@@ -164,7 +164,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/archives">
     
-      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-archive"></i>
       
       <span class="sidebar-button-desc">Archives</span>
     </a>
@@ -174,7 +174,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/#about">
     
-      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-question"></i>
       
       <span class="sidebar-button-desc">About</span>
     </a>
@@ -188,7 +188,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -198,7 +198,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-twitter"></i>
       
       <span class="sidebar-button-desc">Twitter</span>
     </a>
@@ -212,7 +212,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/index.xml">
     
-      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-rss"></i>
       
       <span class="sidebar-button-desc">RSS</span>
     </a>
@@ -528,7 +528,9 @@ if (!doNotTrack) {
     ASCallbackCreateProto (AVDocSelectionRemovedFromSelectionProc, <span style="color:#f92672">&amp;</span>SelectionServerRemovedFromSelection);
     AVDocRegisterSelectionServer (<span style="color:#f92672">&amp;</span>CustomClassSelectionServer);
   }
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>  <p>
+    // drawing utils implementation
+  </p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">/*********************************************************************
 </span><span style="color:#75715e">ADOBE SYSTEMS INCORPORATED
 </span><span style="color:#75715e">Copyright (C) 1994-2003 Adobe Systems Incorporated
@@ -618,7 +620,9 @@ ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">
     END_HANDLER
   }
 }
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>  <p>
+    //we&#8217;ll also need some class to hold the selection class instance
+  </p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CustomClassSelectionServer/SelectionServer.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Page</span><span style="color:#f92672">:</span>
 {
@@ -879,6 +883,8 @@ Page<span style="color:#f92672">::</span>SetSelection();
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
@@ -898,6 +904,18 @@ function updateMinWidth() {
   var w3 = getComputedStyle(sidebar).getPropertyValue("left");
   main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
 }
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
 </script>
 
 

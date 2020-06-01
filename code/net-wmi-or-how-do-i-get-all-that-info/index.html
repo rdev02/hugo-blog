@@ -9,11 +9,11 @@
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
- Select * From [win_category] The problem is there are tons of &amp;#8220;win_category]&amp;#8217; and * values.">
+ Select * From [win_category]">
 
 
 <meta property="og:description" content="There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
- Select * From [win_category] The problem is there are tons of &amp;#8220;win_category]&amp;#8217; and * values.">
+ Select * From [win_category]">
 <meta property="og:type" content="article">
 <meta property="og:title" content=".NET WMI. Or how do I get all that info?">
 <meta name="twitter:title" content=".NET WMI. Or how do I get all that info?">
@@ -21,9 +21,9 @@
 <meta property="twitter:url" content="http://blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/">
 <meta property="og:site_name" content="Nomad&#39;s reflections">
 <meta property="og:description" content="There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
- Select * From [win_category] The problem is there are tons of &amp;#8220;win_category]&amp;#8217; and * values.">
+ Select * From [win_category]">
 <meta name="twitter:description" content="There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
- Select * From [win_category] The problem is there are tons of &amp;#8220;win_category]&amp;#8217; and * values.">
+ Select * From [win_category]">
 <meta property="og:locale" content="en-us">
 
   
@@ -138,7 +138,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/">
     
-      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-home"></i>
       
       <span class="sidebar-button-desc">Home</span>
     </a>
@@ -148,7 +148,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/categories">
     
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
       <span class="sidebar-button-desc">Categories</span>
     </a>
@@ -158,7 +158,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/tags">
     
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
       <span class="sidebar-button-desc">Tags</span>
     </a>
@@ -168,7 +168,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/archives">
     
-      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-archive"></i>
       
       <span class="sidebar-button-desc">Archives</span>
     </a>
@@ -178,7 +178,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/#about">
     
-      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-question"></i>
       
       <span class="sidebar-button-desc">About</span>
     </a>
@@ -192,7 +192,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -202,7 +202,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-twitter"></i>
       
       <span class="sidebar-button-desc">Twitter</span>
     </a>
@@ -216,7 +216,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/index.xml">
     
-      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-rss"></i>
       
       <span class="sidebar-button-desc">RSS</span>
     </a>
@@ -273,7 +273,7 @@ if (!doNotTrack) {
             <div class="main-content-wrap">
               <p>There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via</p>
 <blockquote>
-<p>Select * From [win_category]<!-- raw HTML omitted --></p>
+<p>Select * From [win_category]</blockquote></p>
 <pre><code> The problem is there are tons of &amp;#8220;win_category]&amp;#8217; and * values. Luckily there is a [WMICodeCreator][1]. Actually the tool is pretty self explanatory &amp;#8211; just a few tips:
 </code></pre>
 <ul>
@@ -283,7 +283,7 @@ if (!doNotTrack) {
 <p>All Win properties nicely, fast and reliably right into your BL.</p>
 </blockquote>
 <blockquote>
-<p><!-- raw HTML omitted -->do-not-forget-to-use-post<!-- raw HTML omitted --></p>
+<p><span style="font-size: xx-small;">do-not-forget-to-use-post</span></p>
 </blockquote>
 
               
@@ -508,6 +508,8 @@ if (!doNotTrack) {
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
@@ -527,6 +529,18 @@ function updateMinWidth() {
   var w3 = getComputedStyle(sidebar).getPropertyValue("left");
   main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
 }
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
 </script>
 
 

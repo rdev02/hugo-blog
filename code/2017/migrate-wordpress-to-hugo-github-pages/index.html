@@ -143,7 +143,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/">
     
-      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-home"></i>
       
       <span class="sidebar-button-desc">Home</span>
     </a>
@@ -153,7 +153,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/categories">
     
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
       <span class="sidebar-button-desc">Categories</span>
     </a>
@@ -163,7 +163,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/tags">
     
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
       <span class="sidebar-button-desc">Tags</span>
     </a>
@@ -173,7 +173,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/archives">
     
-      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-archive"></i>
       
       <span class="sidebar-button-desc">Archives</span>
     </a>
@@ -183,7 +183,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/#about">
     
-      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-question"></i>
       
       <span class="sidebar-button-desc">About</span>
     </a>
@@ -197,7 +197,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -207,7 +207,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-twitter"></i>
       
       <span class="sidebar-button-desc">Twitter</span>
     </a>
@@ -221,7 +221,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/index.xml">
     
-      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-rss"></i>
       
       <span class="sidebar-button-desc">RSS</span>
     </a>
@@ -349,7 +349,7 @@ if (!doNotTrack) {
 <li><a href="http://fontawesome.io/">font-awesome</a> icons</li>
 <li><a href="https://highlightjs.org/">highlight.js</a> compatible</li>
 </ul>
-<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><a name="migration"></a></p>
 <h1 id="migration-experience">Migration experience</h1>
 
 
@@ -377,26 +377,26 @@ if (!doNotTrack) {
 </div>
 
 <p>The goal was to get my wordpress running on GitHub Pages, with a custom domain. I also prefer my content to be versioned separately from the framework, therefore I went with git worktrees workflow as described below.
-<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<br><br></p>
 <ol>
 <li>
-<p>As described <a href="https://gohugo.io/tools/migrations/">here</a>, use the <a href="https://github.com/SchumacherFM/wordpress-to-hugo-exporter">exporter plugin</a> to get your content out of wordpress. <!-- raw HTML omitted -->
-I&rsquo;ve hit problems right there, on step one:<!-- raw HTML omitted -->
+<p>As described <a href="https://gohugo.io/tools/migrations/">here</a>, use the <a href="https://github.com/SchumacherFM/wordpress-to-hugo-exporter">exporter plugin</a> to get your content out of wordpress. <br>
+I&rsquo;ve hit problems right there, on step one:<br>
 <strong>Fatal error: Class &lsquo;ZipArchive&rsquo; not found in /var/www/html/wp-content/plugins/hugo-export.php on line 403</strong>
-<!-- raw HTML omitted -->
+<br>
 <em>Solution</em>: make sure you have zip installed and enabled(in php.ini) on your machine. php info would be you guiding light. I was running an old <code>wordpress:4.6.1-fpm</code> bare container hence <code>apt-get</code> was useless. If you are in the same or similar boat that I was - upgrade to latest <code>wordpress:4.8.3-php7.0-fpm</code>  then use
-<!-- raw HTML omitted --><strong>docker-php-ext-install zip</strong><!-- raw HTML omitted -->
+<br><strong>docker-php-ext-install zip</strong><br>
 inside the container. Restart the container - now it(export) should work.</p>
 </li>
 <li>
-<p>Install <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">tranquipeak theme</a><!-- raw HTML omitted -->
+<p>Install <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">tranquipeak theme</a><br>
 There were no problems for me doing this. Configuring the theme takes a while, especially if you decide to change fonts, highlights etc.</p>
 </li>
 <li>
 <p>Test everything works by running <code>hugo server</code> or <code>hugo</code> to generate files.</p>
 </li>
 <li>
-<p>Now host the thing on GitHub Pages, using <a href="https://pages.github.com/">this guide</a><!-- raw HTML omitted -->
+<p>Now host the thing on GitHub Pages, using <a href="https://pages.github.com/">this guide</a><br>
 I had several problems here where I could not select the branch to publish from on github, or my CNAME was not working. The remedy was to follow the steps and instructions <em><em>exactly</em></em> as prescribed by github, namely:</p>
 <ol>
 <li>
@@ -412,7 +412,7 @@ I had several problems here where I could not select the branch to publish from 
 <p>Pull your project from GitHub.</p>
 </li>
 <li>
-<p>Make sure you have latest git installed and follow the <a href="https://pages.github.com/">guide</a><!-- raw HTML omitted -->
+<p>Make sure you have latest git installed and follow the <a href="https://pages.github.com/">guide</a><br>
 I had a problem here where wit git worktree:
 <code>fatal: Refusing to point HEAD outside of refs/</code>
 solved, by updating to the latest git.</p>
@@ -655,6 +655,8 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
@@ -674,6 +676,18 @@ function updateMinWidth() {
   var w3 = getComputedStyle(sidebar).getPropertyValue("left");
   main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
 }
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
 </script>
 
 

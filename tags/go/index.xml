@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on Nomad&#39;s reflections</title>
+    <link>http://blog.vnomad.com/tags/go/</link>
+    <description>Recent content in go on Nomad&#39;s reflections</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 May 2020 19:36:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.vnomad.com/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DiskTest in go and Synology NAS</title>
+      <link>http://blog.vnomad.com/code/2020/disktest-go-and-synology-nas/</link>
+      <pubDate>Sun, 31 May 2020 19:36:00 +0000</pubDate>
+      
+      <guid>http://blog.vnomad.com/code/2020/disktest-go-and-synology-nas/</guid>
+      <description>Back in 2013 I got myself a Synology DS413j, which has proven to be a reliable companion for me though these 7 years. I used it for file backup, media streaming and as a TimeMachine destination pretty successfully. Any such station needs good drives to provide value, and drives, as many of us know, are pretty unreliable. In 7 years I replaced about 6: 2 were bad right after arrival, and another 4 went bad as the years went by.</description>
+    </item>
+    
+  </channel>
+</rss>

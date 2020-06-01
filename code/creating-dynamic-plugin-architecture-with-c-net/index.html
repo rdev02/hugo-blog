@@ -138,7 +138,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/">
     
-      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-home"></i>
       
       <span class="sidebar-button-desc">Home</span>
     </a>
@@ -148,7 +148,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/categories">
     
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
       <span class="sidebar-button-desc">Categories</span>
     </a>
@@ -158,7 +158,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/tags">
     
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
       <span class="sidebar-button-desc">Tags</span>
     </a>
@@ -168,7 +168,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/archives">
     
-      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-archive"></i>
       
       <span class="sidebar-button-desc">Archives</span>
     </a>
@@ -178,7 +178,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/#about">
     
-      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-question"></i>
       
       <span class="sidebar-button-desc">About</span>
     </a>
@@ -192,7 +192,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-github"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -202,7 +202,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-twitter"></i>
       
       <span class="sidebar-button-desc">Twitter</span>
     </a>
@@ -216,7 +216,7 @@ if (!doNotTrack) {
     
       <a class="sidebar-button-link " href="/index.xml">
     
-      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-rss"></i>
       
       <span class="sidebar-button-desc">RSS</span>
     </a>
@@ -274,7 +274,7 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application. Also Loading dll’s in the main application domain is very risky in terms of security concerns. But back to the problem – as long as your assembly is loaded into any domain it is locked, meaning that you can’t replace it with the newer version.</p>
-<p>Naturally you’ll turn to creating a separate app domain. and try to AppDomain.load() assembly there… Now that’s the time you’ll start experiencing problems. <a href="http://msdn.microsoft.com/en-us/library/36az8x58.aspx">Here </a>we can get smth like “<!-- raw HTML omitted -->This method should only be used to load an assembly into the current application domain. This method is defined for interoperability callers who cannot call the static <!-- raw HTML omitted -->Load<!-- raw HTML omitted --> method.<!-- raw HTML omitted -->” In short – you’ll fail to load the assembly having its path. Well, actually what you really need is to be able to get some object out of there, right? Suppose you use simple “middle-tier-interface” assembly like<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>Naturally you’ll turn to creating a separate app domain. and try to AppDomain.load() assembly there… Now that’s the time you’ll start experiencing problems. <a href="http://msdn.microsoft.com/en-us/library/36az8x58.aspx">Here </a>we can get smth like “<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 11px;">This method should only be used to load an assembly into the current application domain. This method is defined for interoperability callers who cannot call the static <a href="http://msdn.microsoft.com/en-us/library/system.reflection.assembly.load.aspx" style="color: #0033cc; text-decoration: none;">Load</a> method.<span style="font-family: 'Times New Roman'; font-size: medium;">” In short – you’ll fail to load the assembly having its path. Well, actually what you really need is to be able to get some object out of there, right? Suppose you use simple “middle-tier-interface” assembly like<br /> </span></span></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">namespace</span> PInterface
 {
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> PluginInterface
@@ -457,11 +457,11 @@ newDomain.CreateInstanceFromAndUnwrap(pathToDLL, pluginClassName);
         Object[] LoadPlugin(String path);
     }
 }
-</code></pre></div><p>Two things to notice here: I haven’t managed to get the plain class’s public methods visible to C++ so I used an interface. And second, probably the most important – <!-- raw HTML omitted -->PermissionSet.<!-- raw HTML omitted --> If you do not set this you wont be able to anything inside you app domain, except the very basic things like calculations and maybe some other data manipulation. You can find more info on this <a href="http://blogs.msdn.com/shawnfa/archive/2004/11/02/251239.aspx">here</a> and <a href="http://blogs.msdn.com/shawnfa/archive/2004/10/26/248114.aspx">here</a>.</p>
+</code></pre></div><p>Two things to notice here: I haven’t managed to get the plain class’s public methods visible to C++ so I used an interface. And second, probably the most important – <span style="font-family: monospace; white-space: pre;">PermissionSet.</span> If you do not set this you wont be able to anything inside you app domain, except the very basic things like calculations and maybe some other data manipulation. You can find more info on this <a href="http://blogs.msdn.com/shawnfa/archive/2004/11/02/251239.aspx">here</a> and <a href="http://blogs.msdn.com/shawnfa/archive/2004/10/26/248114.aspx">here</a>.</p>
 <p>Another important thing is that as long as your code is going to be executed from an unmanaged environment and want to do smth with partially trusted code – you have to use</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#a6e22e">[assembly: AllowPartiallyTrustedCallersAttribute()]</span>
 </code></pre></div><p>In both manager and plugin assemblies. Further explanation on how it works can be found <a href="http://msdn.microsoft.com/en-us/magazine/cc163701.aspx">here</a>.</p>
-<p>Now if you <!-- raw HTML omitted -->crossed your fingers at the right moment<!-- raw HTML omitted --> did everything wright this plugin manager would load assemblies for you, return you the instantiated objects and free the dlls on your request flawlesly.</p>
+<p>Now if you <span style="text-decoration: line-through;">crossed your fingers at the right moment</span> did everything wright this plugin manager would load assemblies for you, return you the instantiated objects and free the dlls on your request flawlesly.</p>
 <p>And you will be able to put that shiny “Update” button on the toolbar without asking the user to reboot/restart an application whenever you need the  plugin update. And not bother with temporary files and “special” startup routines… etc. I think the idea is clear 🙂</p>
 
               
@@ -688,6 +688,8 @@ newDomain.CreateInstanceFromAndUnwrap(pathToDLL, pluginClassName);
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
@@ -707,6 +709,18 @@ function updateMinWidth() {
   var w3 = getComputedStyle(sidebar).getPropertyValue("left");
   main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
 }
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
 </script>
 
 

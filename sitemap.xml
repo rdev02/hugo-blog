@@ -3,27 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://blog.vnomad.com/categories/</loc>
+    <lastmod>2020-05-31T19:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.vnomad.com/categories/code/</loc>
+    <lastmod>2020-05-31T19:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.vnomad.com/code/</loc>
+    <lastmod>2020-05-31T19:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.vnomad.com/code/2020/disktest-go-and-synology-nas/</loc>
+    <lastmod>2020-05-31T19:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.vnomad.com/tags/go/</loc>
+    <lastmod>2020-05-31T19:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.vnomad.com/tags/nas/</loc>
+    <lastmod>2020-05-31T19:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.vnomad.com/</loc>
+    <lastmod>2020-05-31T19:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.vnomad.com/tags/</loc>
+    <lastmod>2020-05-31T19:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.vnomad.com/categories/tech/</loc>
+    <lastmod>2020-05-31T19:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.vnomad.com/tea/zradofila-vs-porohobot/</loc>
     <lastmod>2017-12-09T09:48:00-05:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.vnomad.com/categories/</loc>
-    <lastmod>2017-12-09T09:48:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.vnomad.com/</loc>
-    <lastmod>2017-12-09T09:48:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://blog.vnomad.com/tags/politics/</loc>
-    <lastmod>2017-12-09T09:48:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.vnomad.com/tags/</loc>
     <lastmod>2017-12-09T09:48:00-05:00</lastmod>
   </url>
   
@@ -68,17 +98,7 @@
   </url>
   
   <url>
-    <loc>http://blog.vnomad.com/code/</loc>
-    <lastmod>2017-11-18T21:37:00-07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://blog.vnomad.com/tags/hugo/</loc>
-    <lastmod>2017-11-18T21:37:00-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.vnomad.com/categories/tech/</loc>
     <lastmod>2017-11-18T21:37:00-07:00</lastmod>
   </url>
   
@@ -104,11 +124,6 @@
   
   <url>
     <loc>http://blog.vnomad.com/categories/gadgets/</loc>
-    <lastmod>2013-08-28T23:25:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.vnomad.com/tags/nas/</loc>
     <lastmod>2013-08-28T23:25:00+00:00</lastmod>
   </url>
   
@@ -165,11 +180,6 @@
   <url>
     <loc>http://blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</loc>
     <lastmod>2011-09-14T06:50:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.vnomad.com/categories/code/</loc>
-    <lastmod>2011-09-06T08:06:00+00:00</lastmod>
   </url>
   
   <url>

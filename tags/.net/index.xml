@@ -18,7 +18,7 @@
       
       <guid>http://blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/</guid>
       <description>There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
- Select * From [win_category] The problem is there are tons of &amp;amp;#8220;win_category]&amp;amp;#8217; and * values.</description>
+ Select * From [win_category]</description>
     </item>
     
     <item>
