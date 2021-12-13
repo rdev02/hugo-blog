@@ -6,11 +6,7 @@
     <description>Recent content in hibernate on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Jan 2010 12:08:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://blog.vnomad.com/tags/hibernate/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 11 Jan 2010 12:08:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/hibernate/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Switching to  container based datasource…</title>
       <link>http://blog.vnomad.com/code/switching-to-container-based-datasource/</link>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:">
@@ -102,7 +102,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -448,7 +447,7 @@ if (!doNotTrack) {
 <p>Absolute times and machine spec can be found <a href="https://docs.google.com/spreadsheet/ccc?key=0AtItSpPjhRWvdDlDbklHUzZxNFBFNkRya3RNbng5ZWc&amp;hl=en_US">here</a>.</p>
 <p>Of course this is the developer machine setup and ran on one virtual machine, but still I thought that would be interesting for other to know. Ireally looking forward to making some more production-like tests now…</p>
 <p>One more thing in case interested – the code snippet I used for generating the data:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateTestTableSql</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateTestTableSql</span> {
 
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final <span style="color:#66d9ef">int</span> QUERY_ROWS = <span style="color:#ae81ff">10</span> * <span style="color:#ae81ff">1000</span> * <span style="color:#ae81ff">1000</span>;
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final <span style="color:#66d9ef">int</span> BATCH_SIZE = <span style="color:#ae81ff">10</span> * <span style="color:#ae81ff">1000</span>;
@@ -629,7 +628,7 @@ if (!doNotTrack) {
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Viktor Halitsyn. All Rights Reserved
+    &copy; 2021 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 

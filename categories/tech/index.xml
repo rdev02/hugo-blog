@@ -6,10 +6,16 @@
     <description>Recent content in tech on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2020 19:36:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://blog.vnomad.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 06 Dec 2021 22:07:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>x64 Macbook Pro -&gt; Apple Silicon Macbook Pro Max</title>
+      <link>http://blog.vnomad.com/code/2021/12-06/macbook-pro-max-migration/</link>
+      <pubDate>Mon, 06 Dec 2021 22:07:00 +0000</pubDate>
+      
+      <guid>http://blog.vnomad.com/code/2021/12-06/macbook-pro-max-migration/</guid>
+      <description>Few things motivate me more, than exciting new hardware and music. My last post has been over a year ago, and that was when Synology released new exciting NAS options. Side-tracking a bit, 920+ turned out to be well worth it&amp;rsquo;s money: a year later it&amp;rsquo;s still as performant as day 1, though I did have to disable the RW cache on it :).
+However today the new M1 Pro Max takes spotlight.</description>
+    </item>
     
     <item>
       <title>DiskTest in go and Synology NAS</title>
@@ -150,7 +156,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <guid>http://blog.vnomad.com/code/skype-microsoft/</guid>
       <description>I really, really do not know if that’s accidental or on-purpose and whether it’s connected with the fact that Microsoft bought Skype, but this morning I received a wonderful email:
   Now 3 things about this:
- I **am **a skype user. Who the hell is Natalia??? And why, and when and WTF?! I love to use skype. It would be sad if this is the turning point. 🙁  </description>
+ I **am **a skype user. Who the hell is Natalia??? And why, and when and WTF?! I love to use skype. It would be sad if this is the** turning point**. 🙁  </description>
     </item>
     
     <item>
@@ -428,7 +434,7 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Thu, 16 Apr 2009 22:49:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/mcp-aquired/</guid>
-      <description>[&amp;lt;img style=&amp;quot;float:left; margin:0 10px 10px 0;cursor:pointer; cursor:hand;width: 160px; height: 80px;&amp;rdquo; src=&amp;quot;http://2.bp.blogspot.com/_SwypSVIrwAo/See277vd4pI/AAAAAAAADrc/YzPLJ891L2s/s320/MCP(rgb).jpg&amp;rdquo; border=&amp;quot;0&amp;rdquo; alt=&amp;rdquo;&amp;rdquo; id=&amp;quot;At last i finally got time to get to that certification center and pass that damn 70-536. You can’t really work with all of that technology at once to keep all the names of classes and methods in your head, and the projects are swapping fast… SO it took me more than a year to get from an idea of sitting an axam to actually passing it.</description>
+      <description>[&amp;lt;img style=&amp;ldquo;float:left; margin:0 10px 10px 0;cursor:pointer; cursor:hand;width: 160px; height: 80px;&amp;rdquo; src=&amp;ldquo;http://2.bp.blogspot.com/_SwypSVIrwAo/See277vd4pI/AAAAAAAADrc/YzPLJ891L2s/s320/MCP(rgb).jpg&amp;rdquo; border=&amp;ldquo;0&amp;rdquo; alt=&amp;quot;&amp;quot; id=&amp;ldquo;At last i finally got time to get to that certification center and pass that damn 70-536. You can’t really work with all of that technology at once to keep all the names of classes and methods in your head, and the projects are swapping fast… SO it took me more than a year to get from an idea of sitting an axam to actually passing it.</description>
     </item>
     
     <item>

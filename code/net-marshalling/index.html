@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Interesting things happen when you try to marshal something in real life….Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] extern __declspec(dllexport) int SomeFunc(char** stringArray); [marshal]">
@@ -102,7 +102,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -272,24 +271,24 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Interesting things happen when you try to marshal something in real life….Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] </p></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">extern</span> <span style="color:#a6e22e">__declspec</span>(dllexport) <span style="color:#66d9ef">int</span> SomeFunc(<span style="color:#66d9ef">char</span><span style="color:#f92672">**</span> stringArray);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">extern</span> <span style="color:#a6e22e">__declspec</span>(dllexport) <span style="color:#66d9ef">int</span> SomeFunc(<span style="color:#66d9ef">char</span><span style="color:#f92672">**</span> stringArray);
 </code></pre></div><p>[marshal]</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#a6e22e">[DllImport(&#34;funct.dll&#34;, EntryPoint = &#34;SomeFunc&#34;, ExactSpelling = true)]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#a6e22e">[DllImport(&#34;funct.dll&#34;, EntryPoint = &#34;SomeFunc&#34;, ExactSpelling = true)]</span>
 <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> SomeFunc([In,Out] String[] stringArray);
 </code></pre></div><p>AND! Do not forget to allocate enough memory for the array elements:</p>
 <p>[pseudocode]</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt;&gt; {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt;&gt; {
            arr[i] = <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#39; &#39;</span>, <span style="color:#ae81ff">256</span>);
 }
 </code></pre></div><p>If you want to marshal a string and DO NOT use it afterwards(no result is written to it) use string but if you do use a StringBuilder with OUT modifier: [native] </p></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">extern</span> <span style="color:#a6e22e">__declspec</span>(dllexport) <span style="color:#66d9ef">int</span> SomeFunc(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> ad, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> buf, <span style="color:#66d9ef">int</span> size, <span style="color:#66d9ef">float</span> someParam);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">extern</span> <span style="color:#a6e22e">__declspec</span>(dllexport) <span style="color:#66d9ef">int</span> SomeFunc(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> ad, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> buf, <span style="color:#66d9ef">int</span> size, <span style="color:#66d9ef">float</span> someParam);
 </code></pre></div><p>[marshal]</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#a6e22e">[DllImport(&#34;funct.dll&#34;, EntryPoint = &#34;SomeFunc&#34;, ExactSpelling = true)]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#a6e22e">[DllImport(&#34;funct.dll&#34;, EntryPoint = &#34;SomeFunc&#34;, ExactSpelling = true)]</span>
 <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> SomeFunc(IntPtr handle, [Out] StringBuilder buffer, <span style="color:#66d9ef">int</span> size, [In] <span style="color:#66d9ef">float</span> someParam);
 </code></pre></div><p>Now let us imagine a more complicated example of function: two string are passed to the function: one is an ASCII string and one is a UNICODE one. The result has to be written into the second string. simple auto modifier in CharSet wont help we’ll have to use MarshalAs attribute: [native] </p></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">extern</span> <span style="color:#a6e22e">__declspec</span>(dllexport) <span style="color:#66d9ef">int</span> SomeFunc(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> ad, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name, <span style="color:#66d9ef">wchar_t</span> <span style="color:#f92672">*</span>value, <span style="color:#66d9ef">int</span> valueSize);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">extern</span> <span style="color:#a6e22e">__declspec</span>(dllexport) <span style="color:#66d9ef">int</span> SomeFunc(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> ad, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name, <span style="color:#66d9ef">wchar_t</span> <span style="color:#f92672">*</span>value, <span style="color:#66d9ef">int</span> valueSize);
 </code></pre></div><p>[marshal]</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#a6e22e">[DllImport(&#34;funct.dll&#34;, EntryPoint = &#34;SomeFunc&#34;,CharSet=CharSet.Auto, ExactSpelling = true)]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#a6e22e">[DllImport(&#34;funct.dll&#34;, EntryPoint = &#34;SomeFunc&#34;,CharSet=CharSet.Auto, ExactSpelling = true)]</span>
 <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> SomeFunc(IntPtr handle, [MarshalAs(UnmanagedType.LPStr)] [In] <span style="color:#66d9ef">string</span> name, [MarshalAs(UnmanagedType.LPWStr)] [In,Out] <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>, <span style="color:#66d9ef">int</span> size);
 </code></pre></div>
               
@@ -383,7 +382,7 @@ if (!doNotTrack) {
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Viktor Halitsyn. All Rights Reserved
+    &copy; 2021 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 

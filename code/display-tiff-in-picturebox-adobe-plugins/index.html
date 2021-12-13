@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="The previous post highlighted how to accomplish the given task using TIFF-PDF-JPEG-BITMAP conversion. Though this was is complicated it works perfect. But so much code for so little functionality often is not considered good if even eccepted. Recently a new way was found. It has to be said that it is not “the proper way”, because it needs some annatural code, but it is considerably lighter than the previous one. SO the idea is to draw direktly on the window using its HWND and SDK drawContentsToFunction.">
@@ -102,7 +102,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -273,7 +272,7 @@ if (!doNotTrack) {
             <div class="main-content-wrap">
               <p>The previous post highlighted how to accomplish the given task using TIFF-PDF-JPEG-BITMAP conversion. Though this was is complicated it works perfect. But so much code for so little functionality often is not considered good if even eccepted. Recently a new way was found. It has to be said that it is not “the proper way”, because it needs some annatural code, but it is considerably lighter than the previous one. SO the idea is to draw direktly on the window using its HWND and SDK drawContentsToFunction. Not say , much – just look at the code – it is fairly simple:</p>
 <p>//declare it somwhere in the code 🙂</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">PDPage g_page;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">PDPage g_page;
 <span style="color:#75715e">//use this code when user selects the tiff file to display
 </span><span style="color:#75715e"></span>Dialog<span style="color:#f92672">::</span>getStatement()<span style="color:#f92672">-&gt;</span>ConvertTiffToPdf(<span style="color:#f92672">&amp;</span>doc, documentIndex);
 <span style="color:#66d9ef">if</span>(g_page) 
@@ -284,7 +283,7 @@ PDDocClose(docToRelease);
 }
 g_page <span style="color:#f92672">=</span> PDDocAcquirePage (doc, <span style="color:#ae81ff">0</span>);
 </code></pre></div><p>//use this code in the OnRefresh/OnPaint event handler for the desired picturebox or any HWND</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> ASAPI <span style="color:#a6e22e">AnotStatementADMDialogDrawProc</span> (ADMDialogRef inDialog, ADMDrawerRef inDrawer)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> ASAPI <span style="color:#a6e22e">AnotStatementADMDialogDrawProc</span> (ADMDialogRef inDialog, ADMDrawerRef inDrawer)
 {
 <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>g_page) sADMDialog<span style="color:#f92672">-&gt;</span>DefaultDraw(inDialog, inDrawer);
 HWND hwnd <span style="color:#f92672">=</span> <span style="color:#f92672">::</span>FindWindowEx(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;Add Anoto Statement&#34;</span>);
@@ -392,7 +391,7 @@ DeleteDC(hdc);
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Viktor Halitsyn. All Rights Reserved
+    &copy; 2021 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 

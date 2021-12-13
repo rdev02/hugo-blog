@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:
@@ -112,7 +112,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -282,14 +281,14 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:</p>
-<pre><code>Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is:
+<pre tabindex="0"><code>Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is:
 java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is:
 java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780)
 at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627)
 at javax.naming.InitialContext.lookup(InitialContext.java:392)
 at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154)
 </code></pre><p>I was sure I configured it right as I have</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;jee:jndi-lookup</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;JBossMQ&#34;</span> <span style="color:#a6e22e">jndi-name=</span><span style="color:#e6db74">&#34;XAConnectionFactory&#34;</span> <span style="color:#a6e22e">proxy-interface=</span><span style="color:#e6db74">&#34;javax.jms.ConnectionFactory&#34;</span> <span style="color:#a6e22e">environment-ref=</span><span style="color:#e6db74">&#34;jndiProps&#34;</span> <span style="color:#a6e22e">resource-ref=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">/&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;jee:jndi-lookup</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;JBossMQ&#34;</span> <span style="color:#a6e22e">jndi-name=</span><span style="color:#e6db74">&#34;XAConnectionFactory&#34;</span> <span style="color:#a6e22e">proxy-interface=</span><span style="color:#e6db74">&#34;javax.jms.ConnectionFactory&#34;</span> <span style="color:#a6e22e">environment-ref=</span><span style="color:#e6db74">&#34;jndiProps&#34;</span> <span style="color:#a6e22e">resource-ref=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">/&gt;</span>
     <span style="color:#f92672">&lt;util:properties</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;jndiProps&#34;</span> <span style="color:#a6e22e">location=</span><span style="color:#e6db74">&#34;META-INF/spring/jndi.properties&#34;</span><span style="color:#f92672">/&gt;</span>
 </code></pre></div><p>And with those jndi.properties I was sure I have to get a refference as I could do that using the InitialContext
 by hand”. <strong>Turned out that it was maven that made things go wrong. moving the repository to a path with no spaces solved the issue</strong>(e.g. c:mavenrepo).</p>
@@ -388,7 +387,7 @@ by hand”. <strong>Turned out that it was maven that made things go wrong. movi
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Viktor Halitsyn. All Rights Reserved
+    &copy; 2021 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 

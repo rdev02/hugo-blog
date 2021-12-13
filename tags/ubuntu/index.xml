@@ -6,11 +6,7 @@
     <description>Recent content in ubuntu on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Jun 2011 20:22:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://blog.vnomad.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 28 Jun 2011 20:22:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Plymouth fix for Ubuntu 11.04</title>
       <link>http://blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</link>

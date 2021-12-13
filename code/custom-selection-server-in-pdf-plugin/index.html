@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.">
@@ -100,7 +100,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -268,10 +267,10 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.0.5 SDK.First i would like to say that i haven’t found better way(say another way) to make slection/highlight of an annotation that creating my own selection server for that annotation. It also has to be said that every single type in Acrobat that “can be highlighted” has its own selection server(of type AVDocSelectionServer) which in practise can be obtained if you know its “internal” name. For example if you want a selection server for type “Button” you can something as following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">AVDocGetSelectionServerByType(ASAtomFromString(<span style="color:#e6db74">&#34;Button&#34;</span>));
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">AVDocGetSelectionServerByType(ASAtomFromString(<span style="color:#e6db74">&#34;Button&#34;</span>));
 </code></pre></div><p>There are selection servers for simple annotations but my annotation was a custom object, created by plug-in and thus didn’t have one. It didn’t prevent acrobat to use normal highlighting for it as when treating it as simple annotation in object editing mode, but the request was to provide highligting regardless of mode. So solution is to register the selection server. There is an example shipped with SDK of how to make custom selection servers but this example has a minor bug in it(it is configured so that selection will be drawn on every page whereas it has to be drawn only on the page where the object resides) and it doesnt take into consideration possibility of acrobat to change selection servers without notifying current selection server to lose its selection(for example when user press CTRL+A). So here we go with the code:First thing is to create a class which would be holding our selection and provide the selection type. To manage selections on different pages i created a simple class containinng list with page/data pairs and made it static for cross-page persistance. secondly implement the selection server. There is one workaround here in my code: to handle CTRL+A for simple objects on the page i use its selection server by injecting “losing selection” funtionality before server case takes place and then return to the normal application flow.This is definetely not a good way – but i found no other solution and this one is working:).</p>
 <p>So here is the header file of the Selection Server</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">/*********************************************************************
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">/*********************************************************************
 </span><span style="color:#75715e">ADOBE SYSTEMS INCORPORATED
 </span><span style="color:#75715e">Copyright (C) 1994-2003 Adobe Systems Incorporated
 </span><span style="color:#75715e">All rights reserved.
@@ -531,7 +530,7 @@ if (!doNotTrack) {
 </code></pre></div>  <p>
     // drawing utils implementation
   </p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">/*********************************************************************
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">/*********************************************************************
 </span><span style="color:#75715e">ADOBE SYSTEMS INCORPORATED
 </span><span style="color:#75715e">Copyright (C) 1994-2003 Adobe Systems Incorporated
 </span><span style="color:#75715e">All rights reserved.
@@ -623,7 +622,7 @@ ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">
 </code></pre></div>  <p>
     //we&#8217;ll also need some class to hold the selection class instance
   </p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CustomClassSelectionServer/SelectionServer.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CustomClassSelectionServer/SelectionServer.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Page</span><span style="color:#f92672">:</span>
 {
     <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
@@ -752,7 +751,7 @@ Page<span style="color:#f92672">::</span>SetSelection();
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Viktor Halitsyn. All Rights Reserved
+    &copy; 2021 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn’t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn’t lead me anywhere except that I thought that something definitely gets locked.">
@@ -102,7 +102,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -270,12 +269,12 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn’t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on <a href="http://stackoverflow.com/questions/1459681/application-crashes-with-exception-when-using-javax-microedition-media-player/1464802#1464802">Stack Overflow</a> and <a href="http://supportforums.blackberry.com/rim/board/message?board.id=java_dev&amp;message.id=61681&amp;jump=true#M61681">BlackBerry developer forums</a> but that didn’t lead me  anywhere except that I thought that something definitely gets locked. as my sounds were played via</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">SoundPlayer sp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SoundPlayer<span style="color:#f92672">((</span>String<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>SoundNotification<span style="color:#f92672">)</span> arg<span style="color:#f92672">).</span><span style="color:#a6e22e">getArg</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> Constants<span style="color:#f92672">.</span><span style="color:#a6e22e">EXTENSION_MIDI</span><span style="color:#f92672">);</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">SoundPlayer sp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SoundPlayer<span style="color:#f92672">((</span>String<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>SoundNotification<span style="color:#f92672">)</span> arg<span style="color:#f92672">).</span><span style="color:#a6e22e">getArg</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> Constants<span style="color:#f92672">.</span><span style="color:#a6e22e">EXTENSION_MIDI</span><span style="color:#f92672">);</span>
         sp<span style="color:#f92672">.</span><span style="color:#a6e22e">setVolumeLevel</span><span style="color:#f92672">(</span>100<span style="color:#f92672">);</span>
         sp<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxPlaybackMilis</span><span style="color:#f92672">(</span>4000<span style="color:#f92672">);</span>
         invokeLater<span style="color:#f92672">(</span>sp<span style="color:#f92672">);</span>
 </code></pre></div><p>i though that maybe this is the concurrent resource access issue as some of the melodies had to be played more than one time. So I implemented a simple manager like</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SoundManager</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SoundManager</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
 
   <span style="color:#66d9ef">boolean</span> _isRunning<span style="color:#f92672">;</span>
   Vector _playList<span style="color:#f92672">;</span>
@@ -426,7 +425,7 @@ if (!doNotTrack) {
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Viktor Halitsyn. All Rights Reserved
+    &copy; 2021 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 

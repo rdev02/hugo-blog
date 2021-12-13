@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable.">
@@ -106,7 +106,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -286,7 +285,7 @@ if (!doNotTrack) {
 <p>1812332,”String1″,”String2, extra string”,”String3″,16,</p>
 </blockquote>
 <p>Also we are going to start with the abstract “blank” for csv reading like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CsvStreamReader</span> implements Iterator&lt;CsvData&gt; {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CsvStreamReader</span> implements Iterator&lt;CsvData&gt; {
     <span style="color:#66d9ef">protected</span> BufferedReader reader;
 
     <span style="color:#75715e">/**
@@ -317,7 +316,7 @@ if (!doNotTrack) {
     }
 }
 </code></pre></div><p>And a simple data-holder like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CsvData</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CsvData</span> {
     <span style="color:#66d9ef">private</span> String[] data;
 
     <span style="color:#66d9ef">public</span> CsvData(String... data) {
@@ -341,7 +340,7 @@ if (!doNotTrack) {
     }
 }
 </code></pre></div><p>Now the first and obvious way to read and parse the CSV would be smth like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SplitBasedReader</span> extends CsvStreamReader {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SplitBasedReader</span> extends CsvStreamReader {
 
     <span style="color:#66d9ef">public</span> CsvData next() {
         <span style="color:#66d9ef">try</span> {
@@ -355,7 +354,7 @@ if (!doNotTrack) {
 }
 </code></pre></div><p>This looks fairly good with one lil’ problem: it doesn’t work good. If we take the last line with “String2, extra string” we see that the split would play a bad trick with us breaking the data consistency.</p>
 <p>A quick fix would suggest smth like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringBasedReader</span> extends CsvStreamReader {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringBasedReader</span> extends CsvStreamReader {
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final String QUOTE = <span style="color:#e6db74">&#34;&#34;&#34;;
 </span><span style="color:#e6db74"></span>
     @Override
@@ -397,7 +396,7 @@ if (!doNotTrack) {
     }
 }
 </code></pre></div><p>Well yeah, but having string.startsWith checking on String all this takes int account variable length which in fact we do not care about… sounds wasteful. Let’s improve it.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringBasedReaderImproved</span> extends CsvStreamReader {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringBasedReaderImproved</span> extends CsvStreamReader {
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final <span style="color:#66d9ef">char</span> QUOTE = <span style="color:#e6db74">&#39;&#34;&#39;</span>;
 
     @Override
@@ -437,7 +436,7 @@ if (!doNotTrack) {
     }
 }
 </code></pre></div><p>OKAY! now it a char and <code>StringBuffer</code>. Looks like we’ve done a great job! Awesome…. although a bit magical. It’s not rocket science but still it’s not pleasant to read. What else might we suggest? Regex.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RegexBasedReader</span> extends CsvStreamReader {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RegexBasedReader</span> extends CsvStreamReader {
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final String RE_ANY_INSIDE_QUOTES = <span style="color:#e6db74">&#34;&#34;</span>([^<span style="color:#e6db74">&#34;]*)&#34;&#34;;
 </span><span style="color:#e6db74"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final String RE_ANY_WITHOUT_COMMAS = <span style="color:#e6db74">&#34;([^,]*)&#34;</span>;
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final String RE_ANY = <span style="color:#e6db74">&#34;(&#34;</span> + RE_ANY_INSIDE_QUOTES + <span style="color:#e6db74">&#34;|&#34;</span> + RE_ANY_WITHOUT_COMMAS + <span style="color:#e6db74">&#34;)&#34;</span>;
@@ -522,7 +521,7 @@ if (!doNotTrack) {
 </ul>
 <p><strong>benchmarks</strong> reading over <strong>500k</strong> lines:</p>
 </p> 
-<pre><code>public class Test2 {
+<pre tabindex="0"><code>public class Test2 {
     static List&lt;string&gt; times = new ArrayList&lt;string&gt;(4);
 
     public static void main(String[] args) throws IOException {
@@ -685,7 +684,7 @@ if (!doNotTrack) {
 <p>StringBasedReaderImproved time: 9.256 sec.</p>
 <p>RegexBasedReader time: 12.461 sec.</p>
 <hr>
-<p>**Bottom line:**</p></p>
+<p><strong>Bottom line:</strong></p></p>
 <ul>
 <li>
 <p>While robust and effective Regex is not the fastest thing in the world;</p>
@@ -794,7 +793,7 @@ if (!doNotTrack) {
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Viktor Halitsyn. All Rights Reserved
+    &copy; 2021 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 

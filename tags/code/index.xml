@@ -6,11 +6,7 @@
     <description>Recent content in code on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 14 Sep 2011 06:50:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://blog.vnomad.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 14 Sep 2011 06:50:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MySql performance. 5.1 VS 5.5 VS 5.6 (dev)</title>
       <link>http://blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</link>

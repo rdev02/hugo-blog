@@ -6,11 +6,7 @@
     <description>Recent content in rant on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Feb 2012 16:15:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://blog.vnomad.com/tags/rant/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 26 Feb 2012 16:15:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/rant/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WP7 Mango dive</title>
       <link>http://blog.vnomad.com/code/wp7-mango-dive/</link>

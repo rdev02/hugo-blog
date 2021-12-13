@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content="wordpress, hugo, github, blog, code, travel, immigration, ukraine, washington">
 <meta name="description" content="Two weeks ago my blog was hosted on a 10$/mo vps instance in DigitalOcean, powered by a couple docker containers, running an ever dynamic Wordpress platform. Now it&rsquo;s completely static, served from GitHub Pages servers free. What follows is a small experience reco/guide on how to make this happen.">
@@ -109,7 +109,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -426,7 +425,7 @@ solved, by updating to the latest git.</p>
 </ol>
 <p>Hope this helps people, should they have trouble. Also, if you have problems following these instructions - let me know in comments.</p>
 <p>PS: In my NGinx:Varnish:NGinx:Php-fpm:MySQL Wordpress setup I went overzealous on the HSTS header</p>
-<pre><code># Set HSTS to 365 days
+<pre tabindex="0"><code># Set HSTS to 365 days
 add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; preload&quot;;
 </code></pre><p>So now people, that visited my blog a year ago, and haven&rsquo;t cleared their cache since, will be forced to https, which would yield nothing, since custom domains are not served through https yet from GitHub Pages. Oh well&hellip;</p>
               
@@ -524,7 +523,7 @@ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubdomains; 
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Viktor Halitsyn. All Rights Reserved
+    &copy; 2021 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 

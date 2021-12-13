@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Back in 2013 I got myself a Synology DS413j, which has proven to be a reliable companion for me though these 7 years. I used it for file backup, media streaming and as a TimeMachine destination pretty successfully. Any such station needs good drives to provide value, and drives, as many of us know, are pretty unreliable. In 7 years I replaced about 6: 2 were bad right after arrival, and another 4 went bad as the years went by.">
@@ -107,7 +107,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -283,31 +282,31 @@ if (!doNotTrack) {
 <p>The tool was written quickly, held many unnecessary things in memory, ran sequentially, but, most importantly, it worked. That was till  the drive size grew and suddenly my little tool started to OOM closer to the end of the verification phase. Of course I should have profiled the tool and improved it&hellip; But I do that(profiling and improving) as my day job, so instead I decided I can practice a language way better suited for things like that</p>
 <p><strong>Go</strong></p>
 <p>So I simply rewrote my little tool in go, and this time, made it open source. Welcome <a href="https://github.com/rdev02/disktest">DiskTest</a>. Now you can easily stress-test you drive like this:</p>
-<pre><code>disktest --size=&quot;10TB&quot; /mount/driveZ
+<pre tabindex="0"><code>disktest --size=&quot;10TB&quot; /mount/driveZ
 </code></pre><p>It should would use minimal RAM(about 100MB, most of which would be dedicated to 20MB IO buffers) and run up to the limit of your drive&rsquo;s IO.</p>
 <p>While at it also came across a few useful commands for dealing with drives/partitions for linux. I&rsquo;ll just list them here for posterity:</p>
 <p>Checking drives and any partitions present</p>
-<pre><code>lsblk
+<pre tabindex="0"><code>lsblk
 fdisk -l
 </code></pre><p>making partitions</p>
-<pre><code>mkfs.XXXX /dev/sda
+<pre tabindex="0"><code>mkfs.XXXX /dev/sda
 </code></pre><p>where XXXX is the partition type, i.e. xfs, ext4, etc.</p>
 <p>Checking for bad blocks:</p>
-<pre><code>sudo e2fsck -c -v /dev/sda1
+<pre tabindex="0"><code>sudo e2fsck -c -v /dev/sda1
 badblocks -b 4096 -s -v /dev/sda1
 </code></pre><p>The first one invokes the second one along other checks. However the first one doesn&rsquo;t work with <code>xfs</code>, which may be a deal breaker.</p>
 <p>Since your drive is probably S.M.A.R.T, using bablocks might yield nothing, since the drive firmware would map those away transparently for any OS process. To know for sure, you&rsquo;d want to check S.M.A.R.T info on your drive. That is usually quite simple with Synology or any GUI shell, but if you&rsquo;re not there just yet and would like to know - these things were of help for me:</p>
-<pre><code> apt install smartmontools --no-install-recommends
+<pre tabindex="0"><code> apt install smartmontools --no-install-recommends
  smartctl --all /dev/sda
 </code></pre><p>IF the output says that the test hasn&rsquo;t been run, you probably want to run one :). At least a short one:</p>
-<pre><code>smartctl -t short /dev/sda
+<pre tabindex="0"><code>smartctl -t short /dev/sda
 smartctl -t long /dev/sda
 </code></pre><p>So I got the new <a href="https://www.synology.com/en-global/products/DS918+">DS918+</a> to test it and the drives :). While testing drives for my new setup I experimented with a couple ways of loading the drive IO, monitoring the overall throughput via</p>
-<pre><code>iotop -o
+<pre tabindex="0"><code>iotop -o
 </code></pre><p>My general finding is that IO-wise running 10 threads in parallel against the drive is just as fast as running 2, just eats more RAM for the buffers.</p>
 <p>Another interesting finding was disk IO speed at saturation points: closer to the disk being 100% full disk write speed deteriorated greatly: went down to single digit <code>M/s</code>. I did not take the time to understand if different FS would handle this differently, but this little observation re-iterated the rule of <strong>keeping at least 15% of the drive free at all times</strong>.</p>
 <p>Last but not least, before selling/trashing your old drives you might want to consider</p>
-<pre><code>shred -vf /dev/sda
+<pre tabindex="0"><code>shred -vf /dev/sda
 </code></pre><p>Synology, again, has the same tool avoilable via GUI, however you won&rsquo;t be able to run it on the last drive(where Synology is intialized).</p>
 
               
@@ -336,7 +335,7 @@ smartctl -t long /dev/sda
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/code/2021/12-06/macbook-pro-max-migration/" data-tooltip="x64 Macbook Pro -&gt; Apple Silicon Macbook Pro Max">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -403,7 +402,7 @@ smartctl -t long /dev/sda
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Viktor Halitsyn. All Rights Reserved
+    &copy; 2021 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 
@@ -416,7 +415,7 @@ smartctl -t long /dev/sda
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/code/2021/12-06/macbook-pro-max-migration/" data-tooltip="x64 Macbook Pro -&gt; Apple Silicon Macbook Pro Max">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>

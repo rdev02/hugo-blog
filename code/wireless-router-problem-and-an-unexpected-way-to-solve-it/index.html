@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="A lil’ bit nerdy here. So if anyone does not like all that computer stuff skip to the LAST LINE.
@@ -108,7 +108,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
     
   </head>
@@ -284,7 +283,7 @@ I asked network administrators and friends but noone could give me a real soluti
 <em>The Solution</em><br>
 I posted my problem on one of the network community threads. After standard advises to update firmware and disable the firewall I was recommended to change the MTU. To a value of 1480. Magic number.<br>
 I changed it and it worked. **BUT **I will never be satisfied with a short win:) I began digging to understand the “magic”. So the first post I found was <a href="http://forums.techguy.org/networking/475606-dsl-download-speed-sucks.html">http://forums.techguy.org/networking/475606-dsl-download-speed-sucks.html</a>. Using it found out that actually the working setting of 1480 produces next awful things:</p>
-<pre><code>C:WINDOWSsystem32&gt;ping yahoo.com -f -l 1480
+<pre tabindex="0"><code>C:WINDOWSsystem32&gt;ping yahoo.com -f -l 1480
 
 Pinging yahoo.com [69.147.125.65] with 1480 bytes of data:
 
@@ -296,7 +295,7 @@ Packet needs to be fragmented but DF set.
 Ping statistics for 69.147.125.65:  
     Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 </code></pre><p>And following the article’s advice:</p>
-<pre><code>C:WINDOWSsystem32&gt;ping yahoo.com -f -l 1452
+<pre tabindex="0"><code>C:WINDOWSsystem32&gt;ping yahoo.com -f -l 1452
 
 Pinging yahoo.com [69.147.125.65] with 1452 bytes of data:
 
@@ -402,7 +401,7 @@ Minimum = 14ms, Maximum = 16ms, Average = 15ms
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Viktor Halitsyn. All Rights Reserved
+    &copy; 2021 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 
