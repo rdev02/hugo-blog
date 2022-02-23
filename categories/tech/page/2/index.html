@@ -231,6 +231,67 @@ if (!doNotTrack) {
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/">
+          java.net.MalformedURLException: no protocol: and]
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2011-09-06T08:06:00Z">
+        
+  
+  
+  
+  
+    09/06/2011
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/tech">tech</a>, 
+    
+      <a class="category-link" href="/categories/code">code</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:
+Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is: java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780) at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627) at javax.naming.InitialContext.lookup(InitialContext.java:392) at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154) I was sure I configured it right as I have
+&lt;jee:jndi-lookup id=&#34;JBossMQ&#34; jndi-name=&#34;XAConnectionFactory&#34; proxy-interface=&#34;javax.jms.ConnectionFactory&#34; environment-ref=&#34;jndiProps&#34; resource-ref=&#34;true&#34;/&gt; &lt;util:properties id=&#34;jndiProps&#34; location=&#34;META-INF/spring/jndi.
+      
+      <p>
+        <a href="http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="http://blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/">
           Plymouth fix for Ubuntu 11.04
         </a>
@@ -740,65 +801,6 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
 </article>
 
             
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/">
-          maven-compiler-plugin causing eclipse projects to have j2se 1.4 instead of configured one
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2011-04-21T10:52:00Z">
-        
-  
-  
-  
-  
-    04/21/2011
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Today was investigating the warnings around some of my eclipse maven projects and noticed that I have a few
- There are no JREs installed in the workspace that are strictly compatible with this environment
- messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-            
             
   <div class="pagination-bar">
     <ul class="pagination">
@@ -820,7 +822,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
           </li>
         
       
-      <li class="pagination-number">page 2 of 6</li>
+      <li class="pagination-number">page 2 of 7</li>
     </ul>
   </div>
 
@@ -829,7 +831,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
         
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2021 Viktor Halitsyn. All Rights Reserved
+    &copy; 2022 Viktor Halitsyn. All Rights Reserved
   </span>
 </footer>
 

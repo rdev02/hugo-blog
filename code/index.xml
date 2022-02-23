@@ -6,7 +6,18 @@
     <description>Recent content in Codes on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Dec 2021 22:07:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/code/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Feb 2022 22:22:22 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VPN. Open? Wire? Scale?</title>
+      <link>http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/</link>
+      <pubDate>Tue, 22 Feb 2022 22:22:22 +0000</pubDate>
+      
+      <guid>http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/</guid>
+      <description>In this post I go about my journey into VPNs and conclude TailScale is the GOTO for anyone who needs a nice cheap connectivity tool asap.
+History Sooner or later one needs a VPN. Various reasons:
+ test out UX/behavior from a different part of the world access your test server DMZ, while away from your test server LAN verify prices in other country pay your bills through your bank, while abroad  Most people today, though, get it for privacy reasons.</description>
+    </item>
+    
     <item>
       <title>x64 Macbook Pro -&gt; Apple Silicon Macbook Pro Max</title>
       <link>http://blog.vnomad.com/code/2021/12-06/macbook-pro-max-migration/</link>

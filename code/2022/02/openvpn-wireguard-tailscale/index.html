@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Viktor Halitsyn">
+<meta name="keywords" content=", code, travel, immigration, ukraine, washington">
+<meta name="description" content="In this post I go about my journey into VPNs and conclude TailScale is the GOTO for anyone who needs a nice cheap connectivity tool asap.
+History Sooner or later one needs a VPN. Various reasons:
+ test out UX/behavior from a different part of the world access your test server DMZ, while away from your test server LAN verify prices in other country pay your bills through your bank, while abroad  Most people today, though, get it for privacy reasons.">
+
+
+<meta property="og:description" content="In this post I go about my journey into VPNs and conclude TailScale is the GOTO for anyone who needs a nice cheap connectivity tool asap.
+History Sooner or later one needs a VPN. Various reasons:
+ test out UX/behavior from a different part of the world access your test server DMZ, while away from your test server LAN verify prices in other country pay your bills through your bank, while abroad  Most people today, though, get it for privacy reasons.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPN. Open? Wire? Scale?">
+<meta name="twitter:title" content="VPN. Open? Wire? Scale?">
+<meta property="og:url" content="http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/">
+<meta property="twitter:url" content="http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/">
+<meta property="og:site_name" content="Nomad&#39;s reflections">
+<meta property="og:description" content="In this post I go about my journey into VPNs and conclude TailScale is the GOTO for anyone who needs a nice cheap connectivity tool asap.
+History Sooner or later one needs a VPN. Various reasons:
+ test out UX/behavior from a different part of the world access your test server DMZ, while away from your test server LAN verify prices in other country pay your bills through your bank, while abroad  Most people today, though, get it for privacy reasons.">
+<meta name="twitter:description" content="In this post I go about my journey into VPNs and conclude TailScale is the GOTO for anyone who needs a nice cheap connectivity tool asap.
+History Sooner or later one needs a VPN. Various reasons:
+ test out UX/behavior from a different part of the world access your test server DMZ, while away from your test server LAN verify prices in other country pay your bills through your bank, while abroad  Most people today, though, get it for privacy reasons.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-02-22T22:22:22">
+  
+  
+    <meta property="article:modified_time" content="2022-02-22T22:22:22">
+  
+  
+  
+    
+      <meta property="article:section" content="tech">
+    
+  
+  
+    
+      <meta property="article:tag" content="software">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@rdev02">
+
+
+  <meta name="twitter:creator" content="@rdev02">
+
+
+
+
+
+
+  <meta property="og:image" content="http://blog.vnomad.com/images/2022/VpnPost.png">
+  <meta property="twitter:image" content="http://blog.vnomad.com/images/2022/VpnPost.png">
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
+
+
+    <title>VPN. Open? Wire? Scale?</title>
+
+    <link rel="icon" href="/favicon.jpg">
+    
+
+    
+      <link rel="publisher" href="https://plus.google.com/&#43;victorhalitsyn">
+    
+
+    <link rel="canonical" href="http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Oswald|Roboto">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-64535001-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="3">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Nomad&#39;s reflections</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="3">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
+        
+          <h5 class="sidebar-profile-bio">Came a long way from Ukraine, still so much to go&hellip;</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
+    
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
+    
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="3"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      VPN. Open? Wire? Scale?
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2022-02-22T22:22:22Z">
+        
+  
+  
+  
+  
+    02/22/2022
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>In this post I go about my journey into VPNs and conclude TailScale is the GOTO for anyone who needs a nice cheap connectivity tool asap.</p>
+<h2 id="history">History</h2>
+<p>Sooner or later one needs a VPN. Various reasons:</p>
+<ul>
+<li>test out UX/behavior from a different part of the world</li>
+<li>access your test server DMZ, while away from your test server LAN</li>
+<li>verify prices in other country</li>
+<li>pay your bills through your bank, while abroad</li>
+</ul>
+<p>Most people today, though, get it for privacy reasons. Most of the marketing around ISPs misses me entirely(as the majority which knows a thing or two about networking). I use VPN for strictly practical reasons:</p>
+<ul>
+<li>when the network can&rsquo;t be trusted(no that&rsquo;s not privacy, really, that&rsquo;s more, like, security :))</li>
+<li>when the resource I need can&rsquo;t be easily reached via current network</li>
+</ul>
+<p>For those, in the olden days, I&rsquo;ve tweaked an <a href="https://github.com/rdev02/docker-openvpn">OpenVPN based set of scripts</a> that would allow me to easily create an instance using some provider, like <a href="https://www.digitalocean.com/products/droplets">DigitalOcean</a> or <a href="https://aws.amazon.com/ec2/">AWS</a>. Within 20 minutes I&rsquo;d have a living OpenVPN connection, based on a data center of choice. I still use this solution from time to time, but it&rsquo;s quite inconvenient for a number of reasons:</p>
+<ol>
+<li>It takes gd long 20 minutes.</li>
+<li>Creation requires transmission of sensitive information via network, which, by definition, isn&rsquo;t trust-worthy.</li>
+<li>Cleanup is necessary later, unless infinite credits or money are assumed(In that case points 1 and 2 do not apply either - one could just pre-create a bunch of instances and switch between them on-demand).</li>
+</ol>
+<p>Both time and cost are of issue, but since my VPN needs are very infrequent, I made do with those, planning ahead(and not forgetting to clean up later). If it works - do not break it :)</p>
+<p>Time has passed and I figured that a strategically placed raspberry pi solves 98% of my use cases, costs nothing or next to nothing to maintain and is even easier to run <a href="https://pivpn.io">PiVPN</a> on it. So it has been a while since I used above set of scripts for anything practical.</p>
+<p>Finally recently I started hitting some serious network speed issues with OpenVPN. That got me looking around again.</p>
+<h2 id="wireguard">WireGuard</h2>
+<p>Enter <a href="https://www.wireguard.com">WireGuard</a>. This solved my speed issue and is still very easy to set up with raspberry pi: you can use the same <a href="https://pivpn.io">PiVPN</a> project!
+You can even have both on the same pi: just different ports. Very convenient to do side-by-side testing. As a perk: WireGuard did wonders for my <a href="https://www.gl-inet.com/products/microuter-n300/">MicRouter</a>. Btw, I really recommend this thing as your travel companion for those places that would charge you extra for each mac address used to connect to WiFi!
+I won&rsquo;t post my speed tests, looks like plenty of <a href="https://duckduckgo.com/?q=wireguard+openvpn+speed+test&amp;t=osx&amp;ia=web">people did that before me</a> :)
+However since I was looking at the market one more tool caught my eye&hellip;</p>
+<h2 id="tailscale9"><a href="https://tailscale.com">TailScale</a></h2>
+<p>I first heard about this tool listening to a tech podcast. It sounded promising, especially the <a href="https://tailscale.com/kb/1103/exit-nodes/">exit node</a> functionality looked appealing.</p>
+<pre tabindex="0"><code>brew install tailscale
+</code></pre><p>authorized via GitHub and viola - TailScale is running on <a href="/code/2021/12-06/macbook-pro-max-migration/">my new M1 Pro Max</a>.</p>
+<pre tabindex="0"><code>sudo apt install tailscale
+</code></pre><p>and it&rsquo;s running on my pi! literally minutes to get this set up and test connectivity: it just works.
+Next testing the exit node&hellip; that has hit a snag. My <a href="https://github.com/tailscale/tailscale/issues/2654">internet just stopped working</a>. Awesome, time to test out documentation and support forums! Documentation is solid, I&rsquo;ve found some bits of wisdom here and there, added</p>
+<pre tabindex="0"><code>net.ipv4.ip_forward = 1
+net.ipv6.conf.all.forwarding = 1
+</code></pre><p>did not help the issue. But after a couple of weeks, reports and 3 minor versions later it&rsquo;s working with no issues.</p>
+<p><strong>Wait</strong>. Did I mention that <a href="https://tailscale.com/pricing/">it&rsquo;s free</a> for personal use?</p>
+<p><strong>Wait, wait</strong>&hellip; Did I mention that the code is available on <a href="https://github.com/tailscale/tailscale">GitHub and it&rsquo;s Go + WireGuard</a>?</p>
+<p>The speed of this solution using my mac and pi is still for some reason below my native pi/wireguard/tunnelblick combo, but judging by the way this company grows and addresses issues: I foresee good this coming from them.</p>
+<p><strong>In summary</strong></p>
+<p>While PiVPN/WireGuard is still my to-go tool for personal VPN needs, TailScale grows quickly on me for it&rsquo;s ease of deployment, use and versatility.</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/software/">software</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/code/2021/12-06/macbook-pro-max-migration/" data-tooltip="x64 Macbook Pro -&gt; Apple Silicon Macbook Pro Max">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 Viktor Halitsyn. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/code/2021/12-06/macbook-pro-max-migration/" data-tooltip="x64 Macbook Pro -&gt; Apple Silicon Macbook Pro Max">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fblog.vnomad.com%2Fcode%2F2022%2F02%2Fopenvpn-wireguard-tailscale%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fblog.vnomad.com%2Fcode%2F2022%2F02%2Fopenvpn-wireguard-tailscale%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Viktor Halitsyn</h4>
+    
+      <div id="about-card-bio">Came a long way from Ukraine, still so much to go&hellip;</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Seattle, WA
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'http:\/\/blog.vnomad.com\/code\/2022\/02\/openvpn-wireguard-tailscale\/';
+          
+            this.page.identifier = '\/code\/2022\/02\/openvpn-wireguard-tailscale\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'vnomad';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
