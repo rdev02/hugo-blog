@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="">
@@ -231,6 +231,63 @@ if (!doNotTrack) {
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/">
+          MySql performance. 5.1 VS 5.5 VS 5.6 (dev)
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2011-09-14T06:50:00Z">
+        
+  
+  
+  
+  
+    09/14/2011
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:
+      
+      <p>
+        <a href="http://blog.vnomad.com/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/">
           java.net.MalformedURLException: no protocol: and]
         </a>
@@ -325,8 +382,8 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
     <div class="postShorten-excerpt" itemprop="articleBody">
       
         If you’re in the same trouble as I was with black screen during boot(plymouth has the theme installed and even displays it during shutdown) then there is a small thing that has to be edited in order to get rid of this annoyance. Go to
- /etc/grub.d/10_linux
- and remove the **handoff=7 **parameter. Inspired by this and also this(pretty nice tool for configuring plymouth for dummies).
+/etc/grub.d/10_linux
+and remove the **handoff=7 **parameter. Inspired by this and also this(pretty nice tool for configuring plymouth for dummies).
       
       <p>
         <a href="http://blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/" class="postShorten-excerpt_link link">Continue reading</a>
@@ -557,7 +614,12 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
     <div class="postShorten-excerpt" itemprop="articleBody">
       
         Had a real problem with my wifi after moving to Ubuntu from win -&gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
-        Having this changed
+Having this changed
+_AVAHI_DAEMON_DETECT_LOCAL=1
+to
+AVAHI_DAEMON_DETECT_LOCAL=0
+in /etc/default/avahi-daemon_
+Got me up to 22Mb/s after reboot.
       
       <p>
         <a href="http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/" class="postShorten-excerpt_link link">Continue reading</a>
@@ -615,8 +677,8 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
     <div class="postShorten-excerpt" itemprop="articleBody">
       
         I really, really do not know if that’s accidental or on-purpose and whether it’s connected with the fact that Microsoft bought Skype, but this morning I received a wonderful email:
-  Now 3 things about this:
- I **am **a skype user. Who the hell is Natalia??? And why, and when and WTF?! I love to use skype. It would be sad if this is the** turning point**. 🙁  
+Now 3 things about this:
+I **am **a skype user. Who the hell is Natalia??? And why, and when and WTF?! I love to use skype. It would be sad if this is the** turning point**. 🙁 
       
       <p>
         <a href="http://blog.vnomad.com/code/skype-microsoft/" class="postShorten-excerpt_link link">Continue reading</a>
@@ -732,67 +794,10 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
     <div class="postShorten-excerpt" itemprop="articleBody">
       
         24-th seconds rules…
- This mostly ru-zone compliant 🙂
+This mostly ru-zone compliant 🙂
       
       <p>
         <a href="http://blog.vnomad.com/code/lift-ajax-the-proper-way-of-doing-presentations/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/">
-          Java to BlazeDS NAN in double values.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2011-04-22T09:07:00Z">
-        
-  
-  
-  
-  
-    04/22/2011
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Internet is basically full of subj but vice-versa(BlazeDS to java). So the problem I had was that when the object is “translated” from java via BlazeDS to flex application it had NAN’s in the double fields. The transfer object was a simple POJO I passed via the interface. First thing I checked were the getters – all present and valid. I took quite a lot of time till we figured out that it was the missing setters which made the code malfunction.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/" class="postShorten-excerpt_link link">Continue reading</a>
         
       </p>
     </div>

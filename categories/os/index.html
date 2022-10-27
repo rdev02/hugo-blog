@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="">
@@ -266,7 +266,12 @@ if (!doNotTrack) {
     <div class="postShorten-excerpt" itemprop="articleBody">
       
         Had a real problem with my wifi after moving to Ubuntu from win -&gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
-        Having this changed
+Having this changed
+_AVAHI_DAEMON_DETECT_LOCAL=1
+to
+AVAHI_DAEMON_DETECT_LOCAL=0
+in /etc/default/avahi-daemon_
+Got me up to 22Mb/s after reboot.
       
       <p>
         <a href="http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/" class="postShorten-excerpt_link link">Continue reading</a>

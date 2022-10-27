@@ -14,8 +14,8 @@
       
       <guid>http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</guid>
       <description>Today was investigating the warnings around some of my eclipse maven projects and noticed that I have a few
- There are no JREs installed in the workspace that are strictly compatible with this environment
- messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine.</description>
+There are no JREs installed in the workspace that are strictly compatible with this environment
+messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine.</description>
     </item>
     
   </channel>

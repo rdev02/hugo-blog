@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Recently had to do an investigation about MySql server performance. So what I basically did was: created a winXP wmWare image, created a script for generating populating sql; installed db server version on that machine and kept track of times while executing sql statements; reverted to the original virgin machine state; start again. The versions I tested on were MySql community server 5.1, 5.5 and the development verion of 5.6. Here is the chart that represents my findings[the smaller the better]:">
@@ -447,94 +447,93 @@ if (!doNotTrack) {
 <p>Absolute times and machine spec can be found <a href="https://docs.google.com/spreadsheet/ccc?key=0AtItSpPjhRWvdDlDbklHUzZxNFBFNkRya3RNbng5ZWc&amp;hl=en_US">here</a>.</p>
 <p>Of course this is the developer machine setup and ran on one virtual machine, but still I thought that would be interesting for other to know. Ireally looking forward to making some more production-like tests now…</p>
 <p>One more thing in case interested – the code snippet I used for generating the data:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateTestTableSql</span> {
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final <span style="color:#66d9ef">int</span> QUERY_ROWS = <span style="color:#ae81ff">10</span> * <span style="color:#ae81ff">1000</span> * <span style="color:#ae81ff">1000</span>;
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final <span style="color:#66d9ef">int</span> BATCH_SIZE = <span style="color:#ae81ff">10</span> * <span style="color:#ae81ff">1000</span>;
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final boolean USE_BATCH = <span style="color:#66d9ef">true</span>;
-
-    <span style="color:#66d9ef">static</span> Random r = <span style="color:#66d9ef">new</span> Random();
-    <span style="color:#66d9ef">static</span> SimpleDateFormat sdf = <span style="color:#66d9ef">new</span> SimpleDateFormat(<span style="color:#e6db74">&#34;yyyy/MM/dd HH:mm&#34;</span>);
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> main(String[] args) throws Exception {
-
-        StringBuilder spotTradeSQLRow = <span style="color:#66d9ef">new</span> StringBuilder();
-
-
-        File f = <span style="color:#66d9ef">new</span> File(USE_BATCH ? <span style="color:#e6db74">&#34;batchmysql.sql&#34;</span> : <span style="color:#e6db74">&#34;mysql.sql&#34;</span>);
-        <span style="color:#66d9ef">if</span> (f.exists()) {
-            f.delete();
-        }
-
-        assert f.createNewFile();
-
-        BufferedWriter <span style="color:#66d9ef">out</span> = <span style="color:#66d9ef">new</span> BufferedWriter(<span style="color:#66d9ef">new</span> OutputStreamWriter(<span style="color:#66d9ef">new</span> FileOutputStream(f)));
-
-        System.<span style="color:#66d9ef">out</span>.println(<span style="color:#e6db74">&#34;Start&#34;</span>);
-        <span style="color:#66d9ef">int</span> batchCounter = <span style="color:#ae81ff">0</span>;
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; QUERY_ROWS; i++) {
-            <span style="color:#66d9ef">if</span> (USE_BATCH) {
-                <span style="color:#66d9ef">if</span> (batchCounter == BATCH_SIZE) {
-                    spotTradeSQLRow.append(<span style="color:#e6db74">&#34;;n&#34;</span>);
-                    batchCounter = <span style="color:#ae81ff">0</span>;
-                }
-                <span style="color:#66d9ef">if</span> (batchCounter == <span style="color:#ae81ff">0</span>) {
-                    spotTradeSQLRow.append(<span style="color:#e6db74">&#34;INSERT INTO test.testtable VALUES(&#34;</span>);
-                } <span style="color:#66d9ef">else</span> {
-                    spotTradeSQLRow.append(<span style="color:#e6db74">&#34;,(&#34;</span>);
-                }
-            } <span style="color:#66d9ef">else</span> {
-                spotTradeSQLRow.append(<span style="color:#e6db74">&#34;INSERT INTO test.testtable VALUES(&#34;</span>);
-            }
-            spotTradeSQLRow.append(i + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//id
-</span><span style="color:#75715e"></span>            spotTradeSQLRow.append((r.nextBoolean() ?( <span style="color:#e6db74">&#34;&#39;&#34;</span> +getRandomString() + <span style="color:#e6db74">&#34;&#39;&#34;</span>): <span style="color:#e6db74">&#34;NULL&#34;</span>) + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//testVarchar
-</span><span style="color:#75715e"></span>            spotTradeSQLRow.append((r.nextBoolean() ? r.nextInt() : <span style="color:#e6db74">&#34;NULL&#34;</span>) + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//testInt
-</span><span style="color:#75715e"></span>            spotTradeSQLRow.append((r.nextBoolean() ? r.nextDouble() : <span style="color:#e6db74">&#34;NULL&#34;</span>) + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//testInt
-</span><span style="color:#75715e"></span>            spotTradeSQLRow.append((r.nextBoolean() ? (<span style="color:#e6db74">&#34;&#39;&#34;</span> + getRandomDate() + <span style="color:#e6db74">&#34;&#39;&#34;</span>) : <span style="color:#e6db74">&#34;NULL&#34;</span>) +
-              <span style="color:#e6db74">&#34;)&#34;</span>); <span style="color:#75715e">//testInt
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (!USE_BATCH) {
-                spotTradeSQLRow.append(<span style="color:#e6db74">&#34;;&#34;</span>);
-            }
-            <span style="color:#66d9ef">out</span>.write(spotTradeSQLRow.toString());
-            <span style="color:#66d9ef">out</span>.write(<span style="color:#e6db74">&#34;n&#34;</span>);
-            spotTradeSQLRow.delete(<span style="color:#ae81ff">0</span>, spotTradeSQLRow.length());
-            batchCounter++;
-
-        }
-        <span style="color:#66d9ef">if</span> (USE_BATCH) {
-           <span style="color:#66d9ef">out</span>.write(<span style="color:#e6db74">&#34;;&#34;</span>);
-        }
-
-        <span style="color:#66d9ef">out</span>.close();
-        System.<span style="color:#66d9ef">out</span>.println(<span style="color:#e6db74">&#34;end&#34;</span>);
-
-    }
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String getRandomDate() {
-        <span style="color:#66d9ef">int</span> rand = r.nextInt(<span style="color:#ae81ff">10</span>);
-        rand *= (r.nextBoolean() ? -<span style="color:#ae81ff">1</span> : <span style="color:#ae81ff">1</span>);
-        final Calendar cal = Calendar.getInstance();
-        cal.<span style="color:#66d9ef">add</span>(Calendar.YEAR, rand);
-        cal.<span style="color:#66d9ef">add</span>(Calendar.DAY_OF_YEAR, rand);
-        cal.<span style="color:#66d9ef">add</span>(Calendar.HOUR_OF_DAY, rand);
-
-        <span style="color:#66d9ef">return</span> sdf.format(cal.getTime());
-
-    }
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String getRandomString() {
-        final <span style="color:#66d9ef">int</span> rand = r.nextInt(<span style="color:#ae81ff">10</span>);
-        <span style="color:#66d9ef">if</span> (rand &lt; <span style="color:#ae81ff">3</span>) {
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#34;</span>;
-        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (rand &gt;= <span style="color:#ae81ff">3</span> &amp;&amp; rand &lt; <span style="color:#ae81ff">6</span>) {
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB&#34;</span>;
-        } <span style="color:#66d9ef">else</span> {
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC&#34;</span>;
-        }
-    }
-}
-
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateTestTableSql</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final <span style="color:#66d9ef">int</span> QUERY_ROWS = <span style="color:#ae81ff">10</span> * <span style="color:#ae81ff">1000</span> * <span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final <span style="color:#66d9ef">int</span> BATCH_SIZE = <span style="color:#ae81ff">10</span> * <span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> final boolean USE_BATCH = <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Random r = <span style="color:#66d9ef">new</span> Random();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> SimpleDateFormat sdf = <span style="color:#66d9ef">new</span> SimpleDateFormat(<span style="color:#e6db74">&#34;yyyy/MM/dd HH:mm&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> main(String[] args) throws Exception {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        StringBuilder spotTradeSQLRow = <span style="color:#66d9ef">new</span> StringBuilder();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        File f = <span style="color:#66d9ef">new</span> File(USE_BATCH ? <span style="color:#e6db74">&#34;batchmysql.sql&#34;</span> : <span style="color:#e6db74">&#34;mysql.sql&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (f.exists()) {
+</span></span><span style="display:flex;"><span>            f.delete();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        assert f.createNewFile();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        BufferedWriter <span style="color:#66d9ef">out</span> = <span style="color:#66d9ef">new</span> BufferedWriter(<span style="color:#66d9ef">new</span> OutputStreamWriter(<span style="color:#66d9ef">new</span> FileOutputStream(f)));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#66d9ef">out</span>.println(<span style="color:#e6db74">&#34;Start&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> batchCounter = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; QUERY_ROWS; i++) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (USE_BATCH) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (batchCounter == BATCH_SIZE) {
+</span></span><span style="display:flex;"><span>                    spotTradeSQLRow.append(<span style="color:#e6db74">&#34;;n&#34;</span>);
+</span></span><span style="display:flex;"><span>                    batchCounter = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (batchCounter == <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                    spotTradeSQLRow.append(<span style="color:#e6db74">&#34;INSERT INTO test.testtable VALUES(&#34;</span>);
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                    spotTradeSQLRow.append(<span style="color:#e6db74">&#34;,(&#34;</span>);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                spotTradeSQLRow.append(<span style="color:#e6db74">&#34;INSERT INTO test.testtable VALUES(&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            spotTradeSQLRow.append(i + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//id</span>
+</span></span><span style="display:flex;"><span>            spotTradeSQLRow.append((r.nextBoolean() ?( <span style="color:#e6db74">&#34;&#39;&#34;</span> +getRandomString() + <span style="color:#e6db74">&#34;&#39;&#34;</span>): <span style="color:#e6db74">&#34;NULL&#34;</span>) + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//testVarchar</span>
+</span></span><span style="display:flex;"><span>            spotTradeSQLRow.append((r.nextBoolean() ? r.nextInt() : <span style="color:#e6db74">&#34;NULL&#34;</span>) + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//testInt</span>
+</span></span><span style="display:flex;"><span>            spotTradeSQLRow.append((r.nextBoolean() ? r.nextDouble() : <span style="color:#e6db74">&#34;NULL&#34;</span>) + <span style="color:#e6db74">&#34;,&#34;</span>); <span style="color:#75715e">//testInt</span>
+</span></span><span style="display:flex;"><span>            spotTradeSQLRow.append((r.nextBoolean() ? (<span style="color:#e6db74">&#34;&#39;&#34;</span> + getRandomDate() + <span style="color:#e6db74">&#34;&#39;&#34;</span>) : <span style="color:#e6db74">&#34;NULL&#34;</span>) +
+</span></span><span style="display:flex;"><span>              <span style="color:#e6db74">&#34;)&#34;</span>); <span style="color:#75715e">//testInt</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (!USE_BATCH) {
+</span></span><span style="display:flex;"><span>                spotTradeSQLRow.append(<span style="color:#e6db74">&#34;;&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">out</span>.write(spotTradeSQLRow.toString());
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">out</span>.write(<span style="color:#e6db74">&#34;n&#34;</span>);
+</span></span><span style="display:flex;"><span>            spotTradeSQLRow.delete(<span style="color:#ae81ff">0</span>, spotTradeSQLRow.length());
+</span></span><span style="display:flex;"><span>            batchCounter++;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (USE_BATCH) {
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">out</span>.write(<span style="color:#e6db74">&#34;;&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">out</span>.close();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#66d9ef">out</span>.println(<span style="color:#e6db74">&#34;end&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String getRandomDate() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> rand = r.nextInt(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>        rand *= (r.nextBoolean() ? -<span style="color:#ae81ff">1</span> : <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        final Calendar cal = Calendar.getInstance();
+</span></span><span style="display:flex;"><span>        cal.<span style="color:#66d9ef">add</span>(Calendar.YEAR, rand);
+</span></span><span style="display:flex;"><span>        cal.<span style="color:#66d9ef">add</span>(Calendar.DAY_OF_YEAR, rand);
+</span></span><span style="display:flex;"><span>        cal.<span style="color:#66d9ef">add</span>(Calendar.HOUR_OF_DAY, rand);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sdf.format(cal.getTime());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String getRandomString() {
+</span></span><span style="display:flex;"><span>        final <span style="color:#66d9ef">int</span> rand = r.nextInt(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (rand &lt; <span style="color:#ae81ff">3</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#34;</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (rand &gt;= <span style="color:#ae81ff">3</span> &amp;&amp; rand &lt; <span style="color:#ae81ff">6</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB&#34;</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
               
             </div>
           </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Back in 2013 I got myself a Synology DS413j, which has proven to be a reliable companion for me though these 7 years. I used it for file backup, media streaming and as a TimeMachine destination pretty successfully. Any such station needs good drives to provide value, and drives, as many of us know, are pretty unreliable. In 7 years I replaced about 6: 2 were bad right after arrival, and another 4 went bad as the years went by.">
@@ -282,7 +282,7 @@ if (!doNotTrack) {
 <p>The tool was written quickly, held many unnecessary things in memory, ran sequentially, but, most importantly, it worked. That was till  the drive size grew and suddenly my little tool started to OOM closer to the end of the verification phase. Of course I should have profiled the tool and improved it&hellip; But I do that(profiling and improving) as my day job, so instead I decided I can practice a language way better suited for things like that</p>
 <p><strong>Go</strong></p>
 <p>So I simply rewrote my little tool in go, and this time, made it open source. Welcome <a href="https://github.com/rdev02/disktest">DiskTest</a>. Now you can easily stress-test you drive like this:</p>
-<pre tabindex="0"><code>disktest --size=&quot;10TB&quot; /mount/driveZ
+<pre tabindex="0"><code>disktest --size=&#34;10TB&#34; /mount/driveZ
 </code></pre><p>It should would use minimal RAM(about 100MB, most of which would be dedicated to 20MB IO buffers) and run up to the limit of your drive&rsquo;s IO.</p>
 <p>While at it also came across a few useful commands for dealing with drives/partitions for linux. I&rsquo;ll just list them here for posterity:</p>
 <p>Checking drives and any partitions present</p>

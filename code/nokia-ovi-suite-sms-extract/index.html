@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want.">
@@ -269,53 +269,53 @@ if (!doNotTrack) {
               <p>There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I <a href="http://revengebloggings.blogspot.com/2010/02/nokia-ovi-suite.html">mentioned</a> before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want. It will either go into backup file or will be stored on you PC. I was really disappointed to learn that so I tried to find where exactly is that info stored on my PC. First search revealed that they use the SQLite db for storing all data located in</p>
 <p>“c:Users[username]AppDataLocalNokiaNokia Data StoreDataBaseMDataStore.db3”</p>
 <p>The DB is not in any way protected or encrypted so I felt free to dig into my own data. Downloaded a splendid <a href="https://addons.mozilla.org/en-US/firefox/addon/5817/">SQLiteManager</a> plugin and started seeking my sms’s. Didn’t take long to find. Whereas the DB structure might be a subject of argue I’ll post some code I used to get the info I needed out of the DB:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
-    {
-        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
-        {
-            <span style="color:#66d9ef">if</span> (args == <span style="color:#66d9ef">null</span> || args.Length &lt; <span style="color:#ae81ff">1</span>)
-            {
-                Console.Out.WriteLine(<span style="color:#e6db74">&#34;Please specify db3 file path as an argument&#34;</span>);
-                <span style="color:#66d9ef">return</span>;
-            }
-            <span style="color:#66d9ef">string</span> baseName = args[<span style="color:#ae81ff">0</span>];
-            StreamWriter writer = <span style="color:#66d9ef">null</span>;
-            <span style="color:#66d9ef">try</span>
-            {
-                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory(<span style="color:#e6db74">&#34;System.Data.SQLite&#34;</span>);
-                <span style="color:#66d9ef">using</span> (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
-                {
-                    connection.ConnectionString = <span style="color:#e6db74">&#34;Data Source = &#34;</span> + baseName;
-                    connection.Open();
-                    Console.WriteLine(<span style="color:#e6db74">&#34;Connection opened..&#34;</span>);
-                    <span style="color:#66d9ef">using</span> (SQLiteCommand command = <span style="color:#66d9ef">new</span> SQLiteCommand(connection))
-                    {
-                        command.CommandText = <span style="color:#e6db74">@&#34;SELECT MessageEx.Sender, MessageEx.Text, MessageEx.SentReceivedTimestamp, Item.CreationDate FROM MessageEx INNER JOIN Item ON MessageEx.GUID = Item.GUID ORDER BY MessageEx.SentReceivedTimestamp;&#34;</span>;
-                        <span style="color:#66d9ef">var</span> reader = command.ExecuteReader();
-                        FileInfo outF = <span style="color:#66d9ef">new</span> FileInfo(<span style="color:#e6db74">&#34;result&#34;</span> + DateTime.Now.Date.ToString(<span style="color:#e6db74">&#34;dd_mm_yyyy&#34;</span>) + <span style="color:#e6db74">&#34;.txt&#34;</span>);
-                        writer = <span style="color:#66d9ef">new</span> StreamWriter(outF.Open(FileMode.Create));
-                        writer.WriteLine(<span style="color:#e6db74">&#34;Sender, Text, Timestamp, Created&#34;</span>);
-                        <span style="color:#66d9ef">while</span> (reader.Read())
-                        {
-                            writer.WriteLine(String.Format(<span style="color:#e6db74">&#34;{0}, {1}, {2}, {3}&#34;</span>, reader.GetString(<span style="color:#ae81ff">0</span>), reader.GetString(<span style="color:#ae81ff">1</span>), reader.GetDouble(<span style="color:#ae81ff">2</span>), reader.GetDouble(<span style="color:#ae81ff">3</span>)));
-                            Console.Write(<span style="color:#e6db74">&#34;.&#34;</span>);
-                        }
-                        Console.WriteLine(<span style="color:#e6db74">&#34;Done! Press eny Key to continue.&#34;</span>);
-                    }
-                }
-            }
-            <span style="color:#66d9ef">catch</span> (Exception ex)
-            {
-                Console.WriteLine(<span style="color:#e6db74">&#34;OOPS:&#34;</span> + ex.Message);
-            }
-            <span style="color:#66d9ef">finally</span> {
-                <span style="color:#66d9ef">if</span> (writer != <span style="color:#66d9ef">null</span>)
-                    writer.Close();
-            }
-
-        }
-    }
-</code></pre></div><p>This is pretty much all needed to get a well-formed CSV. There is still some work left to get the date from Real to date/time, but I thought it can wait until I really need that info. CSV is easily processed:). Some of this sourcecode is borrowed from <a href="http://habrahabr.ru/blogs/net/56694/">here</a>. Personally wouldn’t ever dig into such software peripherals, but they literally forced me to, not providing the info I actually poses.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (args == <span style="color:#66d9ef">null</span> || args.Length &lt; <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                Console.Out.WriteLine(<span style="color:#e6db74">&#34;Please specify db3 file path as an argument&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">string</span> baseName = args[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>            StreamWriter writer = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory(<span style="color:#e6db74">&#34;System.Data.SQLite&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">using</span> (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    connection.ConnectionString = <span style="color:#e6db74">&#34;Data Source = &#34;</span> + baseName;
+</span></span><span style="display:flex;"><span>                    connection.Open();
+</span></span><span style="display:flex;"><span>                    Console.WriteLine(<span style="color:#e6db74">&#34;Connection opened..&#34;</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">using</span> (SQLiteCommand command = <span style="color:#66d9ef">new</span> SQLiteCommand(connection))
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        command.CommandText = <span style="color:#e6db74">@&#34;SELECT MessageEx.Sender, MessageEx.Text, MessageEx.SentReceivedTimestamp, Item.CreationDate FROM MessageEx INNER JOIN Item ON MessageEx.GUID = Item.GUID ORDER BY MessageEx.SentReceivedTimestamp;&#34;</span>;
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">var</span> reader = command.ExecuteReader();
+</span></span><span style="display:flex;"><span>                        FileInfo outF = <span style="color:#66d9ef">new</span> FileInfo(<span style="color:#e6db74">&#34;result&#34;</span> + DateTime.Now.Date.ToString(<span style="color:#e6db74">&#34;dd_mm_yyyy&#34;</span>) + <span style="color:#e6db74">&#34;.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>                        writer = <span style="color:#66d9ef">new</span> StreamWriter(outF.Open(FileMode.Create));
+</span></span><span style="display:flex;"><span>                        writer.WriteLine(<span style="color:#e6db74">&#34;Sender, Text, Timestamp, Created&#34;</span>);
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">while</span> (reader.Read())
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            writer.WriteLine(String.Format(<span style="color:#e6db74">&#34;{0}, {1}, {2}, {3}&#34;</span>, reader.GetString(<span style="color:#ae81ff">0</span>), reader.GetString(<span style="color:#ae81ff">1</span>), reader.GetDouble(<span style="color:#ae81ff">2</span>), reader.GetDouble(<span style="color:#ae81ff">3</span>)));
+</span></span><span style="display:flex;"><span>                            Console.Write(<span style="color:#e6db74">&#34;.&#34;</span>);
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                        Console.WriteLine(<span style="color:#e6db74">&#34;Done! Press eny Key to continue.&#34;</span>);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span> (Exception ex)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                Console.WriteLine(<span style="color:#e6db74">&#34;OOPS:&#34;</span> + ex.Message);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (writer != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                    writer.Close();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>This is pretty much all needed to get a well-formed CSV. There is still some work left to get the date from Real to date/time, but I thought it can wait until I really need that info. CSV is easily processed:). Some of this sourcecode is borrowed from <a href="http://habrahabr.ru/blogs/net/56694/">here</a>. Personally wouldn’t ever dig into such software peripherals, but they literally forced me to, not providing the info I actually poses.</p>
 <p>Hope that helps someone who needs data synchronized from the phone – the DB is a pretty much comprehensible structure and tables and with the mentioned above plugin and a lil’ SQL it’s quite easy to get your data even without programming.</p>
 
               

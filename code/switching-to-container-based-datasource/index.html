@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server.">
@@ -276,18 +276,18 @@ if (!doNotTrack) {
 
 First of all lets assume we use JBoss app server. Different versions of JBoss have their own configuration &amp;#8220;specials&amp;#8221; so I&amp;#8217;ll stick to 5.0.1 jdk 6. First of all we need to register the desired datasource withing the container obtaining a JNDI name. Example configurtion files for registration can be found in [JBoss install dir]/docsexamplesjca. The resulting config file which has to be pout under server/[configuration_name]/deploy would look like
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;local-tx-datasource&gt;</span>
-    <span style="color:#f92672">&lt;jndi-name&gt;</span>MySqlDS<span style="color:#f92672">&lt;/jndi-name&gt;</span>
-    <span style="color:#f92672">&lt;connection-url&gt;</span>jdbc:mysql://localhost:3306/mydatasource<span style="color:#f92672">&lt;/connection-url&gt;</span>
-    <span style="color:#f92672">&lt;driver-class&gt;</span>com.mysql.jdbc.Driver<span style="color:#f92672">&lt;/driver-class&gt;</span>
-    <span style="color:#f92672">&lt;user-name&gt;</span>user<span style="color:#f92672">&lt;/user-name&gt;</span>
-    <span style="color:#f92672">&lt;password&gt;</span>pwd<span style="color:#f92672">&lt;/password&gt;</span>
-    <span style="color:#f92672">&lt;exception-sorter-class-name&gt;</span>org.jboss.resource.adapter.jdbc.vendor.MySQLExceptionSorter<span style="color:#f92672">&lt;/exception-sorter-class-name&gt;</span>
-    <span style="color:#f92672">&lt;metadata&gt;</span>
-       <span style="color:#f92672">&lt;type-mapping&gt;</span>mySQL<span style="color:#f92672">&lt;/type-mapping&gt;</span>
-    <span style="color:#f92672">&lt;/metadata&gt;</span>
- <span style="color:#f92672">&lt;/local-tx-datasource&gt;</span>
-</code></pre></div><p>Then in hibernate properties</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;local-tx-datasource&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;jndi-name&gt;</span>MySqlDS<span style="color:#f92672">&lt;/jndi-name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;connection-url&gt;</span>jdbc:mysql://localhost:3306/mydatasource<span style="color:#f92672">&lt;/connection-url&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;driver-class&gt;</span>com.mysql.jdbc.Driver<span style="color:#f92672">&lt;/driver-class&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;user-name&gt;</span>user<span style="color:#f92672">&lt;/user-name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;password&gt;</span>pwd<span style="color:#f92672">&lt;/password&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;exception-sorter-class-name&gt;</span>org.jboss.resource.adapter.jdbc.vendor.MySQLExceptionSorter<span style="color:#f92672">&lt;/exception-sorter-class-name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;metadata&gt;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&lt;type-mapping&gt;</span>mySQL<span style="color:#f92672">&lt;/type-mapping&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/metadata&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/local-tx-datasource&gt;</span>
+</span></span></code></pre></div><p>Then in hibernate properties</p>
 <pre tabindex="0"><code>###### JNDI std JBOSS connection ####################
 hibernate.connection.datasource = java:MySqlDS  
 hibernate.transaction.factory_class = org.hibernate.transaction.JTATransactionFactory
@@ -304,24 +304,24 @@ at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1055)
 <p>Tomcat is a hybrid sort of environment (neither fish nor fowl) from the standpoint of Hibernate. Tomcat provides a JNDI and DataSource, unlike a standalone application. The DataSource facility should facilitate portability among application servers. But like a standalone environment, Tomcat provides no Transaction Manager. Hence your code must use the Hibernate Transaction Manager, as it would in a standalone application environment</p>
 </blockquote>
 <p>With this in mind you’ll have to configure the server.xml with</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Resource</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;jdbc/testdb&#34;</span> <span style="color:#a6e22e">auth=</span><span style="color:#e6db74">&#34;Container&#34;</span> 
-<span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;javax.sql.DataSource&#34;</span>
-<span style="color:#a6e22e">maxActive=</span><span style="color:#e6db74">&#34;100&#34;</span> <span style="color:#a6e22e">maxIdle=</span><span style="color:#e6db74">&#34;30&#34;</span> <span style="color:#a6e22e">maxWait=</span><span style="color:#e6db74">&#34;10000&#34;</span>
-<span style="color:#a6e22e">username=</span><span style="color:#e6db74">&#34;user&#34;</span> <span style="color:#a6e22e">password=</span><span style="color:#e6db74">&#34;pwd&#34;</span> 
-<span style="color:#a6e22e">driverClassName=</span><span style="color:#e6db74">&#34;com.mysql.jdbc.Driver&#34;</span>
-<span style="color:#a6e22e">url=</span><span style="color:#e6db74">&#34;jdbc:mysql://localhost:3306/mydatasource?autoReconnect=true&#34;</span><span style="color:#f92672">/&gt;</span>
-</code></pre></div><p>And web.xml with</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;resource-ref&gt;</span>
-<span style="color:#f92672">&lt;description&gt;</span>My datasource<span style="color:#f92672">&lt;/description&gt;</span>
-<span style="color:#f92672">&lt;res-ref-name&gt;</span>jdbc/testdb<span style="color:#f92672">&lt;/res-ref-name&gt;</span>
-<span style="color:#f92672">&lt;res-type&gt;</span>javax.sql.DataSource<span style="color:#f92672">&lt;/res-type&gt;</span>
-<span style="color:#f92672">&lt;res-auth&gt;</span>Container<span style="color:#f92672">&lt;/res-auth&gt;</span>
-<span style="color:#f92672">&lt;/resource-ref&gt;</span>
-</code></pre></div><p>Then your hibernate.properties configuration would look like:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">hibernate.dialect</span><span style="color:#f92672">=</span><span style="color:#e6db74">org.hibernate.dialect.MySQLInnoDBDialect</span>
-<span style="color:#a6e22e">hibernate.connection.datasource</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">java:comp/env/jdbc/testdb</span>
-<span style="color:#a6e22e">hibernate.transaction.factory_class</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">org.hibernate.transaction.JTATransactionFactory</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;Resource</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;jdbc/testdb&#34;</span> <span style="color:#a6e22e">auth=</span><span style="color:#e6db74">&#34;Container&#34;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;javax.sql.DataSource&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">maxActive=</span><span style="color:#e6db74">&#34;100&#34;</span> <span style="color:#a6e22e">maxIdle=</span><span style="color:#e6db74">&#34;30&#34;</span> <span style="color:#a6e22e">maxWait=</span><span style="color:#e6db74">&#34;10000&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">username=</span><span style="color:#e6db74">&#34;user&#34;</span> <span style="color:#a6e22e">password=</span><span style="color:#e6db74">&#34;pwd&#34;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">driverClassName=</span><span style="color:#e6db74">&#34;com.mysql.jdbc.Driver&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">url=</span><span style="color:#e6db74">&#34;jdbc:mysql://localhost:3306/mydatasource?autoReconnect=true&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span></code></pre></div><p>And web.xml with</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;resource-ref&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;description&gt;</span>My datasource<span style="color:#f92672">&lt;/description&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;res-ref-name&gt;</span>jdbc/testdb<span style="color:#f92672">&lt;/res-ref-name&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;res-type&gt;</span>javax.sql.DataSource<span style="color:#f92672">&lt;/res-type&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;res-auth&gt;</span>Container<span style="color:#f92672">&lt;/res-auth&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resource-ref&gt;</span>
+</span></span></code></pre></div><p>Then your hibernate.properties configuration would look like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">hibernate.dialect</span><span style="color:#f92672">=</span><span style="color:#e6db74">org.hibernate.dialect.MySQLInnoDBDialect</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hibernate.connection.datasource</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">java:comp/env/jdbc/testdb</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hibernate.transaction.factory_class</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">org.hibernate.transaction.JTATransactionFactory</span>
+</span></span></code></pre></div>
               
             </div>
           </div>

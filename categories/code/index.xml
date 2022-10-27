@@ -42,7 +42,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</guid>
-      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;amp;#8220;descriptive&amp;amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;amp;#8217;m going to describe here is when the size of the cod file is more than 64K.  Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
+      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;amp;#8220;descriptive&amp;amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;amp;#8217;m going to describe here is when the size of the cod file is more than 64K. Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
     </item>
     
     <item>
@@ -70,7 +70,7 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       
       <guid>http://blog.vnomad.com/code/blogger-code-formatting/</guid>
       <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
-using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { //  // TODO: Add constructor logic here  //  int x = 10; } } </description>
+using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } } </description>
     </item>
     
     <item>

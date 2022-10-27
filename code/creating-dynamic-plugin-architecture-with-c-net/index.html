@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.">
@@ -274,192 +274,192 @@ if (!doNotTrack) {
             <div class="main-content-wrap">
               <p>There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application. Also Loading dll’s in the main application domain is very risky in terms of security concerns. But back to the problem – as long as your assembly is loaded into any domain it is locked, meaning that you can’t replace it with the newer version.</p>
 <p>Naturally you’ll turn to creating a separate app domain. and try to AppDomain.load() assembly there… Now that’s the time you’ll start experiencing problems. <a href="http://msdn.microsoft.com/en-us/library/36az8x58.aspx">Here </a>we can get smth like “<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 11px;">This method should only be used to load an assembly into the current application domain. This method is defined for interoperability callers who cannot call the static <a href="http://msdn.microsoft.com/en-us/library/system.reflection.assembly.load.aspx" style="color: #0033cc; text-decoration: none;">Load</a> method.<span style="font-family: 'Times New Roman'; font-size: medium;">” In short – you’ll fail to load the assembly having its path. Well, actually what you really need is to be able to get some object out of there, right? Suppose you use simple “middle-tier-interface” assembly like<br /> </span></span></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">namespace</span> PInterface
-{
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> PluginInterface
-    {
-        <span style="color:#66d9ef">string</span> DoSmth();
-    }
-}
-</code></pre></div><p>Then when you want to load Some type, let it be like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">namespace</span> SamplePlugin
-{
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Plugin1</span> :MarshalByRefObject, PluginInterface
-    {
-        <span style="color:#75715e">#region PluginInterface
-</span><span style="color:#75715e"></span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> DoSmth()
-        {
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello!&#34;</span>;
-        }
-
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>    }
-}
-</code></pre></div><p>You would simply do it like:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">AppDomain newDomain = AppDomain.CreateDomain(<span style="color:#e6db74">&#34;newDOmain&#34;</span>);
-newDomain.CreateInstanceFromAndUnwrap(pathToDLL, pluginClassName);
-</code></pre></div><p>Assuming you know the class name(s) of course:). If you don’t, then it’s 2 choices: either you specify that the plugin assembly has to have a “marker” type (say “class PluginType{}”) and then after loading an assembly into app domain execute the callback on it to get the class names via reflection load OR you might end up with a crossDomain walker like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">using</span> System;
-<span style="color:#66d9ef">using</span> System.Collections.Generic;
-<span style="color:#66d9ef">using</span> System.Windows.Forms;
-<span style="color:#66d9ef">using</span> System.Reflection;
-
-<span style="color:#66d9ef">namespace</span> WindowsApplication1
-{
-    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
-    {
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_INTERFACE_NAME = <span style="color:#e6db74">&#34;PluginInterfaceName&#34;</span>;
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_CLASSES_NAMES = <span style="color:#e6db74">&#34;PluginClasses&#34;</span>;
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// The main entry point for the application.
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">        [STAThread]</span>
-        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> Main(String[] args)
-        {
-            <span style="color:#66d9ef">object</span> interfaceName =  AppDomain.CurrentDomain.GetData(PLUGIN_INTERFACE_NAME);
-            List&lt;<span style="color:#66d9ef">string</span>&gt; pluginClassesNames = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;(<span style="color:#ae81ff">3</span>);
-            <span style="color:#66d9ef">if</span> (args.Length &gt; <span style="color:#ae81ff">0</span>)
-            {
-                <span style="color:#66d9ef">string</span> sInterfaceName = (<span style="color:#66d9ef">string</span>)interfaceName;
-                <span style="color:#66d9ef">foreach</span>(<span style="color:#66d9ef">string</span> arg <span style="color:#66d9ef">in</span> args)
-                <span style="color:#66d9ef">try</span>
-                {
-                    Assembly asm = Assembly.LoadFrom(arg);
-                    Type[] possiblePlugins = asm.GetTypes();
-                    List&lt;Type&gt; realCandidates = <span style="color:#66d9ef">new</span> List&lt;Type&gt;(<span style="color:#ae81ff">3</span>);
-                    <span style="color:#66d9ef">foreach</span> (Type t <span style="color:#66d9ef">in</span> possiblePlugins)
-                    {
-                        <span style="color:#66d9ef">if</span> (!t.IsAbstract &amp;&amp; !t.IsInterface &amp;&amp; (t.GetInterface(sInterfaceName) != <span style="color:#66d9ef">null</span>))
-                            pluginClassesNames.Add(t.FullName);
-                    }
-                }
-                <span style="color:#66d9ef">catch</span> (Exception ex)
-                {
-                    pluginClassesNames.Add(<span style="color:#e6db74">&#34;Exception &#34;</span> + ex.ToString());
-                }
-            }
-
-            AppDomain.CurrentDomain.SetData(PLUGIN_CLASSES_NAMES, pluginClassesNames.ToArray());
-            <span style="color:#66d9ef">return</span> pluginClassesNames.Count;            
-        }
-    }
-}
-</code></pre></div><p>using it won’t be a problem:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">int</span> execRes = newDomain.ExecuteAssembly(<span style="color:#ae81ff">_</span>classFinderAssemblyPath, AppDomain.CurrentDomain.Evidence, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">string</span>[] { path });
-<span style="color:#66d9ef">if</span> (execRes &lt;= <span style="color:#ae81ff">0</span>)
-    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;No plugins found in &#34;</span> + path);
-<span style="color:#66d9ef">string</span>[] pluginClasses = (<span style="color:#66d9ef">string</span>[])newDomain.GetData(PLUGIN_CLASSES_NAMES);
-</code></pre></div><p>Then calling a simple AppDomain.Unload(); would solve your problem. If you are lucky enough to have a pure .NET world and are not concerned about security, then you’re definitely lucky. And I am not :):(.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> PInterface
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">PluginInterface</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">string</span> DoSmth();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Then when you want to load Some type, let it be like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> SamplePlugin
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Plugin1</span> :MarshalByRefObject, PluginInterface
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#region PluginInterface</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> DoSmth()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello!&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">#</span>endregion
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You would simply do it like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span>AppDomain newDomain = AppDomain.CreateDomain(<span style="color:#e6db74">&#34;newDOmain&#34;</span>);
+</span></span><span style="display:flex;"><span>newDomain.CreateInstanceFromAndUnwrap(pathToDLL, pluginClassName);
+</span></span></code></pre></div><p>Assuming you know the class name(s) of course:). If you don’t, then it’s 2 choices: either you specify that the plugin assembly has to have a “marker” type (say “class PluginType{}”) and then after loading an assembly into app domain execute the callback on it to get the class names via reflection load OR you might end up with a crossDomain walker like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Windows.Forms;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Reflection;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> WindowsApplication1
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_INTERFACE_NAME = <span style="color:#e6db74">&#34;PluginInterfaceName&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_CLASSES_NAMES = <span style="color:#e6db74">&#34;PluginClasses&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// The main entry point for the application.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [STAThread]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> Main(String[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">object</span> interfaceName =  AppDomain.CurrentDomain.GetData(PLUGIN_INTERFACE_NAME);
+</span></span><span style="display:flex;"><span>            List&lt;<span style="color:#66d9ef">string</span>&gt; pluginClassesNames = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (args.Length &gt; <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">string</span> sInterfaceName = (<span style="color:#66d9ef">string</span>)interfaceName;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">foreach</span>(<span style="color:#66d9ef">string</span> arg <span style="color:#66d9ef">in</span> args)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    Assembly asm = Assembly.LoadFrom(arg);
+</span></span><span style="display:flex;"><span>                    Type[] possiblePlugins = asm.GetTypes();
+</span></span><span style="display:flex;"><span>                    List&lt;Type&gt; realCandidates = <span style="color:#66d9ef">new</span> List&lt;Type&gt;(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">foreach</span> (Type t <span style="color:#66d9ef">in</span> possiblePlugins)
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> (!t.IsAbstract &amp;&amp; !t.IsInterface &amp;&amp; (t.GetInterface(sInterfaceName) != <span style="color:#66d9ef">null</span>))
+</span></span><span style="display:flex;"><span>                            pluginClassesNames.Add(t.FullName);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">catch</span> (Exception ex)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    pluginClassesNames.Add(<span style="color:#e6db74">&#34;Exception &#34;</span> + ex.ToString());
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            AppDomain.CurrentDomain.SetData(PLUGIN_CLASSES_NAMES, pluginClassesNames.ToArray());
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> pluginClassesNames.Count;            
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>using it won’t be a problem:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> execRes = newDomain.ExecuteAssembly(_classFinderAssemblyPath, AppDomain.CurrentDomain.Evidence, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">string</span>[] { path });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (execRes &lt;= <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;No plugins found in &#34;</span> + path);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">string</span>[] pluginClasses = (<span style="color:#66d9ef">string</span>[])newDomain.GetData(PLUGIN_CLASSES_NAMES);
+</span></span></code></pre></div><p>Then calling a simple AppDomain.Unload(); would solve your problem. If you are lucky enough to have a pure .NET world and are not concerned about security, then you’re definitely lucky. And I am not :):(.</p>
 <pre><code>Let us now assume you want those plugins to be consumable from the c++ application. Suppose your client has a big c++ app and now realized developing plugins in .NET would be easier. Then your natural choice is to make it as much less painful for c++ app to use you code as possible. A solution to that would be to have a .NET plugin manager, exposed to c++ app via the COM object. You may end up with smth. like this:
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">using</span> System;
-<span style="color:#66d9ef">using</span> System.Collections.Generic;
-<span style="color:#66d9ef">using</span> System.Text;
-<span style="color:#66d9ef">using</span> System.Runtime.InteropServices;
-<span style="color:#66d9ef">using</span> System.Reflection;
-<span style="color:#66d9ef">using</span> System.IO;
-<span style="color:#66d9ef">using</span> System.Runtime.Remoting;
-<span style="color:#66d9ef">using</span> System.Security.Policy;
-<span style="color:#66d9ef">using</span> System.Security;
-<span style="color:#66d9ef">using</span> System.Security.Permissions;
-
-<span style="color:#66d9ef">namespace</span> ComPluginManager
-{
-<span style="color:#a6e22e">    [ComVisible(true)]</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PluginManger</span>: IPluginManager
-    {
-        <span style="color:#66d9ef">private</span> IDictionary&lt;String, AppDomain&gt; <span style="color:#ae81ff">_</span>pluginStore;
-        <span style="color:#66d9ef">private</span> String <span style="color:#ae81ff">_</span>interfaceName = <span style="color:#e6db74">&#34;PluginInterface&#34;</span>;
-        <span style="color:#66d9ef">private</span> String <span style="color:#ae81ff">_</span>classFinderAssemblyPath;
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_INTERFACE_NAME = <span style="color:#e6db74">&#34;PluginInterfaceName&#34;</span>;
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_CLASSES_NAMES = <span style="color:#e6db74">&#34;PluginClasses&#34;</span>;
-
-        <span style="color:#66d9ef">public</span> PluginManger()
-        {
-            <span style="color:#ae81ff">_</span>pluginStore = <span style="color:#66d9ef">new</span> Dictionary&lt;String, AppDomain&gt;(<span style="color:#ae81ff">5</span>);
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span>[] LoadPlugin(<span style="color:#66d9ef">string</span> path) {
-            List&lt;<span style="color:#66d9ef">object</span>&gt; result = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">object</span>&gt;(<span style="color:#ae81ff">3</span>);
-            
-            AppDomainSetup setup = <span style="color:#66d9ef">new</span> AppDomainSetup();
-            setup.ApplicationBase = Path.GetDirectoryName(path); <span style="color:#75715e">// plugin path
-</span><span style="color:#75715e"></span>            PermissionSet trustPermissionSet = <span style="color:#66d9ef">new</span> PermissionSet(PermissionState.Unrestricted);
-            AppDomain newDomain = AppDomain.CreateDomain(
-                String.Format(<span style="color:#e6db74">&#34;Domain{0}&#34;</span>, Path.GetFileName(path)),
-                <span style="color:#66d9ef">null</span>,
-                setup,
-                trustPermissionSet);
-
-            <span style="color:#66d9ef">try</span>
-            {
-                newDomain.SetData(PLUGIN_INTERFACE_NAME, <span style="color:#e6db74">&#34;PluginInterface&#34;</span>);
-                <span style="color:#66d9ef">int</span> execRes = newDomain.ExecuteAssembly(<span style="color:#ae81ff">_</span>classFinderAssemblyPath, AppDomain.CurrentDomain.Evidence, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">string</span>[] { path });
-                <span style="color:#66d9ef">if</span> (execRes &lt;= <span style="color:#ae81ff">0</span>)
-                    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;No plugins found in &#34;</span> + path);
-                <span style="color:#66d9ef">string</span>[] pluginClasses = (<span style="color:#66d9ef">string</span>[])newDomain.GetData(PLUGIN_CLASSES_NAMES);
-
-                <span style="color:#ae81ff">_</span>pluginStore[path] = newDomain;
-                <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">string</span> pluginClass <span style="color:#66d9ef">in</span> pluginClasses)
-             {
-                    ObjectHandle objHandle = Activator.CreateInstanceFrom(newDomain, path, pluginClass);
-
-                    <span style="color:#66d9ef">if</span> (objHandle != <span style="color:#66d9ef">null</span>)
-                    {
-                        <span style="color:#66d9ef">object</span> unwrappedInstance = objHandle.Unwrap();
-                        result.Add(unwrappedInstance);
-                    }
-
-                    result.Add(<span style="color:#ae81ff">_</span>pluginStore[path].CreateInstanceFromAndUnwrap(path, pluginClass));
-             }
-                
-            }
-            <span style="color:#66d9ef">catch</span> (Exception ex) { 
-                result.Add(ex);
-            }       
-            <span style="color:#66d9ef">return</span> result.ToArray();
-        }     
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> UnloadPlugin(<span style="color:#66d9ef">string</span> path) {
-            <span style="color:#66d9ef">try</span>
-            {
-                AppDomain domain = <span style="color:#ae81ff">_</span>pluginStore[path];
-                <span style="color:#ae81ff">_</span>pluginStore.Remove(path);
-                AppDomain.Unload(domain);
-            }
-            <span style="color:#66d9ef">catch</span> (Exception ex)
-            { ;}
-        }
-
-        <span style="color:#66d9ef">public</span> String InterfaceName { <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>interfaceName; } <span style="color:#66d9ef">set</span> { <span style="color:#ae81ff">_</span>interfaceName = <span style="color:#66d9ef">value</span>; } }
-
-        <span style="color:#66d9ef">public</span> String ClassFinderAssemblyPath { <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>classFinderAssemblyPath; } <span style="color:#66d9ef">set</span> { <span style="color:#ae81ff">_</span>classFinderAssemblyPath = <span style="color:#66d9ef">value</span>; } }
-        
-    }
-}
-</code></pre></div><p>And it’s interface of course like:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">using</span> System;
-<span style="color:#66d9ef">using</span> System.Collections.Generic;
-<span style="color:#66d9ef">using</span> System.Text;
-<span style="color:#66d9ef">using</span> System.Runtime.InteropServices;
-
-<span style="color:#66d9ef">namespace</span> ComPluginManager
-{
-<span style="color:#a6e22e">    [ComVisible(true)]</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IPluginManager
-    {
-        String InterfaceName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        String ClassFinderAssemblyPath { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>;}
-        <span style="color:#66d9ef">void</span> UnloadPlugin(String path);
-        Object[] LoadPlugin(String path);
-    }
-}
-</code></pre></div><p>Two things to notice here: I haven’t managed to get the plain class’s public methods visible to C++ so I used an interface. And second, probably the most important – <span style="font-family: monospace; white-space: pre;">PermissionSet.</span> If you do not set this you wont be able to anything inside you app domain, except the very basic things like calculations and maybe some other data manipulation. You can find more info on this <a href="http://blogs.msdn.com/shawnfa/archive/2004/11/02/251239.aspx">here</a> and <a href="http://blogs.msdn.com/shawnfa/archive/2004/10/26/248114.aspx">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Text;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Runtime.InteropServices;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Reflection;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.IO;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Runtime.Remoting;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Security.Policy;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Security;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Security.Permissions;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> ComPluginManager
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [ComVisible(true)]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PluginManger</span>: IPluginManager
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> IDictionary&lt;String, AppDomain&gt; _pluginStore;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> String _interfaceName = <span style="color:#e6db74">&#34;PluginInterface&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> String _classFinderAssemblyPath;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_INTERFACE_NAME = <span style="color:#e6db74">&#34;PluginInterfaceName&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> PLUGIN_CLASSES_NAMES = <span style="color:#e6db74">&#34;PluginClasses&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> PluginManger()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            _pluginStore = <span style="color:#66d9ef">new</span> Dictionary&lt;String, AppDomain&gt;(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span>[] LoadPlugin(<span style="color:#66d9ef">string</span> path) {
+</span></span><span style="display:flex;"><span>            List&lt;<span style="color:#66d9ef">object</span>&gt; result = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">object</span>&gt;(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            AppDomainSetup setup = <span style="color:#66d9ef">new</span> AppDomainSetup();
+</span></span><span style="display:flex;"><span>            setup.ApplicationBase = Path.GetDirectoryName(path); <span style="color:#75715e">// plugin path</span>
+</span></span><span style="display:flex;"><span>            PermissionSet trustPermissionSet = <span style="color:#66d9ef">new</span> PermissionSet(PermissionState.Unrestricted);
+</span></span><span style="display:flex;"><span>            AppDomain newDomain = AppDomain.CreateDomain(
+</span></span><span style="display:flex;"><span>                String.Format(<span style="color:#e6db74">&#34;Domain{0}&#34;</span>, Path.GetFileName(path)),
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>                setup,
+</span></span><span style="display:flex;"><span>                trustPermissionSet);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                newDomain.SetData(PLUGIN_INTERFACE_NAME, <span style="color:#e6db74">&#34;PluginInterface&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> execRes = newDomain.ExecuteAssembly(_classFinderAssemblyPath, AppDomain.CurrentDomain.Evidence, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">string</span>[] { path });
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (execRes &lt;= <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;No plugins found in &#34;</span> + path);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">string</span>[] pluginClasses = (<span style="color:#66d9ef">string</span>[])newDomain.GetData(PLUGIN_CLASSES_NAMES);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                _pluginStore[path] = newDomain;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">string</span> pluginClass <span style="color:#66d9ef">in</span> pluginClasses)
+</span></span><span style="display:flex;"><span>             {
+</span></span><span style="display:flex;"><span>                    ObjectHandle objHandle = Activator.CreateInstanceFrom(newDomain, path, pluginClass);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (objHandle != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">object</span> unwrappedInstance = objHandle.Unwrap();
+</span></span><span style="display:flex;"><span>                        result.Add(unwrappedInstance);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    result.Add(_pluginStore[path].CreateInstanceFromAndUnwrap(path, pluginClass));
+</span></span><span style="display:flex;"><span>             }
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span> (Exception ex) { 
+</span></span><span style="display:flex;"><span>                result.Add(ex);
+</span></span><span style="display:flex;"><span>            }       
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> result.ToArray();
+</span></span><span style="display:flex;"><span>        }     
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> UnloadPlugin(<span style="color:#66d9ef">string</span> path) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                AppDomain domain = _pluginStore[path];
+</span></span><span style="display:flex;"><span>                _pluginStore.Remove(path);
+</span></span><span style="display:flex;"><span>                AppDomain.Unload(domain);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span> (Exception ex)
+</span></span><span style="display:flex;"><span>            { ;}
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> String InterfaceName { <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> _interfaceName; } <span style="color:#66d9ef">set</span> { _interfaceName = <span style="color:#66d9ef">value</span>; } }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> String ClassFinderAssemblyPath { <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> _classFinderAssemblyPath; } <span style="color:#66d9ef">set</span> { _classFinderAssemblyPath = <span style="color:#66d9ef">value</span>; } }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And it’s interface of course like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Text;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Runtime.InteropServices;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> ComPluginManager
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [ComVisible(true)]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IPluginManager</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        String InterfaceName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        String ClassFinderAssemblyPath { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>;}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> UnloadPlugin(String path);
+</span></span><span style="display:flex;"><span>        Object[] LoadPlugin(String path);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Two things to notice here: I haven’t managed to get the plain class’s public methods visible to C++ so I used an interface. And second, probably the most important – <span style="font-family: monospace; white-space: pre;">PermissionSet.</span> If you do not set this you wont be able to anything inside you app domain, except the very basic things like calculations and maybe some other data manipulation. You can find more info on this <a href="http://blogs.msdn.com/shawnfa/archive/2004/11/02/251239.aspx">here</a> and <a href="http://blogs.msdn.com/shawnfa/archive/2004/10/26/248114.aspx">here</a>.</p>
 <p>Another important thing is that as long as your code is going to be executed from an unmanaged environment and want to do smth with partially trusted code – you have to use</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#a6e22e">[assembly: AllowPartiallyTrustedCallersAttribute()]</span>
-</code></pre></div><p>In both manager and plugin assemblies. Further explanation on how it works can be found <a href="http://msdn.microsoft.com/en-us/magazine/cc163701.aspx">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#a6e22e">[assembly: AllowPartiallyTrustedCallersAttribute()]</span>
+</span></span></code></pre></div><p>In both manager and plugin assemblies. Further explanation on how it works can be found <a href="http://msdn.microsoft.com/en-us/magazine/cc163701.aspx">here</a>.</p>
 <p>Now if you <span style="text-decoration: line-through;">crossed your fingers at the right moment</span> did everything wright this plugin manager would load assemblies for you, return you the instantiated objects and free the dlls on your request flawlesly.</p>
 <p>And you will be able to put that shiny “Update” button on the toolbar without asking the user to reboot/restart an application whenever you need the  plugin update. And not bother with temporary files and “special” startup routines… etc. I think the idea is clear 🙂</p>
 

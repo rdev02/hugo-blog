@@ -23,7 +23,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Thu, 19 Nov 2009 11:12:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/jetbrains-idea-still-the-best/</guid>
-      <description>Now that I wrote lots of &amp;amp;#8216;bad&amp;amp;#8217; stuff about this new community version &amp;amp;#8211; time to write something fine, as I really enjoy developing in this IDE.  First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my ‘more serious’ still reproduce this is something pleasant, indicating that the work is in progress and I’m sure all the other stuff will be fixed soon.</description>
+      <description>Now that I wrote lots of &amp;amp;#8216;bad&amp;amp;#8217; stuff about this new community version &amp;amp;#8211; time to write something fine, as I really enjoy developing in this IDE. First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my ‘more serious’ still reproduce this is something pleasant, indicating that the work is in progress and I’m sure all the other stuff will be fixed soon.</description>
     </item>
     
     <item>
@@ -32,7 +32,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Thu, 12 Nov 2009 10:41:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/intellij-idea-community-edition-now-it-gets-serious/</guid>
-      <description>In my &amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;[&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;previous pos][1][&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;t&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;][2] I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along.  First of all I’ve ran into an issue with ant Jar task. It refused to work with an ‘update’ option set to true. The interesting part of it was that executing the task independently didn’t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to … hang.</description>
+      <description>In my &amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;[&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;previous pos][1][&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;t&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;][2] I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along. First of all I’ve ran into an issue with ant Jar task. It refused to work with an ‘update’ option set to true. The interesting part of it was that executing the task independently didn’t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to … hang.</description>
     </item>
     
     <item>
@@ -51,7 +51,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       
       <guid>http://blog.vnomad.com/code/blogger-code-formatting/</guid>
       <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
-using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { //  // TODO: Add constructor logic here  //  int x = 10; } } </description>
+using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } } </description>
     </item>
     
     <item>

@@ -6,7 +6,17 @@
     <description>Recent content on Nomad&#39;s reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Feb 2022 22:22:22 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Oct 2022 12:32:12 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Smart home automation.</title>
+      <link>http://blog.vnomad.com/code/2022/10/wink-smartthings-aeotec/</link>
+      <pubDate>Thu, 27 Oct 2022 12:32:12 +0000</pubDate>
+      
+      <guid>http://blog.vnomad.com/code/2022/10/wink-smartthings-aeotec/</guid>
+      <description>Long time ago smart homes were hyped and the next generation of home automation. Beyond your analog timers and motion sensors, wouldn&amp;rsquo;t it be nice to have something a tad more sophisticated to manage all these signals? For the last couple years I&amp;rsquo;ve been growing my smart devices set and hopping between platforms. This post summarizes the journey, currently at Samsung Aeotec Hub stop.
+In place of intro&amp;hellip; The moment one has an electrical device or switch, 2 maintenance problems arise, somewhat tied to each other:</description>
+    </item>
+    
     <item>
       <title>VPN. Open? Wire? Scale?</title>
       <link>http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/</link>
@@ -15,7 +25,7 @@
       <guid>http://blog.vnomad.com/code/2022/02/openvpn-wireguard-tailscale/</guid>
       <description>In this post I go about my journey into VPNs and conclude TailScale is the GOTO for anyone who needs a nice cheap connectivity tool asap.
 History Sooner or later one needs a VPN. Various reasons:
- test out UX/behavior from a different part of the world access your test server DMZ, while away from your test server LAN verify prices in other country pay your bills through your bank, while abroad  Most people today, though, get it for privacy reasons.</description>
+test out UX/behavior from a different part of the world access your test server DMZ, while away from your test server LAN verify prices in other country pay your bills through your bank, while abroad Most people today, though, get it for privacy reasons.</description>
     </item>
     
     <item>
@@ -46,7 +56,9 @@ However today the new M1 Pro Max takes spotlight.</description>
       <description>Учітеся, брати мої,
 Учітесь, читайте ,
 І чужому научайтесь ,
-Свого не цурайтесь!       [Т. Г. Шевченко]    На днях на очі потрапила чудова стаття, що непогано підсумовує міркування багатьох людей навколо мене(не дарма поширена більше 9 тис. раз). Текст відносно короткий, проте коментарів викликає чимало і, щоб, як то кажуть, &amp;ldquo;три рази не вставати&amp;rdquo;, я вирішив викласти свої коментарі сюди&amp;hellip;</description>
+Свого не цурайтесь! [Т. Г. Шевченко] На днях на очі потрапила чудова стаття, що непогано підсумовує міркування багатьох людей навколо мене(не дарма поширена більше 9 тис. раз). Текст відносно короткий, проте коментарів викликає чимало і, щоб, як то кажуть, &amp;ldquo;три рази не вставати&amp;rdquo;, я вирішив викласти свої коментарі сюди&amp;hellip;
+Але, з початку, невеличкий ліричний відступ :)
+До появи інтернету щоденним джерелом інформації була газета, радіо, чи то пак телевізор.</description>
     </item>
     
     <item>
@@ -73,7 +85,7 @@ However today the new M1 Pro Max takes spotlight.</description>
       <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/synology-ds413j-nas/</guid>
-      <description>In my previous post I was rambling aboutSeagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&amp;#8217;t duplicate them in this one. But, to keep consistent with the previous review I&amp;#8217;ll go with the same headings/experience areas. That being said &amp;#8211; here we go!    DSJ413j     Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this time.</description>
+      <description>In my previous post I was rambling about Seagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&amp;#8217;t duplicate them in this one. But, to keep consistent with the previous review I&amp;#8217;ll go with the same headings/experience areas. That being said &amp;#8211; here we go! DSJ413j Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this time.</description>
     </item>
     
     <item>
@@ -130,8 +142,8 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       
       <guid>http://blog.vnomad.com/code/plymouth-fix-for-ubuntu-11-04/</guid>
       <description>If you’re in the same trouble as I was with black screen during boot(plymouth has the theme installed and even displays it during shutdown) then there is a small thing that has to be edited in order to get rid of this annoyance. Go to
- /etc/grub.d/10_linux
- and remove the **handoff=7 **parameter. Inspired by this and also this(pretty nice tool for configuring plymouth for dummies).</description>
+/etc/grub.d/10_linux
+and remove the **handoff=7 **parameter. Inspired by this and also this(pretty nice tool for configuring plymouth for dummies).</description>
     </item>
     
     <item>
@@ -177,7 +189,12 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       
       <guid>http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/</guid>
       <description>Had a real problem with my wifi after moving to Ubuntu from win -&amp;gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
-        Having this changed</description>
+Having this changed
+_AVAHI_DAEMON_DETECT_LOCAL=1
+to
+AVAHI_DAEMON_DETECT_LOCAL=0
+in /etc/default/avahi-daemon_
+Got me up to 22Mb/s after reboot.</description>
     </item>
     
     <item>
@@ -187,8 +204,8 @@ Caused by: javax.naming.CommunicationException [Root exception is java.rmi.Serve
       
       <guid>http://blog.vnomad.com/code/skype-microsoft/</guid>
       <description>I really, really do not know if that’s accidental or on-purpose and whether it’s connected with the fact that Microsoft bought Skype, but this morning I received a wonderful email:
-  Now 3 things about this:
- I **am **a skype user. Who the hell is Natalia??? And why, and when and WTF?! I love to use skype. It would be sad if this is the** turning point**. 🙁  </description>
+Now 3 things about this:
+I **am **a skype user. Who the hell is Natalia??? And why, and when and WTF?! I love to use skype. It would be sad if this is the** turning point**. 🙁 </description>
     </item>
     
     <item>
@@ -208,7 +225,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       
       <guid>http://blog.vnomad.com/code/lift-ajax-the-proper-way-of-doing-presentations/</guid>
       <description>24-th seconds rules…
- This mostly ru-zone compliant 🙂</description>
+This mostly ru-zone compliant 🙂</description>
     </item>
     
     <item>
@@ -227,8 +244,8 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       
       <guid>http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</guid>
       <description>Today was investigating the warnings around some of my eclipse maven projects and noticed that I have a few
- There are no JREs installed in the workspace that are strictly compatible with this environment
- messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine.</description>
+There are no JREs installed in the workspace that are strictly compatible with this environment
+messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine.</description>
     </item>
     
     <item>
@@ -256,7 +273,8 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       
       <guid>http://blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/</guid>
       <description>There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
- Select * From [win_category]</description>
+Select * From [win_category]
+The problem is there are tons of &amp;amp;#8220;win_category]&amp;amp;#8217; and * values.</description>
     </item>
     
     <item>
@@ -292,7 +310,7 @@ I used to have TabKit installed but this unfortunately does not support FF 4. So
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</guid>
-      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;amp;#8220;descriptive&amp;amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;amp;#8217;m going to describe here is when the size of the cod file is more than 64K.  Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
+      <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;amp;#8220;descriptive&amp;amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;amp;#8217;m going to describe here is when the size of the cod file is more than 64K. Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
     </item>
     
     <item>
@@ -314,8 +332,8 @@ It all started when I bought my first wireless router D-Link DIR 320. It looked 
       <guid>http://blog.vnomad.com/code/idea-ant-hanging/</guid>
       <description>I had a very ‘uncomfortable’ issue with Idea when using it for ant builds – it hang in certain places like jar update task, rename task or similar.
 All my struggle can be found on Idea track. Fortunately Carl Abramsson found a workaround for that issue using
- -noinput
- switch to ant launch. Now everything works like a charm. Decided to create this post in case some one will be desperately googling for a solution in the wrong place 🙂</description>
+-noinput
+switch to ant launch. Now everything works like a charm. Decided to create this post in case some one will be desperately googling for a solution in the wrong place 🙂</description>
     </item>
     
     <item>
@@ -326,7 +344,7 @@ All my struggle can be found on Idea track. Fortunately Carl Abramsson found a w
       <guid>http://blog.vnomad.com/code/nokia-ovi-suite/</guid>
       <description>Installed, played with it a bit… Looks nice 🙂
 Among significant pluses(IMHO of course):
- smoother experience nice improved and thought out UI sms log deserves additional applause (clap)(clap)(clap) back(PC-&amp;gt;phone) synchronization improved(both speed and reliability) working(at last) maps(NavTech)   among things I miss:     full control over the phone&amp;#8217;s file system   application install   media(other then mp3) transfer    But for those the are great news: Good ol&amp;#8217; PC Suite is not removed with Ovi upgrade 🙂 So you can still use it if you wish to&amp;#8230;   Generally Ovi is a much better tool for daily sync then PC Suite was.</description>
+smoother experience nice improved and thought out UI sms log deserves additional applause (clap)(clap)(clap) back(PC-&amp;gt;phone) synchronization improved(both speed and reliability) working(at last) maps(NavTech) among things I miss: full control over the phone&amp;#8217;s file system application install media(other then mp3) transfer But for those the are great news: Good ol&amp;#8217; PC Suite is not removed with Ovi upgrade 🙂 So you can still use it if you wish to&amp;#8230; Generally Ovi is a much better tool for daily sync then PC Suite was.</description>
     </item>
     
     <item>
@@ -362,7 +380,7 @@ Among significant pluses(IMHO of course):
       <pubDate>Mon, 07 Dec 2009 09:38:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/sad-funny-world-of-mobile-development/</guid>
-      <description>Being a &amp;#8216;mobile&amp;#8217; developer is definitely fun. Although sometimes, when you think about it &amp;#8216;deeper&amp;#8217; you&amp;#8217;d rather drink a pint of whiskey:). Take a look at the enterprise Symbian OS:  http://www.codeproject.com/KB/mobile/Symbian_OS_design_faults.aspx  Reliable, huh? 😉 And it&amp;#8217;s not just Symbian &amp;#8211; in my point of view it&amp;#8217;s MIDP itself. You just can&amp;#8217;t rely on it unless you test, test and once again &amp;#8211; test. For me it feels like implementation usually just do not care about about what does the specification say.</description>
+      <description>Being a &amp;#8216;mobile&amp;#8217; developer is definitely fun. Although sometimes, when you think about it &amp;#8216;deeper&amp;#8217; you&amp;#8217;d rather drink a pint of whiskey:). Take a look at the enterprise Symbian OS: http://www.codeproject.com/KB/mobile/Symbian_OS_design_faults.aspx Reliable, huh? 😉 And it&amp;#8217;s not just Symbian &amp;#8211; in my point of view it&amp;#8217;s MIDP itself. You just can&amp;#8217;t rely on it unless you test, test and once again &amp;#8211; test. For me it feels like implementation usually just do not care about about what does the specification say.</description>
     </item>
     
     <item>
@@ -380,7 +398,7 @@ Among significant pluses(IMHO of course):
       <pubDate>Thu, 19 Nov 2009 11:12:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/jetbrains-idea-still-the-best/</guid>
-      <description>Now that I wrote lots of &amp;amp;#8216;bad&amp;amp;#8217; stuff about this new community version &amp;amp;#8211; time to write something fine, as I really enjoy developing in this IDE.  First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my ‘more serious’ still reproduce this is something pleasant, indicating that the work is in progress and I’m sure all the other stuff will be fixed soon.</description>
+      <description>Now that I wrote lots of &amp;amp;#8216;bad&amp;amp;#8217; stuff about this new community version &amp;amp;#8211; time to write something fine, as I really enjoy developing in this IDE. First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my ‘more serious’ still reproduce this is something pleasant, indicating that the work is in progress and I’m sure all the other stuff will be fixed soon.</description>
     </item>
     
     <item>
@@ -390,7 +408,7 @@ Among significant pluses(IMHO of course):
       
       <guid>http://blog.vnomad.com/tea/femen-must-have-been-doing-that-right/</guid>
       <description>Now seriously smth HAS to be done about Ukrainian girls reputation in Europe and generally throughout the world. Now I can’t speak for whole Ukraine but it seems to me that at least Western Ukraine girls are not that money-loving. Today walking to work I saw this
-  All this stuff means &amp;#8220;I am a wealthy entrepreneur from USA looking for a nice whore wife from Ukraine aging 19-27&amp;#8243;. Now I&amp;#8217;ve seen this in newspapers and message boards etc.</description>
+All this stuff means &amp;#8220;I am a wealthy entrepreneur from USA looking for a nice whore wife from Ukraine aging 19-27&amp;#8243;. Now I&amp;#8217;ve seen this in newspapers and message boards etc.</description>
     </item>
     
     <item>
@@ -399,7 +417,7 @@ Among significant pluses(IMHO of course):
       <pubDate>Thu, 12 Nov 2009 10:41:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/intellij-idea-community-edition-now-it-gets-serious/</guid>
-      <description>In my &amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;[&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;previous pos][1][&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;t&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;][2] I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along.  First of all I’ve ran into an issue with ant Jar task. It refused to work with an ‘update’ option set to true. The interesting part of it was that executing the task independently didn’t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to … hang.</description>
+      <description>In my &amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;[&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;previous pos][1][&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;t&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;][2] I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along. First of all I’ve ran into an issue with ant Jar task. It refused to work with an ‘update’ option set to true. The interesting part of it was that executing the task independently didn’t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to … hang.</description>
     </item>
     
     <item>
@@ -428,8 +446,7 @@ I will start with the last one. Having just recovered from the flu I decided to 
       
       <guid>http://blog.vnomad.com/code/blackberry-fun/</guid>
       <description>Reading the developers guide on BlackBerry you may come across astonishing things. I’m impressed. When I started doing little things in the blackberry app I soon got used to it and considered the platform to be well organized. Now that I’m reading a book I get more and more confused about what I should do and what I shan’t! Take a look at this masterpiece
- 
-      Why it is not necessary to obfuscate applications      The compiler for the BlackBerry® Java™ Development Environment is set to minimize the size of the application.</description>
+&gt; &gt; &gt; Why it is not necessary to obfuscate applications &gt; &gt; &gt; &gt; The compiler for the BlackBerry® Java™ Development Environment is set to minimize the size of the application.</description>
     </item>
     
     <item>
@@ -439,7 +456,7 @@ I will start with the last one. Having just recovered from the flu I decided to 
       
       <guid>http://blog.vnomad.com/code/blackberry-internet-usage-ota-and-other-staff/</guid>
       <description>Continuing the BlackBerry theme would like to share a few more issues I’ve ran into recently.
- Internet usage.
+Internet usage.
 If you subscribe to blackberry service you can optionally buy some “internet package” from your provider in order to minimize internet expenses. This a great choice since you’re going to visit internet pretty often if you’ve chosen blackberry. Everything goes fine until you start using Java apps on your phone. Java uses it OWN predefined internet connection DIFFERENT from the one the browser uses.</description>
     </item>
     
@@ -459,7 +476,7 @@ If you subscribe to blackberry service you can optionally buy some “internet p
       
       <guid>http://blog.vnomad.com/code/blogger-code-formatting/</guid>
       <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
-using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { //  // TODO: Add constructor logic here  //  int x = 10; } } </description>
+using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } } </description>
     </item>
     
     <item>
@@ -468,7 +485,7 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       <pubDate>Sat, 12 Sep 2009 19:44:00 +0000</pubDate>
       
       <guid>http://blog.vnomad.com/code/mcts-acquired/</guid>
-      <description>One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &amp;amp;#8211; it&amp;amp;#8217;s like a combination of the previous 2 with some logic included- not just simple development components.  Regarding the exam – not much can be said. Only one thing is worth mentioning – it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is… Interesting how would the next one go…</description>
+      <description>One step forward to MCPD. To my mind there is not that much to pass in this exam(MCPD) &amp;amp;#8211; it&amp;amp;#8217;s like a combination of the previous 2 with some logic included- not just simple development components. Regarding the exam – not much can be said. Only one thing is worth mentioning – it feels like not everything in this exam is covered by the training kit. Of course I can be wrong, but still feels like it is… Interesting how would the next one go…</description>
     </item>
     
     <item>
@@ -505,7 +522,7 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       
       <guid>http://blog.vnomad.com/tea/how-do-they-do-it/</guid>
       <description>It often happens that you have smth. to share with the rest of the world, but you do not have time for it.
-&amp;#8220;You do not have time&amp;#8221;&amp;#8230; sounds pathetic&amp;#8230; I think it happens more because of the laziness&amp;#8230; yeah definitely. Now I begin to understand why podcasts gain more and more popularity these days &amp;#8211; you do not have to organize links, format text. Find errors, reread the written text in order to find ABSOLUTELY ODD sentences 🙂  Interesting how do experienced bloggers keep their notes and where&amp;#8230; My last try is google docs.</description>
+&amp;#8220;You do not have time&amp;#8221;&amp;#8230; sounds pathetic&amp;#8230; I think it happens more because of the laziness&amp;#8230; yeah definitely. Now I begin to understand why podcasts gain more and more popularity these days &amp;#8211; you do not have to organize links, format text. Find errors, reread the written text in order to find ABSOLUTELY ODD sentences 🙂 Interesting how do experienced bloggers keep their notes and where&amp;#8230; My last try is google docs.</description>
     </item>
     
     <item>
@@ -515,7 +532,7 @@ using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 ///
       
       <guid>http://blog.vnomad.com/tea/ukrainians-on-times/</guid>
       <description>Today visited Times. Was interested in one article about (RU+GBR)/UA. To hell the article. I read the comments. OMG.
- OMG again.   &amp;#8220;People, even something that you care for most (democracy?) does not give you the right to lie passionately and ignore facts and invent lies. BTW, Eduard Glushko &amp;#8211; if you are so much afraid of the The Molotov-Ribbentrop Pact, it still can be repaired. Poland has to give back to Germany the territories they got after WW2.</description>
+OMG again. &amp;#8220;People, even something that you care for most (democracy?) does not give you the right to lie passionately and ignore facts and invent lies. BTW, Eduard Glushko &amp;#8211; if you are so much afraid of the The Molotov-Ribbentrop Pact, it still can be repaired. Poland has to give back to Germany the territories they got after WW2.</description>
     </item>
     
     <item>
@@ -690,8 +707,8 @@ class Program { const string GOOGLE_LOGIN_SECTION = &amp;#34;googleLogin&amp;#34
       
       <guid>http://blog.vnomad.com/code/nice-books-to-readoopood-agile-etc/</guid>
       <description>Recently, i started to come across _r e a l l y _nice books about software project management and risks. So friends of mine also share good patterns/best practices books. among them the can be listed :
- _ _Tom DeMarco, “Waltzing with Bears: Managing Risk on Software Projects” Steve McConnell “Software project survival guide” “Analysis Patterns: Reusable Object Models” Martin Fowler Design Patterns Book
-Design Patterns: Elements of Reusable Object-Oriented Software by ErichGamma, RichardHelm, RalphJohnson, and JohnVlissides Edvard Yourdon ‘Death March’  if someone can contribute to the list – welcome!</description>
+_ _Tom DeMarco, “Waltzing with Bears: Managing Risk on Software Projects” Steve McConnell “Software project survival guide” “Analysis Patterns: Reusable Object Models” Martin Fowler Design Patterns Book
+Design Patterns: Elements of Reusable Object-Oriented Software by ErichGamma, RichardHelm, RalphJohnson, and JohnVlissides Edvard Yourdon ‘Death March’ if someone can contribute to the list – welcome!</description>
     </item>
     
   </channel>

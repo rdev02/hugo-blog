@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="">
@@ -231,6 +231,63 @@ if (!doNotTrack) {
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/">
+          Java to BlazeDS NAN in double values.
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2011-04-22T09:07:00Z">
+        
+  
+  
+  
+  
+    04/22/2011
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/tech">tech</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        Internet is basically full of subj but vice-versa(BlazeDS to java). So the problem I had was that when the object is “translated” from java via BlazeDS to flex application it had NAN’s in the double fields. The transfer object was a simple POJO I passed via the interface. First thing I checked were the getters – all present and valid. I took quite a lot of time till we figured out that it was the missing setters which made the code malfunction.
+      
+      <p>
+        <a href="http://blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/">
           maven-compiler-plugin causing eclipse projects to have j2se 1.4 instead of configured one
         </a>
@@ -264,8 +321,8 @@ if (!doNotTrack) {
     <div class="postShorten-excerpt" itemprop="articleBody">
       
         Today was investigating the warnings around some of my eclipse maven projects and noticed that I have a few
- There are no JREs installed in the workspace that are strictly compatible with this environment
- messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine.
+There are no JREs installed in the workspace that are strictly compatible with this environment
+messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine.
       
       <p>
         <a href="http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/" class="postShorten-excerpt_link link">Continue reading</a>
@@ -439,7 +496,8 @@ if (!doNotTrack) {
     <div class="postShorten-excerpt" itemprop="articleBody">
       
         There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
- Select * From [win_category]
+Select * From [win_category]
+The problem is there are tons of &amp;#8220;win_category]&amp;#8217; and * values.
       
       <p>
         <a href="http://blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/" class="postShorten-excerpt_link link">Continue reading</a>
@@ -669,7 +727,7 @@ if (!doNotTrack) {
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
       
-        Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K.  Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.
+        Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K. Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.
       
       <p>
         <a href="http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/" class="postShorten-excerpt_link link">Continue reading</a>
@@ -732,66 +790,6 @@ It all started when I bought my first wireless router D-Link DIR 320. It looked 
       
       <p>
         <a href="http://blog.vnomad.com/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/idea-ant-hanging/">
-          Idea ant hanging
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2010-02-11T10:18:00Z">
-        
-  
-  
-  
-  
-    02/11/2010
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        I had a very ‘uncomfortable’ issue with Idea when using it for ant builds – it hang in certain places like jar update task, rename task or similar.
-All my struggle can be found on Idea track. Fortunately Carl Abramsson found a workaround for that issue using
- -noinput
- switch to ant launch. Now everything works like a charm. Decided to create this post in case some one will be desperately googling for a solution in the wrong place 🙂
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/idea-ant-hanging/" class="postShorten-excerpt_link link">Continue reading</a>
         
       </p>
     </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app… But when finished everything looked very nice!
@@ -275,153 +275,153 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app… But when finished everything looked very nice!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
-    <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">const</span> string GOOGLE_LOGIN_SECTION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;googleLogin&#34;</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">const</span> string BATCH_COUNT_SETTING <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;batchCount&#34;</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">const</span> string CHECK_EXISTANCE_SETTING <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;checkExistance&#34;</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">const</span> string MyItem_ITEMTYPE_SETTING <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;MyItemItemType&#34;</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">const</span> string MyDB_CONNECTION_STRING <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;MyDBConnectionString&#34;</span><span style="color:#f92672">;</span>
-
-        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Main</span><span style="color:#f92672">(</span>string<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span>
-        <span style="color:#f92672">{</span>
-            string appNameG <span style="color:#f92672">=</span> Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">AssemblyCompany</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">+</span> Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">AssemblyTitle</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">+</span> Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">AssemblyVersion</span><span style="color:#f92672">;</span>
-            string userName<span style="color:#f92672">,</span> passs<span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">int</span> batchCount<span style="color:#f92672">;</span>
-            bool checkExistance <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-            SqlConnection connection<span style="color:#f92672">;</span>
-
-            <span style="color:#75715e">// configuration parsing
-</span><span style="color:#75715e"></span>            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">Write</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Initializing...&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#66d9ef">try</span>
-            <span style="color:#f92672">{</span>
-                GoogleLoginSection gLogin <span style="color:#f92672">=</span> ConfigurationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">GetSection</span><span style="color:#f92672">(</span>GOOGLE_LOGIN_SECTION<span style="color:#f92672">)</span> as GoogleLoginSection<span style="color:#f92672">;</span>
-                userName <span style="color:#f92672">=</span> gLogin<span style="color:#f92672">.</span><span style="color:#a6e22e">UserName</span><span style="color:#f92672">;</span>
-                passs <span style="color:#f92672">=</span> gLogin<span style="color:#f92672">.</span><span style="color:#a6e22e">Password</span><span style="color:#f92672">;</span>
-                batchCount <span style="color:#f92672">=</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Parse</span><span style="color:#f92672">(</span>ConfigurationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">AppSettings</span><span style="color:#f92672">[</span>BATCH_COUNT_SETTING<span style="color:#f92672">]);</span>
-                MyItem<span style="color:#f92672">.</span><span style="color:#a6e22e">MyItem_TYPE</span> <span style="color:#f92672">=</span> ConfigurationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">AppSettings</span><span style="color:#f92672">[</span>MyItem_ITEMTYPE_SETTING<span style="color:#f92672">];</span>
-                checkExistance <span style="color:#f92672">=</span> bool<span style="color:#f92672">.</span><span style="color:#a6e22e">Parse</span><span style="color:#f92672">(</span>ConfigurationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">AppSettings</span><span style="color:#f92672">[</span>CHECK_EXISTANCE_SETTING<span style="color:#f92672">]);</span>
-
-                connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SqlConnection<span style="color:#f92672">(</span>ConfigurationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">ConnectionStrings</span><span style="color:#f92672">[</span>MyDB_CONNECTION_STRING<span style="color:#f92672">].</span><span style="color:#a6e22e">ConnectionString</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-            <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span>
-            <span style="color:#f92672">{</span>
-                Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Failed configuration parsing. {0}&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">Message</span><span style="color:#f92672">);</span>
-                <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
-            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; OK.&#34;</span><span style="color:#f92672">);</span>
-
-            <span style="color:#75715e">//get a google service
-</span><span style="color:#75715e"></span>            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">Write</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Logging to Google....&#34;</span><span style="color:#f92672">);</span>
-            GBaseService service <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">try</span>
-            <span style="color:#f92672">{</span>
-                GDataGAuthRequestFactory fact <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GDataGAuthRequestFactory<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;xapi&#34;</span><span style="color:#f92672">,</span> appNameG<span style="color:#f92672">);</span>
-                GDataCredentials myCred <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GDataCredentials<span style="color:#f92672">(</span>userName<span style="color:#f92672">,</span> passs<span style="color:#f92672">);</span>
-                string developerToken <span style="color:#f92672">=</span> fact<span style="color:#f92672">.</span><span style="color:#a6e22e">QueryAuthToken</span><span style="color:#f92672">(</span>myCred<span style="color:#f92672">);</span>
-                service <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GBaseService<span style="color:#f92672">(</span>appNameG<span style="color:#f92672">,</span> developerToken<span style="color:#f92672">);</span>
-                service<span style="color:#f92672">.</span><span style="color:#a6e22e">Credentials</span> <span style="color:#f92672">=</span> myCred<span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
-            <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span>
-            <span style="color:#f92672">{</span>
-                Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Google authorization failed! {0}&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">Message</span><span style="color:#f92672">);</span>
-                <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
-            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; OK.&#34;</span><span style="color:#f92672">);</span>
-
-            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">Write</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Connecting to database....&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#75715e">//acquire reader and send data in batches
-</span><span style="color:#75715e"></span>            SqlDataReader reader <span style="color:#f92672">=</span> Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">GetReader</span><span style="color:#f92672">(</span>connection<span style="color:#f92672">);</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>reader <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
-            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; OK.&#34;</span><span style="color:#f92672">);</span>
-   <span style="color:#75715e">//reader.Read();
-</span><span style="color:#75715e"></span>   <span style="color:#75715e">//service.Insert(GBaseUriFactory.Default.ItemsFeedUri, (new MyItem(reader)).CreateGEntry(new AtomPerson(AtomPersonType.Author, userName), 1));
-</span><span style="color:#75715e"></span>
-            GBaseQuery query <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GBaseQuery<span style="color:#f92672">(</span>GBaseUriFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">Default</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ItemsFeedUri</span><span style="color:#f92672">);</span>
-            MyItem workMyItem<span style="color:#f92672">;</span>
-            GBaseFeed resultQ <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-            AtomFeed batchFeed<span style="color:#f92672">;</span>
-            AtomPerson author <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomPerson<span style="color:#f92672">(</span>AtomPersonType<span style="color:#f92672">.</span><span style="color:#a6e22e">Author</span><span style="color:#f92672">,</span> userName<span style="color:#f92672">);</span>
-
-            batchFeed <span style="color:#f92672">=</span> GetNewBatchFeed<span style="color:#f92672">(</span>service<span style="color:#f92672">);</span>
-            <span style="color:#66d9ef">int</span> processed <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
-            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing data in batches of {0}&#34;</span><span style="color:#f92672">,</span> batchCount<span style="color:#f92672">);</span>
-            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>reader<span style="color:#f92672">.</span><span style="color:#a6e22e">Read</span><span style="color:#f92672">())</span>
-            <span style="color:#f92672">{</span>
-                workMyItem <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyItem<span style="color:#f92672">(</span>reader<span style="color:#f92672">);</span>
-                Console<span style="color:#f92672">.</span><span style="color:#a6e22e">Write</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{0,-45}&#34;</span><span style="color:#f92672">,</span> workMyItem<span style="color:#f92672">);</span>
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>workMyItem<span style="color:#f92672">.</span><span style="color:#a6e22e">Name</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Length</span> <span style="color:#f92672">&lt;</span> 3<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;MyItem has too short name to be stored GBase!&#34;</span><span style="color:#f92672">);</span> <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>checkExistance<span style="color:#f92672">)</span>
-                <span style="color:#f92672">{</span>
-                    <span style="color:#66d9ef">try</span>
-                    <span style="color:#f92672">{</span>
-                        query<span style="color:#f92672">.</span><span style="color:#a6e22e">GoogleBaseQuery</span> <span style="color:#f92672">=</span> string<span style="color:#f92672">.</span><span style="color:#a6e22e">Format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;[item type: {0}] (&#34;</span><span style="color:#f92672">{</span>1<span style="color:#f92672">}</span><span style="color:#e6db74">&#34;)&#34;</span><span style="color:#f92672">,</span> MyItem<span style="color:#f92672">.</span><span style="color:#a6e22e">MyItem_TYPE</span><span style="color:#f92672">,</span> workMyItem<span style="color:#f92672">.</span><span style="color:#a6e22e">Name</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Replace</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;:&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">));</span><span style="color:#75715e">//search replacing COLONS a these are service charackters.
-</span><span style="color:#75715e"></span>                        resultQ <span style="color:#f92672">=</span> service<span style="color:#f92672">.</span><span style="color:#a6e22e">Query</span><span style="color:#f92672">(</span>query<span style="color:#f92672">);</span>
-                    <span style="color:#f92672">}</span>
-                    <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span>
-                    <span style="color:#f92672">{</span>
-                        Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;!!!Searching failed...!!!n{0}&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">Message</span><span style="color:#f92672">);</span>
-                    <span style="color:#f92672">}</span>
-                <span style="color:#f92672">}</span>
-
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>checkExistance <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">(</span>resultQ<span style="color:#f92672">.</span><span style="color:#a6e22e">Entries</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Count</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">))</span>
-                <span style="color:#f92672">{</span>
-                    Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; -Found {1} matching item(s). Skipping.&#34;</span><span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
-                <span style="color:#66d9ef">else</span>
-                <span style="color:#f92672">{</span>
-                    batchFeed<span style="color:#f92672">.</span><span style="color:#a6e22e">Entries</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Add</span><span style="color:#f92672">(</span>workMyItem<span style="color:#f92672">.</span><span style="color:#a6e22e">CreateGEntry</span><span style="color:#f92672">(</span>author<span style="color:#f92672">,</span> processed<span style="color:#f92672">));</span>
-                    Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; Added to batch.&#34;</span><span style="color:#f92672">);</span>
-                    processed<span style="color:#f92672">++;</span>
-                <span style="color:#f92672">}</span>
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>processed <span style="color:#f92672">==</span> batchCount<span style="color:#f92672">)</span>
-                <span style="color:#f92672">{</span>
-                    Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;n**Sending batch...&#34;</span><span style="color:#f92672">);</span>
-                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>SendBatch<span style="color:#f92672">(</span>service<span style="color:#f92672">,</span> batchFeed<span style="color:#f92672">))</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
-                    batchFeed <span style="color:#f92672">=</span> GetNewBatchFeed<span style="color:#f92672">(</span>service<span style="color:#f92672">);</span>
-     processed <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> 
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>processed <span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> SendBatch<span style="color:#f92672">(</span>service<span style="color:#f92672">,</span> batchFeed<span style="color:#f92672">);</span> <span style="color:#f92672">}</span>
-   
-   <span style="color:#75715e">//clean up
-</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">try</span>
-   <span style="color:#f92672">{</span>
-    connection<span style="color:#f92672">.</span><span style="color:#a6e22e">Close</span><span style="color:#f92672">();</span>
-    reader<span style="color:#f92672">.</span><span style="color:#a6e22e">Close</span><span style="color:#f92672">();</span>
-   <span style="color:#f92672">}</span>
-   <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span>
-   <span style="color:#f92672">{</span>
-    Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Could not release connection resources.{0}&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">Message</span><span style="color:#f92672">);</span>    
-   <span style="color:#f92672">}</span>
-
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> AtomFeed <span style="color:#a6e22e">GetNewBatchFeed</span><span style="color:#f92672">(</span>GBaseService service<span style="color:#f92672">)</span>
-        <span style="color:#f92672">{</span>
-            AtomFeed batchFeed<span style="color:#f92672">;</span>
-            batchFeed <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomFeed<span style="color:#f92672">(</span>GBaseUriFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">Default</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ItemsFeedBatchUri</span><span style="color:#f92672">,</span> service<span style="color:#f92672">);</span>
-            batchFeed<span style="color:#f92672">.</span><span style="color:#a6e22e">BatchData</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GDataBatchFeedData<span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">return</span> batchFeed<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> bool <span style="color:#a6e22e">SendBatch</span><span style="color:#f92672">(</span>GBaseService service<span style="color:#f92672">,</span> AtomFeed batchFeed<span style="color:#f92672">)</span>
-        <span style="color:#f92672">{</span>            
-            <span style="color:#66d9ef">try</span>
-            <span style="color:#f92672">{</span>
-                AtomFeed result <span style="color:#f92672">=</span> service<span style="color:#f92672">.</span><span style="color:#a6e22e">Batch</span><span style="color:#f92672">(</span>batchFeed<span style="color:#f92672">,</span> GBaseUriFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">Default</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ItemsFeedBatchUri</span><span style="color:#f92672">);</span>
-                Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nn*** {0} entries published.&#34;</span><span style="color:#f92672">,</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">Entries</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Count</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-            <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span>
-            <span style="color:#f92672">{</span>
-                Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Couldn&#39;t publish batch data. {0}nContinue?(y/n)&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">Message</span><span style="color:#f92672">);</span>
-                ConsoleKeyInfo key <span style="color:#f92672">=</span> Console<span style="color:#f92672">.</span><span style="color:#a6e22e">ReadKey</span><span style="color:#f92672">();</span>
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>key<span style="color:#f92672">.</span><span style="color:#a6e22e">KeyChar</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;y&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> string GOOGLE_LOGIN_SECTION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;googleLogin&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> string BATCH_COUNT_SETTING <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;batchCount&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> string CHECK_EXISTANCE_SETTING <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;checkExistance&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> string MyItem_ITEMTYPE_SETTING <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;MyItemItemType&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> string MyDB_CONNECTION_STRING <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;MyDBConnectionString&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Main</span><span style="color:#f92672">(</span>string<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            string appNameG <span style="color:#f92672">=</span> Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">AssemblyCompany</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">+</span> Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">AssemblyTitle</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">+</span> Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">AssemblyVersion</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            string userName<span style="color:#f92672">,</span> passs<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> batchCount<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            bool checkExistance <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            SqlConnection connection<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// configuration parsing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">Write</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Initializing...&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                GoogleLoginSection gLogin <span style="color:#f92672">=</span> ConfigurationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">GetSection</span><span style="color:#f92672">(</span>GOOGLE_LOGIN_SECTION<span style="color:#f92672">)</span> as GoogleLoginSection<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                userName <span style="color:#f92672">=</span> gLogin<span style="color:#f92672">.</span><span style="color:#a6e22e">UserName</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                passs <span style="color:#f92672">=</span> gLogin<span style="color:#f92672">.</span><span style="color:#a6e22e">Password</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                batchCount <span style="color:#f92672">=</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Parse</span><span style="color:#f92672">(</span>ConfigurationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">AppSettings</span><span style="color:#f92672">[</span>BATCH_COUNT_SETTING<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>                MyItem<span style="color:#f92672">.</span><span style="color:#a6e22e">MyItem_TYPE</span> <span style="color:#f92672">=</span> ConfigurationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">AppSettings</span><span style="color:#f92672">[</span>MyItem_ITEMTYPE_SETTING<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                checkExistance <span style="color:#f92672">=</span> bool<span style="color:#f92672">.</span><span style="color:#a6e22e">Parse</span><span style="color:#f92672">(</span>ConfigurationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">AppSettings</span><span style="color:#f92672">[</span>CHECK_EXISTANCE_SETTING<span style="color:#f92672">]);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SqlConnection<span style="color:#f92672">(</span>ConfigurationManager<span style="color:#f92672">.</span><span style="color:#a6e22e">ConnectionStrings</span><span style="color:#f92672">[</span>MyDB_CONNECTION_STRING<span style="color:#f92672">].</span><span style="color:#a6e22e">ConnectionString</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Failed configuration parsing. {0}&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">Message</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; OK.&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//get a google service
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">Write</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Logging to Google....&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            GBaseService service <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                GDataGAuthRequestFactory fact <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GDataGAuthRequestFactory<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;xapi&#34;</span><span style="color:#f92672">,</span> appNameG<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                GDataCredentials myCred <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GDataCredentials<span style="color:#f92672">(</span>userName<span style="color:#f92672">,</span> passs<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                string developerToken <span style="color:#f92672">=</span> fact<span style="color:#f92672">.</span><span style="color:#a6e22e">QueryAuthToken</span><span style="color:#f92672">(</span>myCred<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                service <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GBaseService<span style="color:#f92672">(</span>appNameG<span style="color:#f92672">,</span> developerToken<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                service<span style="color:#f92672">.</span><span style="color:#a6e22e">Credentials</span> <span style="color:#f92672">=</span> myCred<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Google authorization failed! {0}&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">Message</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; OK.&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">Write</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Connecting to database....&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//acquire reader and send data in batches
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            SqlDataReader reader <span style="color:#f92672">=</span> Utils<span style="color:#f92672">.</span><span style="color:#a6e22e">GetReader</span><span style="color:#f92672">(</span>connection<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>reader <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; OK.&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">//reader.Read();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#75715e">//service.Insert(GBaseUriFactory.Default.ItemsFeedUri, (new MyItem(reader)).CreateGEntry(new AtomPerson(AtomPersonType.Author, userName), 1));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>            GBaseQuery query <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GBaseQuery<span style="color:#f92672">(</span>GBaseUriFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">Default</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ItemsFeedUri</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            MyItem workMyItem<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            GBaseFeed resultQ <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            AtomFeed batchFeed<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            AtomPerson author <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomPerson<span style="color:#f92672">(</span>AtomPersonType<span style="color:#f92672">.</span><span style="color:#a6e22e">Author</span><span style="color:#f92672">,</span> userName<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            batchFeed <span style="color:#f92672">=</span> GetNewBatchFeed<span style="color:#f92672">(</span>service<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> processed <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Processing data in batches of {0}&#34;</span><span style="color:#f92672">,</span> batchCount<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>reader<span style="color:#f92672">.</span><span style="color:#a6e22e">Read</span><span style="color:#f92672">())</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                workMyItem <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyItem<span style="color:#f92672">(</span>reader<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Console<span style="color:#f92672">.</span><span style="color:#a6e22e">Write</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{0,-45}&#34;</span><span style="color:#f92672">,</span> workMyItem<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>workMyItem<span style="color:#f92672">.</span><span style="color:#a6e22e">Name</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Length</span> <span style="color:#f92672">&lt;</span> 3<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;MyItem has too short name to be stored GBase!&#34;</span><span style="color:#f92672">);</span> <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>checkExistance<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                        query<span style="color:#f92672">.</span><span style="color:#a6e22e">GoogleBaseQuery</span> <span style="color:#f92672">=</span> string<span style="color:#f92672">.</span><span style="color:#a6e22e">Format</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;[item type: {0}] (&#34;</span><span style="color:#f92672">{</span>1<span style="color:#f92672">}</span><span style="color:#e6db74">&#34;)&#34;</span><span style="color:#f92672">,</span> MyItem<span style="color:#f92672">.</span><span style="color:#a6e22e">MyItem_TYPE</span><span style="color:#f92672">,</span> workMyItem<span style="color:#f92672">.</span><span style="color:#a6e22e">Name</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Replace</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;:&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">));</span><span style="color:#75715e">//search replacing COLONS a these are service charackters.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        resultQ <span style="color:#f92672">=</span> service<span style="color:#f92672">.</span><span style="color:#a6e22e">Query</span><span style="color:#f92672">(</span>query<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                        Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;!!!Searching failed...!!!n{0}&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">Message</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>checkExistance <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">(</span>resultQ<span style="color:#f92672">.</span><span style="color:#a6e22e">Entries</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Count</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                    Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; -Found {1} matching item(s). Skipping.&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                    batchFeed<span style="color:#f92672">.</span><span style="color:#a6e22e">Entries</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Add</span><span style="color:#f92672">(</span>workMyItem<span style="color:#f92672">.</span><span style="color:#a6e22e">CreateGEntry</span><span style="color:#f92672">(</span>author<span style="color:#f92672">,</span> processed<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>                    Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; Added to batch.&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                    processed<span style="color:#f92672">++;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>processed <span style="color:#f92672">==</span> batchCount<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                    Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;n**Sending batch...&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>SendBatch<span style="color:#f92672">(</span>service<span style="color:#f92672">,</span> batchFeed<span style="color:#f92672">))</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                    batchFeed <span style="color:#f92672">=</span> GetNewBatchFeed<span style="color:#f92672">(</span>service<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>     processed <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> 
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>processed <span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> SendBatch<span style="color:#f92672">(</span>service<span style="color:#f92672">,</span> batchFeed<span style="color:#f92672">);</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">//clean up
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    connection<span style="color:#f92672">.</span><span style="color:#a6e22e">Close</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    reader<span style="color:#f92672">.</span><span style="color:#a6e22e">Close</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Could not release connection resources.{0}&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">Message</span><span style="color:#f92672">);</span>    
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> AtomFeed <span style="color:#a6e22e">GetNewBatchFeed</span><span style="color:#f92672">(</span>GBaseService service<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            AtomFeed batchFeed<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            batchFeed <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomFeed<span style="color:#f92672">(</span>GBaseUriFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">Default</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ItemsFeedBatchUri</span><span style="color:#f92672">,</span> service<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            batchFeed<span style="color:#f92672">.</span><span style="color:#a6e22e">BatchData</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GDataBatchFeedData<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> batchFeed<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> bool <span style="color:#a6e22e">SendBatch</span><span style="color:#f92672">(</span>GBaseService service<span style="color:#f92672">,</span> AtomFeed batchFeed<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">{</span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                AtomFeed result <span style="color:#f92672">=</span> service<span style="color:#f92672">.</span><span style="color:#a6e22e">Batch</span><span style="color:#f92672">(</span>batchFeed<span style="color:#f92672">,</span> GBaseUriFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">Default</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ItemsFeedBatchUri</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nn*** {0} entries published.&#34;</span><span style="color:#f92672">,</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">Entries</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Count</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                Console<span style="color:#f92672">.</span><span style="color:#a6e22e">WriteLine</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Couldn&#39;t publish batch data. {0}nContinue?(y/n)&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">Message</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                ConsoleKeyInfo key <span style="color:#f92672">=</span> Console<span style="color:#f92672">.</span><span style="color:#a6e22e">ReadKey</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>key<span style="color:#f92672">.</span><span style="color:#a6e22e">KeyChar</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;y&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div>
               
             </div>
           </div>

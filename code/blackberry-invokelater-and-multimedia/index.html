@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn’t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on Stack Overflow and BlackBerry developer forums but that didn’t lead me anywhere except that I thought that something definitely gets locked.">
@@ -269,67 +269,67 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Recently had an issue in the BlackBerry Java application: it was reported to crash if the sounds were on and played often. However it didn’t crash if sounds were played once in a while. After some investigation it turned out that there are no memory leaks but some thing blocked the event dispatch queue. I asked for help on <a href="http://stackoverflow.com/questions/1459681/application-crashes-with-exception-when-using-javax-microedition-media-player/1464802#1464802">Stack Overflow</a> and <a href="http://supportforums.blackberry.com/rim/board/message?board.id=java_dev&amp;message.id=61681&amp;jump=true#M61681">BlackBerry developer forums</a> but that didn’t lead me  anywhere except that I thought that something definitely gets locked. as my sounds were played via</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">SoundPlayer sp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SoundPlayer<span style="color:#f92672">((</span>String<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>SoundNotification<span style="color:#f92672">)</span> arg<span style="color:#f92672">).</span><span style="color:#a6e22e">getArg</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> Constants<span style="color:#f92672">.</span><span style="color:#a6e22e">EXTENSION_MIDI</span><span style="color:#f92672">);</span>
-        sp<span style="color:#f92672">.</span><span style="color:#a6e22e">setVolumeLevel</span><span style="color:#f92672">(</span>100<span style="color:#f92672">);</span>
-        sp<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxPlaybackMilis</span><span style="color:#f92672">(</span>4000<span style="color:#f92672">);</span>
-        invokeLater<span style="color:#f92672">(</span>sp<span style="color:#f92672">);</span>
-</code></pre></div><p>i though that maybe this is the concurrent resource access issue as some of the melodies had to be played more than one time. So I implemented a simple manager like</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SoundManager</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
-
-  <span style="color:#66d9ef">boolean</span> _isRunning<span style="color:#f92672">;</span>
-  Vector _playList<span style="color:#f92672">;</span>
-
-  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SoundManager</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    _isRunning <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-    _playList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Vector<span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
-  <span style="color:#f92672">}</span>
-
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">stop</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    _isRunning <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-  <span style="color:#f92672">}</span>
-
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addTrack</span><span style="color:#f92672">(</span>String item<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    _playList<span style="color:#f92672">.</span><span style="color:#a6e22e">insertElementAt</span><span style="color:#f92672">(</span>item<span style="color:#f92672">,</span> _playList<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
-    notify<span style="color:#f92672">();</span>
-  <span style="color:#f92672">}</span>
-
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>_isRunning<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>_playList<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-          <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-            wait<span style="color:#f92672">();</span>
-          <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#75715e">// do nothing
-</span><span style="color:#75715e"></span>          <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
-      <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-        <span style="color:#75715e">// no f..n queue in this SDK
-</span><span style="color:#75715e"></span>        String item <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span>_playList<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-          item <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>String<span style="color:#f92672">)</span> _playList<span style="color:#f92672">.</span><span style="color:#a6e22e">elementAt</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
-          _playList<span style="color:#f92672">.</span><span style="color:#a6e22e">removeElementAt</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">final</span> SoundPlayer sp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SoundPlayer<span style="color:#f92672">(</span>item<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>sp<span style="color:#f92672">.</span><span style="color:#a6e22e">isPlaying</span><span style="color:#f92672">())</span>
-          sleep<span style="color:#f92672">(</span>500<span style="color:#f92672">);</span>
-        sp<span style="color:#f92672">.</span><span style="color:#a6e22e">setVolumeLevel</span><span style="color:#f92672">(</span>100<span style="color:#f92672">);</span>
-        sp<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxPlaybackMilis</span><span style="color:#f92672">(</span>4000<span style="color:#f92672">);</span>
-        sp<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">();</span>
-      <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-  <span style="color:#f92672">}</span>
-
-  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span><span style="color:#66d9ef">long</span> timeout<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-      Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>timeout<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#f92672">}</span>
-  <span style="color:#f92672">}</span>
-
-<span style="color:#f92672">}</span>
-</code></pre></div><p>and launched it along with application. BTW I was pretty much surprised that there IS NO QUEUE in 4.0.2 blackberry JDK SO i had to use Vector(well din’t really have to but it was used all around the code so I just grabbed it to be able to asap). This solved the issue.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>SoundPlayer sp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SoundPlayer<span style="color:#f92672">((</span>String<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>SoundNotification<span style="color:#f92672">)</span> arg<span style="color:#f92672">).</span><span style="color:#a6e22e">getArg</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> Constants<span style="color:#f92672">.</span><span style="color:#a6e22e">EXTENSION_MIDI</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        sp<span style="color:#f92672">.</span><span style="color:#a6e22e">setVolumeLevel</span><span style="color:#f92672">(</span>100<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        sp<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxPlaybackMilis</span><span style="color:#f92672">(</span>4000<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        invokeLater<span style="color:#f92672">(</span>sp<span style="color:#f92672">);</span>
+</span></span></code></pre></div><p>i though that maybe this is the concurrent resource access issue as some of the melodies had to be played more than one time. So I implemented a simple manager like</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SoundManager</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">boolean</span> _isRunning<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  Vector _playList<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SoundManager</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    _isRunning <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    _playList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Vector<span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">stop</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    _isRunning <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addTrack</span><span style="color:#f92672">(</span>String item<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    _playList<span style="color:#f92672">.</span><span style="color:#a6e22e">insertElementAt</span><span style="color:#f92672">(</span>item<span style="color:#f92672">,</span> _playList<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>    notify<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>_isRunning<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>_playList<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            wait<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// do nothing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// no f..n queue in this SDK
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        String item <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span>_playList<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>          item <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>String<span style="color:#f92672">)</span> _playList<span style="color:#f92672">.</span><span style="color:#a6e22e">elementAt</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>          _playList<span style="color:#f92672">.</span><span style="color:#a6e22e">removeElementAt</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> SoundPlayer sp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SoundPlayer<span style="color:#f92672">(</span>item<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>sp<span style="color:#f92672">.</span><span style="color:#a6e22e">isPlaying</span><span style="color:#f92672">())</span>
+</span></span><span style="display:flex;"><span>          sleep<span style="color:#f92672">(</span>500<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        sp<span style="color:#f92672">.</span><span style="color:#a6e22e">setVolumeLevel</span><span style="color:#f92672">(</span>100<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        sp<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxPlaybackMilis</span><span style="color:#f92672">(</span>4000<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        sp<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span><span style="color:#66d9ef">long</span> timeout<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>timeout<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>and launched it along with application. BTW I was pretty much surprised that there IS NO QUEUE in 4.0.2 blackberry JDK SO i had to use Vector(well din’t really have to but it was used all around the code so I just grabbed it to be able to asap). This solved the issue.</p>
 <p>However the the root of the problem was different from what I thought(though the solution is still correct). The root of the problem was  my misunderstanding of the invokeLater method. It is misleading that it takes Runnable as a param – it actually executes your runnable on the event dispatch queue! Gotcha! Some of my sounds were 13 seconds long – no wonder firmware blocked the app with  “<span style="border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 18px;">Application is not responding</span>” exception.</p>
 
               

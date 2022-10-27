@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.89.4 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.103.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Viktor Halitsyn">
 <meta name="keywords" content=", code, travel, immigration, ukraine, washington">
 <meta name="description" content="Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.">
@@ -267,399 +267,399 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.0.5 SDK.First i would like to say that i haven’t found better way(say another way) to make slection/highlight of an annotation that creating my own selection server for that annotation. It also has to be said that every single type in Acrobat that “can be highlighted” has its own selection server(of type AVDocSelectionServer) which in practise can be obtained if you know its “internal” name. For example if you want a selection server for type “Button” you can something as following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">AVDocGetSelectionServerByType(ASAtomFromString(<span style="color:#e6db74">&#34;Button&#34;</span>));
-</code></pre></div><p>There are selection servers for simple annotations but my annotation was a custom object, created by plug-in and thus didn’t have one. It didn’t prevent acrobat to use normal highlighting for it as when treating it as simple annotation in object editing mode, but the request was to provide highligting regardless of mode. So solution is to register the selection server. There is an example shipped with SDK of how to make custom selection servers but this example has a minor bug in it(it is configured so that selection will be drawn on every page whereas it has to be drawn only on the page where the object resides) and it doesnt take into consideration possibility of acrobat to change selection servers without notifying current selection server to lose its selection(for example when user press CTRL+A). So here we go with the code:First thing is to create a class which would be holding our selection and provide the selection type. To manage selections on different pages i created a simple class containinng list with page/data pairs and made it static for cross-page persistance. secondly implement the selection server. There is one workaround here in my code: to handle CTRL+A for simple objects on the page i use its selection server by injecting “losing selection” funtionality before server case takes place and then return to the normal application flow.This is definetely not a good way – but i found no other solution and this one is working:).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>AVDocGetSelectionServerByType(ASAtomFromString(<span style="color:#e6db74">&#34;Button&#34;</span>));
+</span></span></code></pre></div><p>There are selection servers for simple annotations but my annotation was a custom object, created by plug-in and thus didn’t have one. It didn’t prevent acrobat to use normal highlighting for it as when treating it as simple annotation in object editing mode, but the request was to provide highligting regardless of mode. So solution is to register the selection server. There is an example shipped with SDK of how to make custom selection servers but this example has a minor bug in it(it is configured so that selection will be drawn on every page whereas it has to be drawn only on the page where the object resides) and it doesnt take into consideration possibility of acrobat to change selection servers without notifying current selection server to lose its selection(for example when user press CTRL+A). So here we go with the code:First thing is to create a class which would be holding our selection and provide the selection type. To manage selections on different pages i created a simple class containinng list with page/data pairs and made it static for cross-page persistance. secondly implement the selection server. There is one workaround here in my code: to handle CTRL+A for simple objects on the page i use its selection server by injecting “losing selection” funtionality before server case takes place and then return to the normal application flow.This is definetely not a good way – but i found no other solution and this one is working:).</p>
 <p>So here is the header file of the Selection Server</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">/*********************************************************************
-</span><span style="color:#75715e">ADOBE SYSTEMS INCORPORATED
-</span><span style="color:#75715e">Copyright (C) 1994-2003 Adobe Systems Incorporated
-</span><span style="color:#75715e">All rights reserved.
-</span><span style="color:#75715e">NOTICE: Adobe permits you to use, modify, and distribute this file
-</span><span style="color:#75715e">in accordance with the terms of the Adobe license agreement
-</span><span style="color:#75715e">accompanying it. If you have received this file from a source other
-</span><span style="color:#75715e">than Adobe, then your use, modification, or distribution of it
-</span><span style="color:#75715e">requires the prior written permission of Adobe.
-</span><span style="color:#75715e">---------------------------------------------------------------------
-</span><span style="color:#75715e">SelectionServer.h
-</span><span style="color:#75715e">*********************************************************************/</span>
-
-<span style="color:#75715e">#ifndef PIDGETSELECTIONSERVER_H
-</span><span style="color:#75715e">#define PIDGETSELECTIONSERVER_H
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;list&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;map&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">typedef</span> pair<span style="color:#f92672">&lt;</span>pdpage,list<span style="color:#f92672">&lt;</span>asfixedRect<span style="color:#f92672">&gt;*&gt;</span> PageSelection;
-  <span style="color:#75715e">/* CustomClassSelection
-</span><span style="color:#75715e">  ** ------------------------------------------------------
-</span><span style="color:#75715e">  **
-</span><span style="color:#75715e">  ** This is the structure used to store selection data for
-</span><span style="color:#75715e">  ** selections of type &#34;CustomClass&#34;. All callbacks in our
-</span><span style="color:#75715e">  ** AVDocSelectionServer can assume that selData is a
-</span><span style="color:#75715e">  ** pointer to one of these.
-</span><span style="color:#75715e">  */</span>
-  <span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">_t_CustomClassSelection</span>
-  {
-    PDAnnot annotToScrollTo;<span style="color:#75715e">// the first annot that is highlighted
-</span><span style="color:#75715e"></span>    list<span style="color:#f92672">&lt;</span>pageSelection<span style="color:#f92672">&gt;*</span> pageSelectionToHighlight;
-    AVDoc currentDoc;
-    <span style="color:#66d9ef">bool</span> isAnnotToScrollToSet;
-  } CustomClassSelectionRec, <span style="color:#f92672">*</span>CustomClassSelection;
-
-  <span style="color:#75715e">// Pidget selection/highlight methods. These methods are
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">// shared between the selection server and the AVTool.
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">InitializeCustomClassSelectionServer</span> (<span style="color:#66d9ef">void</span>);
-  <span style="color:#75715e">/* SelectionServerGetType
-</span><span style="color:#75715e">  ** ------------------------------------------------------
-</span><span style="color:#75715e">  ** */</span>
-  <span style="color:#75715e">/** We&#39;re registering a selection server of type &#34;CustomClass&#34;.
-</span><span style="color:#75715e">  **
-</span><span style="color:#75715e">  ** @return the selection server type.
-</span><span style="color:#75715e">  ** */</span>
-  <span style="color:#66d9ef">static</span> ACCB1 ASAtom ACCB2 <span style="color:#a6e22e">CustomClassSelectionServerGetType</span> ()
-  {
-    <span style="color:#66d9ef">return</span> ASAtomFromString (<span style="color:#e6db74">&#34;CustomClass&#34;</span>);
-  }
-
-  ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">DrawCustomClassSelection</span> (AVPageView pageView, AVDevRect <span style="color:#f92672">*</span>updateRect, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>data);
-  <span style="color:#66d9ef">extern</span> ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">SelectionServerLosingSelection</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>selData, ASBool highlight);
-  <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">MySelectAllProc</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> selData);
-  <span style="color:#66d9ef">extern</span> AVDocSelectionSelectAllProc prc;
-  <span style="color:#75715e">#endif 
-</span><span style="color:#75715e"></span>  
-  <span style="color:#75715e">// !SELECTIONSERVER_H
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">// ***************Its corresponding realization and helper &#39;drawing utils&#39; file intended to actually draw the selection************
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">/*********************************************************************
-</span><span style="color:#75715e">  ADOBE SYSTEMS INCORPORATED
-</span><span style="color:#75715e">  Copyright (C) 1994-2003 Adobe Systems Incorporated
-</span><span style="color:#75715e">  All rights reserved.
-</span><span style="color:#75715e">  NOTICE: Adobe permits you to use, modify, and distribute this file
-</span><span style="color:#75715e">  in accordance with the terms of the Adobe license agreement
-</span><span style="color:#75715e">  accompanying it. If you have received this file from a source other
-</span><span style="color:#75715e">  than Adobe, then your use, modification, or distribution of it
-</span><span style="color:#75715e">  requires the prior written permission of Adobe.
-</span><span style="color:#75715e">  -------------------------------------------------------------------*/</span> 
-  <span style="color:#75715e">/**
-</span><span style="color:#75715e">  file SelectionServer.cpp
-</span><span style="color:#75715e">  - The SelectionServer plug-in implements a selection server to handle
-</span><span style="color:#75715e">  pidgets. The pidgets selection tool allows users to select pidgetss by calling
-</span><span style="color:#75715e">  AVDocSetSelection() with a selection type of &#34;CustomClass&#34;.
-</span><span style="color:#75715e">  This call passes control to the selection server, which proceeds to
-</span><span style="color:#75715e">  highlight the pidget.
-</span><span style="color:#75715e">  - The selection server functionality is limited to getting, showing, and
-</span><span style="color:#75715e">  losing a selection.
-</span><span style="color:#75715e">  *********************************************************************/</span>
-  <span style="color:#75715e">#ifndef MAC_PLATFORM
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;PIHeaders.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CommonHeaders.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SelectionServer.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Page.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>  
-  <span style="color:#75715e">/*-------------------------------------------------------
-</span><span style="color:#75715e">  Constants/Declarations
-</span><span style="color:#75715e">  -------------------------------------------------------*/</span>
-  <span style="color:#66d9ef">static</span> ASAtom CustomClass_K;
-  <span style="color:#66d9ef">static</span> AVPageViewDrawProc cbDrawCustomClassSelection;
-  <span style="color:#66d9ef">static</span> AVDocSelectionServerRec CustomClassSelectionServer;
-  <span style="color:#66d9ef">static</span> AVDocSelectionSelectAllProc prc;
-  <span style="color:#75715e">/*-------------------------------------------------------
-</span><span style="color:#75715e">  AVDocSelectionServer Callbacks
-</span><span style="color:#75715e">  -------------------------------------------------------*/</span>
-  <span style="color:#75715e">/* SelectionServerGettingSelection
-</span><span style="color:#75715e">  ** ------------------------------------------------------
-</span><span style="color:#75715e">  ** */</span> 
-  <span style="color:#75715e">//** This is the selection server&#39;s callback for when a
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">//** selection is registered. 
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">//**
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">//** @param selData pointer to an CustomClassSelectionRec allocated 
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">//** through ASmalloc. The LosingSelection callback will call 
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">//** ASfree() on it.
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">//**
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">//** @see AVAppRegisterForPageViewDrawing
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">//** */
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">static</span> ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">SelectionServerGettingSelection</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>selData, ASBool highlight)
-  {
-    ASAtom atm <span style="color:#f92672">=</span> ASAtomFromString(<span style="color:#e6db74">&#34;Authoring&#34;</span>);
-    AVDocSelectionServer srvr <span style="color:#f92672">=</span> AVDocGetSelectionServerByType(atm);
-    prc <span style="color:#f92672">=</span> srvr<span style="color:#f92672">-&gt;</span>SelectAll;
-    srvr<span style="color:#f92672">-&gt;</span>SelectAll <span style="color:#f92672">=</span> ASCallbackCreateProto (AVDocSelectionSelectAllProc, <span style="color:#f92672">&amp;</span>MySelectAllProc);
-    
-    
-    AVPageView pageView <span style="color:#f92672">=</span> AVDocGetPageView(doc);
-    CustomClassSelection isel <span style="color:#f92672">=</span> (CustomClassSelection)selData;
-    <span style="color:#75715e">// Draw the selection. It will only be drawn if the page
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// holding the selection is being displayed.
-</span><span style="color:#75715e"></span>    DrawCustomClassSelection (pageView, NULL, selData);
-    <span style="color:#75715e">// Register the AVPageViewDrawProc so we can redraw the selection
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// when the page is updated.
-</span><span style="color:#75715e"></span>    AVAppRegisterForPageViewDrawing (cbDrawCustomClassSelection, isel);
-  }
-
-  <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">MySelectAllProc</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> selData){
-    SelectionServerLosingSelection(AVAppGetActiveDoc(),Page<span style="color:#f92672">::</span>currentSelection,false);
-    ASAtom atm <span style="color:#f92672">=</span> ASAtomFromString(<span style="color:#e6db74">&#34;Authoring&#34;</span>);
-    AVDocSelectionServer srvr <span style="color:#f92672">=</span> AVDocGetSelectionServerByType(atm);
-    srvr<span style="color:#f92672">-&gt;</span>SelectAll <span style="color:#f92672">=</span> prc;
-    <span style="color:#66d9ef">return</span> srvr<span style="color:#f92672">-&gt;</span>SelectAll(doc,selData);
-  }
-  <span style="color:#75715e">/* SelectionServerLosingSelection
-</span><span style="color:#75715e">  ** ------------------------------------------------------
-</span><span style="color:#75715e">  ** */</span> 
-  <span style="color:#75715e">/** This is called whenever we have an active selection
-</span><span style="color:#75715e">  ** and the Viewer is attempting to change the selection
-</span><span style="color:#75715e">  ** to something else.
-</span><span style="color:#75715e">  **
-</span><span style="color:#75715e">  ** @see AVDocGetPageView
-</span><span style="color:#75715e">  ** @see AVAppUnregisterForPageViewDrawing
-</span><span style="color:#75715e">  ** @see PDPageGetNumber
-</span><span style="color:#75715e">  ** @see AVPageViewGetFirstVisiblePageNum
-</span><span style="color:#75715e">  ** @see AVPageViewGetLastVisiblePageNum
-</span><span style="color:#75715e">  ** @see AVPageViewRectToDevice
-</span><span style="color:#75715e">  ** @see AVPageViewInvalidateRect
-</span><span style="color:#75715e">  ** @see AVPageViewDrawNow
-</span><span style="color:#75715e">  ** @see PDPageRelease
-</span><span style="color:#75715e">  ** @see ASFree
-</span><span style="color:#75715e">  */</span>
-  ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">SelectionServerLosingSelection</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>selData, ASBool highlight)
-  {
-    AVPageView pageView <span style="color:#f92672">=</span> AVDocGetPageView(doc);
-    CustomClassSelection isel <span style="color:#f92672">=</span> (CustomClassSelection)selData;
-    ASAtom atm <span style="color:#f92672">=</span> ASAtomFromString(<span style="color:#e6db74">&#34;Authoring&#34;</span>);
-    AVDocSelectionServer srvr <span style="color:#f92672">=</span> AVDocGetSelectionServerByType(atm);
-    srvr<span style="color:#f92672">-&gt;</span>SelectAll <span style="color:#f92672">=</span> prc;
-    
-    <span style="color:#75715e">// Make sure that an exception doesn&#39;t prevent us from
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// releasing the PDPage.
-</span><span style="color:#75715e"></span>    DURING
-    <span style="color:#75715e">// Unregister the AVPageViewDrawProc; there&#39;s no selection
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// to draw any more.
-</span><span style="color:#75715e"></span>    AVAppUnregisterForPageViewDrawing (cbDrawCustomClassSelection);
-    
-    <span style="color:#66d9ef">for</span>(list<span style="color:#f92672">&lt;</span>pageSelection<span style="color:#f92672">&gt;::</span>iterator i <span style="color:#f92672">=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>begin(); i <span style="color:#f92672">!=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>end(); i<span style="color:#f92672">++</span>)
-    {
-      PageSelection<span style="color:#f92672">*</span> iteratorSel <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>(<span style="color:#f92672">*</span>i);
-      ASInt32 pageNum <span style="color:#f92672">=</span> PDPageGetNumber (iteratorSel<span style="color:#f92672">-&gt;</span>first);
-      <span style="color:#66d9ef">if</span> ((pageNum <span style="color:#f92672">&gt;=</span> AVPageViewGetFirstVisiblePageNum(pageView)) <span style="color:#f92672">&amp;&amp;</span>
-      (pageNum <span style="color:#f92672">&lt;=</span> AVPageViewGetLastVisiblePageNum(pageView)) <span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">03</span><span style="color:#ae81ff">8</span>;<span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">03</span><span style="color:#ae81ff">8</span>; highlight)
-      {
-        AVDevRect viewRect;
-        <span style="color:#66d9ef">for</span>(list<span style="color:#f92672">&lt;</span>asfixedRect<span style="color:#f92672">&gt;::</span>iterator pageRect <span style="color:#f92672">=</span> iteratorSel<span style="color:#f92672">-&gt;</span>second<span style="color:#f92672">-&gt;</span>begin(); pageRect <span style="color:#f92672">!=</span> iteratorSel<span style="color:#f92672">-&gt;</span>second<span style="color:#f92672">-&gt;</span>end();pageRect<span style="color:#f92672">++</span>)
-        {
-          AVPageViewRectToDevice (pageView, <span style="color:#f92672">&amp;</span>(<span style="color:#f92672">*</span>pageRect), <span style="color:#f92672">&amp;</span>viewRect);
-          AVPageViewInvalidateRect (pageView, <span style="color:#f92672">&amp;</span>viewRect);
-        }
-        AVPageViewDrawNow (pageView);
-      }
-    }
-    
-    HANDLER
-    END_HANDLER;
-    <span style="color:#75715e">// Release the page.
-</span><span style="color:#75715e"></span>    
-    <span style="color:#66d9ef">for</span>(list<span style="color:#f92672">&lt;</span>pageSelection<span style="color:#f92672">&gt;::</span>iterator i <span style="color:#f92672">=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>begin(); i <span style="color:#f92672">!=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>end(); i<span style="color:#f92672">++</span>)
-    {
-      PDPageRelease (((PageSelection)(<span style="color:#f92672">*</span>i)).first);
-    }
-    <span style="color:#75715e">// Free the selection data. Note that anyone calling AVDocSetSelection
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// for our selection server must have used ASmalloc to allocate the
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// memory, or this won&#39;t work.
-</span><span style="color:#75715e"></span>    ASfree (isel);
-  }
-  <span style="color:#75715e">/* SelectionServerShowSelection
-</span><span style="color:#75715e">  ** ------------------------------------------------------
-</span><span style="color:#75715e">  ** */</span> 
-  <span style="color:#75715e">/** If the user has strayed to a page different from the
-</span><span style="color:#75715e">  / ** selection, this callback will take the user to the
-</span><span style="color:#75715e">  ** correct page and scroll the selection into view.
-</span><span style="color:#75715e">  **
-</span><span style="color:#75715e">  ** @see AVPageViewBeginOperation
-</span><span style="color:#75715e">  ** @see AVPageViewGoTo
-</span><span style="color:#75715e">  ** @see AVPageViewRectToDevice
-</span><span style="color:#75715e">  ** @see AVPageViewScrollToRect
-</span><span style="color:#75715e">  ** @see AVPageViewEndOperation
-</span><span style="color:#75715e">  **/</span>
-  <span style="color:#66d9ef">static</span> ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">SelectionServerShowSelection</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>selData)
-  {
-  <span style="color:#75715e">//currently not used
-</span><span style="color:#75715e"></span>  }
-
-  ASBool <span style="color:#a6e22e">SelectionServerKeyDown</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> data, AVKeyCode key, AVFlagBits16 flags){
-    <span style="color:#66d9ef">if</span> (key <span style="color:#f92672">==</span> <span style="color:#ae81ff">127</span>) {
-      AVDocClearSelection(AVAppGetActiveDoc(),false);
-    }
-    <span style="color:#66d9ef">return</span> false;
-  }
-  
-  <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">SelectionServerRemovedFromSelection</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> curData, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> remData, ASBool highlight)
-  {
-    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
-    <span style="color:#66d9ef">return</span> NULL;
-  }
-
-  <span style="color:#75715e">/* InitializeSelectionServer
-</span><span style="color:#75715e">  ** ------------------------------------------------------
-</span><span style="color:#75715e">  ** */</span> 
-  <span style="color:#75715e">//** Create and register the selection server for pidgets.
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">// **
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">// ** @see ASAtomFromString
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">// ** @see AVDocRegisterSelectionServer
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">// ** */
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">InitializeCustomClassSelectionServer</span> (<span style="color:#66d9ef">void</span>)
-  {
-    <span style="color:#75715e">// Initialize our supporting globals.
-</span><span style="color:#75715e"></span>    CustomClass_K <span style="color:#f92672">=</span> CustomClassSelectionServerGetType();
-    cbDrawCustomClassSelection <span style="color:#f92672">=</span> ASCallbackCreateProto (AVPageViewDrawProc, DrawCustomClassSelection);
-    <span style="color:#75715e">// Set up the pidget selection server.
-</span><span style="color:#75715e"></span>    memset (<span style="color:#f92672">&amp;</span>CustomClassSelectionServer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(AVDocSelectionServerRec));
-    CustomClassSelectionServer.size <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(AVDocSelectionServerRec);
-    <span style="color:#75715e">// Currently, we only implement Getting, Losing and Showing selections.
-</span><span style="color:#75715e"></span>    CustomClassSelectionServer.GetType <span style="color:#f92672">=</span>
-    ASCallbackCreateProto (AVDocSelectionGetTypeProc, <span style="color:#f92672">&amp;</span>CustomClassSelectionServerGetType);
-    CustomClassSelectionServer.GettingSelection <span style="color:#f92672">=</span>
-    ASCallbackCreateProto (AVDocSelectionGettingSelectionProc, <span style="color:#f92672">&amp;</span>SelectionServerGettingSelection);
-    CustomClassSelectionServer.LosingSelection <span style="color:#f92672">=</span>
-    ASCallbackCreateProto (AVDocSelectionLosingSelectionProc, <span style="color:#f92672">&amp;</span>SelectionServerLosingSelection);
-    CustomClassSelectionServer.ShowSelection <span style="color:#f92672">=</span>
-    ASCallbackCreateProto (AVDocSelectionShowSelectionProc, <span style="color:#f92672">&amp;</span>SelectionServerShowSelection);
-    CustomClassSelectionServer.KeyDown <span style="color:#f92672">=</span>
-    ASCallbackCreateProto (AVDocSelectionKeyDownProc, <span style="color:#f92672">&amp;</span>SelectionServerKeyDown);
-    CustomClassSelectionServer.RemovedFromSelection <span style="color:#f92672">=</span>
-    ASCallbackCreateProto (AVDocSelectionRemovedFromSelectionProc, <span style="color:#f92672">&amp;</span>SelectionServerRemovedFromSelection);
-    AVDocRegisterSelectionServer (<span style="color:#f92672">&amp;</span>CustomClassSelectionServer);
-  }
-</code></pre></div>  <p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">/*********************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">ADOBE SYSTEMS INCORPORATED
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Copyright (C) 1994-2003 Adobe Systems Incorporated
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">All rights reserved.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">NOTICE: Adobe permits you to use, modify, and distribute this file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">in accordance with the terms of the Adobe license agreement
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">accompanying it. If you have received this file from a source other
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">than Adobe, then your use, modification, or distribution of it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">requires the prior written permission of Adobe.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">---------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">SelectionServer.h
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*********************************************************************/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef PIDGETSELECTIONSERVER_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define PIDGETSELECTIONSERVER_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;list&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;map&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> pair<span style="color:#f92672">&lt;</span>pdpage,list<span style="color:#f92672">&lt;</span>asfixedRect<span style="color:#f92672">&gt;*&gt;</span> PageSelection;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* CustomClassSelection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** ------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  **
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** This is the structure used to store selection data for
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** selections of type &#34;CustomClass&#34;. All callbacks in our
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** AVDocSelectionServer can assume that selData is a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** pointer to one of these.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">_t_CustomClassSelection</span>
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    PDAnnot annotToScrollTo;<span style="color:#75715e">// the first annot that is highlighted
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    list<span style="color:#f92672">&lt;</span>pageSelection<span style="color:#f92672">&gt;*</span> pageSelectionToHighlight;
+</span></span><span style="display:flex;"><span>    AVDoc currentDoc;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> isAnnotToScrollToSet;
+</span></span><span style="display:flex;"><span>  } CustomClassSelectionRec, <span style="color:#f92672">*</span>CustomClassSelection;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Pidget selection/highlight methods. These methods are
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// shared between the selection server and the AVTool.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">InitializeCustomClassSelectionServer</span> (<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* SelectionServerGetType
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** ------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/** We&#39;re registering a selection server of type &#34;CustomClass&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  **
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @return the selection server type.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> ACCB1 ASAtom ACCB2 <span style="color:#a6e22e">CustomClassSelectionServerGetType</span> ()
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ASAtomFromString (<span style="color:#e6db74">&#34;CustomClass&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">DrawCustomClassSelection</span> (AVPageView pageView, AVDevRect <span style="color:#f92672">*</span>updateRect, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>data);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">extern</span> ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">SelectionServerLosingSelection</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>selData, ASBool highlight);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">MySelectAllProc</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> selData);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">extern</span> AVDocSelectionSelectAllProc prc;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#endif 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// !SELECTIONSERVER_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// ***************Its corresponding realization and helper &#39;drawing utils&#39; file intended to actually draw the selection************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">/*********************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ADOBE SYSTEMS INCORPORATED
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Copyright (C) 1994-2003 Adobe Systems Incorporated
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  All rights reserved.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  NOTICE: Adobe permits you to use, modify, and distribute this file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  in accordance with the terms of the Adobe license agreement
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  accompanying it. If you have received this file from a source other
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  than Adobe, then your use, modification, or distribution of it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  requires the prior written permission of Adobe.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  -------------------------------------------------------------------*/</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  file SelectionServer.cpp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  - The SelectionServer plug-in implements a selection server to handle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  pidgets. The pidgets selection tool allows users to select pidgetss by calling
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  AVDocSetSelection() with a selection type of &#34;CustomClass&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  This call passes control to the selection server, which proceeds to
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  highlight the pidget.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  - The selection server functionality is limited to getting, showing, and
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  losing a selection.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *********************************************************************/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#ifndef MAC_PLATFORM
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;PIHeaders.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CommonHeaders.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SelectionServer.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Page.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*-------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Constants/Declarations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  -------------------------------------------------------*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> ASAtom CustomClass_K;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> AVPageViewDrawProc cbDrawCustomClassSelection;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> AVDocSelectionServerRec CustomClassSelectionServer;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> AVDocSelectionSelectAllProc prc;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*-------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  AVDocSelectionServer Callbacks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  -------------------------------------------------------*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* SelectionServerGettingSelection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** ------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** */</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//** This is the selection server&#39;s callback for when a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//** selection is registered. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//** @param selData pointer to an CustomClassSelectionRec allocated 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//** through ASmalloc. The LosingSelection callback will call 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//** ASfree() on it.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//** @see AVAppRegisterForPageViewDrawing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//** */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">static</span> ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">SelectionServerGettingSelection</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>selData, ASBool highlight)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    ASAtom atm <span style="color:#f92672">=</span> ASAtomFromString(<span style="color:#e6db74">&#34;Authoring&#34;</span>);
+</span></span><span style="display:flex;"><span>    AVDocSelectionServer srvr <span style="color:#f92672">=</span> AVDocGetSelectionServerByType(atm);
+</span></span><span style="display:flex;"><span>    prc <span style="color:#f92672">=</span> srvr<span style="color:#f92672">-&gt;</span>SelectAll;
+</span></span><span style="display:flex;"><span>    srvr<span style="color:#f92672">-&gt;</span>SelectAll <span style="color:#f92672">=</span> ASCallbackCreateProto (AVDocSelectionSelectAllProc, <span style="color:#f92672">&amp;</span>MySelectAllProc);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    AVPageView pageView <span style="color:#f92672">=</span> AVDocGetPageView(doc);
+</span></span><span style="display:flex;"><span>    CustomClassSelection isel <span style="color:#f92672">=</span> (CustomClassSelection)selData;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Draw the selection. It will only be drawn if the page
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// holding the selection is being displayed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    DrawCustomClassSelection (pageView, NULL, selData);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Register the AVPageViewDrawProc so we can redraw the selection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// when the page is updated.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    AVAppRegisterForPageViewDrawing (cbDrawCustomClassSelection, isel);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">MySelectAllProc</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> selData){
+</span></span><span style="display:flex;"><span>    SelectionServerLosingSelection(AVAppGetActiveDoc(),Page<span style="color:#f92672">::</span>currentSelection,false);
+</span></span><span style="display:flex;"><span>    ASAtom atm <span style="color:#f92672">=</span> ASAtomFromString(<span style="color:#e6db74">&#34;Authoring&#34;</span>);
+</span></span><span style="display:flex;"><span>    AVDocSelectionServer srvr <span style="color:#f92672">=</span> AVDocGetSelectionServerByType(atm);
+</span></span><span style="display:flex;"><span>    srvr<span style="color:#f92672">-&gt;</span>SelectAll <span style="color:#f92672">=</span> prc;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> srvr<span style="color:#f92672">-&gt;</span>SelectAll(doc,selData);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* SelectionServerLosingSelection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** ------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** */</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/** This is called whenever we have an active selection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** and the Viewer is attempting to change the selection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** to something else.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  **
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVDocGetPageView
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVAppUnregisterForPageViewDrawing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see PDPageGetNumber
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVPageViewGetFirstVisiblePageNum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVPageViewGetLastVisiblePageNum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVPageViewRectToDevice
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVPageViewInvalidateRect
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVPageViewDrawNow
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see PDPageRelease
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see ASFree
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>  ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">SelectionServerLosingSelection</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>selData, ASBool highlight)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    AVPageView pageView <span style="color:#f92672">=</span> AVDocGetPageView(doc);
+</span></span><span style="display:flex;"><span>    CustomClassSelection isel <span style="color:#f92672">=</span> (CustomClassSelection)selData;
+</span></span><span style="display:flex;"><span>    ASAtom atm <span style="color:#f92672">=</span> ASAtomFromString(<span style="color:#e6db74">&#34;Authoring&#34;</span>);
+</span></span><span style="display:flex;"><span>    AVDocSelectionServer srvr <span style="color:#f92672">=</span> AVDocGetSelectionServerByType(atm);
+</span></span><span style="display:flex;"><span>    srvr<span style="color:#f92672">-&gt;</span>SelectAll <span style="color:#f92672">=</span> prc;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Make sure that an exception doesn&#39;t prevent us from
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// releasing the PDPage.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    DURING
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Unregister the AVPageViewDrawProc; there&#39;s no selection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// to draw any more.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    AVAppUnregisterForPageViewDrawing (cbDrawCustomClassSelection);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(list<span style="color:#f92672">&lt;</span>pageSelection<span style="color:#f92672">&gt;::</span>iterator i <span style="color:#f92672">=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>begin(); i <span style="color:#f92672">!=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>end(); i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      PageSelection<span style="color:#f92672">*</span> iteratorSel <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>(<span style="color:#f92672">*</span>i);
+</span></span><span style="display:flex;"><span>      ASInt32 pageNum <span style="color:#f92672">=</span> PDPageGetNumber (iteratorSel<span style="color:#f92672">-&gt;</span>first);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> ((pageNum <span style="color:#f92672">&gt;=</span> AVPageViewGetFirstVisiblePageNum(pageView)) <span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>      (pageNum <span style="color:#f92672">&lt;=</span> AVPageViewGetLastVisiblePageNum(pageView)) <span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">03</span><span style="color:#ae81ff">8</span>;<span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">03</span><span style="color:#ae81ff">8</span>; highlight)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        AVDevRect viewRect;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(list<span style="color:#f92672">&lt;</span>asfixedRect<span style="color:#f92672">&gt;::</span>iterator pageRect <span style="color:#f92672">=</span> iteratorSel<span style="color:#f92672">-&gt;</span>second<span style="color:#f92672">-&gt;</span>begin(); pageRect <span style="color:#f92672">!=</span> iteratorSel<span style="color:#f92672">-&gt;</span>second<span style="color:#f92672">-&gt;</span>end();pageRect<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          AVPageViewRectToDevice (pageView, <span style="color:#f92672">&amp;</span>(<span style="color:#f92672">*</span>pageRect), <span style="color:#f92672">&amp;</span>viewRect);
+</span></span><span style="display:flex;"><span>          AVPageViewInvalidateRect (pageView, <span style="color:#f92672">&amp;</span>viewRect);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        AVPageViewDrawNow (pageView);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    HANDLER
+</span></span><span style="display:flex;"><span>    END_HANDLER;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Release the page.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(list<span style="color:#f92672">&lt;</span>pageSelection<span style="color:#f92672">&gt;::</span>iterator i <span style="color:#f92672">=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>begin(); i <span style="color:#f92672">!=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>end(); i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      PDPageRelease (((PageSelection)(<span style="color:#f92672">*</span>i)).first);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Free the selection data. Note that anyone calling AVDocSetSelection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// for our selection server must have used ASmalloc to allocate the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// memory, or this won&#39;t work.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ASfree (isel);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* SelectionServerShowSelection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** ------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** */</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/** If the user has strayed to a page different from the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  / ** selection, this callback will take the user to the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** correct page and scroll the selection into view.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  **
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVPageViewBeginOperation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVPageViewGoTo
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVPageViewRectToDevice
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVPageViewScrollToRect
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** @see AVPageViewEndOperation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  **/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">SelectionServerShowSelection</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>selData)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//currently not used
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ASBool <span style="color:#a6e22e">SelectionServerKeyDown</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> data, AVKeyCode key, AVFlagBits16 flags){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (key <span style="color:#f92672">==</span> <span style="color:#ae81ff">127</span>) {
+</span></span><span style="display:flex;"><span>      AVDocClearSelection(AVAppGetActiveDoc(),false);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">SelectionServerRemovedFromSelection</span> (AVDoc doc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> curData, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> remData, ASBool highlight)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* InitializeSelectionServer
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** ------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ** */</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//** Create and register the selection server for pidgets.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// **
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// ** @see ASAtomFromString
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// ** @see AVDocRegisterSelectionServer
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// ** */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">InitializeCustomClassSelectionServer</span> (<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Initialize our supporting globals.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    CustomClass_K <span style="color:#f92672">=</span> CustomClassSelectionServerGetType();
+</span></span><span style="display:flex;"><span>    cbDrawCustomClassSelection <span style="color:#f92672">=</span> ASCallbackCreateProto (AVPageViewDrawProc, DrawCustomClassSelection);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Set up the pidget selection server.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    memset (<span style="color:#f92672">&amp;</span>CustomClassSelectionServer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(AVDocSelectionServerRec));
+</span></span><span style="display:flex;"><span>    CustomClassSelectionServer.size <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(AVDocSelectionServerRec);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Currently, we only implement Getting, Losing and Showing selections.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    CustomClassSelectionServer.GetType <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    ASCallbackCreateProto (AVDocSelectionGetTypeProc, <span style="color:#f92672">&amp;</span>CustomClassSelectionServerGetType);
+</span></span><span style="display:flex;"><span>    CustomClassSelectionServer.GettingSelection <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    ASCallbackCreateProto (AVDocSelectionGettingSelectionProc, <span style="color:#f92672">&amp;</span>SelectionServerGettingSelection);
+</span></span><span style="display:flex;"><span>    CustomClassSelectionServer.LosingSelection <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    ASCallbackCreateProto (AVDocSelectionLosingSelectionProc, <span style="color:#f92672">&amp;</span>SelectionServerLosingSelection);
+</span></span><span style="display:flex;"><span>    CustomClassSelectionServer.ShowSelection <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    ASCallbackCreateProto (AVDocSelectionShowSelectionProc, <span style="color:#f92672">&amp;</span>SelectionServerShowSelection);
+</span></span><span style="display:flex;"><span>    CustomClassSelectionServer.KeyDown <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    ASCallbackCreateProto (AVDocSelectionKeyDownProc, <span style="color:#f92672">&amp;</span>SelectionServerKeyDown);
+</span></span><span style="display:flex;"><span>    CustomClassSelectionServer.RemovedFromSelection <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    ASCallbackCreateProto (AVDocSelectionRemovedFromSelectionProc, <span style="color:#f92672">&amp;</span>SelectionServerRemovedFromSelection);
+</span></span><span style="display:flex;"><span>    AVDocRegisterSelectionServer (<span style="color:#f92672">&amp;</span>CustomClassSelectionServer);
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div>  <p>
     // drawing utils implementation
   </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">/*********************************************************************
-</span><span style="color:#75715e">ADOBE SYSTEMS INCORPORATED
-</span><span style="color:#75715e">Copyright (C) 1994-2003 Adobe Systems Incorporated
-</span><span style="color:#75715e">All rights reserved.
-</span><span style="color:#75715e">NOTICE: Adobe permits you to use, modify, and distribute this file
-</span><span style="color:#75715e">in accordance with the terms of the Adobe license agreement
-</span><span style="color:#75715e">accompanying it. If you have received this file from a source other
-</span><span style="color:#75715e">than Adobe, then your use, modification, or distribution of it
-</span><span style="color:#75715e">requires the prior written permission of Adobe.
-</span><span style="color:#75715e">-------------------------------------------------------------------*/</span> 
-<span style="color:#75715e">/**
-</span><span style="color:#75715e">file SelectionServerDrawUtils.cpp
-</span><span style="color:#75715e">- Implementation to draw the highlight around the selected pidget.
-</span><span style="color:#75715e">*********************************************************************/</span>
-<span style="color:#75715e">#ifndef MAC_PLATFORM
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;PIHeaders.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#endif
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CommonHeaders.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SelectionServer.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Resource.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">/*-------------------------------------------------------
-</span><span style="color:#75715e">Helper Methods
-</span><span style="color:#75715e">-------------------------------------------------------*/</span>
-<span style="color:#75715e">/* DrawCustomClassSelectionHighlight
-</span><span style="color:#75715e">** ------------------------------------------------------
-</span><span style="color:#75715e">** */</span> 
-<span style="color:#75715e">/** Draws the selection on the pageview. Simply draws a
-</span><span style="color:#75715e">** rectangle around the pidget.
-</span><span style="color:#75715e">**
-</span><span style="color:#75715e">** @see AVPageViewSetColor
-</span><span style="color:#75715e">** @see AVPageViewDrawRectOutline
-</span><span style="color:#75715e">** */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">DrawCustomClassSelectionHighlight</span> (AVPageView pageView, <span style="color:#66d9ef">const</span> AVDevRect <span style="color:#f92672">*</span>selBounds)
-{
-  PDColorValueRec colorVal;
-  <span style="color:#75715e">// Define the color for our selection.
-</span><span style="color:#75715e"></span>  colorVal.space <span style="color:#f92672">=</span> PDDeviceRGB ;
-  colorVal.value[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> ASInt32ToFixed(<span style="color:#ae81ff">1</span>);
-  colorVal.value[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> colorVal.value[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> ASInt32ToFixed(<span style="color:#ae81ff">0</span>);
-
-  <span style="color:#75715e">// Set the drawing color for the pageview.
-</span><span style="color:#75715e"></span>  AVPageViewSetColor (pageView, <span style="color:#f92672">&amp;</span>colorVal);
-  <span style="color:#75715e">// Draw the highlight.
-</span><span style="color:#75715e"></span>  AVPageViewDrawRectOutline(pageView, selBounds, <span style="color:#ae81ff">2</span>, NULL, <span style="color:#ae81ff">0</span>);
-}
-<span style="color:#75715e">/* DrawCustomClassSelection
-</span><span style="color:#75715e">** ------------------------------------------------------
-</span><span style="color:#75715e">** */</span> 
-<span style="color:#75715e">/** This is the AVPageViewDrawProc that draws the current
-</span><span style="color:#75715e">** selection. It is registered whenever the selection server&#39;s
-</span><span style="color:#75715e">** GettingSelection callback is called, and unregistered when
-</span><span style="color:#75715e">** the LosingSelection callback is called. The callback is
-</span><span style="color:#75715e">** created in InitializeSelectionServer().
-</span><span style="color:#75715e">**
-</span><span style="color:#75715e">** @see AVPageViewGetFirstVisiblePageNum
-</span><span style="color:#75715e">** @see AVPageViewGetLastVisiblePageNum
-</span><span style="color:#75715e">** @see AVPageViewRectToDevice
-</span><span style="color:#75715e">** */</span>
-ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">DrawCustomClassSelection</span> (AVPageView pageView, AVDevRect <span style="color:#f92672">*</span>updateRect, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>data)
-{
-
-  CustomClassSelection isel <span style="color:#f92672">=</span> (CustomClassSelection)data;
-  <span style="color:#66d9ef">for</span>(list<span style="color:#f92672">&lt;</span>pageSelection<span style="color:#f92672">&gt;::</span>iterator i <span style="color:#f92672">=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>begin(); i <span style="color:#f92672">!=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>end(); i<span style="color:#f92672">++</span>)
-  {
-    PageSelection<span style="color:#f92672">*</span> iteratorSel <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>(<span style="color:#f92672">*</span>i);
-    <span style="color:#66d9ef">if</span>(AVAppGetActiveDoc() <span style="color:#f92672">!=</span> isel<span style="color:#f92672">-&gt;</span>currentDoc)
-    {
-      <span style="color:#75715e">//this is not the document we need
-</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span>;
-    }
-    ASInt32 pageNum <span style="color:#f92672">=</span> PDPageGetNumber (iteratorSel<span style="color:#f92672">-&gt;</span>first);
-
-    DURING
-    <span style="color:#66d9ef">if</span> ((pageNum <span style="color:#f92672">&gt;=</span> AVPageViewGetFirstVisiblePageNum(pageView)) <span style="color:#f92672">&amp;&amp;</span>
-    (pageNum <span style="color:#f92672">&lt;=</span> AVPageViewGetLastVisiblePageNum(pageView))<span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">03</span><span style="color:#ae81ff">8</span>;<span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">03</span><span style="color:#ae81ff">8</span>;(pageNum <span style="color:#f92672">==</span> AVPageViewGetPageNum(pageView)))
-    {
-      <span style="color:#75715e">// Convert the pidgets&#39;s bounding rect to device space.
-</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span>(list<span style="color:#f92672">&lt;</span>asfixedRect<span style="color:#f92672">&gt;::</span>iterator pageRect <span style="color:#f92672">=</span> iteratorSel<span style="color:#f92672">-&gt;</span>second<span style="color:#f92672">-&gt;</span>begin(); pageRect <span style="color:#f92672">!=</span> iteratorSel<span style="color:#f92672">-&gt;</span>second<span style="color:#f92672">-&gt;</span>end();pageRect<span style="color:#f92672">++</span>)
-      {
-        ASFixedRect rect <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>pageRect;
-        AVDevRect viewRect;
-        AVPageViewRectToDevice (pageView, <span style="color:#f92672">&amp;</span>rect, <span style="color:#f92672">&amp;</span>viewRect);
-        DrawCustomClassSelectionHighlight (pageView, <span style="color:#f92672">&amp;</span>viewRect);
-      }
-    }
-    HANDLER
-    END_HANDLER
-  }
-}
-</code></pre></div>  <p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">/*********************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">ADOBE SYSTEMS INCORPORATED
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Copyright (C) 1994-2003 Adobe Systems Incorporated
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">All rights reserved.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">NOTICE: Adobe permits you to use, modify, and distribute this file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">in accordance with the terms of the Adobe license agreement
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">accompanying it. If you have received this file from a source other
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">than Adobe, then your use, modification, or distribution of it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">requires the prior written permission of Adobe.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-------------------------------------------------------------------*/</span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">file SelectionServerDrawUtils.cpp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">- Implementation to draw the highlight around the selected pidget.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*********************************************************************/</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef MAC_PLATFORM
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;PIHeaders.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CommonHeaders.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SelectionServer.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Resource.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">/*-------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Helper Methods
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-------------------------------------------------------*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* DrawCustomClassSelectionHighlight
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** ------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** */</span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/** Draws the selection on the pageview. Simply draws a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** rectangle around the pidget.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** @see AVPageViewSetColor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** @see AVPageViewDrawRectOutline
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">DrawCustomClassSelectionHighlight</span> (AVPageView pageView, <span style="color:#66d9ef">const</span> AVDevRect <span style="color:#f92672">*</span>selBounds)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  PDColorValueRec colorVal;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Define the color for our selection.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  colorVal.space <span style="color:#f92672">=</span> PDDeviceRGB ;
+</span></span><span style="display:flex;"><span>  colorVal.value[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> ASInt32ToFixed(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  colorVal.value[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> colorVal.value[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> ASInt32ToFixed(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Set the drawing color for the pageview.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  AVPageViewSetColor (pageView, <span style="color:#f92672">&amp;</span>colorVal);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Draw the highlight.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  AVPageViewDrawRectOutline(pageView, selBounds, <span style="color:#ae81ff">2</span>, NULL, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* DrawCustomClassSelection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** ------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** */</span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/** This is the AVPageViewDrawProc that draws the current
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** selection. It is registered whenever the selection server&#39;s
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** GettingSelection callback is called, and unregistered when
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** the LosingSelection callback is called. The callback is
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** created in InitializeSelectionServer().
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** @see AVPageViewGetFirstVisiblePageNum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** @see AVPageViewGetLastVisiblePageNum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** @see AVPageViewRectToDevice
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">** */</span>
+</span></span><span style="display:flex;"><span>ACCB1 <span style="color:#66d9ef">void</span> ACCB2 <span style="color:#a6e22e">DrawCustomClassSelection</span> (AVPageView pageView, AVDevRect <span style="color:#f92672">*</span>updateRect, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>data)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  CustomClassSelection isel <span style="color:#f92672">=</span> (CustomClassSelection)data;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span>(list<span style="color:#f92672">&lt;</span>pageSelection<span style="color:#f92672">&gt;::</span>iterator i <span style="color:#f92672">=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>begin(); i <span style="color:#f92672">!=</span> isel<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>end(); i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    PageSelection<span style="color:#f92672">*</span> iteratorSel <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>(<span style="color:#f92672">*</span>i);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(AVAppGetActiveDoc() <span style="color:#f92672">!=</span> isel<span style="color:#f92672">-&gt;</span>currentDoc)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//this is not the document we need
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    ASInt32 pageNum <span style="color:#f92672">=</span> PDPageGetNumber (iteratorSel<span style="color:#f92672">-&gt;</span>first);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    DURING
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ((pageNum <span style="color:#f92672">&gt;=</span> AVPageViewGetFirstVisiblePageNum(pageView)) <span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>    (pageNum <span style="color:#f92672">&lt;=</span> AVPageViewGetLastVisiblePageNum(pageView))<span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">03</span><span style="color:#ae81ff">8</span>;<span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">03</span><span style="color:#ae81ff">8</span>;(pageNum <span style="color:#f92672">==</span> AVPageViewGetPageNum(pageView)))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Convert the pidgets&#39;s bounding rect to device space.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span>(list<span style="color:#f92672">&lt;</span>asfixedRect<span style="color:#f92672">&gt;::</span>iterator pageRect <span style="color:#f92672">=</span> iteratorSel<span style="color:#f92672">-&gt;</span>second<span style="color:#f92672">-&gt;</span>begin(); pageRect <span style="color:#f92672">!=</span> iteratorSel<span style="color:#f92672">-&gt;</span>second<span style="color:#f92672">-&gt;</span>end();pageRect<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        ASFixedRect rect <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>pageRect;
+</span></span><span style="display:flex;"><span>        AVDevRect viewRect;
+</span></span><span style="display:flex;"><span>        AVPageViewRectToDevice (pageView, <span style="color:#f92672">&amp;</span>rect, <span style="color:#f92672">&amp;</span>viewRect);
+</span></span><span style="display:flex;"><span>        DrawCustomClassSelectionHighlight (pageView, <span style="color:#f92672">&amp;</span>viewRect);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    HANDLER
+</span></span><span style="display:flex;"><span>    END_HANDLER
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>  <p>
     //we&#8217;ll also need some class to hold the selection class instance
   </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CustomClassSelectionServer/SelectionServer.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Page</span><span style="color:#f92672">:</span>
-{
-    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-    Page(Form <span style="color:#f92672">*</span>parent);
-    <span style="color:#f92672">~</span>Page();
-    <span style="color:#75715e">//other custom code
-</span><span style="color:#75715e"></span>
-    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">InitSelection</span>();
-    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetSelection</span>();
-    <span style="color:#66d9ef">static</span> CustomClassSelection currentSelection;
-};
-
-<span style="color:#66d9ef">typedef</span> vector<span style="color:#f92672">&lt;</span>page<span style="color:#f92672">&gt;</span> PageVector;
-
-<span style="color:#75715e">//making the selection would be fairly easy:
-</span><span style="color:#75715e"></span>Page<span style="color:#f92672">::</span>InitSelection();
-<span style="color:#66d9ef">for</span>(every_page)
-{
-    <span style="color:#66d9ef">if</span>( need_selection )
-    {
-        <span style="color:#f92672">/</span> <span style="color:#f92672">/</span>add selection rectangle
-        pageSlctn.second<span style="color:#f92672">-&gt;</span>push_back(boundingRect);
-        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>currentSelection<span style="color:#f92672">-&gt;</span>isAnnotToScrollToSet)
-        {
-            currentSelection<span style="color:#f92672">-&gt;</span>annotToScrollTo <span style="color:#f92672">=</span> annot;
-            currentSelection<span style="color:#f92672">-&gt;</span>isAnnotToScrollToSet <span style="color:#f92672">=</span> true;
-            <span style="color:#75715e">//also add referrence to document to avoid cross document painting
-</span><span style="color:#75715e"></span>            currentSelection<span style="color:#f92672">-&gt;</span>currentDoc <span style="color:#f92672">=</span> AVAppGetActiveDoc();
-        }
-
-
-        currentSelection<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>push_back(pageSlctn);
-    }
-}
-
-Page<span style="color:#f92672">::</span>SetSelection();
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CustomClassSelectionServer/SelectionServer.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Page</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Page(Form <span style="color:#f92672">*</span>parent);
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>Page();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//other custom code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">InitSelection</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetSelection</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> CustomClassSelection currentSelection;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> vector<span style="color:#f92672">&lt;</span>page<span style="color:#f92672">&gt;</span> PageVector;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//making the selection would be fairly easy:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Page<span style="color:#f92672">::</span>InitSelection();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>(every_page)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>( need_selection )
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">/</span> <span style="color:#f92672">/</span>add selection rectangle
+</span></span><span style="display:flex;"><span>        pageSlctn.second<span style="color:#f92672">-&gt;</span>push_back(boundingRect);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>currentSelection<span style="color:#f92672">-&gt;</span>isAnnotToScrollToSet)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            currentSelection<span style="color:#f92672">-&gt;</span>annotToScrollTo <span style="color:#f92672">=</span> annot;
+</span></span><span style="display:flex;"><span>            currentSelection<span style="color:#f92672">-&gt;</span>isAnnotToScrollToSet <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//also add referrence to document to avoid cross document painting
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            currentSelection<span style="color:#f92672">-&gt;</span>currentDoc <span style="color:#f92672">=</span> AVAppGetActiveDoc();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        currentSelection<span style="color:#f92672">-&gt;</span>pageSelectionToHighlight<span style="color:#f92672">-&gt;</span>push_back(pageSlctn);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Page<span style="color:#f92672">::</span>SetSelection();
+</span></span></code></pre></div>
               
             </div>
           </div>
