@@ -228,6 +228,71 @@ if (!doNotTrack) {
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/">
+          Avahi and “network service discovery disabled”
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2011-05-20T21:07:00Z">
+        
+  
+  
+  
+  
+    05/20/2011
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/tech">tech</a>, 
+    
+      <a class="category-link" href="/categories/os">os</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        Had a real problem with my wifi after moving to Ubuntu from win -&gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
+Having this changed
+_AVAHI_DAEMON_DETECT_LOCAL=1
+to
+AVAHI_DAEMON_DETECT_LOCAL=0
+in /etc/default/avahi-daemon_
+Got me up to 22Mb/s after reboot.
+      
+      <p>
+        <a href="http://blog.vnomad.com/code/avahi-and-network-service-discovery-disabled/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="http://blog.vnomad.com/code/skype-microsoft/">
           Skype &#43; Microsoft.
         </a>
@@ -730,63 +795,6 @@ The problem is there are tons of &amp;#8220;win_category]&amp;#8217; and * value
       
       <p>
         <a href="http://blog.vnomad.com/code/net-tab-control/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/">
-          org.springframework.oxm.jaxb.Jaxb2Marshaller
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2010-09-29T15:45:00Z">
-        
-  
-  
-  
-  
-    09/29/2010
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        There is a nice tutorial here on how to create spring web services using jax-b. Works just fine but it’s hell lots of issues you would run into while making it actually work. The most frustrating for me as of today was the absence of Jaxb2Marshaller. in the std “spring-ws-core” artifact package. It’s just not there and noone would tell you. Only _**Jaxb1Marshaller **_is. After an hour googling found this (BTW very simple and straightforward) post where spotted the “spring-oxm-tiger” artifact.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/" class="postShorten-excerpt_link link">Continue reading</a>
         
       </p>
     </div>
