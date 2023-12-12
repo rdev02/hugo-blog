@@ -99,11 +99,3 @@ I packed my bags full of fresh, individually packaged sweets, tea, cookies and o
 
 
 
-
-
- [1]: https://www.wired.com/review/garmin-fenix-6s-pro/
- [2]: https://www.amazon.com/Apple-Watch-GPS-44mm-Space-Aluminium/dp/B07K3HLMTF
- [3]: https://www.polar.com/us-en/sensors/h10-heart-rate-sensor/
- [4]: https://csa-iot.org/all-solutions/zigbee/
- [5]: https://www.z-wave.com
-
