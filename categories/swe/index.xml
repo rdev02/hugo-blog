@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>swe on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/categories/swe/</link>
-    <description>Recent content in swe on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 12 Apr 2009 18:40:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/categories/swe/index.xml" rel="self" type="application/rss+xml" />
+    <title>Swe on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/categories/swe/</link>
+    <description>Recent content in Swe on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Sun, 12 Apr 2009 18:40:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/swe/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>X-ray headphones improve</title>
-      <link>http://blog.vnomad.com/travel/x-ray-headphones-improve/</link>
+      <link>http://localhost:1313/posts/travel/x-ray-headphones-improve/</link>
       <pubDate>Sun, 12 Apr 2009 18:40:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/travel/x-ray-headphones-improve/</guid>
+      <guid>http://localhost:1313/posts/travel/x-ray-headphones-improve/</guid>
       <description>I had to travel to Sweden recently. So probably in 2 hours or so i packed all the necessary things, took my old notebook-bag out of the dusty closet (cleaned it) and packed all the NB-stuff into it. I also included my new KOSS UR-40 headphones in the bag. I have to tell I wasn’tso much impressed when I bought them. You know – in Ukraine if want to know how smth sounds you’ll probably have to buy it first.</description>
     </item>
-    
   </channel>
 </rss>

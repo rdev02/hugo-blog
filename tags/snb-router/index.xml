@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>snb, router on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/tags/snb-router/</link>
-    <description>Recent content in snb, router on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 11 Dec 2023 06:20:18 +7000</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/snb-router/index.xml" rel="self" type="application/rss+xml" />
+    <title>Snb, Router on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/tags/snb-router/</link>
+    <description>Recent content in Snb, Router on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Mon, 11 Dec 2023 06:20:18 +7000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/snb-router/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SNB: Unify Dream Router vs. Merlin-Compatible Router</title>
-      <link>http://blog.vnomad.com/travel/2023/unify_merlin/</link>
+      <link>http://localhost:1313/posts/travel/2023/unify_merlin/</link>
       <pubDate>Mon, 11 Dec 2023 06:20:18 +7000</pubDate>
-      
-      <guid>http://blog.vnomad.com/travel/2023/unify_merlin/</guid>
+      <guid>http://localhost:1313/posts/travel/2023/unify_merlin/</guid>
       <description>In this post I go over my move to Unify router, over a top-of-the-line Asus one, even though I got a new one just about a month ago.
 I used to like my Asus routers: they stroke a balance between performance, reliability user-friendliness and maintenance. &amp;ldquo;Balance&amp;rdquo; is a very important word here, because they did neither well. In fact, as my routing needs grew, even &amp;ldquo;well&amp;rdquo; became an issue.
 Commonly I&amp;rsquo;d need to run a couple networks: main network for all secure devices, guest network for, well, guests :), isolated guest network for all the non-US-made IoT thingies and one for gaming/mining/whatever.</description>
     </item>
-    
   </channel>
 </rss>

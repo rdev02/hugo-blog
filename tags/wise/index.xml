@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>wise on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/tags/wise/</link>
-    <description>Recent content in wise on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 26 Sep 2008 19:23:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/wise/index.xml" rel="self" type="application/rss+xml" />
+    <title>Wise on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/tags/wise/</link>
+    <description>Recent content in Wise on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Fri, 26 Sep 2008 19:23:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/wise/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WISE installation studio</title>
-      <link>http://blog.vnomad.com/code/wise-installation-studio/</link>
+      <link>http://localhost:1313/posts/code/wise-installation-studio/</link>
       <pubDate>Fri, 26 Sep 2008 19:23:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/wise-installation-studio/</guid>
+      <guid>http://localhost:1313/posts/code/wise-installation-studio/</guid>
       <description>Windows Installer… nightmare… WISE – hurt me plenty. Although this is much simpler and logical to my mind then WI it is still very sensible to changes. What I am trying to say – if do everything right from the first time e.g. correctly choose all names and dialogs and files e.t.c it works perfectly. But when after 5 minutes you decide to change, say, some script or file destination WISE i making so many actions in background you can’t even imagine.</description>
     </item>
-    
   </channel>
 </rss>

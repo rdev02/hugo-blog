@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>github on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/tags/github/</link>
-    <description>Recent content in github on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 12 Nov 2017 09:59:00 -0700</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <title>Github on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/tags/github/</link>
+    <description>Recent content in Github on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Sun, 12 Nov 2017 09:59:00 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Migrating wordpress blog to hugo and hosting it with GitHub Pages</title>
-      <link>http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/</link>
+      <link>http://localhost:1313/posts/code/2017/migrate-wordpress-to-hugo-github-pages/</link>
       <pubDate>Sun, 12 Nov 2017 09:59:00 -0700</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/2017/migrate-wordpress-to-hugo-github-pages/</guid>
+      <guid>http://localhost:1313/posts/code/2017/migrate-wordpress-to-hugo-github-pages/</guid>
       <description>&lt;p&gt;Two weeks ago my blog was hosted on a 10$/mo vps instance in &lt;a href=&#34;https://www.digitalocean.com&#34;&gt;DigitalOcean&lt;/a&gt;, powered by a couple docker containers, running an ever dynamic &lt;a href=&#34;http://wordpress.com&#34;&gt;Wordpress&lt;/a&gt; platform. Now it&amp;rsquo;s completely static, served from &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; servers free. What follows is a small experience reco/guide on how to make this happen.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

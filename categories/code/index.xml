@@ -1,125 +1,117 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>code on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/categories/code/</link>
-    <description>Recent content in code on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 11 Dec 2023 06:20:18 +7000</lastBuildDate><atom:link href="http://blog.vnomad.com/categories/code/index.xml" rel="self" type="application/rss+xml" />
+    <title>Code on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/categories/code/</link>
+    <description>Recent content in Code on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Tue, 30 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Backing up Unify router config without Remote Access</title>
+      <link>http://localhost:1313/posts/code/2024/unify-backup/</link>
+      <pubDate>Tue, 30 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/code/2024/unify-backup/</guid>
+      <description>For those who decided &amp;lsquo;Remote Access&amp;quot; feature of Uniyfy isn&amp;rsquo;t worth the security risks associated with it, but still want a local backup of the config, I&amp;rsquo;ve found a decent solution.
+Sharing this here, since it&amp;rsquo;s not readily searchable on the internet nor would AI give you a good answer if you ask about it. And if you run into this head-first, you&amp;rsquo;ll quickly discover that
+router doesn&amp;rsquo;t have samba(cifs) mount support router doesn&amp;rsquo;t have sftp/fuse mount so your usual rsync options of backup fall apart.</description>
+    </item>
     <item>
       <title>SNB: Unify Dream Router vs. Merlin-Compatible Router</title>
-      <link>http://blog.vnomad.com/travel/2023/unify_merlin/</link>
+      <link>http://localhost:1313/posts/travel/2023/unify_merlin/</link>
       <pubDate>Mon, 11 Dec 2023 06:20:18 +7000</pubDate>
-      
-      <guid>http://blog.vnomad.com/travel/2023/unify_merlin/</guid>
+      <guid>http://localhost:1313/posts/travel/2023/unify_merlin/</guid>
       <description>In this post I go over my move to Unify router, over a top-of-the-line Asus one, even though I got a new one just about a month ago.
 I used to like my Asus routers: they stroke a balance between performance, reliability user-friendliness and maintenance. &amp;ldquo;Balance&amp;rdquo; is a very important word here, because they did neither well. In fact, as my routing needs grew, even &amp;ldquo;well&amp;rdquo; became an issue.
 Commonly I&amp;rsquo;d need to run a couple networks: main network for all secure devices, guest network for, well, guests :), isolated guest network for all the non-US-made IoT thingies and one for gaming/mining/whatever.</description>
     </item>
-    
     <item>
       <title>DiskTest in go and Synology NAS</title>
-      <link>http://blog.vnomad.com/code/2020/disktest-go-and-synology-nas/</link>
+      <link>http://localhost:1313/posts/code/2020/disktest-go-and-synology-nas/</link>
       <pubDate>Sun, 31 May 2020 19:36:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/2020/disktest-go-and-synology-nas/</guid>
+      <guid>http://localhost:1313/posts/code/2020/disktest-go-and-synology-nas/</guid>
       <description>Back in 2013 I got myself a Synology DS413j, which has proven to be a reliable companion for me though these 7 years. I used it for file backup, media streaming and as a TimeMachine destination pretty successfully. Any such station needs good drives to provide value, and drives, as many of us know, are pretty unreliable. In 7 years I replaced about 6: 2 were bad right after arrival, and another 4 went bad as the years went by.</description>
     </item>
-    
     <item>
       <title>java.net.MalformedURLException: no protocol: and]</title>
-      <link>http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</link>
+      <link>http://localhost:1313/posts/code/java-net-malformedurlexception-no-protocol-and/</link>
       <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/</guid>
+      <guid>http://localhost:1313/posts/code/java-net-malformedurlexception-no-protocol-and/</guid>
       <description>Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:
 Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is: java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780) at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627) at javax.naming.InitialContext.lookup(InitialContext.java:392) at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154) I was sure I configured it right as I have
 &amp;lt;jee:jndi-lookup id=&amp;#34;JBossMQ&amp;#34; jndi-name=&amp;#34;XAConnectionFactory&amp;#34; proxy-interface=&amp;#34;javax.jms.ConnectionFactory&amp;#34; environment-ref=&amp;#34;jndiProps&amp;#34; resource-ref=&amp;#34;true&amp;#34;/&amp;gt; &amp;lt;util:properties id=&amp;#34;jndiProps&amp;#34; location=&amp;#34;META-INF/spring/jndi.</description>
     </item>
-    
     <item>
       <title>String.split() VS String.startsWith() VS Regex simple performance comparison.</title>
-      <link>http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</link>
+      <link>http://localhost:1313/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</link>
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
+      <guid>http://localhost:1313/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
       <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable.</description>
     </item>
-    
     <item>
       <title>907: Invalid cod and other BlackBerry OTA problems.</title>
-      <link>http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</link>
+      <link>http://localhost:1313/posts/code/907-invalid-cod-and-other-blackberry-ota-problems/</link>
       <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/</guid>
+      <guid>http://localhost:1313/posts/code/907-invalid-cod-and-other-blackberry-ota-problems/</guid>
       <description>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;amp;#8220;descriptive&amp;amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;amp;#8217;m going to describe here is when the size of the cod file is more than 64K. Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.</description>
     </item>
-    
     <item>
       <title>Switching to  container based datasource…</title>
-      <link>http://blog.vnomad.com/code/switching-to-container-based-datasource/</link>
+      <link>http://localhost:1313/posts/code/switching-to-container-based-datasource/</link>
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/switching-to-container-based-datasource/</guid>
+      <guid>http://localhost:1313/posts/code/switching-to-container-based-datasource/</guid>
       <description>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server.</description>
     </item>
-    
     <item>
       <title>Creating dynamic plugin architecture with C#.NET</title>
-      <link>http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/</link>
+      <link>http://localhost:1313/posts/code/creating-dynamic-plugin-architecture-with-c-net/</link>
       <pubDate>Sat, 12 Dec 2009 23:11:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/</guid>
+      <guid>http://localhost:1313/posts/code/creating-dynamic-plugin-architecture-with-c-net/</guid>
       <description>There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.</description>
     </item>
-    
     <item>
       <title>Blogger code formatting.</title>
-      <link>http://blog.vnomad.com/code/blogger-code-formatting/</link>
+      <link>http://localhost:1313/posts/code/blogger-code-formatting/</link>
       <pubDate>Mon, 14 Sep 2009 20:25:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/blogger-code-formatting/</guid>
+      <guid>http://localhost:1313/posts/code/blogger-code-formatting/</guid>
       <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
 using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } } </description>
     </item>
-    
     <item>
       <title>Trying out Google base</title>
-      <link>http://blog.vnomad.com/code/trying-out-google-base/</link>
+      <link>http://localhost:1313/posts/code/trying-out-google-base/</link>
       <pubDate>Tue, 10 Jun 2008 09:44:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/trying-out-google-base/</guid>
+      <guid>http://localhost:1313/posts/code/trying-out-google-base/</guid>
       <description>Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app… But when finished everything looked very nice!
 class Program { const string GOOGLE_LOGIN_SECTION = &amp;#34;googleLogin&amp;#34;; const string BATCH_COUNT_SETTING = &amp;#34;batchCount&amp;#34;; const string CHECK_EXISTANCE_SETTING = &amp;#34;checkExistance&amp;#34;; const string MyItem_ITEMTYPE_SETTING = &amp;#34;MyItemItemType&amp;#34;; const string MyDB_CONNECTION_STRING = &amp;#34;MyDBConnectionString&amp;#34;; static void Main(string[] args) { string appNameG = Utils.</description>
     </item>
-    
     <item>
       <title>.NET Marshalling</title>
-      <link>http://blog.vnomad.com/code/net-marshalling/</link>
+      <link>http://localhost:1313/posts/code/net-marshalling/</link>
       <pubDate>Tue, 22 Jan 2008 11:12:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/net-marshalling/</guid>
+      <guid>http://localhost:1313/posts/code/net-marshalling/</guid>
       <description>Interesting things happen when you try to marshal something in real life….Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] extern __declspec(dllexport) int SomeFunc(char** stringArray); [marshal]</description>
     </item>
-    
     <item>
       <title>Display TIFF in picturebox (Adobe plugins)</title>
-      <link>http://blog.vnomad.com/code/display-tiff-in-picturebox-adobe-plugins/</link>
+      <link>http://localhost:1313/posts/code/display-tiff-in-picturebox-adobe-plugins/</link>
       <pubDate>Mon, 05 Nov 2007 16:50:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/display-tiff-in-picturebox-adobe-plugins/</guid>
+      <guid>http://localhost:1313/posts/code/display-tiff-in-picturebox-adobe-plugins/</guid>
       <description>The previous post highlighted how to accomplish the given task using TIFF-PDF-JPEG-BITMAP conversion. Though this was is complicated it works perfect. But so much code for so little functionality often is not considered good if even eccepted. Recently a new way was found. It has to be said that it is not “the proper way”, because it needs some annatural code, but it is considerably lighter than the previous one. SO the idea is to draw direktly on the window using its HWND and SDK drawContentsToFunction.</description>
     </item>
-    
     <item>
       <title>Tiff to Picture box in PDF plugin ADM dialog</title>
-      <link>http://blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</link>
+      <link>http://localhost:1313/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</link>
       <pubDate>Thu, 01 Nov 2007 10:22:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</guid>
+      <guid>http://localhost:1313/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</guid>
       <description>Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.</description>
     </item>
-    
   </channel>
 </rss>

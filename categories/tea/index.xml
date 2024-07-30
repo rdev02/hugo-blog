@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>tea on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/categories/tea/</link>
-    <description>Recent content in tea on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2024 14:07:00 +7000</lastBuildDate><atom:link href="http://blog.vnomad.com/categories/tea/index.xml" rel="self" type="application/rss+xml" />
+    <title>Tea on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/categories/tea/</link>
+    <description>Recent content in Tea on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Sun, 03 Mar 2024 14:07:00 +7000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/tea/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Apple Vision Pro for a regular prosumer</title>
-      <link>http://blog.vnomad.com/tea/2024/03/vision-pro/</link>
+      <link>http://localhost:1313/posts/tea/2024/03/vision-pro/</link>
       <pubDate>Sun, 03 Mar 2024 14:07:00 +7000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/2024/03/vision-pro/</guid>
+      <guid>http://localhost:1313/posts/tea/2024/03/vision-pro/</guid>
       <description>Once the Apple Vision Pro became available I instantly ordered it to test out 3 use cases:
 work monitor: use headset to be able to work in any place/condition with a comfortable large monitor gaming device: use headset as a streaming gaming platform anywhere personal IMAX: use headset to have unmatched movie-viewing experience anywhere. I&amp;rsquo;ve been using it on and off for about 3 weeks now. This post summarizes how it went for me.</description>
     </item>
-    
     <item>
       <title>&#34;Порохоботи VS зрадофіли&#34;, або медійна інформаційна війна триває.</title>
-      <link>http://blog.vnomad.com/tea/zradofila-vs-porohobot/</link>
+      <link>http://localhost:1313/posts/tea/zradofila-vs-porohobot/</link>
       <pubDate>Sat, 09 Dec 2017 09:48:00 -0500</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/zradofila-vs-porohobot/</guid>
+      <guid>http://localhost:1313/posts/tea/zradofila-vs-porohobot/</guid>
       <description>Учітеся, брати мої,
 Учітесь, читайте ,
 І чужому научайтесь ,
@@ -30,82 +34,65 @@ work monitor: use headset to be able to work in any place/condition with a comfo
 Але, з початку, невеличкий ліричний відступ :)
 До появи інтернету щоденним джерелом інформації була газета, радіо, чи то пак телевізор.</description>
     </item>
-    
     <item>
       <title>IT ramblings</title>
-      <link>http://blog.vnomad.com/tea/it-ramblings/</link>
+      <link>http://localhost:1313/posts/tea/it-ramblings/</link>
       <pubDate>Sun, 19 Jun 2011 21:16:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/it-ramblings/</guid>
+      <guid>http://localhost:1313/posts/tea/it-ramblings/</guid>
       <description>There is going to be an interesting event soon in Lviv both for those who are in IT and those who love to use and improve their english. It’s called IT Ramblings. Follow the link and check it out. I’m definitely coming, join in 😉</description>
     </item>
-    
     <item>
       <title>:? = (think)</title>
-      <link>http://blog.vnomad.com/tea/think/</link>
+      <link>http://localhost:1313/posts/tea/think/</link>
       <pubDate>Tue, 01 Dec 2009 10:53:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/think/</guid>
+      <guid>http://localhost:1313/posts/tea/think/</guid>
       <description>Yess and BTW its the Skype shortcut. While on thinking mood guess what would the ‘telemonision’ or here in Ukraine ‘telemonizor’ would mean? You guessed it right – a monitor, which has a capability to be come an TV. Why would one need such a thing – I dunno, but lots and lots of people here want it. I suppose they think that in this way they would spend less money – but hey – you would have none: no monitor would be a good TV and no TV would suit you as a nice fast-response monitor, UNLESS it costs more then 2 of them bought separately.</description>
     </item>
-    
     <item>
       <title>Femen must have been doing that right.</title>
-      <link>http://blog.vnomad.com/tea/femen-must-have-been-doing-that-right/</link>
+      <link>http://localhost:1313/posts/tea/femen-must-have-been-doing-that-right/</link>
       <pubDate>Wed, 18 Nov 2009 13:17:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/femen-must-have-been-doing-that-right/</guid>
+      <guid>http://localhost:1313/posts/tea/femen-must-have-been-doing-that-right/</guid>
       <description>Now seriously smth HAS to be done about Ukrainian girls reputation in Europe and generally throughout the world. Now I can’t speak for whole Ukraine but it seems to me that at least Western Ukraine girls are not that money-loving. Today walking to work I saw this
 All this stuff means &amp;#8220;I am a wealthy entrepreneur from USA looking for a nice whore wife from Ukraine aging 19-27&amp;#8243;. Now I&amp;#8217;ve seen this in newspapers and message boards etc.</description>
     </item>
-    
     <item>
       <title>Flu, people and ukrainian healthcare system</title>
-      <link>http://blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/</link>
+      <link>http://localhost:1313/posts/tea/flu-people-and-ukrainian-healthcare-system/</link>
       <pubDate>Fri, 30 Oct 2009 19:10:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/</guid>
+      <guid>http://localhost:1313/posts/tea/flu-people-and-ukrainian-healthcare-system/</guid>
       <description>THEY ALL SUCK!!! a big deal.
 I will start with the last one. Having just recovered from the flu I decided to go to the hospital in order to check if I’ve totally recovered and that there is nothing “under the hood” which would strike me in the back in few days. The normal procedure here is to have a blood analysis and a few more tests. Step one – find the doctor.</description>
     </item>
-    
     <item>
       <title>Ukrainian independence day.</title>
-      <link>http://blog.vnomad.com/tea/ukrainian-independence-day/</link>
+      <link>http://localhost:1313/posts/tea/ukrainian-independence-day/</link>
       <pubDate>Thu, 27 Aug 2009 19:37:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/ukrainian-independence-day/</guid>
+      <guid>http://localhost:1313/posts/tea/ukrainian-independence-day/</guid>
       <description>It&amp;amp;#8217;s funny sometimes how could absolutely non-officially connected news be linked together so tightly that one couldn&amp;amp;#8217;t even imagine. Today, reading the daily news I came across an article describing the Barack Obama&amp;amp;#8217;s attitude towards Ukrainian &amp;lt;span style=&amp;quot;font-family: -webkit-monospace;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;-webkit-border-horizontal-spacing: 2px; -webkit-border-vertical-spacing: 2px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-family: &#39;Times New Roman&#39;;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;-webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px;&amp;quot;&amp;gt;sovereignty along with greetings regarding this year&amp;amp;#8217;s independence day. Between the other it was stated there that &amp;amp;#8220;USA won&amp;amp;#8217;t abandon Ukraine on its way towards democratic future&amp;amp;#8230;&amp;amp;#8221;.</description>
     </item>
-    
     <item>
       <title>How do they do it?</title>
-      <link>http://blog.vnomad.com/tea/how-do-they-do-it/</link>
+      <link>http://localhost:1313/posts/tea/how-do-they-do-it/</link>
       <pubDate>Fri, 21 Aug 2009 09:00:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/how-do-they-do-it/</guid>
+      <guid>http://localhost:1313/posts/tea/how-do-they-do-it/</guid>
       <description>It often happens that you have smth. to share with the rest of the world, but you do not have time for it.
 &amp;#8220;You do not have time&amp;#8221;&amp;#8230; sounds pathetic&amp;#8230; I think it happens more because of the laziness&amp;#8230; yeah definitely. Now I begin to understand why podcasts gain more and more popularity these days &amp;#8211; you do not have to organize links, format text. Find errors, reread the written text in order to find ABSOLUTELY ODD sentences 🙂 Interesting how do experienced bloggers keep their notes and where&amp;#8230; My last try is google docs.</description>
     </item>
-    
     <item>
       <title>Ukrainians on Times.</title>
-      <link>http://blog.vnomad.com/tea/ukrainians-on-times/</link>
+      <link>http://localhost:1313/posts/tea/ukrainians-on-times/</link>
       <pubDate>Thu, 20 Aug 2009 19:06:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/ukrainians-on-times/</guid>
+      <guid>http://localhost:1313/posts/tea/ukrainians-on-times/</guid>
       <description>Today visited Times. Was interested in one article about (RU+GBR)/UA. To hell the article. I read the comments. OMG.
 OMG again. &amp;#8220;People, even something that you care for most (democracy?) does not give you the right to lie passionately and ignore facts and invent lies. BTW, Eduard Glushko &amp;#8211; if you are so much afraid of the The Molotov-Ribbentrop Pact, it still can be repaired. Poland has to give back to Germany the territories they got after WW2.</description>
     </item>
-    
     <item>
       <title>Who the hell is “Next In”?</title>
-      <link>http://blog.vnomad.com/tea/who-the-hell-is-next-in/</link>
+      <link>http://localhost:1313/posts/tea/who-the-hell-is-next-in/</link>
       <pubDate>Mon, 29 Sep 2008 10:17:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/who-the-hell-is-next-in/</guid>
+      <guid>http://localhost:1313/posts/tea/who-the-hell-is-next-in/</guid>
       <description>Recently found myself registered in this wierd system Next In. The most interesting part is I’ve never made any registrations on this site at all! Looks like those guys’ve just stolen public info from famous sites like Linked-In. If anyone comes across this one don’t trust any info they give – ‘case started by stealing i think they will go further. Just want to make official notice of that I have no relation to info that can be found there.</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Custom selection server in PDF plugin | Nomad&#39;s reflections</title>
+<meta name="keywords" content="c&#43;&#43;">
+<meta name="description" content="Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.">
+<meta name="author" content="Viktor Halitsyn">
+<link rel="canonical" href="http://localhost:1313/posts/code/custom-selection-server-in-pdf-plugin/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/code/custom-selection-server-in-pdf-plugin/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  
+    
+      
+    
+  
+
+<meta property="og:title" content="Custom selection server in PDF plugin" />
+<meta property="og:description" content="Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/code/custom-selection-server-in-pdf-plugin/" />
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+<meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2007-10-19T14:21:00+00:00" />
+<meta property="article:modified_time" content="2007-10-19T14:21:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+<meta name="twitter:title" content="Custom selection server in PDF plugin"/>
+<meta name="twitter:description" content="Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Custom selection server in PDF plugin",
+      "item": "http://localhost:1313/posts/code/custom-selection-server-in-pdf-plugin/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Custom selection server in PDF plugin",
+  "name": "Custom selection server in PDF plugin",
+  "description": "Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.",
+  "keywords": [
+    "c++"
+  ],
+  "articleBody": "Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.0.5 SDK.First i would like to say that i haven’t found better way(say another way) to make slection/highlight of an annotation that creating my own selection server for that annotation. It also has to be said that every single type in Acrobat that “can be highlighted” has its own selection server(of type AVDocSelectionServer) which in practise can be obtained if you know its “internal” name. For example if you want a selection server for type “Button” you can something as following:\nAVDocGetSelectionServerByType(ASAtomFromString(\"Button\")); There are selection servers for simple annotations but my annotation was a custom object, created by plug-in and thus didn’t have one. It didn’t prevent acrobat to use normal highlighting for it as when treating it as simple annotation in object editing mode, but the request was to provide highligting regardless of mode. So solution is to register the selection server. There is an example shipped with SDK of how to make custom selection servers but this example has a minor bug in it(it is configured so that selection will be drawn on every page whereas it has to be drawn only on the page where the object resides) and it doesnt take into consideration possibility of acrobat to change selection servers without notifying current selection server to lose its selection(for example when user press CTRL+A). So here we go with the code:First thing is to create a class which would be holding our selection and provide the selection type. To manage selections on different pages i created a simple class containinng list with page/data pairs and made it static for cross-page persistance. secondly implement the selection server. There is one workaround here in my code: to handle CTRL+A for simple objects on the page i use its selection server by injecting “losing selection” funtionality before server case takes place and then return to the normal application flow.This is definetely not a good way – but i found no other solution and this one is working:).\nSo here is the header file of the Selection Server\n/********************************************************************* ADOBE SYSTEMS INCORPORATED Copyright (C) 1994-2003 Adobe Systems Incorporated All rights reserved. NOTICE: Adobe permits you to use, modify, and distribute this file in accordance with the terms of the Adobe license agreement accompanying it. If you have received this file from a source other than Adobe, then your use, modification, or distribution of it requires the prior written permission of Adobe. --------------------------------------------------------------------- SelectionServer.h *********************************************************************/ #ifndef PIDGETSELECTIONSERVER_H #define PIDGETSELECTIONSERVER_H #include #include typedef pair\u003cpdpage,list\u003casfixedRect\u003e*\u003e PageSelection; /* CustomClassSelection ** ------------------------------------------------------ ** ** This is the structure used to store selection data for ** selections of type \"CustomClass\". All callbacks in our ** AVDocSelectionServer can assume that selData is a ** pointer to one of these. */ typedef struct _t_CustomClassSelection { PDAnnot annotToScrollTo;// the first annot that is highlighted list\u003cpageSelection\u003e* pageSelectionToHighlight; AVDoc currentDoc; bool isAnnotToScrollToSet; } CustomClassSelectionRec, *CustomClassSelection; // Pidget selection/highlight methods. These methods are // shared between the selection server and the AVTool. void InitializeCustomClassSelectionServer (void); /* SelectionServerGetType ** ------------------------------------------------------ ** */ /** We're registering a selection server of type \"CustomClass\". ** ** @return the selection server type. ** */ static ACCB1 ASAtom ACCB2 CustomClassSelectionServerGetType () { return ASAtomFromString (\"CustomClass\"); } ACCB1 void ACCB2 DrawCustomClassSelection (AVPageView pageView, AVDevRect *updateRect, void *data); extern ACCB1 void ACCB2 SelectionServerLosingSelection (AVDoc doc, void *selData, ASBool highlight); void* MySelectAllProc (AVDoc doc, void * selData); extern AVDocSelectionSelectAllProc prc; #endif // !SELECTIONSERVER_H // ***************Its corresponding realization and helper 'drawing utils' file intended to actually draw the selection************ /********************************************************************* ADOBE SYSTEMS INCORPORATED Copyright (C) 1994-2003 Adobe Systems Incorporated All rights reserved. NOTICE: Adobe permits you to use, modify, and distribute this file in accordance with the terms of the Adobe license agreement accompanying it. If you have received this file from a source other than Adobe, then your use, modification, or distribution of it requires the prior written permission of Adobe. -------------------------------------------------------------------*/ /** file SelectionServer.cpp - The SelectionServer plug-in implements a selection server to handle pidgets. The pidgets selection tool allows users to select pidgetss by calling AVDocSetSelection() with a selection type of \"CustomClass\". This call passes control to the selection server, which proceeds to highlight the pidget. - The selection server functionality is limited to getting, showing, and losing a selection. *********************************************************************/ #ifndef MAC_PLATFORM #include \"PIHeaders.h\" #endif #include \"CommonHeaders.h\" #include \"SelectionServer.h\" #include \"Page.h\" /*------------------------------------------------------- Constants/Declarations -------------------------------------------------------*/ static ASAtom CustomClass_K; static AVPageViewDrawProc cbDrawCustomClassSelection; static AVDocSelectionServerRec CustomClassSelectionServer; static AVDocSelectionSelectAllProc prc; /*------------------------------------------------------- AVDocSelectionServer Callbacks -------------------------------------------------------*/ /* SelectionServerGettingSelection ** ------------------------------------------------------ ** */ //** This is the selection server's callback for when a //** selection is registered. //** //** @param selData pointer to an CustomClassSelectionRec allocated //** through ASmalloc. The LosingSelection callback will call //** ASfree() on it. //** //** @see AVAppRegisterForPageViewDrawing //** */ static ACCB1 void ACCB2 SelectionServerGettingSelection (AVDoc doc, void *selData, ASBool highlight) { ASAtom atm = ASAtomFromString(\"Authoring\"); AVDocSelectionServer srvr = AVDocGetSelectionServerByType(atm); prc = srvr-\u003eSelectAll; srvr-\u003eSelectAll = ASCallbackCreateProto (AVDocSelectionSelectAllProc, \u0026MySelectAllProc); AVPageView pageView = AVDocGetPageView(doc); CustomClassSelection isel = (CustomClassSelection)selData; // Draw the selection. It will only be drawn if the page // holding the selection is being displayed. DrawCustomClassSelection (pageView, NULL, selData); // Register the AVPageViewDrawProc so we can redraw the selection // when the page is updated. AVAppRegisterForPageViewDrawing (cbDrawCustomClassSelection, isel); } void* MySelectAllProc (AVDoc doc, void * selData){ SelectionServerLosingSelection(AVAppGetActiveDoc(),Page::currentSelection,false); ASAtom atm = ASAtomFromString(\"Authoring\"); AVDocSelectionServer srvr = AVDocGetSelectionServerByType(atm); srvr-\u003eSelectAll = prc; return srvr-\u003eSelectAll(doc,selData); } /* SelectionServerLosingSelection ** ------------------------------------------------------ ** */ /** This is called whenever we have an active selection ** and the Viewer is attempting to change the selection ** to something else. ** ** @see AVDocGetPageView ** @see AVAppUnregisterForPageViewDrawing ** @see PDPageGetNumber ** @see AVPageViewGetFirstVisiblePageNum ** @see AVPageViewGetLastVisiblePageNum ** @see AVPageViewRectToDevice ** @see AVPageViewInvalidateRect ** @see AVPageViewDrawNow ** @see PDPageRelease ** @see ASFree */ ACCB1 void ACCB2 SelectionServerLosingSelection (AVDoc doc, void *selData, ASBool highlight) { AVPageView pageView = AVDocGetPageView(doc); CustomClassSelection isel = (CustomClassSelection)selData; ASAtom atm = ASAtomFromString(\"Authoring\"); AVDocSelectionServer srvr = AVDocGetSelectionServerByType(atm); srvr-\u003eSelectAll = prc; // Make sure that an exception doesn't prevent us from // releasing the PDPage. DURING // Unregister the AVPageViewDrawProc; there's no selection // to draw any more. AVAppUnregisterForPageViewDrawing (cbDrawCustomClassSelection); for(list\u003cpageSelection\u003e::iterator i = isel-\u003epageSelectionToHighlight-\u003ebegin(); i != isel-\u003epageSelectionToHighlight-\u003eend(); i++) { PageSelection* iteratorSel = \u0026(*i); ASInt32 pageNum = PDPageGetNumber (iteratorSel-\u003efirst); if ((pageNum \u003e= AVPageViewGetFirstVisiblePageNum(pageView)) \u0026\u0026 (pageNum \u003c= AVPageViewGetLastVisiblePageNum(pageView)) \u0026#038;\u0026#038; highlight) { AVDevRect viewRect; for(list\u003casfixedRect\u003e::iterator pageRect = iteratorSel-\u003esecond-\u003ebegin(); pageRect != iteratorSel-\u003esecond-\u003eend();pageRect++) { AVPageViewRectToDevice (pageView, \u0026(*pageRect), \u0026viewRect); AVPageViewInvalidateRect (pageView, \u0026viewRect); } AVPageViewDrawNow (pageView); } } HANDLER END_HANDLER; // Release the page. for(list\u003cpageSelection\u003e::iterator i = isel-\u003epageSelectionToHighlight-\u003ebegin(); i != isel-\u003epageSelectionToHighlight-\u003eend(); i++) { PDPageRelease (((PageSelection)(*i)).first); } // Free the selection data. Note that anyone calling AVDocSetSelection // for our selection server must have used ASmalloc to allocate the // memory, or this won't work. ASfree (isel); } /* SelectionServerShowSelection ** ------------------------------------------------------ ** */ /** If the user has strayed to a page different from the / ** selection, this callback will take the user to the ** correct page and scroll the selection into view. ** ** @see AVPageViewBeginOperation ** @see AVPageViewGoTo ** @see AVPageViewRectToDevice ** @see AVPageViewScrollToRect ** @see AVPageViewEndOperation **/ static ACCB1 void ACCB2 SelectionServerShowSelection (AVDoc doc, void *selData) { //currently not used } ASBool SelectionServerKeyDown (AVDoc doc, void * data, AVKeyCode key, AVFlagBits16 flags){ if (key == 127) { AVDocClearSelection(AVAppGetActiveDoc(),false); } return false; } void* SelectionServerRemovedFromSelection (AVDoc doc, void * curData, void * remData, ASBool highlight) { int x = 10; return NULL; } /* InitializeSelectionServer ** ------------------------------------------------------ ** */ //** Create and register the selection server for pidgets. // ** // ** @see ASAtomFromString // ** @see AVDocRegisterSelectionServer // ** */ void InitializeCustomClassSelectionServer (void) { // Initialize our supporting globals. CustomClass_K = CustomClassSelectionServerGetType(); cbDrawCustomClassSelection = ASCallbackCreateProto (AVPageViewDrawProc, DrawCustomClassSelection); // Set up the pidget selection server. memset (\u0026CustomClassSelectionServer, 0, sizeof(AVDocSelectionServerRec)); CustomClassSelectionServer.size = sizeof(AVDocSelectionServerRec); // Currently, we only implement Getting, Losing and Showing selections. CustomClassSelectionServer.GetType = ASCallbackCreateProto (AVDocSelectionGetTypeProc, \u0026CustomClassSelectionServerGetType); CustomClassSelectionServer.GettingSelection = ASCallbackCreateProto (AVDocSelectionGettingSelectionProc, \u0026SelectionServerGettingSelection); CustomClassSelectionServer.LosingSelection = ASCallbackCreateProto (AVDocSelectionLosingSelectionProc, \u0026SelectionServerLosingSelection); CustomClassSelectionServer.ShowSelection = ASCallbackCreateProto (AVDocSelectionShowSelectionProc, \u0026SelectionServerShowSelection); CustomClassSelectionServer.KeyDown = ASCallbackCreateProto (AVDocSelectionKeyDownProc, \u0026SelectionServerKeyDown); CustomClassSelectionServer.RemovedFromSelection = ASCallbackCreateProto (AVDocSelectionRemovedFromSelectionProc, \u0026SelectionServerRemovedFromSelection); AVDocRegisterSelectionServer (\u0026CustomClassSelectionServer); } // drawing utils implementation /********************************************************************* ADOBE SYSTEMS INCORPORATED Copyright (C) 1994-2003 Adobe Systems Incorporated All rights reserved. NOTICE: Adobe permits you to use, modify, and distribute this file in accordance with the terms of the Adobe license agreement accompanying it. If you have received this file from a source other than Adobe, then your use, modification, or distribution of it requires the prior written permission of Adobe. -------------------------------------------------------------------*/ /** file SelectionServerDrawUtils.cpp - Implementation to draw the highlight around the selected pidget. *********************************************************************/ #ifndef MAC_PLATFORM #include \"PIHeaders.h\" #endif #include \"CommonHeaders.h\" #include \"SelectionServer.h\" #include \"Resource.h\" /*------------------------------------------------------- Helper Methods -------------------------------------------------------*/ /* DrawCustomClassSelectionHighlight ** ------------------------------------------------------ ** */ /** Draws the selection on the pageview. Simply draws a ** rectangle around the pidget. ** ** @see AVPageViewSetColor ** @see AVPageViewDrawRectOutline ** */ static void DrawCustomClassSelectionHighlight (AVPageView pageView, const AVDevRect *selBounds) { PDColorValueRec colorVal; // Define the color for our selection. colorVal.space = PDDeviceRGB ; colorVal.value[0] = ASInt32ToFixed(1); colorVal.value[1] = colorVal.value[2] = ASInt32ToFixed(0); // Set the drawing color for the pageview. AVPageViewSetColor (pageView, \u0026colorVal); // Draw the highlight. AVPageViewDrawRectOutline(pageView, selBounds, 2, NULL, 0); } /* DrawCustomClassSelection ** ------------------------------------------------------ ** */ /** This is the AVPageViewDrawProc that draws the current ** selection. It is registered whenever the selection server's ** GettingSelection callback is called, and unregistered when ** the LosingSelection callback is called. The callback is ** created in InitializeSelectionServer(). ** ** @see AVPageViewGetFirstVisiblePageNum ** @see AVPageViewGetLastVisiblePageNum ** @see AVPageViewRectToDevice ** */ ACCB1 void ACCB2 DrawCustomClassSelection (AVPageView pageView, AVDevRect *updateRect, void *data) { CustomClassSelection isel = (CustomClassSelection)data; for(list\u003cpageSelection\u003e::iterator i = isel-\u003epageSelectionToHighlight-\u003ebegin(); i != isel-\u003epageSelectionToHighlight-\u003eend(); i++) { PageSelection* iteratorSel = \u0026(*i); if(AVAppGetActiveDoc() != isel-\u003ecurrentDoc) { //this is not the document we need return; } ASInt32 pageNum = PDPageGetNumber (iteratorSel-\u003efirst); DURING if ((pageNum \u003e= AVPageViewGetFirstVisiblePageNum(pageView)) \u0026\u0026 (pageNum \u003c= AVPageViewGetLastVisiblePageNum(pageView))\u0026#038;\u0026#038;(pageNum == AVPageViewGetPageNum(pageView))) { // Convert the pidgets's bounding rect to device space. for(list\u003casfixedRect\u003e::iterator pageRect = iteratorSel-\u003esecond-\u003ebegin(); pageRect != iteratorSel-\u003esecond-\u003eend();pageRect++) { ASFixedRect rect = *pageRect; AVDevRect viewRect; AVPageViewRectToDevice (pageView, \u0026rect, \u0026viewRect); DrawCustomClassSelectionHighlight (pageView, \u0026viewRect); } } HANDLER END_HANDLER } } //we’ll also need some class to hold the selection class instance #include \"CustomClassSelectionServer/SelectionServer.h\" class Page: { public: Page(Form *parent); ~Page(); //other custom code static void InitSelection(); static void SetSelection(); static CustomClassSelection currentSelection; }; typedef vector\u003cpage\u003e PageVector; //making the selection would be fairly easy: Page::InitSelection(); for(every_page) { if( need_selection ) { / /add selection rectangle pageSlctn.second-\u003epush_back(boundingRect); if(!currentSelection-\u003eisAnnotToScrollToSet) { currentSelection-\u003eannotToScrollTo = annot; currentSelection-\u003eisAnnotToScrollToSet = true; //also add referrence to document to avoid cross document painting currentSelection-\u003ecurrentDoc = AVAppGetActiveDoc(); } currentSelection-\u003epageSelectionToHighlight-\u003epush_back(pageSlctn); } } Page::SetSelection(); ",
+  "wordCount" : "1799",
+  "inLanguage": "en",
+  "image": "https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg","datePublished": "2007-10-19T14:21:00Z",
+  "dateModified": "2007-10-19T14:21:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Viktor Halitsyn"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/code/custom-selection-server-in-pdf-plugin/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nomad's reflections",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Nomad&#39;s reflections (Alt + H)">Nomad&#39;s reflections</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Custom selection server in PDF plugin
+    </h1>
+    <div class="post-meta"><span title='2007-10-19 14:21:00 +0000 +0000'>10/19/2007</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Viktor Halitsyn&nbsp;|&nbsp;<a href="https://github.com/rdev02/hugo-blog/tree/master/content/posts/code/custom-selection-server-in-pdf-plugin.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Recently i was developing a feature for the Adobe(R) Acrobat Reader(R) plugin and come across an issue of selecting/highlighting annotations on the document based on some criteria e.g. if an annotation is positioned too close to the margin of the page… – bad you are :). Here i’ll post a tutorial like code for atchieving this goal for when trying to resolve that problem the only helpful information i foud was the Adobe Acrobat 7.0.5 SDK.First i would like to say that i haven’t found better way(say another way) to make slection/highlight of an annotation that creating my own selection server for that annotation. It also has to be said that every single type in Acrobat that “can be highlighted” has its own selection server(of type AVDocSelectionServer) which in practise can be obtained if you know its “internal” name. For example if you want a selection server for type “Button” you can something as following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">AVDocGetSelectionServerByType</span><span class="p">(</span><span class="n">ASAtomFromString</span><span class="p">(</span><span class="s">&#34;Button&#34;</span><span class="p">));</span>
+</span></span></code></pre></div><p>There are selection servers for simple annotations but my annotation was a custom object, created by plug-in and thus didn’t have one. It didn’t prevent acrobat to use normal highlighting for it as when treating it as simple annotation in object editing mode, but the request was to provide highligting regardless of mode. So solution is to register the selection server. There is an example shipped with SDK of how to make custom selection servers but this example has a minor bug in it(it is configured so that selection will be drawn on every page whereas it has to be drawn only on the page where the object resides) and it doesnt take into consideration possibility of acrobat to change selection servers without notifying current selection server to lose its selection(for example when user press CTRL+A). So here we go with the code:First thing is to create a class which would be holding our selection and provide the selection type. To manage selections on different pages i created a simple class containinng list with page/data pairs and made it static for cross-page persistance. secondly implement the selection server. There is one workaround here in my code: to handle CTRL+A for simple objects on the page i use its selection server by injecting “losing selection” funtionality before server case takes place and then return to the normal application flow.This is definetely not a good way – but i found no other solution and this one is working:).</p>
+<p>So here is the header file of the Selection Server</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cm">/*********************************************************************
+</span></span></span><span class="line"><span class="cl"><span class="cm">ADOBE SYSTEMS INCORPORATED
+</span></span></span><span class="line"><span class="cl"><span class="cm">Copyright (C) 1994-2003 Adobe Systems Incorporated
+</span></span></span><span class="line"><span class="cl"><span class="cm">All rights reserved.
+</span></span></span><span class="line"><span class="cl"><span class="cm">NOTICE: Adobe permits you to use, modify, and distribute this file
+</span></span></span><span class="line"><span class="cl"><span class="cm">in accordance with the terms of the Adobe license agreement
+</span></span></span><span class="line"><span class="cl"><span class="cm">accompanying it. If you have received this file from a source other
+</span></span></span><span class="line"><span class="cl"><span class="cm">than Adobe, then your use, modification, or distribution of it
+</span></span></span><span class="line"><span class="cl"><span class="cm">requires the prior written permission of Adobe.
+</span></span></span><span class="line"><span class="cl"><span class="cm">---------------------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">SelectionServer.h
+</span></span></span><span class="line"><span class="cl"><span class="cm">*********************************************************************/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#ifndef PIDGETSELECTIONSERVER_H
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PIDGETSELECTIONSERVER_H
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;list&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;map&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">pdpage</span><span class="p">,</span><span class="n">list</span><span class="o">&lt;</span><span class="n">asfixedRect</span><span class="o">&gt;*&gt;</span> <span class="n">PageSelection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* CustomClassSelection
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** ------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">  **
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** This is the structure used to store selection data for
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** selections of type &#34;CustomClass&#34;. All callbacks in our
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** AVDocSelectionServer can assume that selData is a
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** pointer to one of these.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">typedef</span> <span class="k">struct</span> <span class="nc">_t_CustomClassSelection</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">PDAnnot</span> <span class="n">annotToScrollTo</span><span class="p">;</span><span class="c1">// the first annot that is highlighted
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">list</span><span class="o">&lt;</span><span class="n">pageSelection</span><span class="o">&gt;*</span> <span class="n">pageSelectionToHighlight</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">AVDoc</span> <span class="n">currentDoc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">isAnnotToScrollToSet</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="n">CustomClassSelectionRec</span><span class="p">,</span> <span class="o">*</span><span class="n">CustomClassSelection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Pidget selection/highlight methods. These methods are
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// shared between the selection server and the AVTool.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">void</span> <span class="nf">InitializeCustomClassSelectionServer</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* SelectionServerGetType
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** ------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** */</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/** We&#39;re registering a selection server of type &#34;CustomClass&#34;.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  **
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @return the selection server type.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">ACCB1</span> <span class="n">ASAtom</span> <span class="n">ACCB2</span> <span class="nf">CustomClassSelectionServerGetType</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">ASAtomFromString</span> <span class="p">(</span><span class="s">&#34;CustomClass&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">ACCB1</span> <span class="kt">void</span> <span class="n">ACCB2</span> <span class="nf">DrawCustomClassSelection</span> <span class="p">(</span><span class="n">AVPageView</span> <span class="n">pageView</span><span class="p">,</span> <span class="n">AVDevRect</span> <span class="o">*</span><span class="n">updateRect</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">extern</span> <span class="n">ACCB1</span> <span class="kt">void</span> <span class="n">ACCB2</span> <span class="nf">SelectionServerLosingSelection</span> <span class="p">(</span><span class="n">AVDoc</span> <span class="n">doc</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">selData</span><span class="p">,</span> <span class="n">ASBool</span> <span class="n">highlight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span><span class="o">*</span> <span class="nf">MySelectAllProc</span> <span class="p">(</span><span class="n">AVDoc</span> <span class="n">doc</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">selData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">extern</span> <span class="n">AVDocSelectionSelectAllProc</span> <span class="n">prc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="cp">#endif 
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  
+</span></span><span class="line"><span class="cl">  <span class="c1">// !SELECTIONSERVER_H
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// ***************Its corresponding realization and helper &#39;drawing utils&#39; file intended to actually draw the selection************
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="cm">/*********************************************************************
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ADOBE SYSTEMS INCORPORATED
+</span></span></span><span class="line"><span class="cl"><span class="cm">  Copyright (C) 1994-2003 Adobe Systems Incorporated
+</span></span></span><span class="line"><span class="cl"><span class="cm">  All rights reserved.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  NOTICE: Adobe permits you to use, modify, and distribute this file
+</span></span></span><span class="line"><span class="cl"><span class="cm">  in accordance with the terms of the Adobe license agreement
+</span></span></span><span class="line"><span class="cl"><span class="cm">  accompanying it. If you have received this file from a source other
+</span></span></span><span class="line"><span class="cl"><span class="cm">  than Adobe, then your use, modification, or distribution of it
+</span></span></span><span class="line"><span class="cl"><span class="cm">  requires the prior written permission of Adobe.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  -------------------------------------------------------------------*/</span> 
+</span></span><span class="line"><span class="cl">  <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">  file SelectionServer.cpp
+</span></span></span><span class="line"><span class="cl"><span class="cm">  - The SelectionServer plug-in implements a selection server to handle
+</span></span></span><span class="line"><span class="cl"><span class="cm">  pidgets. The pidgets selection tool allows users to select pidgetss by calling
+</span></span></span><span class="line"><span class="cl"><span class="cm">  AVDocSetSelection() with a selection type of &#34;CustomClass&#34;.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  This call passes control to the selection server, which proceeds to
+</span></span></span><span class="line"><span class="cl"><span class="cm">  highlight the pidget.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  - The selection server functionality is limited to getting, showing, and
+</span></span></span><span class="line"><span class="cl"><span class="cm">  losing a selection.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  *********************************************************************/</span>
+</span></span><span class="line"><span class="cl">  <span class="cp">#ifndef MAC_PLATFORM
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="cp">#include</span> <span class="cpf">&#34;PIHeaders.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="cp">#include</span> <span class="cpf">&#34;CommonHeaders.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="cp">#include</span> <span class="cpf">&#34;SelectionServer.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="cp">#include</span> <span class="cpf">&#34;Page.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  
+</span></span><span class="line"><span class="cl">  <span class="cm">/*-------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">  Constants/Declarations
+</span></span></span><span class="line"><span class="cl"><span class="cm">  -------------------------------------------------------*/</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">ASAtom</span> <span class="n">CustomClass_K</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">AVPageViewDrawProc</span> <span class="n">cbDrawCustomClassSelection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">AVDocSelectionServerRec</span> <span class="n">CustomClassSelectionServer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">AVDocSelectionSelectAllProc</span> <span class="n">prc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/*-------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">  AVDocSelectionServer Callbacks
+</span></span></span><span class="line"><span class="cl"><span class="cm">  -------------------------------------------------------*/</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* SelectionServerGettingSelection
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** ------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** */</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1">//** This is the selection server&#39;s callback for when a
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//** selection is registered. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//**
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//** @param selData pointer to an CustomClassSelectionRec allocated 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//** through ASmalloc. The LosingSelection callback will call 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//** ASfree() on it.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//**
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//** @see AVAppRegisterForPageViewDrawing
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//** */
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">static</span> <span class="n">ACCB1</span> <span class="kt">void</span> <span class="n">ACCB2</span> <span class="nf">SelectionServerGettingSelection</span> <span class="p">(</span><span class="n">AVDoc</span> <span class="n">doc</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">selData</span><span class="p">,</span> <span class="n">ASBool</span> <span class="n">highlight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ASAtom</span> <span class="n">atm</span> <span class="o">=</span> <span class="n">ASAtomFromString</span><span class="p">(</span><span class="s">&#34;Authoring&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">AVDocSelectionServer</span> <span class="n">srvr</span> <span class="o">=</span> <span class="n">AVDocGetSelectionServerByType</span><span class="p">(</span><span class="n">atm</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prc</span> <span class="o">=</span> <span class="n">srvr</span><span class="o">-&gt;</span><span class="n">SelectAll</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">srvr</span><span class="o">-&gt;</span><span class="n">SelectAll</span> <span class="o">=</span> <span class="n">ASCallbackCreateProto</span> <span class="p">(</span><span class="n">AVDocSelectionSelectAllProc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">MySelectAllProc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">AVPageView</span> <span class="n">pageView</span> <span class="o">=</span> <span class="n">AVDocGetPageView</span><span class="p">(</span><span class="n">doc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustomClassSelection</span> <span class="n">isel</span> <span class="o">=</span> <span class="p">(</span><span class="n">CustomClassSelection</span><span class="p">)</span><span class="n">selData</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Draw the selection. It will only be drawn if the page
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// holding the selection is being displayed.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">DrawCustomClassSelection</span> <span class="p">(</span><span class="n">pageView</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">selData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Register the AVPageViewDrawProc so we can redraw the selection
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// when the page is updated.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">AVAppRegisterForPageViewDrawing</span> <span class="p">(</span><span class="n">cbDrawCustomClassSelection</span><span class="p">,</span> <span class="n">isel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span><span class="o">*</span> <span class="nf">MySelectAllProc</span> <span class="p">(</span><span class="n">AVDoc</span> <span class="n">doc</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">selData</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SelectionServerLosingSelection</span><span class="p">(</span><span class="n">AVAppGetActiveDoc</span><span class="p">(),</span><span class="n">Page</span><span class="o">::</span><span class="n">currentSelection</span><span class="p">,</span><span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ASAtom</span> <span class="n">atm</span> <span class="o">=</span> <span class="n">ASAtomFromString</span><span class="p">(</span><span class="s">&#34;Authoring&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">AVDocSelectionServer</span> <span class="n">srvr</span> <span class="o">=</span> <span class="n">AVDocGetSelectionServerByType</span><span class="p">(</span><span class="n">atm</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">srvr</span><span class="o">-&gt;</span><span class="n">SelectAll</span> <span class="o">=</span> <span class="n">prc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">srvr</span><span class="o">-&gt;</span><span class="n">SelectAll</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span><span class="n">selData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* SelectionServerLosingSelection
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** ------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** */</span> 
+</span></span><span class="line"><span class="cl">  <span class="cm">/** This is called whenever we have an active selection
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** and the Viewer is attempting to change the selection
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** to something else.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  **
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVDocGetPageView
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVAppUnregisterForPageViewDrawing
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see PDPageGetNumber
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVPageViewGetFirstVisiblePageNum
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVPageViewGetLastVisiblePageNum
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVPageViewRectToDevice
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVPageViewInvalidateRect
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVPageViewDrawNow
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see PDPageRelease
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see ASFree
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ACCB1</span> <span class="kt">void</span> <span class="n">ACCB2</span> <span class="nf">SelectionServerLosingSelection</span> <span class="p">(</span><span class="n">AVDoc</span> <span class="n">doc</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">selData</span><span class="p">,</span> <span class="n">ASBool</span> <span class="n">highlight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">AVPageView</span> <span class="n">pageView</span> <span class="o">=</span> <span class="n">AVDocGetPageView</span><span class="p">(</span><span class="n">doc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustomClassSelection</span> <span class="n">isel</span> <span class="o">=</span> <span class="p">(</span><span class="n">CustomClassSelection</span><span class="p">)</span><span class="n">selData</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ASAtom</span> <span class="n">atm</span> <span class="o">=</span> <span class="n">ASAtomFromString</span><span class="p">(</span><span class="s">&#34;Authoring&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">AVDocSelectionServer</span> <span class="n">srvr</span> <span class="o">=</span> <span class="n">AVDocGetSelectionServerByType</span><span class="p">(</span><span class="n">atm</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">srvr</span><span class="o">-&gt;</span><span class="n">SelectAll</span> <span class="o">=</span> <span class="n">prc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Make sure that an exception doesn&#39;t prevent us from
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// releasing the PDPage.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">DURING</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Unregister the AVPageViewDrawProc; there&#39;s no selection
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// to draw any more.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">AVAppUnregisterForPageViewDrawing</span> <span class="p">(</span><span class="n">cbDrawCustomClassSelection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="n">list</span><span class="o">&lt;</span><span class="n">pageSelection</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">isel</span><span class="o">-&gt;</span><span class="n">pageSelectionToHighlight</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">isel</span><span class="o">-&gt;</span><span class="n">pageSelectionToHighlight</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">PageSelection</span><span class="o">*</span> <span class="n">iteratorSel</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">ASInt32</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="n">PDPageGetNumber</span> <span class="p">(</span><span class="n">iteratorSel</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">((</span><span class="n">pageNum</span> <span class="o">&gt;=</span> <span class="n">AVPageViewGetFirstVisiblePageNum</span><span class="p">(</span><span class="n">pageView</span><span class="p">))</span> <span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="n">pageNum</span> <span class="o">&lt;=</span> <span class="n">AVPageViewGetLastVisiblePageNum</span><span class="p">(</span><span class="n">pageView</span><span class="p">))</span> <span class="o">&amp;</span><span class="err">#</span><span class="mo">03</span><span class="mi">8</span><span class="p">;</span><span class="o">&amp;</span><span class="err">#</span><span class="mo">03</span><span class="mi">8</span><span class="p">;</span> <span class="n">highlight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AVDevRect</span> <span class="n">viewRect</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="n">list</span><span class="o">&lt;</span><span class="n">asfixedRect</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">pageRect</span> <span class="o">=</span> <span class="n">iteratorSel</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span> <span class="n">pageRect</span> <span class="o">!=</span> <span class="n">iteratorSel</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span><span class="n">pageRect</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="n">AVPageViewRectToDevice</span> <span class="p">(</span><span class="n">pageView</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">(</span><span class="o">*</span><span class="n">pageRect</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">viewRect</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="n">AVPageViewInvalidateRect</span> <span class="p">(</span><span class="n">pageView</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">viewRect</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AVPageViewDrawNow</span> <span class="p">(</span><span class="n">pageView</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">HANDLER</span>
+</span></span><span class="line"><span class="cl">    <span class="n">END_HANDLER</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Release the page.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="n">list</span><span class="o">&lt;</span><span class="n">pageSelection</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">isel</span><span class="o">-&gt;</span><span class="n">pageSelectionToHighlight</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">isel</span><span class="o">-&gt;</span><span class="n">pageSelectionToHighlight</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">PDPageRelease</span> <span class="p">(((</span><span class="n">PageSelection</span><span class="p">)(</span><span class="o">*</span><span class="n">i</span><span class="p">)).</span><span class="n">first</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Free the selection data. Note that anyone calling AVDocSetSelection
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// for our selection server must have used ASmalloc to allocate the
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// memory, or this won&#39;t work.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">ASfree</span> <span class="p">(</span><span class="n">isel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* SelectionServerShowSelection
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** ------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** */</span> 
+</span></span><span class="line"><span class="cl">  <span class="cm">/** If the user has strayed to a page different from the
+</span></span></span><span class="line"><span class="cl"><span class="cm">  / ** selection, this callback will take the user to the
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** correct page and scroll the selection into view.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  **
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVPageViewBeginOperation
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVPageViewGoTo
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVPageViewRectToDevice
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVPageViewScrollToRect
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** @see AVPageViewEndOperation
+</span></span></span><span class="line"><span class="cl"><span class="cm">  **/</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">ACCB1</span> <span class="kt">void</span> <span class="n">ACCB2</span> <span class="nf">SelectionServerShowSelection</span> <span class="p">(</span><span class="n">AVDoc</span> <span class="n">doc</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">selData</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//currently not used
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">ASBool</span> <span class="nf">SelectionServerKeyDown</span> <span class="p">(</span><span class="n">AVDoc</span> <span class="n">doc</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">AVKeyCode</span> <span class="n">key</span><span class="p">,</span> <span class="n">AVFlagBits16</span> <span class="n">flags</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">127</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">AVDocClearSelection</span><span class="p">(</span><span class="n">AVAppGetActiveDoc</span><span class="p">(),</span><span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span><span class="o">*</span> <span class="nf">SelectionServerRemovedFromSelection</span> <span class="p">(</span><span class="n">AVDoc</span> <span class="n">doc</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">curData</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">remData</span><span class="p">,</span> <span class="n">ASBool</span> <span class="n">highlight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/* InitializeSelectionServer
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** ------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ** */</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1">//** Create and register the selection server for pidgets.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// **
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// ** @see ASAtomFromString
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// ** @see AVDocRegisterSelectionServer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// ** */
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">void</span> <span class="nf">InitializeCustomClassSelectionServer</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Initialize our supporting globals.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">CustomClass_K</span> <span class="o">=</span> <span class="n">CustomClassSelectionServerGetType</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cbDrawCustomClassSelection</span> <span class="o">=</span> <span class="n">ASCallbackCreateProto</span> <span class="p">(</span><span class="n">AVPageViewDrawProc</span><span class="p">,</span> <span class="n">DrawCustomClassSelection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Set up the pidget selection server.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">memset</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">CustomClassSelectionServer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">AVDocSelectionServerRec</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustomClassSelectionServer</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">AVDocSelectionServerRec</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Currently, we only implement Getting, Losing and Showing selections.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">CustomClassSelectionServer</span><span class="p">.</span><span class="n">GetType</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ASCallbackCreateProto</span> <span class="p">(</span><span class="n">AVDocSelectionGetTypeProc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">CustomClassSelectionServerGetType</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustomClassSelectionServer</span><span class="p">.</span><span class="n">GettingSelection</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ASCallbackCreateProto</span> <span class="p">(</span><span class="n">AVDocSelectionGettingSelectionProc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">SelectionServerGettingSelection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustomClassSelectionServer</span><span class="p">.</span><span class="n">LosingSelection</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ASCallbackCreateProto</span> <span class="p">(</span><span class="n">AVDocSelectionLosingSelectionProc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">SelectionServerLosingSelection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustomClassSelectionServer</span><span class="p">.</span><span class="n">ShowSelection</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ASCallbackCreateProto</span> <span class="p">(</span><span class="n">AVDocSelectionShowSelectionProc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">SelectionServerShowSelection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustomClassSelectionServer</span><span class="p">.</span><span class="n">KeyDown</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ASCallbackCreateProto</span> <span class="p">(</span><span class="n">AVDocSelectionKeyDownProc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">SelectionServerKeyDown</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CustomClassSelectionServer</span><span class="p">.</span><span class="n">RemovedFromSelection</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ASCallbackCreateProto</span> <span class="p">(</span><span class="n">AVDocSelectionRemovedFromSelectionProc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">SelectionServerRemovedFromSelection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">AVDocRegisterSelectionServer</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">CustomClassSelectionServer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></div>  <p>
+    // drawing utils implementation
+  </p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cm">/*********************************************************************
+</span></span></span><span class="line"><span class="cl"><span class="cm">ADOBE SYSTEMS INCORPORATED
+</span></span></span><span class="line"><span class="cl"><span class="cm">Copyright (C) 1994-2003 Adobe Systems Incorporated
+</span></span></span><span class="line"><span class="cl"><span class="cm">All rights reserved.
+</span></span></span><span class="line"><span class="cl"><span class="cm">NOTICE: Adobe permits you to use, modify, and distribute this file
+</span></span></span><span class="line"><span class="cl"><span class="cm">in accordance with the terms of the Adobe license agreement
+</span></span></span><span class="line"><span class="cl"><span class="cm">accompanying it. If you have received this file from a source other
+</span></span></span><span class="line"><span class="cl"><span class="cm">than Adobe, then your use, modification, or distribution of it
+</span></span></span><span class="line"><span class="cl"><span class="cm">requires the prior written permission of Adobe.
+</span></span></span><span class="line"><span class="cl"><span class="cm">-------------------------------------------------------------------*/</span> 
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">file SelectionServerDrawUtils.cpp
+</span></span></span><span class="line"><span class="cl"><span class="cm">- Implementation to draw the highlight around the selected pidget.
+</span></span></span><span class="line"><span class="cl"><span class="cm">*********************************************************************/</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#ifndef MAC_PLATFORM
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;PIHeaders.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;CommonHeaders.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;SelectionServer.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Resource.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="cm">/*-------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">Helper Methods
+</span></span></span><span class="line"><span class="cl"><span class="cm">-------------------------------------------------------*/</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* DrawCustomClassSelectionHighlight
+</span></span></span><span class="line"><span class="cl"><span class="cm">** ------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">** */</span> 
+</span></span><span class="line"><span class="cl"><span class="cm">/** Draws the selection on the pageview. Simply draws a
+</span></span></span><span class="line"><span class="cl"><span class="cm">** rectangle around the pidget.
+</span></span></span><span class="line"><span class="cl"><span class="cm">**
+</span></span></span><span class="line"><span class="cl"><span class="cm">** @see AVPageViewSetColor
+</span></span></span><span class="line"><span class="cl"><span class="cm">** @see AVPageViewDrawRectOutline
+</span></span></span><span class="line"><span class="cl"><span class="cm">** */</span>
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">DrawCustomClassSelectionHighlight</span> <span class="p">(</span><span class="n">AVPageView</span> <span class="n">pageView</span><span class="p">,</span> <span class="k">const</span> <span class="n">AVDevRect</span> <span class="o">*</span><span class="n">selBounds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">PDColorValueRec</span> <span class="n">colorVal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Define the color for our selection.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">colorVal</span><span class="p">.</span><span class="n">space</span> <span class="o">=</span> <span class="n">PDDeviceRGB</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">colorVal</span><span class="p">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ASInt32ToFixed</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">colorVal</span><span class="p">.</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">colorVal</span><span class="p">.</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">ASInt32ToFixed</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Set the drawing color for the pageview.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">AVPageViewSetColor</span> <span class="p">(</span><span class="n">pageView</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">colorVal</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Draw the highlight.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">AVPageViewDrawRectOutline</span><span class="p">(</span><span class="n">pageView</span><span class="p">,</span> <span class="n">selBounds</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* DrawCustomClassSelection
+</span></span></span><span class="line"><span class="cl"><span class="cm">** ------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">** */</span> 
+</span></span><span class="line"><span class="cl"><span class="cm">/** This is the AVPageViewDrawProc that draws the current
+</span></span></span><span class="line"><span class="cl"><span class="cm">** selection. It is registered whenever the selection server&#39;s
+</span></span></span><span class="line"><span class="cl"><span class="cm">** GettingSelection callback is called, and unregistered when
+</span></span></span><span class="line"><span class="cl"><span class="cm">** the LosingSelection callback is called. The callback is
+</span></span></span><span class="line"><span class="cl"><span class="cm">** created in InitializeSelectionServer().
+</span></span></span><span class="line"><span class="cl"><span class="cm">**
+</span></span></span><span class="line"><span class="cl"><span class="cm">** @see AVPageViewGetFirstVisiblePageNum
+</span></span></span><span class="line"><span class="cl"><span class="cm">** @see AVPageViewGetLastVisiblePageNum
+</span></span></span><span class="line"><span class="cl"><span class="cm">** @see AVPageViewRectToDevice
+</span></span></span><span class="line"><span class="cl"><span class="cm">** */</span>
+</span></span><span class="line"><span class="cl"><span class="n">ACCB1</span> <span class="kt">void</span> <span class="n">ACCB2</span> <span class="nf">DrawCustomClassSelection</span> <span class="p">(</span><span class="n">AVPageView</span> <span class="n">pageView</span><span class="p">,</span> <span class="n">AVDevRect</span> <span class="o">*</span><span class="n">updateRect</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">CustomClassSelection</span> <span class="n">isel</span> <span class="o">=</span> <span class="p">(</span><span class="n">CustomClassSelection</span><span class="p">)</span><span class="n">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">list</span><span class="o">&lt;</span><span class="n">pageSelection</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">isel</span><span class="o">-&gt;</span><span class="n">pageSelectionToHighlight</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">isel</span><span class="o">-&gt;</span><span class="n">pageSelectionToHighlight</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">PageSelection</span><span class="o">*</span> <span class="n">iteratorSel</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">AVAppGetActiveDoc</span><span class="p">()</span> <span class="o">!=</span> <span class="n">isel</span><span class="o">-&gt;</span><span class="n">currentDoc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//this is not the document we need
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ASInt32</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="n">PDPageGetNumber</span> <span class="p">(</span><span class="n">iteratorSel</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">DURING</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">pageNum</span> <span class="o">&gt;=</span> <span class="n">AVPageViewGetFirstVisiblePageNum</span><span class="p">(</span><span class="n">pageView</span><span class="p">))</span> <span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">pageNum</span> <span class="o">&lt;=</span> <span class="n">AVPageViewGetLastVisiblePageNum</span><span class="p">(</span><span class="n">pageView</span><span class="p">))</span><span class="o">&amp;</span><span class="err">#</span><span class="mo">03</span><span class="mi">8</span><span class="p">;</span><span class="o">&amp;</span><span class="err">#</span><span class="mo">03</span><span class="mi">8</span><span class="p">;(</span><span class="n">pageNum</span> <span class="o">==</span> <span class="n">AVPageViewGetPageNum</span><span class="p">(</span><span class="n">pageView</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// Convert the pidgets&#39;s bounding rect to device space.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">for</span><span class="p">(</span><span class="n">list</span><span class="o">&lt;</span><span class="n">asfixedRect</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">pageRect</span> <span class="o">=</span> <span class="n">iteratorSel</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span> <span class="n">pageRect</span> <span class="o">!=</span> <span class="n">iteratorSel</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span><span class="n">pageRect</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ASFixedRect</span> <span class="n">rect</span> <span class="o">=</span> <span class="o">*</span><span class="n">pageRect</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AVDevRect</span> <span class="n">viewRect</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AVPageViewRectToDevice</span> <span class="p">(</span><span class="n">pageView</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rect</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">viewRect</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">DrawCustomClassSelectionHighlight</span> <span class="p">(</span><span class="n">pageView</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">viewRect</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">HANDLER</span>
+</span></span><span class="line"><span class="cl">    <span class="n">END_HANDLER</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>  <p>
+    //we&#8217;ll also need some class to hold the selection class instance
+  </p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;CustomClassSelectionServer/SelectionServer.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">class</span> <span class="nc">Page</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Page</span><span class="p">(</span><span class="n">Form</span> <span class="o">*</span><span class="n">parent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">Page</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//other custom code
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="kt">void</span> <span class="nf">InitSelection</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="kt">void</span> <span class="nf">SetSelection</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="n">CustomClassSelection</span> <span class="n">currentSelection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">page</span><span class="o">&gt;</span> <span class="n">PageVector</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//making the selection would be fairly easy:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Page</span><span class="o">::</span><span class="n">InitSelection</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span><span class="n">every_page</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span> <span class="n">need_selection</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="o">/</span> <span class="o">/</span><span class="n">add</span> <span class="n">selection</span> <span class="n">rectangle</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pageSlctn</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">push_back</span><span class="p">(</span><span class="n">boundingRect</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">currentSelection</span><span class="o">-&gt;</span><span class="n">isAnnotToScrollToSet</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">currentSelection</span><span class="o">-&gt;</span><span class="n">annotToScrollTo</span> <span class="o">=</span> <span class="n">annot</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">currentSelection</span><span class="o">-&gt;</span><span class="n">isAnnotToScrollToSet</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//also add referrence to document to avoid cross document painting
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">currentSelection</span><span class="o">-&gt;</span><span class="n">currentDoc</span> <span class="o">=</span> <span class="n">AVAppGetActiveDoc</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">currentSelection</span><span class="o">-&gt;</span><span class="n">pageSelectionToHighlight</span><span class="o">-&gt;</span><span class="n">push_back</span><span class="p">(</span><span class="n">pageSlctn</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Page</span><span class="o">::</span><span class="n">SetSelection</span><span class="p">();</span>
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/c&#43;&#43;/">C&#43;&#43;</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Tiff to Picture box in PDF plugin ADM dialog</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/code/nice-books-to-readoopood-agile-etc/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Nice books to read[OOP,OOD, Agile etc.]</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Custom selection server in PDF plugin on x"
+            href="https://x.com/intent/tweet/?text=Custom%20selection%20server%20in%20PDF%20plugin&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcustom-selection-server-in-pdf-plugin%2f&amp;hashtags=c%2b%2b">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Custom selection server in PDF plugin on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcustom-selection-server-in-pdf-plugin%2f&amp;title=Custom%20selection%20server%20in%20PDF%20plugin&amp;summary=Custom%20selection%20server%20in%20PDF%20plugin&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcustom-selection-server-in-pdf-plugin%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Custom selection server in PDF plugin on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcustom-selection-server-in-pdf-plugin%2f&title=Custom%20selection%20server%20in%20PDF%20plugin">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Custom selection server in PDF plugin on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcustom-selection-server-in-pdf-plugin%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Custom selection server in PDF plugin on whatsapp"
+            href="https://api.whatsapp.com/send?text=Custom%20selection%20server%20in%20PDF%20plugin%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcustom-selection-server-in-pdf-plugin%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Custom selection server in PDF plugin on telegram"
+            href="https://telegram.me/share/url?text=Custom%20selection%20server%20in%20PDF%20plugin&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcustom-selection-server-in-pdf-plugin%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Custom selection server in PDF plugin on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Custom%20selection%20server%20in%20PDF%20plugin&u=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcustom-selection-server-in-pdf-plugin%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© Viktor Halitsyn</span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

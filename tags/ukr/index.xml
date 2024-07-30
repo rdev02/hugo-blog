@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>ukr on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/tags/ukr/</link>
-    <description>Recent content in ukr on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 09 Dec 2017 09:48:00 -0500</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/ukr/index.xml" rel="self" type="application/rss+xml" />
+    <title>Ukr on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/tags/ukr/</link>
+    <description>Recent content in Ukr on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Sat, 09 Dec 2017 09:48:00 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ukr/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>&#34;Порохоботи VS зрадофіли&#34;, або медійна інформаційна війна триває.</title>
-      <link>http://blog.vnomad.com/tea/zradofila-vs-porohobot/</link>
+      <link>http://localhost:1313/posts/tea/zradofila-vs-porohobot/</link>
       <pubDate>Sat, 09 Dec 2017 09:48:00 -0500</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/zradofila-vs-porohobot/</guid>
+      <guid>http://localhost:1313/posts/tea/zradofila-vs-porohobot/</guid>
       <description>Учітеся, брати мої,
 Учітесь, читайте ,
 І чужому научайтесь ,
@@ -20,35 +26,28 @@
 Але, з початку, невеличкий ліричний відступ :)
 До появи інтернету щоденним джерелом інформації була газета, радіо, чи то пак телевізор.</description>
     </item>
-    
     <item>
       <title>Flu, people and ukrainian healthcare system</title>
-      <link>http://blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/</link>
+      <link>http://localhost:1313/posts/tea/flu-people-and-ukrainian-healthcare-system/</link>
       <pubDate>Fri, 30 Oct 2009 19:10:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/</guid>
+      <guid>http://localhost:1313/posts/tea/flu-people-and-ukrainian-healthcare-system/</guid>
       <description>THEY ALL SUCK!!! a big deal.
 I will start with the last one. Having just recovered from the flu I decided to go to the hospital in order to check if I’ve totally recovered and that there is nothing “under the hood” which would strike me in the back in few days. The normal procedure here is to have a blood analysis and a few more tests. Step one – find the doctor.</description>
     </item>
-    
     <item>
       <title>Ukrainian independence day.</title>
-      <link>http://blog.vnomad.com/tea/ukrainian-independence-day/</link>
+      <link>http://localhost:1313/posts/tea/ukrainian-independence-day/</link>
       <pubDate>Thu, 27 Aug 2009 19:37:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/ukrainian-independence-day/</guid>
+      <guid>http://localhost:1313/posts/tea/ukrainian-independence-day/</guid>
       <description>It&amp;amp;#8217;s funny sometimes how could absolutely non-officially connected news be linked together so tightly that one couldn&amp;amp;#8217;t even imagine. Today, reading the daily news I came across an article describing the Barack Obama&amp;amp;#8217;s attitude towards Ukrainian &amp;lt;span style=&amp;quot;font-family: -webkit-monospace;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;-webkit-border-horizontal-spacing: 2px; -webkit-border-vertical-spacing: 2px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-family: &#39;Times New Roman&#39;;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;-webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px;&amp;quot;&amp;gt;sovereignty along with greetings regarding this year&amp;amp;#8217;s independence day. Between the other it was stated there that &amp;amp;#8220;USA won&amp;amp;#8217;t abandon Ukraine on its way towards democratic future&amp;amp;#8230;&amp;amp;#8221;.</description>
     </item>
-    
     <item>
       <title>Ukrainians on Times.</title>
-      <link>http://blog.vnomad.com/tea/ukrainians-on-times/</link>
+      <link>http://localhost:1313/posts/tea/ukrainians-on-times/</link>
       <pubDate>Thu, 20 Aug 2009 19:06:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tea/ukrainians-on-times/</guid>
+      <guid>http://localhost:1313/posts/tea/ukrainians-on-times/</guid>
       <description>Today visited Times. Was interested in one article about (RU+GBR)/UA. To hell the article. I read the comments. OMG.
 OMG again. &amp;#8220;People, even something that you care for most (democracy?) does not give you the right to lie passionately and ignore facts and invent lies. BTW, Eduard Glushko &amp;#8211; if you are so much afraid of the The Molotov-Ribbentrop Pact, it still can be repaired. Poland has to give back to Germany the territories they got after WW2.</description>
     </item>
-    
   </channel>
 </rss>

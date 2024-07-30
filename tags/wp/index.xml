@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>wp on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/tags/wp/</link>
-    <description>Recent content in wp on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 26 Feb 2012 16:15:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/wp/index.xml" rel="self" type="application/rss+xml" />
+    <title>Wp on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/tags/wp/</link>
+    <description>Recent content in Wp on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Sun, 26 Feb 2012 16:15:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/wp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WP7 Mango dive</title>
-      <link>http://blog.vnomad.com/code/wp7-mango-dive/</link>
+      <link>http://localhost:1313/posts/code/wp7-mango-dive/</link>
       <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/wp7-mango-dive/</guid>
+      <guid>http://localhost:1313/posts/code/wp7-mango-dive/</guid>
       <description>It has been a few month since I started mangling with WP7 platform. The more I learnt about it from the inside the more I wanted to buy new real WP7 phone. Things changed slightly after I have done my very first app(didn&amp;#8217;t make it to the app store as I found plenty of similar ones already there and mine was not adding much :() but still as of now I would really be interested in posessing a WP7 phone and giving it a solid try.</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,425 +1,347 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2024 14:07:00 +7000</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Tue, 30 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>apple, devices</title>
-      <link>http://blog.vnomad.com/tags/apple-devices/</link>
-      <pubDate>Sun, 03 Mar 2024 14:07:00 +7000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/apple-devices/</guid>
+      <title>Unify</title>
+      <link>http://localhost:1313/tags/unify/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/unify/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>snb, router</title>
-      <link>http://blog.vnomad.com/tags/snb-router/</link>
-      <pubDate>Mon, 11 Dec 2023 06:20:18 +7000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/snb-router/</guid>
+      <title>Apple</title>
+      <link>http://localhost:1313/tags/apple/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/apple/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>jpn</title>
-      <link>http://blog.vnomad.com/tags/jpn/</link>
-      <pubDate>Sun, 19 Mar 2023 06:17:30 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/jpn/</guid>
+      <title>Devices</title>
+      <link>http://localhost:1313/tags/devices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/devices/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>devices</title>
-      <link>http://blog.vnomad.com/tags/devices/</link>
-      <pubDate>Fri, 24 Feb 2023 06:00:12 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/devices/</guid>
+      <title>Snb, Router</title>
+      <link>http://localhost:1313/tags/snb-router/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/snb-router/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>software</title>
-      <link>http://blog.vnomad.com/tags/software/</link>
-      <pubDate>Thu, 27 Oct 2022 12:32:12 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/software/</guid>
+      <title>Jpn</title>
+      <link>http://localhost:1313/tags/jpn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/jpn/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>hardware</title>
-      <link>http://blog.vnomad.com/tags/hardware/</link>
-      <pubDate>Mon, 06 Dec 2021 22:07:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/hardware/</guid>
+      <title>Software</title>
+      <link>http://localhost:1313/tags/software/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/software/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>go</title>
-      <link>http://blog.vnomad.com/tags/go/</link>
-      <pubDate>Sun, 31 May 2020 19:36:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/go/</guid>
+      <title>Hardware</title>
+      <link>http://localhost:1313/tags/hardware/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/hardware/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>nas</title>
-      <link>http://blog.vnomad.com/tags/nas/</link>
-      <pubDate>Sun, 31 May 2020 19:36:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/nas/</guid>
+      <title>Go</title>
+      <link>http://localhost:1313/tags/go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/go/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>politics</title>
-      <link>http://blog.vnomad.com/tags/politics/</link>
-      <pubDate>Sat, 09 Dec 2017 09:48:00 -0500</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/politics/</guid>
+      <title>Nas</title>
+      <link>http://localhost:1313/tags/nas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/nas/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ukr</title>
-      <link>http://blog.vnomad.com/tags/ukr/</link>
-      <pubDate>Sat, 09 Dec 2017 09:48:00 -0500</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/ukr/</guid>
+      <title>Politics</title>
+      <link>http://localhost:1313/tags/politics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/politics/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>укр</title>
-      <link>http://blog.vnomad.com/tags/%D1%83%D0%BA%D1%80/</link>
-      <pubDate>Sat, 09 Dec 2017 09:48:00 -0500</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/%D1%83%D0%BA%D1%80/</guid>
+      <title>Ukr</title>
+      <link>http://localhost:1313/tags/ukr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ukr/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>aws</title>
-      <link>http://blog.vnomad.com/tags/aws/</link>
-      <pubDate>Sat, 18 Nov 2017 21:37:00 -0700</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/aws/</guid>
+      <title>Укр</title>
+      <link>http://localhost:1313/tags/%D1%83%D0%BA%D1%80/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%D1%83%D0%BA%D1%80/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cdn</title>
-      <link>http://blog.vnomad.com/tags/cdn/</link>
-      <pubDate>Sat, 18 Nov 2017 21:37:00 -0700</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/cdn/</guid>
+      <title>Aws</title>
+      <link>http://localhost:1313/tags/aws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/aws/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>hugo</title>
-      <link>http://blog.vnomad.com/tags/hugo/</link>
-      <pubDate>Sat, 18 Nov 2017 21:37:00 -0700</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/hugo/</guid>
+      <title>Cdn</title>
+      <link>http://localhost:1313/tags/cdn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cdn/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>github</title>
-      <link>http://blog.vnomad.com/tags/github/</link>
-      <pubDate>Sun, 12 Nov 2017 09:59:00 -0700</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/github/</guid>
+      <title>Hugo</title>
+      <link>http://localhost:1313/tags/hugo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/hugo/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>wordpress</title>
-      <link>http://blog.vnomad.com/tags/wordpress/</link>
-      <pubDate>Sun, 12 Nov 2017 09:59:00 -0700</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/wordpress/</guid>
+      <title>Github</title>
+      <link>http://localhost:1313/tags/github/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/github/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>js</title>
-      <link>http://blog.vnomad.com/tags/js/</link>
-      <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/js/</guid>
+      <title>Wordpress</title>
+      <link>http://localhost:1313/tags/wordpress/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/wordpress/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>perf</title>
-      <link>http://blog.vnomad.com/tags/perf/</link>
-      <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/perf/</guid>
+      <title>Js</title>
+      <link>http://localhost:1313/tags/js/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/js/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>rant</title>
-      <link>http://blog.vnomad.com/tags/rant/</link>
-      <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/rant/</guid>
+      <title>Perf</title>
+      <link>http://localhost:1313/tags/perf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/perf/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>wp</title>
-      <link>http://blog.vnomad.com/tags/wp/</link>
-      <pubDate>Sun, 26 Feb 2012 16:15:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/wp/</guid>
+      <title>Rant</title>
+      <link>http://localhost:1313/tags/rant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/rant/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>code</title>
-      <link>http://blog.vnomad.com/tags/code/</link>
-      <pubDate>Wed, 14 Sep 2011 06:50:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/code/</guid>
+      <title>Wp</title>
+      <link>http://localhost:1313/tags/wp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/wp/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>mysql</title>
-      <link>http://blog.vnomad.com/tags/mysql/</link>
-      <pubDate>Wed, 14 Sep 2011 06:50:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/mysql/</guid>
+      <title>Code</title>
+      <link>http://localhost:1313/tags/code/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/code/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>codesod</title>
-      <link>http://blog.vnomad.com/tags/codesod/</link>
-      <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/codesod/</guid>
+      <title>Mysql</title>
+      <link>http://localhost:1313/tags/mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mysql/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>java</title>
-      <link>http://blog.vnomad.com/tags/java/</link>
-      <pubDate>Tue, 06 Sep 2011 08:06:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/java/</guid>
+      <title>Codesod</title>
+      <link>http://localhost:1313/tags/codesod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/codesod/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>linux</title>
-      <link>http://blog.vnomad.com/tags/linux/</link>
-      <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/linux/</guid>
+      <title>Java</title>
+      <link>http://localhost:1313/tags/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/java/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ubuntu</title>
-      <link>http://blog.vnomad.com/tags/ubuntu/</link>
-      <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/ubuntu/</guid>
+      <title>Linux</title>
+      <link>http://localhost:1313/tags/linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/linux/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>hack</title>
-      <link>http://blog.vnomad.com/tags/hack/</link>
-      <pubDate>Mon, 20 Jun 2011 08:34:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/hack/</guid>
+      <title>Ubuntu</title>
+      <link>http://localhost:1313/tags/ubuntu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ubuntu/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>social</title>
-      <link>http://blog.vnomad.com/tags/social/</link>
-      <pubDate>Sun, 19 Jun 2011 21:16:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/social/</guid>
+      <title>Hack</title>
+      <link>http://localhost:1313/tags/hack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/hack/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ms</title>
-      <link>http://blog.vnomad.com/tags/ms/</link>
-      <pubDate>Mon, 16 May 2011 07:35:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/ms/</guid>
+      <title>Social</title>
+      <link>http://localhost:1313/tags/social/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/social/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>tools</title>
-      <link>http://blog.vnomad.com/tags/tools/</link>
-      <pubDate>Thu, 12 May 2011 12:34:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/tools/</guid>
+      <title>Ms</title>
+      <link>http://localhost:1313/tags/ms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ms/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>maven</title>
-      <link>http://blog.vnomad.com/tags/maven/</link>
-      <pubDate>Thu, 21 Apr 2011 10:52:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/maven/</guid>
+      <title>Tools</title>
+      <link>http://localhost:1313/tags/tools/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/tools/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>csharp</title>
-      <link>http://blog.vnomad.com/tags/csharp/</link>
-      <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/csharp/</guid>
+      <title>Maven</title>
+      <link>http://localhost:1313/tags/maven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/maven/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>.net</title>
-      <link>http://blog.vnomad.com/tags/.net/</link>
-      <pubDate>Wed, 13 Oct 2010 15:06:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/.net/</guid>
+      <title>Csharp</title>
+      <link>http://localhost:1313/tags/csharp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/csharp/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>.Net</title>
+      <link>http://localhost:1313/tags/.net/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/.net/</guid>
+      <description></description>
+    </item>
     <item>
       <title>BlackBerry</title>
-      <link>http://blog.vnomad.com/tags/blackberry/</link>
-      <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/blackberry/</guid>
+      <link>http://localhost:1313/tags/blackberry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/blackberry/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>mobile</title>
-      <link>http://blog.vnomad.com/tags/mobile/</link>
-      <pubDate>Wed, 10 Mar 2010 10:37:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/mobile/</guid>
+      <title>Mobile</title>
+      <link>http://localhost:1313/tags/mobile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mobile/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>errata</title>
-      <link>http://blog.vnomad.com/tags/errata/</link>
-      <pubDate>Tue, 09 Mar 2010 22:38:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/errata/</guid>
+      <title>Errata</title>
+      <link>http://localhost:1313/tags/errata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/errata/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>hibernate</title>
-      <link>http://blog.vnomad.com/tags/hibernate/</link>
-      <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/hibernate/</guid>
+      <title>Hibernate</title>
+      <link>http://localhost:1313/tags/hibernate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/hibernate/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>c#</title>
-      <link>http://blog.vnomad.com/tags/c#/</link>
-      <pubDate>Sat, 12 Dec 2009 23:11:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/c#/</guid>
+      <title>C#</title>
+      <link>http://localhost:1313/tags/c%23/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/c%23/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>formatting</title>
-      <link>http://blog.vnomad.com/tags/formatting/</link>
-      <pubDate>Mon, 14 Sep 2009 20:25:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/formatting/</guid>
+      <title>Formatting</title>
+      <link>http://localhost:1313/tags/formatting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/formatting/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>tur</title>
-      <link>http://blog.vnomad.com/tags/tur/</link>
-      <pubDate>Sat, 12 Sep 2009 17:30:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/tur/</guid>
+      <title>Tur</title>
+      <link>http://localhost:1313/tags/tur/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/tur/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>windows</title>
-      <link>http://blog.vnomad.com/tags/windows/</link>
-      <pubDate>Fri, 21 Aug 2009 09:14:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/windows/</guid>
+      <title>Windows</title>
+      <link>http://localhost:1313/tags/windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/windows/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>symbian</title>
-      <link>http://blog.vnomad.com/tags/symbian/</link>
-      <pubDate>Sat, 20 Jun 2009 12:32:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/symbian/</guid>
+      <title>Symbian</title>
+      <link>http://localhost:1313/tags/symbian/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/symbian/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>vcs</title>
-      <link>http://blog.vnomad.com/tags/vcs/</link>
-      <pubDate>Mon, 29 Sep 2008 15:03:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/vcs/</guid>
+      <title>Vcs</title>
+      <link>http://localhost:1313/tags/vcs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/vcs/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>wise</title>
-      <link>http://blog.vnomad.com/tags/wise/</link>
-      <pubDate>Fri, 26 Sep 2008 19:23:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/wise/</guid>
+      <title>Wise</title>
+      <link>http://localhost:1313/tags/wise/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/wise/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>c&#43;&#43;</title>
-      <link>http://blog.vnomad.com/tags/c&#43;&#43;/</link>
-      <pubDate>Mon, 05 Nov 2007 16:50:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/c&#43;&#43;/</guid>
+      <title>C&#43;&#43;</title>
+      <link>http://localhost:1313/tags/c&#43;&#43;/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>books</title>
-      <link>http://blog.vnomad.com/tags/books/</link>
-      <pubDate>Thu, 27 Sep 2007 20:50:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/tags/books/</guid>
+      <title>Books</title>
+      <link>http://localhost:1313/tags/books/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/books/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

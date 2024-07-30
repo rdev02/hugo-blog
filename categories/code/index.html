@@ -1,939 +1,365 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.119.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Code | Nomad&#39;s reflections</title>
+<meta name="keywords" content="">
+<meta name="description" content="tea | travel | code">
 <meta name="author" content="Viktor Halitsyn">
-<meta name="keywords" content=", code, travel, immigration, ukraine, washington">
-<meta name="description" content="">
+<link rel="canonical" href="http://localhost:1313/categories/code/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/code/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/code/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-<meta property="og:description" content="">
-<meta property="og:type" content="website">
-<meta property="og:title" content="code">
-<meta name="twitter:title" content="code">
-<meta property="og:url" content="http://blog.vnomad.com/categories/code/">
-<meta property="twitter:url" content="http://blog.vnomad.com/categories/code/">
-<meta property="og:site_name" content="Nomad&#39;s reflections">
-<meta property="og:description" content="">
-<meta name="twitter:description" content="">
-<meta property="og:locale" content="en-us">
+            .list {
+                background: var(--theme);
+            }
 
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-<meta name="twitter:card" content="summary">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-  <meta name="twitter:site" content="@rdev02">
-
-
-  <meta name="twitter:creator" content="@rdev02">
-
-
-
-
-
-
-
-
-
-
-  <meta property="og:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-
-
-    <title>code</title>
-
-    <link rel="icon" href="/favicon.jpg">
-    
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="/categories/code/index.xml">
-    
-
-    
-      <link rel="publisher" href="https://plus.google.com/&#43;victorhalitsyn">
-    
-
-    <link rel="canonical" href="http://blog.vnomad.com/categories/code/">
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
-    
-    
-    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
-    
-    
-      
-        <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Oswald|Roboto">
-      
-    
-
-    
-      
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-64535001-2', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-    
-    
-  </head>
-
-  <body>
-    <div id="blog">
-      <header id="header" data-behavior="3">
-  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
-  <div class="header-title">
-    <a class="header-title-link" href="/">Nomad&#39;s reflections</a>
-  </div>
+    </style>
+</noscript>
   
+    
+      
+    
+  
+
+<meta property="og:title" content="Code" />
+<meta property="og:description" content="tea | travel | code" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://localhost:1313/categories/code/" />
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+<meta name="twitter:title" content="Code"/>
+<meta name="twitter:description" content="tea | travel | code"/>
+
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Nomad&#39;s reflections (Alt + H)">Nomad&#39;s reflections</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/categories/">Categories</a></div>
+  <h1>
+    Code
+    <a href="/categories/code/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
 </header>
 
-      <nav id="sidebar" data-behavior="3">
-  <div class="sidebar-container">
-    
-      <div class="sidebar-profile">
-        <a href="/#about">
-          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
-        </a>
-        <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
-        
-          <h5 class="sidebar-profile-bio">Came a long way from Ukraine, still so much to go&hellip;</h5>
-        
-      </div>
-    
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-home"></i>
-      
-      <span class="sidebar-button-desc">Home</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/categories">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-      
-      <span class="sidebar-button-desc">Categories</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/tags">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-tags"></i>
-      
-      <span class="sidebar-button-desc">Tags</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/archives">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-archive"></i>
-      
-      <span class="sidebar-button-desc">Archives</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/#about">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-question"></i>
-      
-      <span class="sidebar-button-desc">About</span>
-    </a>
-  </li>
-
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-github"></i>
-      
-      <span class="sidebar-button-desc">GitHub</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-twitter"></i>
-      
-      <span class="sidebar-button-desc">Twitter</span>
-    </a>
-  </li>
-
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/index.xml">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-rss"></i>
-      
-      <span class="sidebar-button-desc">RSS</span>
-    </a>
-  </li>
-
-
-    </ul>
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="http://localhost:1313/images/2024/unify2024.png" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Backing up Unify router config without Remote Access
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>For those who decided ‘Remote Access&#34; feature of Uniyfy isn’t worth the security risks associated with it, but still want a local backup of the config, I’ve found a decent solution.
+Sharing this here, since it’s not readily searchable on the internet nor would AI give you a good answer if you ask about it. And if you run into this head-first, you’ll quickly discover that
+router doesn’t have samba(cifs) mount support router doesn’t have sftp/fuse mount so your usual rsync options of backup fall apart....</p>
   </div>
-</nav>
-
-      
-        
-
-      
-      <div id="main" data-behavior="3"
-        class="
-               hasCoverMetaIn
-               ">
-        
-          <section class="postShorten-group main-content-wrap">
-            
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/travel/2023/unify_merlin/">
-          SNB: Unify Dream Router vs. Merlin-Compatible Router
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2023-12-11T06:20:18&#43;70:00">
-        
-  
-  
-  
-  
-    12/11/2023
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        In this post I go over my move to Unify router, over a top-of-the-line Asus one, even though I got a new one just about a month ago.
-I used to like my Asus routers: they stroke a balance between performance, reliability user-friendliness and maintenance. &ldquo;Balance&rdquo; is a very important word here, because they did neither well. In fact, as my routing needs grew, even &ldquo;well&rdquo; became an issue.
-Commonly I&rsquo;d need to run a couple networks: main network for all secure devices, guest network for, well, guests :), isolated guest network for all the non-US-made IoT thingies and one for gaming/mining/whatever.
-      
-      <p>
-        <a href="http://blog.vnomad.com/travel/2023/unify_merlin/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="http://blog.vnomad.com/travel/2023/unify_merlin/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="http://blog.vnomad.com/images/2023/AsusUdr.png"/>
-      </div>
-    </a>
-  
+  <footer class="entry-footer"><span title='2024-07-30 00:00:00 +0000 UTC'>07/30/2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Backing up Unify router config without Remote Access" href="http://localhost:1313/posts/code/2024/unify-backup/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/2020/disktest-go-and-synology-nas/">
-          DiskTest in go and Synology NAS
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2020-05-31T19:36:00Z">
-        
-  
-  
-  
-  
-    05/31/2020
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="http://localhost:1313/images/2023/AsusUdr.png" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">SNB: Unify Dream Router vs. Merlin-Compatible Router
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In this post I go over my move to Unify router, over a top-of-the-line Asus one, even though I got a new one just about a month ago.
+I used to like my Asus routers: they stroke a balance between performance, reliability user-friendliness and maintenance. “Balance” is a very important word here, because they did neither well. In fact, as my routing needs grew, even “well” became an issue.
+Commonly I’d need to run a couple networks: main network for all secure devices, guest network for, well, guests :), isolated guest network for all the non-US-made IoT thingies and one for gaming/mining/whatever....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Back in 2013 I got myself a Synology DS413j, which has proven to be a reliable companion for me though these 7 years. I used it for file backup, media streaming and as a TimeMachine destination pretty successfully. Any such station needs good drives to provide value, and drives, as many of us know, are pretty unreliable. In 7 years I replaced about 6: 2 were bad right after arrival, and another 4 went bad as the years went by.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/2020/disktest-go-and-synology-nas/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="http://blog.vnomad.com/code/2020/disktest-go-and-synology-nas/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://vnomad-public.s3-us-west-2.amazonaws.com/blog_infra/2020/DS918Plus.png"/>
-      </div>
-    </a>
-  
+  <footer class="entry-footer"><span title='2023-12-11 06:20:18 +7000 +7000'>12/11/2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to SNB: Unify Dream Router vs. Merlin-Compatible Router" href="http://localhost:1313/posts/travel/2023/unify_merlin/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/">
-          java.net.MalformedURLException: no protocol: and]
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2011-09-06T08:06:00Z">
-        
-  
-  
-  
-  
-    09/06/2011
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://vnomad-public.s3-us-west-2.amazonaws.com/blog_infra/2020/DS918Plus.png" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">DiskTest in go and Synology NAS
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Back in 2013 I got myself a Synology DS413j, which has proven to be a reliable companion for me though these 7 years. I used it for file backup, media streaming and as a TimeMachine destination pretty successfully. Any such station needs good drives to provide value, and drives, as many of us know, are pretty unreliable. In 7 years I replaced about 6: 2 were bad right after arrival, and another 4 went bad as the years went by....</p>
   </div>
+  <footer class="entry-footer"><span title='2020-05-31 19:36:00 +0000 +0000'>05/31/2020</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to DiskTest in go and Synology NAS" href="http://localhost:1313/posts/code/2020/disktest-go-and-synology-nas/"></a>
+</article>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">java.net.MalformedURLException: no protocol: and]
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Had a problem with injecting JMSFactory for JBoss MQ using spring(for Camel :)). The problem had the next StackTrace:
 Caused by: javax.naming.CommunicationException [Root exception is java.rmi.ServerException: RemoteException occurred in server thread; nested exception is: java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: and] at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:780) at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:627) at javax.naming.InitialContext.lookup(InitialContext.java:392) at org.springframework.jndi.JndiTemplate$1.doInContext(JndiTemplate.java:154) I was sure I configured it right as I have
-&lt;jee:jndi-lookup id=&#34;JBossMQ&#34; jndi-name=&#34;XAConnectionFactory&#34; proxy-interface=&#34;javax.jms.ConnectionFactory&#34; environment-ref=&#34;jndiProps&#34; resource-ref=&#34;true&#34;/&gt; &lt;util:properties id=&#34;jndiProps&#34; location=&#34;META-INF/spring/jndi.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/java-net-malformedurlexception-no-protocol-and/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
+&lt;jee:jndi-lookup id=&#34;JBossMQ&#34; jndi-name=&#34;XAConnectionFactory&#34; proxy-interface=&#34;javax.jms.ConnectionFactory&#34; environment-ref=&#34;jndiProps&#34; resource-ref=&#34;true&#34;/&gt; &lt;util:properties id=&#34;jndiProps&#34; location=&#34;META-INF/spring/jndi....</p>
   </div>
-  
+  <footer class="entry-footer"><span title='2011-09-06 08:06:00 +0000 +0000'>09/06/2011</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to java.net.MalformedURLException: no protocol: and]" href="http://localhost:1313/posts/code/java-net-malformedurlexception-no-protocol-and/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/">
-          String.split() VS String.startsWith() VS Regex simple performance comparison.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2011-04-19T14:45:00Z">
-        
-  
-  
-  
-  
-    04/19/2011
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">String.split() VS String.startsWith() VS Regex simple performance comparison.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2011-04-19 14:45:00 +0000 +0000'>04/19/2011</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to String.split() VS String.startsWith() VS Regex simple performance comparison." href="http://localhost:1313/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/">
-          907: Invalid cod and other BlackBerry OTA problems.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2010-03-10T10:37:00Z">
-        
-  
-  
-  
-  
-    03/10/2010
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">907: Invalid cod and other BlackBerry OTA problems.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K. Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K. Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2010-03-10 10:37:00 +0000 +0000'>03/10/2010</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to 907: Invalid cod and other BlackBerry OTA problems." href="http://localhost:1313/posts/code/907-invalid-cod-and-other-blackberry-ota-problems/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/switching-to-container-based-datasource/">
-          Switching to  container based datasource…
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2010-01-11T12:08:00Z">
-        
-  
-  
-  
-  
-    01/11/2010
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Switching to  container based datasource…
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/switching-to-container-based-datasource/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2010-01-11 12:08:00 +0000 +0000'>01/11/2010</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Switching to  container based datasource…" href="http://localhost:1313/posts/code/switching-to-container-based-datasource/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/">
-          Creating dynamic plugin architecture with C#.NET
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-12-12T23:11:00Z">
-        
-  
-  
-  
-  
-    12/12/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Creating dynamic plugin architecture with C#.NET
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2009-12-12 23:11:00 +0000 +0000'>12/12/2009</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Creating dynamic plugin architecture with C#.NET" href="http://localhost:1313/posts/code/creating-dynamic-plugin-architecture-with-c-net/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/blogger-code-formatting/">
-          Blogger code formatting.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-09-14T20:25:00Z">
-        
-  
-  
-  
-  
-    09/14/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Blogger code formatting.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
+using System; /// &lt;summary&gt; /// Summary description for Class1 /// &lt;/summary&gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } } </p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
-using System; /// &lt;summary&gt; /// Summary description for Class1 /// &lt;/summary&gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } } 
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/blogger-code-formatting/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2009-09-14 20:25:00 +0000 +0000'>09/14/2009</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Blogger code formatting." href="http://localhost:1313/posts/code/blogger-code-formatting/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/trying-out-google-base/">
-          Trying out Google base
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2008-06-10T09:44:00Z">
-        
-  
-  
-  
-  
-    06/10/2008
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Trying out Google base
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app… But when finished everything looked very nice!
+class Program { const string GOOGLE_LOGIN_SECTION = &#34;googleLogin&#34;; const string BATCH_COUNT_SETTING = &#34;batchCount&#34;; const string CHECK_EXISTANCE_SETTING = &#34;checkExistance&#34;; const string MyItem_ITEMTYPE_SETTING = &#34;MyItemItemType&#34;; const string MyDB_CONNECTION_STRING = &#34;MyDBConnectionString&#34;; static void Main(string[] args) { string appNameG = Utils....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Subj is only at beta but is really nice! Though not very complicated and lots of info on google sites i found it still quite time consuming to write a single posting app… But when finished everything looked very nice!
-class Program { const string GOOGLE_LOGIN_SECTION = &#34;googleLogin&#34;; const string BATCH_COUNT_SETTING = &#34;batchCount&#34;; const string CHECK_EXISTANCE_SETTING = &#34;checkExistance&#34;; const string MyItem_ITEMTYPE_SETTING = &#34;MyItemItemType&#34;; const string MyDB_CONNECTION_STRING = &#34;MyDBConnectionString&#34;; static void Main(string[] args) { string appNameG = Utils.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/trying-out-google-base/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2008-06-10 09:44:00 +0000 +0000'>06/10/2008</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Trying out Google base" href="http://localhost:1313/posts/code/trying-out-google-base/"></a>
 </article>
-
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/net-marshalling/">
-          .NET Marshalling
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2008-01-22T11:12:00Z">
-        
-  
-  
-  
-  
-    01/22/2008
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Interesting things happen when you try to marshal something in real life….Even if you do not happen to dig into strange structure-marshalling: just a few methods or smth. strange problems may occur. For example marshalling char** for in and out usage. I was struggling for about a day for the code worked on developmnet environment and did not on test:). So the correct marshal is next [native] extern __declspec(dllexport) int SomeFunc(char** stringArray); [marshal]
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/net-marshalling/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-            
-            
-  <div class="pagination-bar">
-    <ul class="pagination">
-      
-        
-        
-          <li class="pagination-next">
-            <a class="btn btn--default btn--small" href="/categories/code/page/2/">
-              <span>OLDER POSTS</span>
-              <i class="fa fa-angle-right text-base icon-ml"></i>
-            </a>
-          </li>
-        
-      
-      <li class="pagination-number">page 1 of 2</li>
-    </ul>
-  </div>
-
-
-          </section>
-        
-        <footer id="footer" class="main-content-wrap">
-  <span class="copyrights">
-    &copy; 2024 Viktor Halitsyn. All Rights Reserved
-  </span>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="http://localhost:1313/categories/code/page/2/">Next&nbsp;2/2&nbsp;»
+    </a>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>© Viktor Halitsyn</span> · 
 
-      </div>
-    </div>
-    
-    <div id="about">
-  <div id="about-card">
-    <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
-    </div>
-    
-      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
-    
-    <h4 id="about-card-name">Viktor Halitsyn</h4>
-    
-      <div id="about-card-bio">Came a long way from Ukraine, still so much to go&hellip;</div>
-    
-    
-      <div id="about-card-job">
-        <i class="fa fa-briefcase"></i>
-        <br/>
-        software engineer
-      </div>
-    
-    
-      <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
-        <br/>
-        Seattle, WA
-      </div>
-    
-  </div>
-</div>
-
-    
-
-    
-  
-    <div id="cover" style="background-image:url('https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg');"></div>
-  
-
-
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
-
-
-<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
-
-
-<script lang="javascript">
-window.onload = updateMinWidth;
-window.onresize = updateMinWidth;
-document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
-function updateMinWidth() {
-  var sidebar = document.getElementById("sidebar");
-  var main = document.getElementById("main");
-  main.style.minWidth = "";
-  var w1 = getComputedStyle(main).getPropertyValue("min-width");
-  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
-  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
-  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
-}
-</script>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
 <script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
     }
-    hljs.highlightBlock(block);
-  });
-});
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
 </script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
+</script>
+</body>
 
-
-
-    
-  </body>
 </html>
-

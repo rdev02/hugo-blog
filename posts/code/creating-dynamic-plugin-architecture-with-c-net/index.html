@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Creating dynamic plugin architecture with C#.NET | Nomad&#39;s reflections</title>
+<meta name="keywords" content=".net, c#">
+<meta name="description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.">
+<meta name="author" content="Viktor Halitsyn">
+<link rel="canonical" href="http://localhost:1313/posts/code/creating-dynamic-plugin-architecture-with-c-net/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/code/creating-dynamic-plugin-architecture-with-c-net/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  
+    
+      
+    
+  
+
+<meta property="og:title" content="Creating dynamic plugin architecture with C#.NET" />
+<meta property="og:description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/code/creating-dynamic-plugin-architecture-with-c-net/" />
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+<meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2009-12-12T23:11:00+00:00" />
+<meta property="article:modified_time" content="2009-12-12T23:11:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+<meta name="twitter:title" content="Creating dynamic plugin architecture with C#.NET"/>
+<meta name="twitter:description" content="There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Creating dynamic plugin architecture with C#.NET",
+      "item": "http://localhost:1313/posts/code/creating-dynamic-plugin-architecture-with-c-net/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Creating dynamic plugin architecture with C#.NET",
+  "name": "Creating dynamic plugin architecture with C#.NET",
+  "description": "There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.",
+  "keywords": [
+    ".net", "c#"
+  ],
+  "articleBody": "There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application. Also Loading dll’s in the main application domain is very risky in terms of security concerns. But back to the problem – as long as your assembly is loaded into any domain it is locked, meaning that you can’t replace it with the newer version.\nNaturally you’ll turn to creating a separate app domain. and try to AppDomain.load() assembly there… Now that’s the time you’ll start experiencing problems. Here we can get smth like “This method should only be used to load an assembly into the current application domain. This method is defined for interoperability callers who cannot call the static Load method.” In short – you’ll fail to load the assembly having its path. Well, actually what you really need is to be able to get some object out of there, right? Suppose you use simple “middle-tier-interface” assembly like\nnamespace PInterface { public interface PluginInterface { string DoSmth(); } } Then when you want to load Some type, let it be like this:\nnamespace SamplePlugin { public class Plugin1 :MarshalByRefObject, PluginInterface { #region PluginInterface public string DoSmth() { return \"Hello!\"; } #endregion } } You would simply do it like:\nAppDomain newDomain = AppDomain.CreateDomain(\"newDOmain\"); newDomain.CreateInstanceFromAndUnwrap(pathToDLL, pluginClassName); Assuming you know the class name(s) of course:). If you don’t, then it’s 2 choices: either you specify that the plugin assembly has to have a “marker” type (say “class PluginType{}”) and then after loading an assembly into app domain execute the callback on it to get the class names via reflection load OR you might end up with a crossDomain walker like this:\nusing System; using System.Collections.Generic; using System.Windows.Forms; using System.Reflection; namespace WindowsApplication1 { static class Program { private readonly static string PLUGIN_INTERFACE_NAME = \"PluginInterfaceName\"; private readonly static string PLUGIN_CLASSES_NAMES = \"PluginClasses\"; /// /// The main entry point for the application. /// [STAThread] static int Main(String[] args) { object interfaceName = AppDomain.CurrentDomain.GetData(PLUGIN_INTERFACE_NAME); List\u003cstring\u003e pluginClassesNames = new List\u003cstring\u003e(3); if (args.Length \u003e 0) { string sInterfaceName = (string)interfaceName; foreach(string arg in args) try { Assembly asm = Assembly.LoadFrom(arg); Type[] possiblePlugins = asm.GetTypes(); List\u003cType\u003e realCandidates = new List\u003cType\u003e(3); foreach (Type t in possiblePlugins) { if (!t.IsAbstract \u0026\u0026 !t.IsInterface \u0026\u0026 (t.GetInterface(sInterfaceName) != null)) pluginClassesNames.Add(t.FullName); } } catch (Exception ex) { pluginClassesNames.Add(\"Exception \" + ex.ToString()); } } AppDomain.CurrentDomain.SetData(PLUGIN_CLASSES_NAMES, pluginClassesNames.ToArray()); return pluginClassesNames.Count; } } } using it won’t be a problem:\nint execRes = newDomain.ExecuteAssembly(_classFinderAssemblyPath, AppDomain.CurrentDomain.Evidence, new string[] { path }); if (execRes \u003c= 0) throw new Exception(\"No plugins found in \" + path); string[] pluginClasses = (string[])newDomain.GetData(PLUGIN_CLASSES_NAMES); Then calling a simple AppDomain.Unload(); would solve your problem. If you are lucky enough to have a pure .NET world and are not concerned about security, then you’re definitely lucky. And I am not :):(.\nLet us now assume you want those plugins to be consumable from the c++ application. Suppose your client has a big c++ app and now realized developing plugins in .NET would be easier. Then your natural choice is to make it as much less painful for c++ app to use you code as possible. A solution to that would be to have a .NET plugin manager, exposed to c++ app via the COM object. You may end up with smth. like this: using System; using System.Collections.Generic; using System.Text; using System.Runtime.InteropServices; using System.Reflection; using System.IO; using System.Runtime.Remoting; using System.Security.Policy; using System.Security; using System.Security.Permissions; namespace ComPluginManager { [ComVisible(true)] public class PluginManger: IPluginManager { private IDictionary\u003cString, AppDomain\u003e _pluginStore; private String _interfaceName = \"PluginInterface\"; private String _classFinderAssemblyPath; private readonly static string PLUGIN_INTERFACE_NAME = \"PluginInterfaceName\"; private readonly static string PLUGIN_CLASSES_NAMES = \"PluginClasses\"; public PluginManger() { _pluginStore = new Dictionary\u003cString, AppDomain\u003e(5); } public object[] LoadPlugin(string path) { List\u003cobject\u003e result = new List\u003cobject\u003e(3); AppDomainSetup setup = new AppDomainSetup(); setup.ApplicationBase = Path.GetDirectoryName(path); // plugin path PermissionSet trustPermissionSet = new PermissionSet(PermissionState.Unrestricted); AppDomain newDomain = AppDomain.CreateDomain( String.Format(\"Domain{0}\", Path.GetFileName(path)), null, setup, trustPermissionSet); try { newDomain.SetData(PLUGIN_INTERFACE_NAME, \"PluginInterface\"); int execRes = newDomain.ExecuteAssembly(_classFinderAssemblyPath, AppDomain.CurrentDomain.Evidence, new string[] { path }); if (execRes \u003c= 0) throw new Exception(\"No plugins found in \" + path); string[] pluginClasses = (string[])newDomain.GetData(PLUGIN_CLASSES_NAMES); _pluginStore[path] = newDomain; foreach (string pluginClass in pluginClasses) { ObjectHandle objHandle = Activator.CreateInstanceFrom(newDomain, path, pluginClass); if (objHandle != null) { object unwrappedInstance = objHandle.Unwrap(); result.Add(unwrappedInstance); } result.Add(_pluginStore[path].CreateInstanceFromAndUnwrap(path, pluginClass)); } } catch (Exception ex) { result.Add(ex); } return result.ToArray(); } public void UnloadPlugin(string path) { try { AppDomain domain = _pluginStore[path]; _pluginStore.Remove(path); AppDomain.Unload(domain); } catch (Exception ex) { ;} } public String InterfaceName { get { return _interfaceName; } set { _interfaceName = value; } } public String ClassFinderAssemblyPath { get { return _classFinderAssemblyPath; } set { _classFinderAssemblyPath = value; } } } } And it’s interface of course like:\nusing System; using System.Collections.Generic; using System.Text; using System.Runtime.InteropServices; namespace ComPluginManager { [ComVisible(true)] public interface IPluginManager { String InterfaceName { get; set; } String ClassFinderAssemblyPath { get; set;} void UnloadPlugin(String path); Object[] LoadPlugin(String path); } } Two things to notice here: I haven’t managed to get the plain class’s public methods visible to C++ so I used an interface. And second, probably the most important – PermissionSet. If you do not set this you wont be able to anything inside you app domain, except the very basic things like calculations and maybe some other data manipulation. You can find more info on this here and here.\nAnother important thing is that as long as your code is going to be executed from an unmanaged environment and want to do smth with partially trusted code – you have to use\n[assembly: AllowPartiallyTrustedCallersAttribute()] In both manager and plugin assemblies. Further explanation on how it works can be found here.\nNow if you crossed your fingers at the right moment did everything wright this plugin manager would load assemblies for you, return you the instantiated objects and free the dlls on your request flawlesly.\nAnd you will be able to put that shiny “Update” button on the toolbar without asking the user to reboot/restart an application whenever you need the plugin update. And not bother with temporary files and “special” startup routines… etc. I think the idea is clear 🙂\n",
+  "wordCount" : "1065",
+  "inLanguage": "en",
+  "image": "https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg","datePublished": "2009-12-12T23:11:00Z",
+  "dateModified": "2009-12-12T23:11:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Viktor Halitsyn"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/code/creating-dynamic-plugin-architecture-with-c-net/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nomad's reflections",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Nomad&#39;s reflections (Alt + H)">Nomad&#39;s reflections</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Creating dynamic plugin architecture with C#.NET
+    </h1>
+    <div class="post-meta"><span title='2009-12-12 23:11:00 +0000 +0000'>12/12/2009</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Viktor Halitsyn&nbsp;|&nbsp;<a href="https://github.com/rdev02/hugo-blog/tree/master/content/posts/code/creating-dynamic-plugin-architecture-with-c-net.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> 
+  <div class="post-content"><p>There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application. Also Loading dll’s in the main application domain is very risky in terms of security concerns. But back to the problem – as long as your assembly is loaded into any domain it is locked, meaning that you can’t replace it with the newer version.</p>
+<p>Naturally you’ll turn to creating a separate app domain. and try to AppDomain.load() assembly there… Now that’s the time you’ll start experiencing problems. <a href="http://msdn.microsoft.com/en-us/library/36az8x58.aspx">Here </a>we can get smth like “<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 11px;">This method should only be used to load an assembly into the current application domain. This method is defined for interoperability callers who cannot call the static <a href="http://msdn.microsoft.com/en-us/library/system.reflection.assembly.load.aspx" style="color: #0033cc; text-decoration: none;">Load</a> method.<span style="font-family: 'Times New Roman'; font-size: medium;">” In short – you’ll fail to load the assembly having its path. Well, actually what you really need is to be able to get some object out of there, right? Suppose you use simple “middle-tier-interface” assembly like<br /> </span></span></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">PInterface</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">interface</span> <span class="nc">PluginInterface</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">DoSmth</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Then when you want to load Some type, let it be like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">SamplePlugin</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">class</span> <span class="nc">Plugin1</span> <span class="p">:</span><span class="n">MarshalByRefObject</span><span class="p">,</span> <span class="n">PluginInterface</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="cp">#region</span> <span class="n">PluginInterface</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">string</span> <span class="n">DoSmth</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="s">&#34;Hello!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cp">#endregion</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>You would simply do it like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">AppDomain</span> <span class="n">newDomain</span> <span class="p">=</span> <span class="n">AppDomain</span><span class="p">.</span><span class="n">CreateDomain</span><span class="p">(</span><span class="s">&#34;newDOmain&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">newDomain</span><span class="p">.</span><span class="n">CreateInstanceFromAndUnwrap</span><span class="p">(</span><span class="n">pathToDLL</span><span class="p">,</span> <span class="n">pluginClassName</span><span class="p">);</span>
+</span></span></code></pre></div><p>Assuming you know the class name(s) of course:). If you don’t, then it’s 2 choices: either you specify that the plugin assembly has to have a “marker” type (say “class PluginType{}”) and then after loading an assembly into app domain execute the callback on it to get the class names via reflection load OR you might end up with a crossDomain walker like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows.Forms</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Reflection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">WindowsApplication1</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">class</span> <span class="nc">Program</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">readonly</span> <span class="kd">static</span> <span class="kt">string</span> <span class="n">PLUGIN_INTERFACE_NAME</span> <span class="p">=</span> <span class="s">&#34;PluginInterfaceName&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">readonly</span> <span class="kd">static</span> <span class="kt">string</span> <span class="n">PLUGIN_CLASSES_NAMES</span> <span class="p">=</span> <span class="s">&#34;PluginClasses&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// The main entry point for the application.</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="na">        [STAThread]</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">static</span> <span class="kt">int</span> <span class="n">Main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">object</span> <span class="n">interfaceName</span> <span class="p">=</span>  <span class="n">AppDomain</span><span class="p">.</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">GetData</span><span class="p">(</span><span class="n">PLUGIN_INTERFACE_NAME</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">pluginClassesNames</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="m">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">string</span> <span class="n">sInterfaceName</span> <span class="p">=</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">interfaceName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">foreach</span><span class="p">(</span><span class="kt">string</span> <span class="n">arg</span> <span class="k">in</span> <span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">try</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Assembly</span> <span class="n">asm</span> <span class="p">=</span> <span class="n">Assembly</span><span class="p">.</span><span class="n">LoadFrom</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Type</span><span class="p">[]</span> <span class="n">possiblePlugins</span> <span class="p">=</span> <span class="n">asm</span><span class="p">.</span><span class="n">GetTypes</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">List</span><span class="p">&lt;</span><span class="n">Type</span><span class="p">&gt;</span> <span class="n">realCandidates</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Type</span><span class="p">&gt;(</span><span class="m">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">foreach</span> <span class="p">(</span><span class="n">Type</span> <span class="n">t</span> <span class="k">in</span> <span class="n">possiblePlugins</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">if</span> <span class="p">(!</span><span class="n">t</span><span class="p">.</span><span class="n">IsAbstract</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">t</span><span class="p">.</span><span class="n">IsInterface</span> <span class="p">&amp;&amp;</span> <span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">GetInterface</span><span class="p">(</span><span class="n">sInterfaceName</span><span class="p">)</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">pluginClassesNames</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">FullName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">pluginClassesNames</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Exception &#34;</span> <span class="p">+</span> <span class="n">ex</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">AppDomain</span><span class="p">.</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">PLUGIN_CLASSES_NAMES</span><span class="p">,</span> <span class="n">pluginClassesNames</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">pluginClassesNames</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>            
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>using it won’t be a problem:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">execRes</span> <span class="p">=</span> <span class="n">newDomain</span><span class="p">.</span><span class="n">ExecuteAssembly</span><span class="p">(</span><span class="n">_classFinderAssemblyPath</span><span class="p">,</span> <span class="n">AppDomain</span><span class="p">.</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">Evidence</span><span class="p">,</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span> <span class="n">path</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">execRes</span> <span class="p">&lt;=</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s">&#34;No plugins found in &#34;</span> <span class="p">+</span> <span class="n">path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">string</span><span class="p">[]</span> <span class="n">pluginClasses</span> <span class="p">=</span> <span class="p">(</span><span class="kt">string</span><span class="p">[])</span><span class="n">newDomain</span><span class="p">.</span><span class="n">GetData</span><span class="p">(</span><span class="n">PLUGIN_CLASSES_NAMES</span><span class="p">);</span>
+</span></span></code></pre></div><p>Then calling a simple AppDomain.Unload(); would solve your problem. If you are lucky enough to have a pure .NET world and are not concerned about security, then you’re definitely lucky. And I am not :):(.</p>
+<pre><code>Let us now assume you want those plugins to be consumable from the c++ application. Suppose your client has a big c++ app and now realized developing plugins in .NET would be easier. Then your natural choice is to make it as much less painful for c++ app to use you code as possible. A solution to that would be to have a .NET plugin manager, exposed to c++ app via the COM object. You may end up with smth. like this:
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Reflection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Runtime.Remoting</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Security.Policy</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Security</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Security.Permissions</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">ComPluginManager</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [ComVisible(true)]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">class</span> <span class="nc">PluginManger</span><span class="p">:</span> <span class="n">IPluginManager</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="n">IDictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">AppDomain</span><span class="p">&gt;</span> <span class="n">_pluginStore</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="n">String</span> <span class="n">_interfaceName</span> <span class="p">=</span> <span class="s">&#34;PluginInterface&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="n">String</span> <span class="n">_classFinderAssemblyPath</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">readonly</span> <span class="kd">static</span> <span class="kt">string</span> <span class="n">PLUGIN_INTERFACE_NAME</span> <span class="p">=</span> <span class="s">&#34;PluginInterfaceName&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">readonly</span> <span class="kd">static</span> <span class="kt">string</span> <span class="n">PLUGIN_CLASSES_NAMES</span> <span class="p">=</span> <span class="s">&#34;PluginClasses&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">PluginManger</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_pluginStore</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">AppDomain</span><span class="p">&gt;(</span><span class="m">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">object</span><span class="p">[]</span> <span class="n">LoadPlugin</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">List</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;(</span><span class="m">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="n">AppDomainSetup</span> <span class="n">setup</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AppDomainSetup</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">setup</span><span class="p">.</span><span class="n">ApplicationBase</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="n">GetDirectoryName</span><span class="p">(</span><span class="n">path</span><span class="p">);</span> <span class="c1">// plugin path</span>
+</span></span><span class="line"><span class="cl">            <span class="n">PermissionSet</span> <span class="n">trustPermissionSet</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PermissionSet</span><span class="p">(</span><span class="n">PermissionState</span><span class="p">.</span><span class="n">Unrestricted</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">AppDomain</span> <span class="n">newDomain</span> <span class="p">=</span> <span class="n">AppDomain</span><span class="p">.</span><span class="n">CreateDomain</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;Domain{0}&#34;</span><span class="p">,</span> <span class="n">Path</span><span class="p">.</span><span class="n">GetFileName</span><span class="p">(</span><span class="n">path</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">                <span class="kc">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">setup</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">trustPermissionSet</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">try</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">newDomain</span><span class="p">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">PLUGIN_INTERFACE_NAME</span><span class="p">,</span> <span class="s">&#34;PluginInterface&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">int</span> <span class="n">execRes</span> <span class="p">=</span> <span class="n">newDomain</span><span class="p">.</span><span class="n">ExecuteAssembly</span><span class="p">(</span><span class="n">_classFinderAssemblyPath</span><span class="p">,</span> <span class="n">AppDomain</span><span class="p">.</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">Evidence</span><span class="p">,</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span> <span class="n">path</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">execRes</span> <span class="p">&lt;=</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s">&#34;No plugins found in &#34;</span> <span class="p">+</span> <span class="n">path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">string</span><span class="p">[]</span> <span class="n">pluginClasses</span> <span class="p">=</span> <span class="p">(</span><span class="kt">string</span><span class="p">[])</span><span class="n">newDomain</span><span class="p">.</span><span class="n">GetData</span><span class="p">(</span><span class="n">PLUGIN_CLASSES_NAMES</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="n">_pluginStore</span><span class="p">[</span><span class="n">path</span><span class="p">]</span> <span class="p">=</span> <span class="n">newDomain</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">pluginClass</span> <span class="k">in</span> <span class="n">pluginClasses</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">             <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">ObjectHandle</span> <span class="n">objHandle</span> <span class="p">=</span> <span class="n">Activator</span><span class="p">.</span><span class="n">CreateInstanceFrom</span><span class="p">(</span><span class="n">newDomain</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">pluginClass</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="n">objHandle</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="kt">object</span> <span class="n">unwrappedInstance</span> <span class="p">=</span> <span class="n">objHandle</span><span class="p">.</span><span class="n">Unwrap</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">result</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">unwrappedInstance</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="n">result</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">_pluginStore</span><span class="p">[</span><span class="n">path</span><span class="p">].</span><span class="n">CreateInstanceFromAndUnwrap</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">pluginClass</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">             <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">result</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">ex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>       
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">result</span><span class="p">.</span><span class="n">ToArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>     
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="k">void</span> <span class="n">UnloadPlugin</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">AppDomain</span> <span class="n">domain</span> <span class="p">=</span> <span class="n">_pluginStore</span><span class="p">[</span><span class="n">path</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                <span class="n">_pluginStore</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">AppDomain</span><span class="p">.</span><span class="n">Unload</span><span class="p">(</span><span class="n">domain</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span> <span class="p">;}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">String</span> <span class="n">InterfaceName</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_interfaceName</span><span class="p">;</span> <span class="p">}</span> <span class="k">set</span> <span class="p">{</span> <span class="n">_interfaceName</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">String</span> <span class="n">ClassFinderAssemblyPath</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_classFinderAssemblyPath</span><span class="p">;</span> <span class="p">}</span> <span class="k">set</span> <span class="p">{</span> <span class="n">_classFinderAssemblyPath</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>And it’s interface of course like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">ComPluginManager</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [ComVisible(true)]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">interface</span> <span class="nc">IPluginManager</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">InterfaceName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">ClassFinderAssemblyPath</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">void</span> <span class="n">UnloadPlugin</span><span class="p">(</span><span class="n">String</span> <span class="n">path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Object</span><span class="p">[]</span> <span class="n">LoadPlugin</span><span class="p">(</span><span class="n">String</span> <span class="n">path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Two things to notice here: I haven’t managed to get the plain class’s public methods visible to C++ so I used an interface. And second, probably the most important – <span style="font-family: monospace; white-space: pre;">PermissionSet.</span> If you do not set this you wont be able to anything inside you app domain, except the very basic things like calculations and maybe some other data manipulation. You can find more info on this <a href="http://blogs.msdn.com/shawnfa/archive/2004/11/02/251239.aspx">here</a> and <a href="http://blogs.msdn.com/shawnfa/archive/2004/10/26/248114.aspx">here</a>.</p>
+<p>Another important thing is that as long as your code is going to be executed from an unmanaged environment and want to do smth with partially trusted code – you have to use</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="na">[assembly: AllowPartiallyTrustedCallersAttribute()]</span>
+</span></span></code></pre></div><p>In both manager and plugin assemblies. Further explanation on how it works can be found <a href="http://msdn.microsoft.com/en-us/magazine/cc163701.aspx">here</a>.</p>
+<p>Now if you <span style="text-decoration: line-through;">crossed your fingers at the right moment</span> did everything wright this plugin manager would load assemblies for you, return you the instantiated objects and free the dlls on your request flawlesly.</p>
+<p>And you will be able to put that shiny “Update” button on the toolbar without asking the user to reboot/restart an application whenever you need the  plugin update. And not bother with temporary files and “special” startup routines… etc. I think the idea is clear 🙂</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/.net/">.Net</a></li>
+      <li><a href="http://localhost:1313/tags/c%23/">C#</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/code/devenv-crash-from-the-command-line/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Devenv crash from the command line.</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/code/sad-funny-world-of-mobile-development/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Sad &amp; funny world of mobile development.</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Creating dynamic plugin architecture with C#.NET on x"
+            href="https://x.com/intent/tweet/?text=Creating%20dynamic%20plugin%20architecture%20with%20C%23.NET&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcreating-dynamic-plugin-architecture-with-c-net%2f&amp;hashtags=.net%2cc%23">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Creating dynamic plugin architecture with C#.NET on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcreating-dynamic-plugin-architecture-with-c-net%2f&amp;title=Creating%20dynamic%20plugin%20architecture%20with%20C%23.NET&amp;summary=Creating%20dynamic%20plugin%20architecture%20with%20C%23.NET&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcreating-dynamic-plugin-architecture-with-c-net%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Creating dynamic plugin architecture with C#.NET on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcreating-dynamic-plugin-architecture-with-c-net%2f&title=Creating%20dynamic%20plugin%20architecture%20with%20C%23.NET">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Creating dynamic plugin architecture with C#.NET on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcreating-dynamic-plugin-architecture-with-c-net%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Creating dynamic plugin architecture with C#.NET on whatsapp"
+            href="https://api.whatsapp.com/send?text=Creating%20dynamic%20plugin%20architecture%20with%20C%23.NET%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcreating-dynamic-plugin-architecture-with-c-net%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Creating dynamic plugin architecture with C#.NET on telegram"
+            href="https://telegram.me/share/url?text=Creating%20dynamic%20plugin%20architecture%20with%20C%23.NET&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcreating-dynamic-plugin-architecture-with-c-net%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Creating dynamic plugin architecture with C#.NET on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Creating%20dynamic%20plugin%20architecture%20with%20C%23.NET&u=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fcreating-dynamic-plugin-architecture-with-c-net%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© Viktor Halitsyn</span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

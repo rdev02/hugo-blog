@@ -1,913 +1,357 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.127.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.119.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Nomad&#39;s reflections</title>
+<meta name="keywords" content="code, travel, immigration, ukraine, washington">
+<meta name="description" content="tea | travel | code">
 <meta name="author" content="Viktor Halitsyn">
-<meta name="keywords" content=", code, travel, immigration, ukraine, washington">
-<meta name="description" content="">
+<link rel="canonical" href="http://localhost:1313/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-<meta property="og:description" content="">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nomad&#39;s reflections">
-<meta name="twitter:title" content="Nomad&#39;s reflections">
-<meta property="og:url" content="http://blog.vnomad.com/">
-<meta property="twitter:url" content="http://blog.vnomad.com/">
-<meta property="og:site_name" content="Nomad&#39;s reflections">
-<meta property="og:description" content="">
-<meta name="twitter:description" content="">
-<meta property="og:locale" content="en-us">
+            .list {
+                background: var(--theme);
+            }
 
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-<meta name="twitter:card" content="summary">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-  <meta name="twitter:site" content="@rdev02">
-
-
-  <meta name="twitter:creator" content="@rdev02">
-
-
-
-
-
-
-
-
-
-
-  <meta property="og:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-
-
-    <title>Nomad&#39;s reflections</title>
-
-    <link rel="icon" href="/favicon.jpg">
-    
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="/index.xml">
-    
-
-    
-      <link rel="publisher" href="https://plus.google.com/&#43;victorhalitsyn">
-    
-
-    <link rel="canonical" href="http://blog.vnomad.com/">
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
-    
-    
-    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
-    
+    </style>
+</noscript>
+  
     
       
-        <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Oswald|Roboto">
-      
     
+  
 
-    
-      
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-64535001-2', 'auto');
-	
-	ga('send', 'pageview');
+<meta property="og:title" content="Nomad&#39;s reflections" />
+<meta property="og:description" content="tea | travel | code" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://localhost:1313/" />
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+<meta name="twitter:title" content="Nomad&#39;s reflections"/>
+<meta name="twitter:description" content="tea | travel | code"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Nomad's reflections",
+  "url": "http://localhost:1313/",
+  "description": "tea | travel | code",
+  "thumbnailUrl": "http://localhost:1313/favicon.ico",
+  "sameAs": [
+      "https://github.com/rdev02/hugo-blog/", "https://x.com/rdev02"
+  ]
 }
 </script>
-    
-    
-  </head>
+</head>
 
-  <body>
-    <div id="blog">
-      <header id="header" data-behavior="3">
-  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
-  <div class="header-title">
-    <a class="header-title-link" href="/">Nomad&#39;s reflections</a>
-  </div>
-  
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Nomad&#39;s reflections (Alt + H)">Nomad&#39;s reflections</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </header>
+<main class="main"> 
 
-      <nav id="sidebar" data-behavior="3">
-  <div class="sidebar-container">
-    
-      <div class="sidebar-profile">
-        <a href="/#about">
-          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
-        </a>
-        <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
-        
-          <h5 class="sidebar-profile-bio">Came a long way from Ukraine, still so much to go&hellip;</h5>
-        
-      </div>
-    
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-home"></i>
-      
-      <span class="sidebar-button-desc">Home</span>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Devenv crash from the command line.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Those of you who use devenv for building VS solutions(although you are discouraged to [here][1]) might get into trouble if your solution has more than 1 project and it takes quite a time building both. Today I had a problem with that launching VS build from inside an ant script &amp;#8211; a standard windows crash appeared with 0xc000005 error code and a &amp;#8220;friendly&amp;#8221; Send/Don&amp;#8217;t send error to Microsoft dialog. Also I noticed that the VS cl....</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-12-24 21:11:00 +0000 +0000'>12/24/2009</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Devenv crash from the command line." href="http://localhost:1313/posts/code/devenv-crash-from-the-command-line/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Creating dynamic plugin architecture with C#.NET
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application....</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-12-12 23:11:00 +0000 +0000'>12/12/2009</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Creating dynamic plugin architecture with C#.NET" href="http://localhost:1313/posts/code/creating-dynamic-plugin-architecture-with-c-net/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Sad &amp; funny world of mobile development.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Being a ‘mobile’ developer is definitely fun. Although sometimes, when you think about it ‘deeper’ you’d rather drink a pint of whiskey:). Take a look at the enterprise Symbian OS: http://www.codeproject.com/KB/mobile/Symbian_OS_design_faults.aspx Reliable, huh? 😉 And it’s not just Symbian – in my point of view it’s MIDP itself. You just can’t rely on it unless you test, test and once again – test. For me it feels like implementation usually just do not care about about what does the specification say....</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-12-07 09:38:00 +0000 +0000'>12/07/2009</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Sad &amp; funny world of mobile development." href="http://localhost:1313/posts/code/sad-funny-world-of-mobile-development/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">:? = (think)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Yess and BTW its the Skype shortcut. While on thinking mood guess what would the ‘telemonision’ or here in Ukraine ‘telemonizor’ would mean? You guessed it right – a monitor, which has a capability to be come an TV. Why would one need such a thing – I dunno, but lots and lots of people here want it. I suppose they think that in this way they would spend less money – but hey – you would have none: no monitor would be a good TV and no TV would suit you as a nice fast-response monitor, UNLESS it costs more then 2 of them bought separately....</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-12-01 10:53:00 +0000 +0000'>12/01/2009</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to :? = (think)" href="http://localhost:1313/posts/tea/think/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">JetBrains Idea – still the best.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Now that I wrote lots of &amp;#8216;bad&amp;#8217; stuff about this new community version &amp;#8211; time to write something fine, as I really enjoy developing in this IDE. First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my ‘more serious’ still reproduce this is something pleasant, indicating that the work is in progress and I’m sure all the other stuff will be fixed soon....</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-11-19 11:12:00 +0000 +0000'>11/19/2009</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to JetBrains Idea – still the best." href="http://localhost:1313/posts/code/jetbrains-idea-still-the-best/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Femen must have been doing that right.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Now seriously smth HAS to be done about Ukrainian girls reputation in Europe and generally throughout the world. Now I can’t speak for whole Ukraine but it seems to me that at least Western Ukraine girls are not that money-loving. Today walking to work I saw this
+All this stuff means “I am a wealthy entrepreneur from USA looking for a nice whore wife from Ukraine aging 19-27″. Now I’ve seen this in newspapers and message boards etc....</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-11-18 13:17:00 +0000 +0000'>11/18/2009</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Femen must have been doing that right." href="http://localhost:1313/posts/tea/femen-must-have-been-doing-that-right/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">IntelliJ IDEA Community Edition – now it gets serious.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In my &lt;span&gt;&lt;/span&gt;[&lt;span&gt;&lt;/span&gt;previous pos][1][&lt;span&gt;&lt;/span&gt;t&lt;span&gt;&lt;/span&gt;][2] I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along. First of all I’ve ran into an issue with ant Jar task. It refused to work with an ‘update’ option set to true. The interesting part of it was that executing the task independently didn’t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to … hang....</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-11-12 10:41:00 +0000 +0000'>11/12/2009</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to IntelliJ IDEA Community Edition – now it gets serious." href="http://localhost:1313/posts/code/intellij-idea-community-edition-now-it-gets-serious/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">IntelliJ IDEA Community Edition first impressions.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Recently JetBrains [released the brand new version of IDEA][1] free for all. A few years before I Used this IDE for some projects and was very happy with it &amp;#8211; consequent moving to eclipse disappointed me much. However time passed and I&amp;#8217;ve got used to eclipse &amp;#8211; it&amp;#8217;s not a bad platform after all and it was free. So now when the free version idea came out I was very anxious convincing our customers to switch....</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-11-05 10:15:00 +0000 +0000'>11/05/2009</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to IntelliJ IDEA Community Edition first impressions." href="http://localhost:1313/posts/code/intellij-idea-community-edition-first-impressions/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Flu, people and ukrainian healthcare system
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>THEY ALL SUCK!!! a big deal.
+I will start with the last one. Having just recovered from the flu I decided to go to the hospital in order to check if I’ve totally recovered and that there is nothing “under the hood” which would strike me in the back in few days. The normal procedure here is to have a blood analysis and a few more tests. Step one – find the doctor....</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-10-30 19:10:00 +0000 +0000'>10/30/2009</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Flu, people and ukrainian healthcare system" href="http://localhost:1313/posts/tea/flu-people-and-ukrainian-healthcare-system/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">BlackBerry fun.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Reading the developers guide on BlackBerry you may come across astonishing things. I’m impressed. When I started doing little things in the blackberry app I soon got used to it and considered the platform to be well organized. Now that I’m reading a book I get more and more confused about what I should do and what I shan’t! Take a look at this masterpiece &gt; &gt; &gt; Why it is not necessary to obfuscate applications &gt; &gt; &gt; &gt; The compiler for the BlackBerry® Java™ Development Environment is set to minimize the size of the application....</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-10-20 14:08:00 +0000 +0000'>10/20/2009</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to BlackBerry fun." href="http://localhost:1313/posts/code/blackberry-fun/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://localhost:1313/page/4/">
+      «&nbsp;Prev&nbsp;4/8
     </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/categories">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-      
-      <span class="sidebar-button-desc">Categories</span>
+    <a class="next" href="http://localhost:1313/page/6/">Next&nbsp;6/8&nbsp;»
     </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/tags">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-tags"></i>
-      
-      <span class="sidebar-button-desc">Tags</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/archives">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-archive"></i>
-      
-      <span class="sidebar-button-desc">Archives</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/#about">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-question"></i>
-      
-      <span class="sidebar-button-desc">About</span>
-    </a>
-  </li>
-
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-github"></i>
-      
-      <span class="sidebar-button-desc">GitHub</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-twitter"></i>
-      
-      <span class="sidebar-button-desc">Twitter</span>
-    </a>
-  </li>
-
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/index.xml">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-rss"></i>
-      
-      <span class="sidebar-button-desc">RSS</span>
-    </a>
-  </li>
-
-
-    </ul>
-  </div>
-</nav>
-
-      
-
-      <div id="main" data-behavior="3"
-        class="
-               hasCoverMetaIn
-               ">
-        <section class="postShorten-group main-content-wrap">
-          
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/">
-          Creating dynamic plugin architecture with C#.NET
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-12-12T23:11:00Z">
-        
-  
-  
-  
-  
-    12/12/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        There are a few articles on the web describing how to load assemblies using reflection, thus allowing you to execute third-party code inside your own application. While applicable in most cases, my customer wanted those plugins to be replaceable on-the-fly. Keep mind that once an assembly has been loaded into an application domain it cannot be unloaded unless you unload the domain(which is you main app domain by default)=close the application.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/creating-dynamic-plugin-architecture-with-c-net/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/sad-funny-world-of-mobile-development/">
-          Sad &amp; funny world of mobile development.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-12-07T09:38:00Z">
-        
-  
-  
-  
-  
-    12/07/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Being a &#8216;mobile&#8217; developer is definitely fun. Although sometimes, when you think about it &#8216;deeper&#8217; you&#8217;d rather drink a pint of whiskey:). Take a look at the enterprise Symbian OS: http://www.codeproject.com/KB/mobile/Symbian_OS_design_faults.aspx Reliable, huh? 😉 And it&#8217;s not just Symbian &#8211; in my point of view it&#8217;s MIDP itself. You just can&#8217;t rely on it unless you test, test and once again &#8211; test. For me it feels like implementation usually just do not care about about what does the specification say.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/sad-funny-world-of-mobile-development/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/tea/think/">
-          :? = (think)
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-12-01T10:53:00Z">
-        
-  
-  
-  
-  
-    12/01/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tea">tea</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Yess and BTW its the Skype shortcut. While on thinking mood guess what would the ‘telemonision’ or here in Ukraine ‘telemonizor’ would mean? You guessed it right – a monitor, which has a capability to be come an TV. Why would one need such a thing – I dunno, but lots and lots of people here want it. I suppose they think that in this way they would spend less money – but hey – you would have none: no monitor would be a good TV and no TV would suit you as a nice fast-response monitor, UNLESS it costs more then 2 of them bought separately.
-      
-      <p>
-        <a href="http://blog.vnomad.com/tea/think/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/jetbrains-idea-still-the-best/">
-          JetBrains Idea – still the best.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-11-19T11:12:00Z">
-        
-  
-  
-  
-  
-    11/19/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Now that I wrote lots of &amp;#8216;bad&amp;#8217; stuff about this new community version &amp;#8211; time to write something fine, as I really enjoy developing in this IDE. First of all I downloaded a new 90.193 version and noticed that UI issues are all fixed in it. Although my ‘more serious’ still reproduce this is something pleasant, indicating that the work is in progress and I’m sure all the other stuff will be fixed soon.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/jetbrains-idea-still-the-best/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/tea/femen-must-have-been-doing-that-right/">
-          Femen must have been doing that right.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-11-18T13:17:00Z">
-        
-  
-  
-  
-  
-    11/18/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tea">tea</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Now seriously smth HAS to be done about Ukrainian girls reputation in Europe and generally throughout the world. Now I can’t speak for whole Ukraine but it seems to me that at least Western Ukraine girls are not that money-loving. Today walking to work I saw this
-All this stuff means &#8220;I am a wealthy entrepreneur from USA looking for a nice whore wife from Ukraine aging 19-27&#8243;. Now I&#8217;ve seen this in newspapers and message boards etc.
-      
-      <p>
-        <a href="http://blog.vnomad.com/tea/femen-must-have-been-doing-that-right/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/intellij-idea-community-edition-now-it-gets-serious/">
-          IntelliJ IDEA Community Edition – now it gets serious.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-11-12T10:41:00Z">
-        
-  
-  
-  
-  
-    11/12/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        In my &lt;span&gt;&lt;/span&gt;[&lt;span&gt;&lt;/span&gt;previous pos][1][&lt;span&gt;&lt;/span&gt;t&lt;span&gt;&lt;/span&gt;][2] I described some minors that harmed my first impressions on this perfect IDE, but now that I used it for a week more serious things came along. First of all I’ve ran into an issue with ant Jar task. It refused to work with an ‘update’ option set to true. The interesting part of it was that executing the task independently didn’t cause any pain, but launching it in the sequence(multiple calls through different build scripts) caused ant to … hang.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/intellij-idea-community-edition-now-it-gets-serious/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/intellij-idea-community-edition-first-impressions/">
-          IntelliJ IDEA Community Edition first impressions.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-11-05T10:15:00Z">
-        
-  
-  
-  
-  
-    11/05/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Recently JetBrains [released the brand new version of IDEA][1] free for all. A few years before I Used this IDE for some projects and was very happy with it &amp;#8211; consequent moving to eclipse disappointed me much. However time passed and I&amp;#8217;ve got used to eclipse &amp;#8211; it&amp;#8217;s not a bad platform after all and it was free. So now when the free version idea came out I was very anxious convincing our customers to switch.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/intellij-idea-community-edition-first-impressions/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/">
-          Flu, people and ukrainian healthcare system
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-10-30T19:10:00Z">
-        
-  
-  
-  
-  
-    10/30/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tea">tea</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        THEY ALL SUCK!!! a big deal.
-I will start with the last one. Having just recovered from the flu I decided to go to the hospital in order to check if I’ve totally recovered and that there is nothing “under the hood” which would strike me in the back in few days. The normal procedure here is to have a blood analysis and a few more tests. Step one – find the doctor.
-      
-      <p>
-        <a href="http://blog.vnomad.com/tea/flu-people-and-ukrainian-healthcare-system/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/blackberry-fun/">
-          BlackBerry fun.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-10-20T14:08:00Z">
-        
-  
-  
-  
-  
-    10/20/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Reading the developers guide on BlackBerry you may come across astonishing things. I’m impressed. When I started doing little things in the blackberry app I soon got used to it and considered the platform to be well organized. Now that I’m reading a book I get more and more confused about what I should do and what I shan’t! Take a look at this masterpiece
-> > > Why it is not necessary to obfuscate applications > > > > The compiler for the BlackBerry® Java™ Development Environment is set to minimize the size of the application.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/blackberry-fun/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/blackberry-internet-usage-ota-and-other-staff/">
-          BlackBerry internet usage, OTA and other staff.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2009-09-24T11:43:00Z">
-        
-  
-  
-  
-  
-    09/24/2009
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Continuing the BlackBerry theme would like to share a few more issues I’ve ran into recently.
-Internet usage.
-If you subscribe to blackberry service you can optionally buy some “internet package” from your provider in order to minimize internet expenses. This a great choice since you’re going to visit internet pretty often if you’ve chosen blackberry. Everything goes fine until you start using Java apps on your phone. Java uses it OWN predefined internet connection DIFFERENT from the one the browser uses.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/blackberry-internet-usage-ota-and-other-staff/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-          
-  <div class="pagination-bar">
-    <ul class="pagination">
-      
-        
-          <li class="pagination-prev">
-            <a class="btn btn--default btn--small" href="/page/4/">
-              <i class="fa fa-angle-left text-base icon-mr"></i>
-              <span>NEWER POSTS</span>
-            </a>
-          </li>
-        
-        
-          <li class="pagination-next">
-            <a class="btn btn--default btn--small" href="/page/6/">
-              <span>OLDER POSTS</span>
-              <i class="fa fa-angle-right text-base icon-ml"></i>
-            </a>
-          </li>
-        
-      
-      <li class="pagination-number">page 5 of 8</li>
-    </ul>
-  </div>
-
-
-        </section>
-        <footer id="footer" class="main-content-wrap">
-  <span class="copyrights">
-    &copy; 2024 Viktor Halitsyn. All Rights Reserved
-  </span>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>© Viktor Halitsyn</span> · 
 
-      </div>
-    </div>
-    
-    <div id="about">
-  <div id="about-card">
-    <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
-    </div>
-    
-      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
-    
-    <h4 id="about-card-name">Viktor Halitsyn</h4>
-    
-      <div id="about-card-bio">Came a long way from Ukraine, still so much to go&hellip;</div>
-    
-    
-      <div id="about-card-job">
-        <i class="fa fa-briefcase"></i>
-        <br/>
-        software engineer
-      </div>
-    
-    
-      <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
-        <br/>
-        Seattle, WA
-      </div>
-    
-  </div>
-</div>
-
-    
-
-    
-  
-    <div id="cover" style="background-image:url('https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg');"></div>
-  
-
-
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
-
-
-<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
-
-
-<script lang="javascript">
-window.onload = updateMinWidth;
-window.onresize = updateMinWidth;
-document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
-function updateMinWidth() {
-  var sidebar = document.getElementById("sidebar");
-  var main = document.getElementById("main");
-  main.style.minWidth = "";
-  var w1 = getComputedStyle(main).getPropertyValue("min-width");
-  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
-  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
-  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
-}
-</script>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
 <script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
     }
-    hljs.highlightBlock(block);
-  });
-});
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
 </script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
+</script>
+</body>
 
-
-
-    
-  </body>
 </html>
-

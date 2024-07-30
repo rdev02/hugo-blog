@@ -1,101 +1,88 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2024 14:07:00 +7000</lastBuildDate><atom:link href="http://blog.vnomad.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Tue, 30 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>tea</title>
-      <link>http://blog.vnomad.com/categories/tea/</link>
-      <pubDate>Sun, 03 Mar 2024 14:07:00 +7000</pubDate>
-      
-      <guid>http://blog.vnomad.com/categories/tea/</guid>
+      <title>Code</title>
+      <link>http://localhost:1313/categories/code/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/code/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>code</title>
-      <link>http://blog.vnomad.com/categories/code/</link>
-      <pubDate>Mon, 11 Dec 2023 06:20:18 +7000</pubDate>
-      
-      <guid>http://blog.vnomad.com/categories/code/</guid>
+      <title>Tea</title>
+      <link>http://localhost:1313/categories/tea/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/tea/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>travel</title>
-      <link>http://blog.vnomad.com/categories/travel/</link>
-      <pubDate>Sun, 19 Mar 2023 06:17:30 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/categories/travel/</guid>
+      <title>Travel</title>
+      <link>http://localhost:1313/categories/travel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/travel/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>tech</title>
-      <link>http://blog.vnomad.com/categories/tech/</link>
-      <pubDate>Fri, 24 Feb 2023 06:00:12 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/categories/tech/</guid>
+      <title>Tech</title>
+      <link>http://localhost:1313/categories/tech/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/tech/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ua</title>
-      <link>http://blog.vnomad.com/categories/ua/</link>
-      <pubDate>Sat, 09 Dec 2017 09:48:00 -0500</pubDate>
-      
-      <guid>http://blog.vnomad.com/categories/ua/</guid>
+      <title>Ua</title>
+      <link>http://localhost:1313/categories/ua/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/ua/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>tools</title>
-      <link>http://blog.vnomad.com/categories/tools/</link>
-      <pubDate>Sat, 18 Nov 2017 21:37:00 -0700</pubDate>
-      
-      <guid>http://blog.vnomad.com/categories/tools/</guid>
+      <title>Tools</title>
+      <link>http://localhost:1313/categories/tools/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/tools/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gadgets</title>
-      <link>http://blog.vnomad.com/categories/gadgets/</link>
-      <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/categories/gadgets/</guid>
+      <title>Gadgets</title>
+      <link>http://localhost:1313/categories/gadgets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/gadgets/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>os</title>
-      <link>http://blog.vnomad.com/categories/os/</link>
-      <pubDate>Fri, 20 May 2011 21:07:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/categories/os/</guid>
+      <title>Os</title>
+      <link>http://localhost:1313/categories/os/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/os/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>tur</title>
-      <link>http://blog.vnomad.com/categories/tur/</link>
-      <pubDate>Sat, 12 Sep 2009 17:30:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/categories/tur/</guid>
+      <title>Tur</title>
+      <link>http://localhost:1313/categories/tur/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/tur/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>swe</title>
-      <link>http://blog.vnomad.com/categories/swe/</link>
-      <pubDate>Sun, 12 Apr 2009 18:40:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/categories/swe/</guid>
+      <title>Swe</title>
+      <link>http://localhost:1313/categories/swe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/swe/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

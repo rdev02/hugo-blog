@@ -1,919 +1,359 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.119.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Tech | Nomad&#39;s reflections</title>
+<meta name="keywords" content="">
+<meta name="description" content="tea | travel | code">
 <meta name="author" content="Viktor Halitsyn">
-<meta name="keywords" content=", code, travel, immigration, ukraine, washington">
-<meta name="description" content="">
+<link rel="canonical" href="http://localhost:1313/categories/tech/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/tech/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/tech/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-<meta property="og:description" content="">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tech">
-<meta name="twitter:title" content="tech">
-<meta property="og:url" content="http://blog.vnomad.com/categories/tech/">
-<meta property="twitter:url" content="http://blog.vnomad.com/categories/tech/">
-<meta property="og:site_name" content="Nomad&#39;s reflections">
-<meta property="og:description" content="">
-<meta name="twitter:description" content="">
-<meta property="og:locale" content="en-us">
+            .list {
+                background: var(--theme);
+            }
 
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-<meta name="twitter:card" content="summary">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-  <meta name="twitter:site" content="@rdev02">
-
-
-  <meta name="twitter:creator" content="@rdev02">
-
-
-
-
-
-
-
-
-
-
-  <meta property="og:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=640">
-
-
-    <title>tech</title>
-
-    <link rel="icon" href="/favicon.jpg">
-    
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="/categories/tech/index.xml">
-    
-
-    
-      <link rel="publisher" href="https://plus.google.com/&#43;victorhalitsyn">
-    
-
-    <link rel="canonical" href="http://blog.vnomad.com/categories/tech/">
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
-    
-    
-    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
-    
-    
-      
-        <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Oswald|Roboto">
-      
-    
-
-    
-      
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-64535001-2', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-    
-    
-  </head>
-
-  <body>
-    <div id="blog">
-      <header id="header" data-behavior="3">
-  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
-  <div class="header-title">
-    <a class="header-title-link" href="/">Nomad&#39;s reflections</a>
-  </div>
+    </style>
+</noscript>
   
+    
+      
+    
+  
+
+<meta property="og:title" content="Tech" />
+<meta property="og:description" content="tea | travel | code" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://localhost:1313/categories/tech/" />
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+<meta name="twitter:title" content="Tech"/>
+<meta name="twitter:description" content="tea | travel | code"/>
+
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Nomad&#39;s reflections (Alt + H)">Nomad&#39;s reflections</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/categories/">Categories</a></div>
+  <h1>
+    Tech
+    <a href="/categories/tech/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
 </header>
 
-      <nav id="sidebar" data-behavior="3">
-  <div class="sidebar-container">
-    
-      <div class="sidebar-profile">
-        <a href="/#about">
-          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
-        </a>
-        <h4 class="sidebar-profile-name">Viktor Halitsyn</h4>
-        
-          <h5 class="sidebar-profile-bio">Came a long way from Ukraine, still so much to go&hellip;</h5>
-        
-      </div>
-    
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-home"></i>
-      
-      <span class="sidebar-button-desc">Home</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/categories">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-      
-      <span class="sidebar-button-desc">Categories</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/tags">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-tags"></i>
-      
-      <span class="sidebar-button-desc">Tags</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/archives">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-archive"></i>
-      
-      <span class="sidebar-button-desc">Archives</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/#about">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-question"></i>
-      
-      <span class="sidebar-button-desc">About</span>
-    </a>
-  </li>
-
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://github.com/rdev02" target="_blank" rel="noopener">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-github"></i>
-      
-      <span class="sidebar-button-desc">GitHub</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://twitter.com/rdev02" target="_blank" rel="noopener">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-twitter"></i>
-      
-      <span class="sidebar-button-desc">Twitter</span>
-    </a>
-  </li>
-
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/index.xml">
-    
-      <i style="color:black" class="sidebar-button-icon fa fa-lg fa-rss"></i>
-      
-      <span class="sidebar-button-desc">RSS</span>
-    </a>
-  </li>
-
-
-    </ul>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Lift &#43; ajax. The “proper” way of doing presentations.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>24-th seconds rules…
+This mostly ru-zone compliant 🙂</p>
   </div>
-</nav>
-
-      
-        
-
-      
-      <div id="main" data-behavior="3"
-        class="
-               hasCoverMetaIn
-               ">
-        
-          <section class="postShorten-group main-content-wrap">
-            
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/lift-ajax-the-proper-way-of-doing-presentations/">
-          Lift &#43; ajax. The “proper” way of doing presentations.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2011-04-24T10:43:00Z">
-        
-  
-  
-  
-  
-    04/24/2011
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        24-th seconds rules…
-This mostly ru-zone compliant 🙂
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/lift-ajax-the-proper-way-of-doing-presentations/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2011-04-24 10:43:00 +0000 +0000'>04/24/2011</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Lift &#43; ajax. The “proper” way of doing presentations." href="http://localhost:1313/posts/code/lift-ajax-the-proper-way-of-doing-presentations/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/">
-          Java to BlazeDS NAN in double values.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2011-04-22T09:07:00Z">
-        
-  
-  
-  
-  
-    04/22/2011
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Java to BlazeDS NAN in double values.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Internet is basically full of subj but vice-versa(BlazeDS to java). So the problem I had was that when the object is “translated” from java via BlazeDS to flex application it had NAN’s in the double fields. The transfer object was a simple POJO I passed via the interface. First thing I checked were the getters – all present and valid. I took quite a lot of time till we figured out that it was the missing setters which made the code malfunction....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Internet is basically full of subj but vice-versa(BlazeDS to java). So the problem I had was that when the object is “translated” from java via BlazeDS to flex application it had NAN’s in the double fields. The transfer object was a simple POJO I passed via the interface. First thing I checked were the getters – all present and valid. I took quite a lot of time till we figured out that it was the missing setters which made the code malfunction.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/java-to-blazeds-nan-in-double-values/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2011-04-22 09:07:00 +0000 +0000'>04/22/2011</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Java to BlazeDS NAN in double values." href="http://localhost:1313/posts/code/java-to-blazeds-nan-in-double-values/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/">
-          maven-compiler-plugin causing eclipse projects to have j2se 1.4 instead of configured one
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2011-04-21T10:52:00Z">
-        
-  
-  
-  
-  
-    04/21/2011
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Today was investigating the warnings around some of my eclipse maven projects and noticed that I have a few
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">maven-compiler-plugin causing eclipse projects to have j2se 1.4 instead of configured one
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Today was investigating the warnings around some of my eclipse maven projects and noticed that I have a few
 There are no JREs installed in the workspace that are strictly compatible with this environment
-messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
+messages. It took some time to figure out that it was actually the maven-compiler-plugin causing the the J2SE version to be picked up correctly. If I changed the packaging of the maven project to jar everything was generated fine....</p>
   </div>
-  
+  <footer class="entry-footer"><span title='2011-04-21 10:52:00 +0000 +0000'>04/21/2011</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to maven-compiler-plugin causing eclipse projects to have j2se 1.4 instead of configured one" href="http://localhost:1313/posts/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/">
-          String.split() VS String.startsWith() VS Regex simple performance comparison.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2011-04-19T14:45:00Z">
-        
-  
-  
-  
-  
-    04/19/2011
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">String.split() VS String.startsWith() VS Regex simple performance comparison.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2011-04-19 14:45:00 +0000 +0000'>04/19/2011</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to String.split() VS String.startsWith() VS Regex simple performance comparison." href="http://localhost:1313/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/nokia-ovi-suite-sms-extract/">
-          Nokia OVI suite &amp; sms extract.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2010-12-27T00:00:00Z">
-        
-  
-  
-  
-  
-    12/27/2010
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Nokia OVI suite &amp; sms extract.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/nokia-ovi-suite-sms-extract/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2010-12-27 00:00:00 +0000 +0000'>12/27/2010</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to Nokia OVI suite &amp; sms extract." href="http://localhost:1313/posts/code/nokia-ovi-suite-sms-extract/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/">
-          .NET WMI. Or how do I get all that info?
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2010-10-13T15:06:00Z">
-        
-  
-  
-  
-  
-    10/13/2010
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">.NET WMI. Or how do I get all that info?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>There’s a ton of Win properties that your program might want to access/possess/transform and there’s a single place to find them: WMI queries. Though some of the properties might be scattered through different classes like Environment and *Info and even *Stream and more(and I believe accessing them through that places is significantly cheaper and faster) there’s one sigle silver bullet to get them all via
 Select * From [win_category]
-The problem is there are tons of &amp;#8220;win_category]&amp;#8217; and * values.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/net-wmi-or-how-do-i-get-all-that-info/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
+The problem is there are tons of &amp;#8220;win_category]&amp;#8217; and * values....</p>
   </div>
-  
+  <footer class="entry-footer"><span title='2010-10-13 15:06:00 +0000 +0000'>10/13/2010</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to .NET WMI. Or how do I get all that info?" href="http://localhost:1313/posts/code/net-wmi-or-how-do-i-get-all-that-info/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/net-tab-control/">
-          .NET tab control.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2010-10-08T19:39:00Z">
-        
-  
-  
-  
-  
-    10/08/2010
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">.NET tab control.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Consider some UI that you would like to present as tabs. And you also know that all these tabs would have a considerate amount of code in common. There are some thoughts [here][1] but those are more about visual representation. Also creating usercontrols I believe is not an option due to it&amp;#8217;s not expected to have more tah one tab of a kind. The solution has to both utilize the VS designer(otherwise tab creation would take considerably more time) and keep the code separate from the tabcontrol &amp;#8211; holder form....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Consider some UI that you would like to present as tabs. And you also know that all these tabs would have a considerate amount of code in common. There are some thoughts [here][1] but those are more about visual representation. Also creating usercontrols I believe is not an option due to it&amp;#8217;s not expected to have more tah one tab of a kind. The solution has to both utilize the VS designer(otherwise tab creation would take considerably more time) and keep the code separate from the tabcontrol &amp;#8211; holder form.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/net-tab-control/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2010-10-08 19:39:00 +0000 +0000'>10/08/2010</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to .NET tab control." href="http://localhost:1313/posts/code/net-tab-control/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/">
-          org.springframework.oxm.jaxb.Jaxb2Marshaller
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2010-09-29T15:45:00Z">
-        
-  
-  
-  
-  
-    09/29/2010
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">org.springframework.oxm.jaxb.Jaxb2Marshaller
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>There is a nice tutorial here on how to create spring web services using jax-b. Works just fine but it’s hell lots of issues you would run into while making it actually work. The most frustrating for me as of today was the absence of Jaxb2Marshaller. in the std “spring-ws-core” artifact package. It’s just not there and noone would tell you. Only _**Jaxb1Marshaller **_is. After an hour googling found this (BTW very simple and straightforward) post where spotted the “spring-oxm-tiger” artifact....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        There is a nice tutorial here on how to create spring web services using jax-b. Works just fine but it’s hell lots of issues you would run into while making it actually work. The most frustrating for me as of today was the absence of Jaxb2Marshaller. in the std “spring-ws-core” artifact package. It’s just not there and noone would tell you. Only _**Jaxb1Marshaller **_is. After an hour googling found this (BTW very simple and straightforward) post where spotted the “spring-oxm-tiger” artifact.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/org-springframework-oxm-jaxb-jaxb2marshaller/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2010-09-29 15:45:00 +0000 +0000'>09/29/2010</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to org.springframework.oxm.jaxb.Jaxb2Marshaller" href="http://localhost:1313/posts/code/org-springframework-oxm-jaxb-jaxb2marshaller/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/mcpd-acquired/">
-          MCPD acquired.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2010-03-28T20:06:00Z">
-        
-  
-  
-  
-  
-    03/28/2010
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">MCPD acquired.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Finally. Now frankly &amp;#8211; preparing for MS exams while doing die-hard java is not a funny thing to do. NEVER practice such a combination&amp;#8230; About the exam &amp;#8211; it was better then the previous 2: it obeyed no rules:). What I mean here is that I could have skipped the preparation kit completely! Yes there were a few questions related to the book&amp;#8217;s content, BUT reading it is completely optional IMHO....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Finally. Now frankly &amp;#8211; preparing for MS exams while doing die-hard java is not a funny thing to do. NEVER practice such a combination&amp;#8230; About the exam &amp;#8211; it was better then the previous 2: it obeyed no rules:). What I mean here is that I could have skipped the preparation kit completely! Yes there were a few questions related to the book&amp;#8217;s content, BUT reading it is completely optional IMHO.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/mcpd-acquired/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2010-03-28 20:06:00 +0000 +0000'>03/28/2010</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to MCPD acquired." href="http://localhost:1313/posts/code/mcpd-acquired/"></a>
 </article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/">
-          907: Invalid cod and other BlackBerry OTA problems.
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2010-03-10T10:37:00Z">
-        
-  
-  
-  
-  
-    03/10/2010
-  
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/tech">tech</a>, 
-    
-      <a class="category-link" href="/categories/code">code</a>
-    
-  
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">907: Invalid cod and other BlackBerry OTA problems.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K. Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod....</p>
   </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        Most of us, who developed any BlackBerry app that had to be shipped OTA had seen this &amp;#8220;descriptive&amp;#8221; error. It might be anything from invalid jad to signing problems. The one I&amp;#8217;m going to describe here is when the size of the cod file is more than 64K. Finding out if you have this problem is fairly easy: just look into the final cod and see if there are actually 2 cod files packaged in one cod.
-      
-      <p>
-        <a href="http://blog.vnomad.com/code/907-invalid-cod-and-other-blackberry-ota-problems/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
+  <footer class="entry-footer"><span title='2010-03-10 10:37:00 +0000 +0000'>03/10/2010</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Viktor Halitsyn</footer>
+  <a class="entry-link" aria-label="post link to 907: Invalid cod and other BlackBerry OTA problems." href="http://localhost:1313/posts/code/907-invalid-cod-and-other-blackberry-ota-problems/"></a>
 </article>
-
-            
-            
-  <div class="pagination-bar">
-    <ul class="pagination">
-      
-        
-          <li class="pagination-prev">
-            <a class="btn btn--default btn--small" href="/categories/tech/page/2/">
-              <i class="fa fa-angle-left text-base icon-mr"></i>
-              <span>NEWER POSTS</span>
-            </a>
-          </li>
-        
-        
-          <li class="pagination-next">
-            <a class="btn btn--default btn--small" href="/categories/tech/page/4/">
-              <span>OLDER POSTS</span>
-              <i class="fa fa-angle-right text-base icon-ml"></i>
-            </a>
-          </li>
-        
-      
-      <li class="pagination-number">page 3 of 7</li>
-    </ul>
-  </div>
-
-
-          </section>
-        
-        <footer id="footer" class="main-content-wrap">
-  <span class="copyrights">
-    &copy; 2024 Viktor Halitsyn. All Rights Reserved
-  </span>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://localhost:1313/categories/tech/page/2/">
+      «&nbsp;Prev&nbsp;2/7
+    </a>
+    <a class="next" href="http://localhost:1313/categories/tech/page/4/">Next&nbsp;4/7&nbsp;»
+    </a>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>© Viktor Halitsyn</span> · 
 
-      </div>
-    </div>
-    
-    <div id="about">
-  <div id="about-card">
-    <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
-    </div>
-    
-      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d96a6dd84105118027bb67e3396ba7e4?s=110" alt="Author&#39;s picture" />
-    
-    <h4 id="about-card-name">Viktor Halitsyn</h4>
-    
-      <div id="about-card-bio">Came a long way from Ukraine, still so much to go&hellip;</div>
-    
-    
-      <div id="about-card-job">
-        <i class="fa fa-briefcase"></i>
-        <br/>
-        software engineer
-      </div>
-    
-    
-      <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
-        <br/>
-        Seattle, WA
-      </div>
-    
-  </div>
-</div>
-
-    
-
-    
-  
-    <div id="cover" style="background-image:url('https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg');"></div>
-  
-
-
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
-
-
-<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
-
-
-<script lang="javascript">
-window.onload = updateMinWidth;
-window.onresize = updateMinWidth;
-document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
-function updateMinWidth() {
-  var sidebar = document.getElementById("sidebar");
-  var main = document.getElementById("main");
-  main.style.minWidth = "";
-  var w1 = getComputedStyle(main).getPropertyValue("min-width");
-  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
-  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
-  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
-}
-</script>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
 <script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
     }
-    hljs.highlightBlock(block);
-  });
-});
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
 </script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
+</script>
+</body>
 
-
-
-    
-  </body>
 </html>
-

@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>csharp on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/tags/csharp/</link>
-    <description>Recent content in csharp on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 19 Apr 2011 14:45:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <title>Csharp on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/tags/csharp/</link>
+    <description>Recent content in Csharp on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Tue, 19 Apr 2011 14:45:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>String.split() VS String.startsWith() VS Regex simple performance comparison.</title>
-      <link>http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</link>
+      <link>http://localhost:1313/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</link>
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
+      <guid>http://localhost:1313/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
       <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable.</description>
     </item>
-    
   </channel>
 </rss>

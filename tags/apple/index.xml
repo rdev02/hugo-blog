@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Apple on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/tags/apple/</link>
+    <description>Recent content in Apple on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Sun, 03 Mar 2024 14:07:00 +7000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/apple/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apple Vision Pro for a regular prosumer</title>
+      <link>http://localhost:1313/posts/tea/2024/03/vision-pro/</link>
+      <pubDate>Sun, 03 Mar 2024 14:07:00 +7000</pubDate>
+      <guid>http://localhost:1313/posts/tea/2024/03/vision-pro/</guid>
+      <description>Once the Apple Vision Pro became available I instantly ordered it to test out 3 use cases:
+work monitor: use headset to be able to work in any place/condition with a comfortable large monitor gaming device: use headset as a streaming gaming platform anywhere personal IMAX: use headset to have unmatched movie-viewing experience anywhere. I&amp;rsquo;ve been using it on and off for about 3 weeks now. This post summarizes how it went for me.</description>
+    </item>
+  </channel>
+</rss>

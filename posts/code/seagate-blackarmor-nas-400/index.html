@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Seagate BlackArmor NAS 400. | Nomad&#39;s reflections</title>
+<meta name="keywords" content="nas">
+<meta name="description" content="So I decided that I&#8217;m sick and tired of plugging in and out usb drives. Be it my tiny 16GB daily thumb drive, or store-it-all 2TB external seagate &#8211; this is a pain&#8230; And to make sure everything is stored you have to &#8220;detach/remove&#8221; them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money.">
+<meta name="author" content="Viktor Halitsyn">
+<link rel="canonical" href="http://localhost:1313/posts/code/seagate-blackarmor-nas-400/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/code/seagate-blackarmor-nas-400/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  
+    
+      
+    
+  
+
+<meta property="og:title" content="Seagate BlackArmor NAS 400." />
+<meta property="og:description" content="So I decided that I&#8217;m sick and tired of plugging in and out usb drives. Be it my tiny 16GB daily thumb drive, or store-it-all 2TB external seagate &#8211; this is a pain&#8230; And to make sure everything is stored you have to &#8220;detach/remove&#8221; them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/code/seagate-blackarmor-nas-400/" />
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/BlackArmor400/ext-nas-blackarmor-nas-400-overview-2-316x268.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2013-02-05T08:20:00+00:00" />
+<meta property="article:modified_time" content="2013-02-05T08:20:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/BlackArmor400/ext-nas-blackarmor-nas-400-overview-2-316x268.png" />
+<meta name="twitter:title" content="Seagate BlackArmor NAS 400."/>
+<meta name="twitter:description" content="So I decided that I&#8217;m sick and tired of plugging in and out usb drives. Be it my tiny 16GB daily thumb drive, or store-it-all 2TB external seagate &#8211; this is a pain&#8230; And to make sure everything is stored you have to &#8220;detach/remove&#8221; them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Seagate BlackArmor NAS 400.",
+      "item": "http://localhost:1313/posts/code/seagate-blackarmor-nas-400/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Seagate BlackArmor NAS 400.",
+  "name": "Seagate BlackArmor NAS 400.",
+  "description": "So I decided that I\u0026#8217;m sick and tired of plugging in and out usb drives. Be it my tiny 16GB daily thumb drive, or store-it-all 2TB external seagate \u0026#8211; this is a pain\u0026#8230; And to make sure everything is stored you have to \u0026#8220;detach/remove\u0026#8221; them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money.",
+  "keywords": [
+    "nas"
+  ],
+  "articleBody": " So I decided that I’m sick and tired of plugging in and out usb drives. Be it my tiny 16GB daily thumb drive, or store-it-all 2TB external seagate – this is a pain… And to make sure everything is stored you have to “detach/remove” them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money. This is long and tedious so for quick and impatient there’s a summary at the end.\nBelieve it or not more money is inevitable so I decided to try and reduce the number of devices – pile everything up in one place – shall it stay safe and robust and accessible at all times. NAS. I had very few requirements:\nat least 4 bays to be able to play with RAID 5/6/10. 3.5 drive interface to keep them cheap “quiet” feature – at this would stay in my room. robust and reliable. BlackArmor400 I had a couple of Seagate drives before and overall my experience with them was good. Nowadays you can find complaints about pretty much any manufacturer and any product so I did not really pay attention to what others said – was looking for my set of requirements for the right price. And there it shines – perfect solution for all my needs and even a little bit more! Remote management, encryption, DDNS, configurable backups, all-you-can-imagine media sharing, internal downloader and more – sweet!\nSo I went to Amazon and ordered one. It was just before new years so I received my order in a month – but that was not urgent: storage is not smth. that one should make haste with IMO. Packaging and build quality.\nI was actually impressed – the thing was of manageable size, pretty compact and fitted into my nightstand lower deck. Loading this thing up with drives was super easy – it had a smart clip drive holding system. No installation – you can install some discovery program from CD but really – you do not need it. The only thing it does – it finds the IP of your NAS and forwards you to the browser.\nThus overall I was pleased with build quality: yes it was not top notch aluminumnickel but mostly plastic. Yes it was a bit rough on the edges. Yes the green screen was smth both enjoying and amusing, but for the price it was absolutely great and matched my needs in full. I was not going to use this in hazardous environments and I do not have little kids so that I would really worry about the build and plastic. The chip and software is what mattered…. UI and software UI Console look More images below in the gallery.\nUI was slow. As a developer I’m used to wait times. I’m patient. But even for me it was tad slow. It was intuitive though. I quickly found my way around without the manual but then the limitations kicked in\n– you have have a usb stick plugged in to the first usb slot(and only 1st, which front btw) if you want encryption\n– you have to have entire volume encrypted\n– you have to wait all surface scan and zero-out if you change anything about the volumes(and it lasts about 8 hours on my 2TB drives)\n– you cannot have a read only share(bummer!)\n– you have to do 1 thing at a time or else everything you configured before may get messed up and only hard reset followed by total zero-outcheck of drives(8 hours again) will save you\n– and probably many other I did not discover due to I did not plan to use that functionality at all.\nBUT I went through all this, patiently, believing that once I get this linux set up and working – it’ll be rock solid and serve me well for many years. That is how it is usually done with linux – you get it for cheep, but you pay with your time. Your configuration is a pain, but after all it worx (period) The worx.\nSo I wanted to make sure that I can rely on this thing once I configured it. So I wrote a little program, that would generate a set of files, get their md5’s, measure speed and have some brain to verify that files later. After all, the only way to understand if the drive would work for you – is to fill it up with data and see how it performs on parallel reads/writes. I’ll post the code soon to github in case anyone would ever need it. I will.\nI started it up on 2 computers: one writing to encrypted partition, other – to public one(both raid 10) and a few days later I had my NAS populated with dummy, but recorded data. Thus: write speed turned out to be much slower for the encrypted volume than for the public one – around 2-5 Mb/s VS 5-7 for the unencrypted. read speed was good for both 10Mb/s for encrypted and 15-20 for unencrypted volume. That was more than satisfying for me. I do not really need fast write, and that yields enough speed for one HD movie stream. Next were the problems tests that I was planning to execute – like remove a drive and see how NAS tackles it. But I did not have to do this problems arrived by themselves… The problems.\nAnother morning I woke up and found out that NAS reports one drive to be failed. No big deal – take it away and put a fresh new one. But I wanted to test out the speed and file integrity before doing this. So I launched my program again in test mode and an hour later my second drive was reported to be failing. Now I was in doubt, because the filesystem was still available. 2 hard drives from one branch of raid 10 fail and FS worx…how? Well. I restarted the NAS and drives showed up as good but both volumes showed degraded. Then 2 drives rendered failed and public volume remained degraded. Let me remind you that both volumes were based on same drives with same raid setting. Next the unpredictable happened – all data from public volume disappeared. Volume was mountable, however displaying 90% full and empty at the same time. So I decided to take both of them and inspect in the external enclosure. The drives indeed turned out to have bad sectors on them. Fedora immediately told me that I want to replace those drives. BUT they were readable and fine. a couple of bad sectors could have been easily remapped afaik….\nSo I decided to give this NAS the last try to restore the disks with the spare drive I bought just for this purpose. Actually I decided to give NAS a chance to do what it was essentially bought for – tackle the hardware problem. But after I inserted the disks back(nothing was done to them – I just ran disk utils and gparted, I did not repair or remap anything. and yes – I labeled all drives before putting them into nas). – NAS told me that “Problem….Data is recoverable. Please contact support”. and pay money, probably… That was it for me – filed a return on amazon and the next morning it was gone. SUMMARY\npros: + relatively good pricing(~200$)\n+ nice form factor(small)\n+ nice set of standard features out of the box(ddns, media service, downloader, raids)\n+ enough speed for small office/home experiences.\ncons:\n– not reliable(easy to corrupt internal FS, unable to restore/maintain data)\n– clunky, slow and strange software(not only UI). IMO\n– apparently has problems with concurrent usage. AFAIU\n– not able to address basic hdd hardware problems(remap or even test for bad sectors – only does a S.M.A.R.T test and even that unreliably).\n– virtual support(The forum I visited looks like gives answers only to satisfactory questions or those you can find out by yourself.) Next stop: Synology. To be continued… *all pictures are referenced from seagate.com ",
+  "wordCount" : "1358",
+  "inLanguage": "en",
+  "image":"https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/BlackArmor400/ext-nas-blackarmor-nas-400-overview-2-316x268.png","datePublished": "2013-02-05T08:20:00Z",
+  "dateModified": "2013-02-05T08:20:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Viktor Halitsyn"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/code/seagate-blackarmor-nas-400/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nomad's reflections",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Nomad&#39;s reflections (Alt + H)">Nomad&#39;s reflections</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Seagate BlackArmor NAS 400.
+    </h1>
+    <div class="post-meta"><span title='2013-02-05 08:20:00 +0000 +0000'>02/05/2013</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Viktor Halitsyn&nbsp;|&nbsp;<a href="https://github.com/rdev02/hugo-blog/tree/master/content/posts/code/seagate-blackarmor-nas-400.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> 
+  <div class="post-content"><div dir="ltr" style="text-align: left;">
+      So I decided that I&#8217;m sick and tired of plugging in and out usb drives. Be it my tiny 16GB <i>daily</i> thumb drive, or <i>store-it-all</i> 2TB external seagate &#8211; this is a pain&#8230; And to make sure everything is stored you have to &#8220;detach/remove&#8221; them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money. This is long and tedious so for quick and impatient <b>there&#8217;s a summary</b> <b>at the end</b>.<br /> Believe it or not <i>more money</i> is inevitable so I decided to try and reduce the number of devices &#8211; pile everything up in one place &#8211; shall it stay safe and robust and accessible at all times. NAS. I had very few requirements:</p> 
+  <ul style="text-align: left;">
+    <li>
+      at least 4 bays to be able to play with RAID 5/6/10.
+    </li>
+    <li>
+      3.5 drive interface to keep them cheap
+    </li>
+    <li>
+      &#8220;quiet&#8221; feature &#8211; at this would stay in my room.
+    </li>
+    <li>
+      robust and reliable.
+    </li>
+  </ul>
+  <div style="clear: both; text-align: center;background-color: white;">
+ <figure>
+     <img loading="lazy" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/BlackArmor400/ext-nas-blackarmor-nas-400-overview-2-316x268.png"/> <figcaption>
+             BlackArmor400
+         </figcaption>
+ </figure>
+
+<pre><code>&lt;/div&gt;
+</code></pre>
+  <p>
+    I had a couple of Seagate drives before and overall my experience with them was good. Nowadays you can find complaints about pretty much any manufacturer and any product so I did not really pay attention to what <i>others</i> said &#8211;  was looking for my set of requirements for the <i>right</i> price. And there it <a href="http://www.seagate.com/external-hard-drives/network-storage/business/blackarmor-nas-400/" target="_blank">shines</a> &#8211; perfect solution for all my needs and even a little bit more! Remote management, encryption, DDNS, configurable backups, all-you-can-imagine media sharing, internal downloader and more &#8211; sweet!<br /> So I went to Amazon and ordered one. It was just before new years so I received my order in a month &#8211; but that was not urgent: storage is not smth. that one should make haste with IMO.
+  </p>
+  <p>
+    <b>Packaging and build quality.</b><br /> I was actually impressed &#8211; the thing was of manageable size, pretty compact and fitted into my nightstand lower<b> </b>deck. Loading this thing up with drives was super easy &#8211; it had a smart clip drive holding <i>system.</i> No installation &#8211; you can install some <i>discovery</i> program from CD but really &#8211; you do not need it. The only thing it does &#8211; it finds the IP of your NAS and forwards you to the browser.<br /> Thus overall I was pleased with build quality: yes it was not top notch aluminumnickel but mostly plastic. Yes it was a bit rough on the edges. Yes the green <i>screen</i> was smth both enjoying and amusing, but for the price it was absolutely great and matched my needs in full. I was not going to use this in hazardous environments and I do not have little kids so that I would really worry about the build and plastic. The chip and software is what mattered&#8230;.
+  </p>
+  <p>
+    <b>UI and software</b>
+  </p>
+</div>
+<p><figure>
+      <img loading="lazy" src="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/2013/BlackArmor400/SeageBaConsole.jpg"/> <figcaption>
+              UI Console look
+          </figcaption>
+  </figure>
+
+More images below in the gallery.</p>
+<div dir="ltr" style="text-align: left;">
+  <p>
+    UI was slow. As a developer I&#8217;m used to wait times. I&#8217;m patient. But even for me it was tad slow. It was intuitive though. I quickly found my way around without the manual but then the limitations kicked in<br /> &#8211; you have have a usb stick plugged in to the first usb slot(and only 1st, which front btw) if you want encryption<br /> &#8211; you have to have entire volume encrypted<br /> &#8211; you have to wait all surface scan and zero-out if you change anything about the volumes(and it lasts about 8 hours on my 2TB drives)<br /> &#8211; you cannot have a read only share(bummer!)<br /> &#8211; you have to do 1 thing at a time or else everything you configured before may get messed up and only hard reset followed by total zero-outcheck of drives(8 hours again) will save you<br /> &#8211; and probably many other I did not discover due to I did not plan to use that functionality at all.<br /> BUT I went through all this, patiently, believing that once I get this linux set up and working &#8211; it&#8217;ll be rock solid and serve me well for many years. That is how it is usually done with linux &#8211; you get it for cheep, but you pay with your time. Your configuration is a pain, but after all it worx (period)
+  </p>
+  <p>
+    <b>The worx</b>.<br /> So I wanted to make sure that I can rely on this thing once I configured it. So I wrote a little program, that would generate a set of files, get their md5&#8217;s, measure speed and have some brain to verify that files later. After all, the only way to understand if the drive would work for you &#8211; is to fill it up with data and see how it performs on parallel reads/writes. I&#8217;ll post the code soon to github in case anyone would ever need it. I will.<br /> I started it up on 2 computers: one writing to encrypted partition, other &#8211; to public one(both raid 10) and a few days later I had my NAS populated with dummy, but recorded data. Thus:
+  </p>
+  <ul style="text-align: left;">
+    <li>
+      write speed turned out to be much slower for the encrypted volume than for the public one &#8211; around 2-5 Mb/s VS 5-7 for the unencrypted.
+    </li>
+    <li>
+      read speed was good for both 10Mb/s for encrypted and 15-20 for unencrypted volume.
+    </li>
+  </ul>
+  <p>
+    That was more than satisfying for me. I do not really need fast write, and that yields enough speed for one HD movie stream. Next were the problems tests that I was planning to execute &#8211; like remove a drive and see how NAS tackles it. But I did not have to do this problems arrived by themselves&#8230;
+  </p>
+  <p>
+    <b>The problems.</b><br /> Another morning I woke up and found out that NAS reports one drive to be failed. No big deal &#8211; take it away and put a fresh new one. But I wanted to test out the speed and file integrity before doing this. So I launched my program again in test mode and an hour later my second drive was reported to be failing. Now I was in doubt, because the filesystem was still available. 2 hard drives from one branch of raid 10 fail and FS worx&#8230;how? Well. I restarted the NAS and drives showed up as <i>good</i> but both volumes showed <i>degraded. </i>Then 2 drives rendered failed and public volume remained degraded. Let me remind you that both volumes were based on same drives with same raid setting. Next the unpredictable happened &#8211; all data from public volume <i>disappeared</i>. Volume was mountable, however displaying 90% full and empty at the same time. So I decided to take both of them and inspect in the external enclosure. The drives indeed turned out to have bad sectors on them. Fedora immediately told me that I want to replace those drives. BUT they were readable and fine. a couple of bad sectors could have been easily remapped afaik&#8230;.<br /> So I decided to give this NAS the last try to restore the disks with the spare drive I bought just for this purpose. Actually I decided to give NAS a chance to do what it was essentially bought for &#8211; tackle the hardware problem. But after I inserted the disks back(nothing was done to them &#8211; I just ran disk utils and gparted, I did not repair or remap anything. and yes &#8211; I labeled all drives before putting them into nas). &#8211; NAS told me that &#8220;Problem&#8230;.Data is recoverable. Please contact support&#8221;. and pay money, probably&#8230; That was it for me &#8211; filed a return on amazon and the next morning it was gone.
+  </p>
+  <p>
+    <b>SUMMARY</b><br /> <b>pros: </b><br /> + relatively good pricing(~200$)<br /> + nice form factor(small)<br /> + nice set of standard features out of the box(ddns, media service, downloader, raids)<br /> + enough speed for small office/home experiences.<br /> <b>cons:</b><br /> &#8211; not reliable(easy to corrupt internal FS, unable to restore/maintain data)<br /> &#8211; clunky, slow and strange software(not only UI). IMO<br /> &#8211; apparently has problems with concurrent usage. AFAIU<br /> &#8211; not able to address basic hdd hardware problems(remap or even test for bad sectors &#8211; only does a S.M.A.R.T test and even that unreliably).<br /> &#8211; <i>virtual</i> support(The <a href="http://forums.seagate.com/" target="_blank">forum </a>I visited looks like gives answers only to <i>satisfactory</i> questions or those you can find out by yourself.)
+  </p>
+  <p>
+    <b>Next stop: </b><a href="http://www.synology.com/products/product.php?product_name=DS413j&lang=us" target="_blank">Synology</a>. To be continued&#8230;
+  </p>
+  <p>
+    *all pictures are referenced from seagate.com
+  </p>
+  <p>
+  </p>
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/nas/">Nas</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/code/synology-ds413j-nas/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Synology DS413j NAS</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/code/javascript-performance-tests/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Javascript performance tests</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Seagate BlackArmor NAS 400. on x"
+            href="https://x.com/intent/tweet/?text=Seagate%20BlackArmor%20NAS%20400.&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fseagate-blackarmor-nas-400%2f&amp;hashtags=nas">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Seagate BlackArmor NAS 400. on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fseagate-blackarmor-nas-400%2f&amp;title=Seagate%20BlackArmor%20NAS%20400.&amp;summary=Seagate%20BlackArmor%20NAS%20400.&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fseagate-blackarmor-nas-400%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Seagate BlackArmor NAS 400. on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fseagate-blackarmor-nas-400%2f&title=Seagate%20BlackArmor%20NAS%20400.">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Seagate BlackArmor NAS 400. on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fseagate-blackarmor-nas-400%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Seagate BlackArmor NAS 400. on whatsapp"
+            href="https://api.whatsapp.com/send?text=Seagate%20BlackArmor%20NAS%20400.%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fseagate-blackarmor-nas-400%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Seagate BlackArmor NAS 400. on telegram"
+            href="https://telegram.me/share/url?text=Seagate%20BlackArmor%20NAS%20400.&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fseagate-blackarmor-nas-400%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Seagate BlackArmor NAS 400. on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Seagate%20BlackArmor%20NAS%20400.&u=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2fseagate-blackarmor-nas-400%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© Viktor Halitsyn</span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

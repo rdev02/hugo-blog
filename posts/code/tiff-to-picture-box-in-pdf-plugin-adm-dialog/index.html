@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Tiff to Picture box in PDF plugin ADM dialog | Nomad&#39;s reflections</title>
+<meta name="keywords" content="c&#43;&#43;">
+<meta name="description" content="Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.">
+<meta name="author" content="Viktor Halitsyn">
+<link rel="canonical" href="http://localhost:1313/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  
+    
+      
+    
+  
+
+<meta property="og:title" content="Tiff to Picture box in PDF plugin ADM dialog" />
+<meta property="og:description" content="Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/" />
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+<meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2007-11-01T10:22:00+00:00" />
+<meta property="article:modified_time" content="2007-11-01T10:22:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg" />
+<meta name="twitter:title" content="Tiff to Picture box in PDF plugin ADM dialog"/>
+<meta name="twitter:description" content="Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Tiff to Picture box in PDF plugin ADM dialog",
+      "item": "http://localhost:1313/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Tiff to Picture box in PDF plugin ADM dialog",
+  "name": "Tiff to Picture box in PDF plugin ADM dialog",
+  "description": "Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had.",
+  "keywords": [
+    "c++"
+  ],
+  "articleBody": "Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had. There i used some nice piece of code found on http://www.codeguru.com/cpp/g-m/bitmap/specialeffects/article.php/c4897/. So here is the code i used.\n//header file for TIFF-PDF-JPEG-HBITMAP conversion\n#include #include #include #include \"AVCmdDefs.h\" /* * PDF to HBITMAP conversion classes */ typedef map\u003cint,string\u003e TiffToJPGMap; class TiFFDialogPrivewHelper { public: static HBITMAP getBitmapFromPDF(int documentIndex,WORD width, WORD height); static void initTempFolder(); static void cleanTempFolder(); private: static TiffToJPGMap m_convertedPDFs; static bool m_isTempFolderInit; static string m_tempFolderName; static void convertPDFToJPG(int documentIndex, string jpegFullPath); static HBITMAP resizeBitmap(HBITMAP hBmp, WORD wNewWidth, WORD wNewHeight); static HBITMAP getJPEGFromPDF(string jpegName); static HBITMAP getBitmapFromJPEG(string jpegFullPath); /* * Classt tha provides PDF to JPEG file conversion via AVConversion API */ class ConversionFromPDFProvider { private: static AVConversionFromPDFHandler gConversionHandler; PDEContent volatile pdeContent; void GetJPEGHandler(); public: ACCB1 void ACCB2 Convert (int documentIndex, string jpegFullpath); static ACCB1 ASBool ACCB2 fromPDFEnumProc(AVConversionFromPDFHandler handler, AVConversionEnumProcData data); }; /* * BITMAP resize functions */ // // Functions for smooth bitmap resize // // Improvement: float calculations changed to int. // // Ivaylo Byalkov, January 24, 2000 // e-mail: ivob@i-n.net // // helper function prototypes static BITMAPINFO *PrepareRGBBitmapInfo(WORD wWidth, WORD wHeight); static void ShrinkDataInt(BYTE *pInBuff,WORD wWidth,WORD wHeight,BYTE *pOutBuff,WORD wNewWidth,WORD wNewHeight); static void EnlargeDataInt(BYTE *pInBuff,WORD wWidth,WORD wHeight,BYTE *pOutBuff,WORD wNewWidth,WORD wNewHeight); static int *CreateCoeffInt(int nLen, int nNewLen, BOOL bShrink); /////////////////////////////////////////////////////////// // Main resize function static HBITMAP ScaleBitmapInt(HBITMAP hBmp,WORD wNewWidth,WORD wNewHeight); }; /* //// realization is quite big but it works 😉 /* * PDF to HBITMAP conversion implementation code */ /* * TiFFDialogPrivewHelper function implementation */ string TiFFDialogPrivewHelper::m_tempFolderName; HBITMAP TiFFDialogPrivewHelper::getBitmapFromJPEG(string jpegFullPath) { LPSTR pFile = new char[jpegFullPath.length() + 1]; strcpy(pFile,jpegFullPath.c_str()); HANDLE hFile; HBITMAP hBmp; DWORD dwSize; DWORD dwRead; HGLOBAL hMemJpeg; LPSTREAM lpStream; OLE_HANDLE hJpegBmp; HRESULT hr; LPPICTURE lpPicture = NULL; void *pMemJpeg; /* Open the file and get the size. */ if((hFile = CreateFile(pFile, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL)) == INVALID_HANDLE_VALUE) return NULL; if((dwSize = GetFileSize(hFile, NULL)) == 0xFFFFFFFF) { CloseHandle(hFile); return NULL; } /* Allocate space for file, read it in, and then close the file again. */ if((hMemJpeg = GlobalAlloc(GMEM_MOVEABLE, dwSize)) == NULL) { CloseHandle(hFile); return NULL; } if((pMemJpeg = GlobalLock(hMemJpeg)) == NULL) { CloseHandle(hFile); GlobalFree(hMemJpeg); return NULL; } if(!ReadFile(hFile, pMemJpeg, dwSize, \u0026dwRead, NULL)) { CloseHandle(hFile); GlobalFree(hMemJpeg); return NULL; } CloseHandle(hFile); GlobalUnlock(hMemJpeg); /* Create the stream and load the picture. */ if((hr = CreateStreamOnHGlobal(hMemJpeg, TRUE, \u0026lpStream)) != S_OK) { GlobalFree(hMemJpeg); return NULL; } if(OleLoadPicture(lpStream, dwSize, FALSE, IID_IPicture,(void**) \u0026lpPicture) != S_OK) { GlobalFree(hMemJpeg); lpStream-\u003eRelease(); return NULL; } /* Get the handle to the image, and then copy it. */ if((lpPicture-\u003eget_Handle( \u0026hJpegBmp)) != S_OK) { GlobalFree(hMemJpeg); lpStream-\u003eRelease(); lpPicture-\u003eRelease(); return NULL; } if((hBmp = (HBITMAP)CopyImage((HANDLE *) hJpegBmp, IMAGE_BITMAP, 0, 0, LR_COPYRETURNORG)) == NULL) { GlobalFree(hMemJpeg); lpStream-\u003eRelease(); lpPicture-\u003eRelease(); return NULL; } /* Free the original image and memory. */ GlobalFree(hMemJpeg); lpStream-\u003eRelease(); lpPicture-\u003eRelease(); return hBmp; } void TiFFDialogPrivewHelper::initTempFolder() { ASFileSys currentFS = ASGetDefaultFileSys(); ASPathName asPath = ASFileSysGetTempPathName(currentFS, NULL); if (asPath == NULL) { m_tempFolderName = \"c:\"; } // convert pathname from Acrobat pathname to char char *path = ASFileSysDisplayStringFromPath(currentFS, asPath); // buffer should be freed ASFileSysReleasePath(currentFS, asPath); if (path == NULL) { m_tempFolderName = \"c:\"; } string pathString = path; ASfree(path); //remove the temp file name int slashIndex = pathString.find_last_of('\\'); if (slashIndex \u003c= 0) { slashIndex = pathString.find_last_of('/'); } pathString.erase(slashIndex,pathString.length() - slashIndex); m_tempFolderName = pathString + \"//JPEGsFromPDfs//\"; ASFileSysCreateFolder(currentFS,ASFileSysCreatePathName(currentFS, ASAtomFromString(\"Cstring\"), m_tempFolderName.c_str(), 0),false); m_isTempFolderInit = true; } void TiFFDialogPrivewHelper::cleanTempFolder() { ASFileSys currentFS = ASGetDefaultFileSys(); ASPathName tempFolderName = ASFileSysCreatePathName(currentFS, ASAtomFromString(\"Cstring\"), m_tempFolderName.c_str(), 0); for(TiffToJPGMap::iterator it = m_convertedPDFs.begin(); it != m_convertedPDFs.end(); it++) { ASPathName convertedJPEG = ASFileSysCreatePathName(currentFS, ASAtomFromString(\"Cstring\"), ((pair\u003cint,string\u003e)(*it)).second.c_str(), 0); ASFileSysRemoveFile(currentFS,convertedJPEG); ASFileSysReleasePath(currentFS,convertedJPEG); } ASFileSysRemoveFolder(currentFS,tempFolderName); ASFileSysReleasePath(currentFS,tempFolderName); m_convertedPDFs.clear(); m_isTempFolderInit = false; } TiffToJPGMap TiFFDialogPrivewHelper::m_convertedPDFs; bool TiFFDialogPrivewHelper::m_isTempFolderInit = false; void TiFFDialogPrivewHelper::convertPDFToJPG(int documentIndex, string jpegFullPath) { ConversionFromPDFProvider provider; provider.Convert(documentIndex,jpegFullPath); } HBITMAP TiFFDialogPrivewHelper::resizeBitmap(HBITMAP hBmp, WORD wNewWidth, WORD wNewHeight) { HBITMAP result = ScaleBitmapInt(hBmp,wNewWidth,wNewWidth); return result; } HBITMAP TiFFDialogPrivewHelper::getBitmapFromPDF(int documentIndex,WORD width, WORD height) { if(m_isTempFolderInit) { TiffToJPGMap::iterator it = m_convertedPDFs.find(documentIndex); if (it == m_convertedPDFs.end()) { //evaluate corresponding jpeg path string combinedJpegPath; combinedJpegPath.insert(0,m_tempFolderName); combinedJpegPath += \"ConvertedPDF\"; std::stringstream ss; std::string stringIndex; ss \u003c\u003c documentIndex; ss \u003e\u003e stringIndex; combinedJpegPath += stringIndex; combinedJpegPath += \".jpeg\"; convertPDFToJPG(documentIndex,combinedJpegPath); m_convertedPDFs.insert(pair\u003cint,string\u003e(documentIndex,combinedJpegPath)); it = m_convertedPDFs.find(documentIndex); } HBITMAP jpg = getBitmapFromJPEG(((pair\u003cint,string\u003e)(*it)).second); return resizeBitmap(jpg,width,height); } return NULL; } ////////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////// /* * ConversionFromPDFProvider functions */ AVConversionFromPDFHandler TiFFDialogPrivewHelper::ConversionFromPDFProvider::gConversionHandler = NULL; ACCB1 void ACCB2 TiFFDialogPrivewHelper::ConversionFromPDFProvider::Convert(int documentIndex, string jpegFullPath) { ASAtom cmdName; AVCommand cmd; AVConversionFlags flags=0; const int MAX_PATH_LENGTH = 255; char temp[MAX_PATH_LENGTH]=\"\"; PDDoc pdDoc; //filename for the jpeg output file char* outFileName = new char[jpegFullPath.length() + 1]; strcpy(outFileName, jpegFullPath.c_str()); DURING Dialog::getStatement()-\u003eConvertTiffToPdf(\u0026pdDoc,documentIndex); ASPathName jpgPathName = ASFileSysCreatePathName(ASGetDefaultFileSys(), ASAtomFromString(\"Cstring\"), outFileName, 0); cmdName=ASAtomFromString(\"GeneralInfo\"); cmd=AVCommandNew(cmdName); volatile ASCab settings=ASCabNew(); ASCab inputs = ASCabNew(); ASCabPutPointer (inputs, kAVCommandKeyPDDoc, PDDoc, pdDoc, NULL); if (kAVCommandReady != AVCommandSetInputs (cmd, inputs)) { //some error handling; } ASCab config = ASCabNew(); ASCabPutInt (config, \"UIPolicy\", kAVCommandUIInteractive); if(kAVCommandReady!=AVCommandSetConfig (cmd, config)) { //some error handling; } ASCabPutInt (settings, kExtractImgCmdKeyConvFormat, kImgConversionFormatJpeg); ASCabPutInt (settings, kExtractJpegCmdKeyCompression, kJpegCompressionLow); ASCabPutInt (settings, kExtractJpegCmdKeyFormat, kJpegFormatOptimized); ASCabPutInt (settings, kExtractImgCmdKeyColorSpace, kColorSpaceGrayscale); ASCabPutInt (settings, kExtractImgCmdKeyResolution, kImgResolution300); if(kAVCommandReady!=AVCommandSetParams (cmd, settings)) { //some error handling; } GetJPEGHandler(); //handler for jpeg if(kAVConversionFailed == AVConversionConvertFromPDFWithHandler (gConversionHandler, settings,//param settings kAVConversionNoFlags, pdDoc//active pddoc , jpgPathName//destn filename , ASGetDefaultFileSys(), NULL)) { //some error logging } PDDocClose(pdDoc); HANDLER END_HANDLER } /* fromPDFEnumProc * ---------------------------------------------------------------------- * * Called by Acrobat as it cycles through each FromPDF handler. */ ACCB1 ASBool ACCB2 TiFFDialogPrivewHelper::ConversionFromPDFProvider::fromPDFEnumProc(AVConversionFromPDFHandler handler, AVConversionEnumProcData data) { DURING //Get the name of this filter ASInt32 len = 255; AVFileFilterRec filterRec = handler-\u003econvFilter; char * filterName = ASTextGetPDTextCopy(filterRec.filterDescription, \u0026len); //If it's the JPEG handler, then set our global handler to it. //Name changed to just \"JPEG\" in 6.0 if ((!strcmp(filterName, \"JPEG Files\")) || (!strcmp(filterName, \"JPEG\"))) { gConversionHandler = handler; } HANDLER return false; END_HANDLER return true; } void TiFFDialogPrivewHelper::ConversionFromPDFProvider::GetJPEGHandler() { AVConversionFromPDFEnumProc fromPDFEnumProcCB = ASCallbackCreateProto(AVConversionFromPDFEnumProc, \u0026TiFFDialogPrivewHelper::ConversionFromPDFProvider::fromPDFEnumProc); AVConversionEnumFromPDFConverters (fromPDFEnumProcCB, NULL); ASCallbackDestroy(fromPDFEnumProcCB); } ////////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////// /* * In memory bitmap resizing functions realizations */ HBITMAP TiFFDialogPrivewHelper::ScaleBitmapInt(HBITMAP hBmp,WORD wNewWidth,WORD wNewHeight) { BITMAP bmp; ::GetObject(hBmp, sizeof(BITMAP), \u0026bmp); // check for valid size if((bmp.bmWidth \u003e wNewWidth \u0026\u0026 bmp.bmHeight \u003c wNewHeight) || (bmp.bmWidth \u003c wNewWidth \u0026\u0026 bmp.bmHeight \u003e wNewHeight)) return NULL; HDC hDC = ::GetDC(NULL); BITMAPINFO *pbi = PrepareRGBBitmapInfo((WORD)bmp.bmWidth, (WORD)bmp.bmHeight); BYTE *pData = new BYTE[pbi-\u003ebmiHeader.biSizeImage]; ::GetDIBits(hDC, hBmp, 0, bmp.bmHeight, pData, pbi, DIB_RGB_COLORS); delete pbi; pbi = PrepareRGBBitmapInfo(wNewWidth, wNewHeight); BYTE *pData2 = new BYTE[pbi-\u003ebmiHeader.biSizeImage]; if(bmp.bmWidth \u003e= wNewWidth \u0026\u0026 bmp.bmHeight \u003e= wNewHeight) ShrinkDataInt(pData, (WORD)bmp.bmWidth, (WORD)bmp.bmHeight, pData2, wNewWidth, wNewHeight); else EnlargeDataInt(pData, (WORD)bmp.bmWidth, (WORD)bmp.bmHeight, pData2, wNewWidth, wNewHeight); delete pData; HBITMAP hResBmp = ::CreateCompatibleBitmap(hDC, wNewWidth, wNewHeight); ::SetDIBits(hDC, hResBmp, 0, wNewHeight, pData2, pbi, DIB_RGB_COLORS); ::ReleaseDC(NULL, hDC); delete pbi; delete pData2; return hResBmp; } /////////////////////////////////////////////////////////// BITMAPINFO *TiFFDialogPrivewHelper::PrepareRGBBitmapInfo(WORD wWidth, WORD wHeight) { BITMAPINFO *pRes = new BITMAPINFO; ::ZeroMemory(pRes, sizeof(BITMAPINFO)); pRes-\u003ebmiHeader.biSize = sizeof(BITMAPINFOHEADER); pRes-\u003ebmiHeader.biWidth = wWidth; pRes-\u003ebmiHeader.biHeight = wHeight; pRes-\u003ebmiHeader.biPlanes = 1; pRes-\u003ebmiHeader.biBitCount = 24; pRes-\u003ebmiHeader.biSizeImage = ((3 * wWidth + 3) \u0026 ~3) * wHeight; return pRes; } /////////////////////////////////////////////////////////// int *TiFFDialogPrivewHelper::CreateCoeffInt(int nLen, int nNewLen, BOOL bShrink) { int nSum = 0, nSum2; int *pRes = new int[2 * nLen]; int *pCoeff = pRes; int nNorm = (bShrink) ? (nNewLen \u003c\u003c 12) / nLen : 0x1000; int nDenom = (bShrink)? nLen : nNewLen; ::ZeroMemory(pRes, 2 * nLen * sizeof(int)); for(int i = 0; i \u003c nLen; i++, pCoeff += 2) { nSum2 = nSum + nNewLen; if(nSum2 \u003e nLen) { *pCoeff = ((nLen - nSum) \u003c\u003c 12) / nDenom; pCoeff[1] = ((nSum2 - nLen) \u003c\u003c 12) / nDenom; nSum2 -= nLen; } else { *pCoeff = nNorm; if(nSum2 == nLen) { pCoeff[1] = -1; nSum2 = 0; } } nSum = nSum2; } return pRes; } /////////////////////////////////////////////////////////// void TiFFDialogPrivewHelper::ShrinkDataInt(BYTE *pInBuff, WORD wWidth, WORD wHeight, BYTE *pOutBuff, WORD wNewWidth, WORD wNewHeight) { BYTE *pLine = pInBuff, *pPix; BYTE *pOutLine = pOutBuff; DWORD dwInLn = (3 * wWidth + 3) \u0026 ~3; DWORD dwOutLn = (3 * wNewWidth + 3) \u0026 ~3; int x, y, i, ii; BOOL bCrossRow, bCrossCol; int *pRowCoeff = CreateCoeffInt(wWidth, wNewWidth, TRUE); int *pColCoeff = CreateCoeffInt(wHeight, wNewHeight, TRUE); int *pXCoeff, *pYCoeff = pColCoeff; DWORD dwBuffLn = 3 * wNewWidth * sizeof(DWORD); DWORD *pdwBuff = new DWORD[6 * wNewWidth]; DWORD *pdwCurrLn = pdwBuff, *pdwCurrPix, *pdwNextLn = pdwBuff + 3 * wNewWidth; DWORD dwTmp, *pdwNextPix; ::ZeroMemory(pdwBuff, 2 * dwBuffLn); y = 0; while(y \u003c wNewHeight) { pPix = pLine; pLine += dwInLn; pdwCurrPix = pdwCurrLn; pdwNextPix = pdwNextLn; x = 0; pXCoeff = pRowCoeff; bCrossRow = pYCoeff[1] \u003e 0; while(x \u003c wNewWidth) { dwTmp = *pXCoeff * *pYCoeff; for(i = 0; i \u003c 3; i++) pdwCurrPix[i] += dwTmp * pPix[i]; bCrossCol = pXCoeff[1] \u003e 0; if(bCrossCol) { dwTmp = pXCoeff[1] * *pYCoeff; for(i = 0, ii = 3; i \u003c 3; i++, ii++) pdwCurrPix[ii] += dwTmp * pPix[i]; } if(bCrossRow) { dwTmp = *pXCoeff * pYCoeff[1]; for(i = 0; i \u003c 3; i++) pdwNextPix[i] += dwTmp * pPix[i]; if(bCrossCol) { dwTmp = pXCoeff[1] * pYCoeff[1]; for(i = 0, ii = 3; i \u003c 3; i++, ii++) pdwNextPix[ii] += dwTmp * pPix[i]; } } if(pXCoeff[1]) { x++; pdwCurrPix += 3; pdwNextPix += 3; } pXCoeff += 2; pPix += 3; } if(pYCoeff[1]) { // set result line pdwCurrPix = pdwCurrLn; pPix = pOutLine; for(i = 3 * wNewWidth; i \u003e 0; i--, pdwCurrPix++, pPix++) *pPix = ((LPBYTE)pdwCurrPix)[3]; // prepare line buffers pdwCurrPix = pdwNextLn; pdwNextLn = pdwCurrLn; pdwCurrLn = pdwCurrPix; ::ZeroMemory(pdwNextLn, dwBuffLn); y++; pOutLine += dwOutLn; } pYCoeff += 2; } delete [] pRowCoeff; delete [] pColCoeff; delete [] pdwBuff; } /////////////////////////////////////////////////////////// void TiFFDialogPrivewHelper::EnlargeDataInt(BYTE *pInBuff, WORD wWidth, WORD wHeight, BYTE *pOutBuff, WORD wNewWidth, WORD wNewHeight) { BYTE *pLine = pInBuff, *pPix = pLine, *pPixOld, *pUpPix, *pUpPixOld; BYTE *pOutLine = pOutBuff, *pOutPix; DWORD dwInLn = (3 * wWidth + 3) \u0026 ~3; DWORD dwOutLn = (3 * wNewWidth + 3) \u0026 ~3; int x, y, i; BOOL bCrossRow, bCrossCol; int *pRowCoeff = CreateCoeffInt(wNewWidth, wWidth, FALSE); int *pColCoeff = CreateCoeffInt(wNewHeight, wHeight, FALSE); int *pXCoeff, *pYCoeff = pColCoeff; DWORD dwTmp, dwPtTmp[3]; y = 0; while(y \u003c wHeight) { bCrossRow = pYCoeff[1] \u003e 0; x = 0; pXCoeff = pRowCoeff; pOutPix = pOutLine; pOutLine += dwOutLn; pUpPix = pLine; if(pYCoeff[1]) { y++; pLine += dwInLn; pPix = pLine; } while(x \u003c wWidth) { bCrossCol = pXCoeff[1] \u003e 0; pUpPixOld = pUpPix; pPixOld = pPix; if(pXCoeff[1]) { x++; pUpPix += 3; pPix += 3; } dwTmp = *pXCoeff * *pYCoeff; for(i = 0; i \u003c 3; i++) dwPtTmp[i] = dwTmp * pUpPixOld[i]; if(bCrossCol) { dwTmp = pXCoeff[1] * *pYCoeff; for(i = 0; i \u003c 3; i++) dwPtTmp[i] += dwTmp * pUpPix[i]; } if(bCrossRow) { dwTmp = *pXCoeff * pYCoeff[1]; for(i = 0; i \u003c 3; i++) dwPtTmp[i] += dwTmp * pPixOld[i]; if(bCrossCol) { dwTmp = pXCoeff[1] * pYCoeff[1]; for(i = 0; i \u003c 3; i++) dwPtTmp[i] += dwTmp * pPix[i]; } } for(i = 0; i \u003c 3; i++, pOutPix++) *pOutPix = ((LPBYTE)(dwPtTmp + i))[3]; pXCoeff += 2; } pYCoeff += 2; } delete [] pRowCoeff; delete [] pColCoeff; } //finally the Dialog::getStatement()-\u003eConvertTiffToPdf(\u0026pdDoc,documentIndex); which could cause questios. Here is realization of ConvertTiffToPdf function bool ConvertTiffToPdf(PDDoc *TargetPdDoc, unsigned long aIndex) { std::string aFileName = getFilenameByIndex(aIndex); if(aFileName.empty()) return false; std::string ImageFilePath = getDirectoryName() + aFileName; ASPathName File_To_Be_Converted_To_PDF = ASFileSysCreatePathName( ASGetDefaultFileSys(), ASAtomFromString(\"Cstring\"), ImageFilePath.c_str(), NULL); AVConversionStatus status = AVConversionConvertToPDF( kAVConversionNoFlags, File_To_Be_Converted_To_PDF, ASGetDefaultFileSys(), TargetPdDoc, NULL); ASFileSysReleasePath (ASGetDefaultFileSys(), File_To_Be_Converted_To_PDF); if(status != kAVConversionSuccess) return false; return true; } \u003c/int,string\u003e\u003c/int,string\u003e\u003c/int,string\u003e\u003c/int,string\u003e\u003c/cstring\u003e\u003c/olectl.h\u003e \u003c/map\u003e ",
+  "wordCount" : "1920",
+  "inLanguage": "en",
+  "image": "https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg","datePublished": "2007-11-01T10:22:00Z",
+  "dateModified": "2007-11-01T10:22:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Viktor Halitsyn"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nomad's reflections",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Nomad&#39;s reflections (Alt + H)">Nomad&#39;s reflections</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Tiff to Picture box in PDF plugin ADM dialog
+    </h1>
+    <div class="post-meta"><span title='2007-11-01 10:22:00 +0000 +0000'>11/01/2007</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;Viktor Halitsyn&nbsp;|&nbsp;<a href="https://github.com/rdev02/hugo-blog/tree/master/content/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Today i would like to continue PDF plugins development theme. The next thing i was struggling with for about three days was displaying *TIFF ot *TIF images in Picture box control on he ADMDialog. Well nice thing is it can do this, bad thing is: not the way we think it should be. Unfortunately i havent found the other way as to convert image file to JPEG format(through PDF) and that load it as BITMAP which i could put into the ADMIconRef…Also i would like to admit that after loading the HBITMAP i had to resize it to the proper the of pcture box i had. There i used some nice piece of code found on <a href="http://www.codeguru.com/cpp/g-m/bitmap/specialeffects/article.php/c4897/">http://www.codeguru.com/cpp/g-m/bitmap/specialeffects/article.php/c4897/</a>. So here is the code i used.</p>
+<p>//header file for TIFF-PDF-JPEG-HBITMAP conversion</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cpf">&lt;map&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="cp">#include</span> <span class="cpf">&lt;olectl.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="cp">#include</span> <span class="cpf">&#34;AVCmdDefs.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * PDF to HBITMAP conversion classes
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">typedef</span> <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">TiffToJPGMap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">class</span> <span class="nc">TiFFDialogPrivewHelper</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span><span class="o">:</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">HBITMAP</span> <span class="n">getBitmapFromPDF</span><span class="p">(</span><span class="kt">int</span> <span class="n">documentIndex</span><span class="p">,</span><span class="n">WORD</span> <span class="n">width</span><span class="p">,</span> <span class="n">WORD</span> <span class="n">height</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="kt">void</span> <span class="nf">initTempFolder</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="kt">void</span> <span class="nf">cleanTempFolder</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">TiffToJPGMap</span> <span class="n">m_convertedPDFs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="kt">bool</span> <span class="n">m_isTempFolderInit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">string</span> <span class="n">m_tempFolderName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="kt">void</span> <span class="nf">convertPDFToJPG</span><span class="p">(</span><span class="kt">int</span> <span class="n">documentIndex</span><span class="p">,</span> <span class="n">string</span> <span class="n">jpegFullPath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">HBITMAP</span> <span class="nf">resizeBitmap</span><span class="p">(</span><span class="n">HBITMAP</span> <span class="n">hBmp</span><span class="p">,</span> <span class="n">WORD</span> <span class="n">wNewWidth</span><span class="p">,</span> <span class="n">WORD</span> <span class="n">wNewHeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">HBITMAP</span> <span class="nf">getJPEGFromPDF</span><span class="p">(</span><span class="n">string</span> <span class="n">jpegName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">HBITMAP</span> <span class="nf">getBitmapFromJPEG</span><span class="p">(</span><span class="n">string</span> <span class="n">jpegFullPath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * Classt tha provides PDF to JPEG file conversion via AVConversion API
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">class</span> <span class="nc">ConversionFromPDFProvider</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">AVConversionFromPDFHandler</span> <span class="n">gConversionHandler</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">PDEContent</span> <span class="k">volatile</span> <span class="n">pdeContent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="nf">GetJPEGHandler</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ACCB1</span> <span class="kt">void</span> <span class="n">ACCB2</span> <span class="n">Convert</span> <span class="p">(</span><span class="kt">int</span> <span class="n">documentIndex</span><span class="p">,</span> <span class="n">string</span> <span class="n">jpegFullpath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">ACCB1</span> <span class="n">ASBool</span> <span class="n">ACCB2</span> <span class="nf">fromPDFEnumProc</span><span class="p">(</span><span class="n">AVConversionFromPDFHandler</span> <span class="n">handler</span><span class="p">,</span> <span class="n">AVConversionEnumProcData</span> <span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * BITMAP resize functions
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// Functions for smooth bitmap resize
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// Improvement: float calculations changed to int.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// Ivaylo Byalkov, January 24, 2000
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// e-mail: ivob@i-n.net
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// helper function prototypes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">static</span> <span class="n">BITMAPINFO</span> <span class="o">*</span><span class="nf">PrepareRGBBitmapInfo</span><span class="p">(</span><span class="n">WORD</span> <span class="n">wWidth</span><span class="p">,</span> <span class="n">WORD</span> <span class="n">wHeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="kt">void</span> <span class="nf">ShrinkDataInt</span><span class="p">(</span><span class="n">BYTE</span> <span class="o">*</span><span class="n">pInBuff</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wWidth</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wHeight</span><span class="p">,</span><span class="n">BYTE</span> <span class="o">*</span><span class="n">pOutBuff</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wNewWidth</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wNewHeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="kt">void</span> <span class="nf">EnlargeDataInt</span><span class="p">(</span><span class="n">BYTE</span> <span class="o">*</span><span class="n">pInBuff</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wWidth</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wHeight</span><span class="p">,</span><span class="n">BYTE</span> <span class="o">*</span><span class="n">pOutBuff</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wNewWidth</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wNewHeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="kt">int</span> <span class="o">*</span><span class="nf">CreateCoeffInt</span><span class="p">(</span><span class="kt">int</span> <span class="n">nLen</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nNewLen</span><span class="p">,</span> <span class="n">BOOL</span> <span class="n">bShrink</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">///////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// Main resize function
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">static</span> <span class="n">HBITMAP</span> <span class="nf">ScaleBitmapInt</span><span class="p">(</span><span class="n">HBITMAP</span> <span class="n">hBmp</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wNewWidth</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wNewHeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">  <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">  //// realization is quite big but it works 😉
+</span></span></span><span class="line"><span class="cl"><span class="cm">  /*
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * PDF to HBITMAP conversion implementation code
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * TiFFDialogPrivewHelper function implementation
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">string</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">m_tempFolderName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HBITMAP</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">getBitmapFromJPEG</span><span class="p">(</span><span class="n">string</span> <span class="n">jpegFullPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LPSTR</span> <span class="n">pFile</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">jpegFullPath</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">strcpy</span><span class="p">(</span><span class="n">pFile</span><span class="p">,</span><span class="n">jpegFullPath</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HANDLE</span> <span class="n">hFile</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">HBITMAP</span> <span class="n">hBmp</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="n">dwSize</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="n">dwRead</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">HGLOBAL</span> <span class="n">hMemJpeg</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">LPSTREAM</span> <span class="n">lpStream</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">OLE_HANDLE</span> <span class="n">hJpegBmp</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">HRESULT</span> <span class="n">hr</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">LPPICTURE</span> <span class="n">lpPicture</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="o">*</span><span class="n">pMemJpeg</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="cm">/* Open the file and get the size. */</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">((</span><span class="n">hFile</span> <span class="o">=</span> <span class="n">CreateFile</span><span class="p">(</span><span class="n">pFile</span><span class="p">,</span> <span class="n">GENERIC_READ</span><span class="p">,</span> <span class="n">FILE_SHARE_READ</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="nb">NULL</span><span class="p">,</span> <span class="n">OPEN_EXISTING</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">))</span> <span class="o">==</span> <span class="n">INVALID_HANDLE_VALUE</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">((</span><span class="n">dwSize</span> <span class="o">=</span> <span class="n">GetFileSize</span><span class="p">(</span><span class="n">hFile</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">))</span> <span class="o">==</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">CloseHandle</span><span class="p">(</span><span class="n">hFile</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="cm">/* Allocate space for file, read it in, and then close the file again. */</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">((</span><span class="n">hMemJpeg</span> <span class="o">=</span> <span class="n">GlobalAlloc</span><span class="p">(</span><span class="n">GMEM_MOVEABLE</span><span class="p">,</span> <span class="n">dwSize</span><span class="p">))</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">CloseHandle</span><span class="p">(</span><span class="n">hFile</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">((</span><span class="n">pMemJpeg</span> <span class="o">=</span> <span class="n">GlobalLock</span><span class="p">(</span><span class="n">hMemJpeg</span><span class="p">))</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">CloseHandle</span><span class="p">(</span><span class="n">hFile</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">GlobalFree</span><span class="p">(</span><span class="n">hMemJpeg</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">ReadFile</span><span class="p">(</span><span class="n">hFile</span><span class="p">,</span> <span class="n">pMemJpeg</span><span class="p">,</span> <span class="n">dwSize</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">dwRead</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">))</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">CloseHandle</span><span class="p">(</span><span class="n">hFile</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">GlobalFree</span><span class="p">(</span><span class="n">hMemJpeg</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">CloseHandle</span><span class="p">(</span><span class="n">hFile</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">GlobalUnlock</span><span class="p">(</span><span class="n">hMemJpeg</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="cm">/* Create the stream and load the picture. */</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">((</span><span class="n">hr</span> <span class="o">=</span> <span class="n">CreateStreamOnHGlobal</span><span class="p">(</span><span class="n">hMemJpeg</span><span class="p">,</span> <span class="n">TRUE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">lpStream</span><span class="p">))</span> <span class="o">!=</span> <span class="n">S_OK</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">GlobalFree</span><span class="p">(</span><span class="n">hMemJpeg</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">OleLoadPicture</span><span class="p">(</span><span class="n">lpStream</span><span class="p">,</span> <span class="n">dwSize</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">IID_IPicture</span><span class="p">,(</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">lpPicture</span><span class="p">)</span> <span class="o">!=</span> <span class="n">S_OK</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">GlobalFree</span><span class="p">(</span><span class="n">hMemJpeg</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">lpStream</span><span class="o">-&gt;</span><span class="n">Release</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="cm">/* Get the handle to the image, and then copy it. */</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">((</span><span class="n">lpPicture</span><span class="o">-&gt;</span><span class="n">get_Handle</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">hJpegBmp</span><span class="p">))</span> <span class="o">!=</span> <span class="n">S_OK</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">GlobalFree</span><span class="p">(</span><span class="n">hMemJpeg</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">lpStream</span><span class="o">-&gt;</span><span class="n">Release</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">lpPicture</span><span class="o">-&gt;</span><span class="n">Release</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">((</span><span class="n">hBmp</span> <span class="o">=</span> <span class="p">(</span><span class="n">HBITMAP</span><span class="p">)</span><span class="n">CopyImage</span><span class="p">((</span><span class="n">HANDLE</span> <span class="o">*</span><span class="p">)</span> <span class="n">hJpegBmp</span><span class="p">,</span> <span class="n">IMAGE_BITMAP</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">LR_COPYRETURNORG</span><span class="p">))</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">GlobalFree</span><span class="p">(</span><span class="n">hMemJpeg</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">lpStream</span><span class="o">-&gt;</span><span class="n">Release</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">lpPicture</span><span class="o">-&gt;</span><span class="n">Release</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="cm">/* Free the original image and memory. */</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">GlobalFree</span><span class="p">(</span><span class="n">hMemJpeg</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">lpStream</span><span class="o">-&gt;</span><span class="n">Release</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">lpPicture</span><span class="o">-&gt;</span><span class="n">Release</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">hBmp</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">initTempFolder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASFileSys</span> <span class="n">currentFS</span> <span class="o">=</span> <span class="n">ASGetDefaultFileSys</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASPathName</span> <span class="n">asPath</span> <span class="o">=</span> <span class="n">ASFileSysGetTempPathName</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">asPath</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">m_tempFolderName</span> <span class="o">=</span> <span class="s">&#34;c:&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// convert pathname from Acrobat pathname to char
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">char</span> <span class="o">*</span><span class="n">path</span> <span class="o">=</span> <span class="n">ASFileSysDisplayStringFromPath</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span> <span class="n">asPath</span><span class="p">);</span> <span class="c1">// buffer should be freed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">ASFileSysReleasePath</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span> <span class="n">asPath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">path</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">m_tempFolderName</span> <span class="o">=</span> <span class="s">&#34;c:&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">string</span> <span class="n">pathString</span> <span class="o">=</span> <span class="n">path</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASfree</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//remove the temp file name
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">int</span> <span class="n">slashIndex</span> <span class="o">=</span> <span class="n">pathString</span><span class="p">.</span><span class="n">find_last_of</span><span class="p">(</span><span class="err">&#39;\&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">slashIndex</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">slashIndex</span> <span class="o">=</span> <span class="n">pathString</span><span class="p">.</span><span class="n">find_last_of</span><span class="p">(</span><span class="sc">&#39;/&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pathString</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">slashIndex</span><span class="p">,</span><span class="n">pathString</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">-</span> <span class="n">slashIndex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">m_tempFolderName</span> <span class="o">=</span> <span class="n">pathString</span> <span class="o">+</span> <span class="s">&#34;//JPEGsFromPDfs//&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASFileSysCreateFolder</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span><span class="n">ASFileSysCreatePathName</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span> <span class="n">ASAtomFromString</span><span class="p">(</span><span class="s">&#34;Cstring&#34;</span><span class="p">),</span> <span class="n">m_tempFolderName</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="mi">0</span><span class="p">),</span><span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">m_isTempFolderInit</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">cleanTempFolder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASFileSys</span> <span class="n">currentFS</span> <span class="o">=</span> <span class="n">ASGetDefaultFileSys</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASPathName</span> <span class="n">tempFolderName</span> <span class="o">=</span> <span class="n">ASFileSysCreatePathName</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span> <span class="n">ASAtomFromString</span><span class="p">(</span><span class="s">&#34;Cstring&#34;</span><span class="p">),</span> <span class="n">m_tempFolderName</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">TiffToJPGMap</span><span class="o">::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">m_convertedPDFs</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">m_convertedPDFs</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="n">it</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASPathName</span> <span class="n">convertedJPEG</span> <span class="o">=</span> <span class="n">ASFileSysCreatePathName</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span> <span class="n">ASAtomFromString</span><span class="p">(</span><span class="s">&#34;Cstring&#34;</span><span class="p">),</span> <span class="p">((</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;</span><span class="p">)(</span><span class="o">*</span><span class="n">it</span><span class="p">)).</span><span class="n">second</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASFileSysRemoveFile</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span><span class="n">convertedJPEG</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASFileSysReleasePath</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span><span class="n">convertedJPEG</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASFileSysRemoveFolder</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span><span class="n">tempFolderName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASFileSysReleasePath</span><span class="p">(</span><span class="n">currentFS</span><span class="p">,</span><span class="n">tempFolderName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">m_convertedPDFs</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">m_isTempFolderInit</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">TiffToJPGMap</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">m_convertedPDFs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">bool</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">m_isTempFolderInit</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">convertPDFToJPG</span><span class="p">(</span><span class="kt">int</span> <span class="n">documentIndex</span><span class="p">,</span> <span class="n">string</span> <span class="n">jpegFullPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ConversionFromPDFProvider</span> <span class="n">provider</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">provider</span><span class="p">.</span><span class="n">Convert</span><span class="p">(</span><span class="n">documentIndex</span><span class="p">,</span><span class="n">jpegFullPath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HBITMAP</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">resizeBitmap</span><span class="p">(</span><span class="n">HBITMAP</span> <span class="n">hBmp</span><span class="p">,</span> <span class="n">WORD</span> <span class="n">wNewWidth</span><span class="p">,</span> <span class="n">WORD</span> <span class="n">wNewHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HBITMAP</span> <span class="n">result</span> <span class="o">=</span> <span class="n">ScaleBitmapInt</span><span class="p">(</span><span class="n">hBmp</span><span class="p">,</span><span class="n">wNewWidth</span><span class="p">,</span><span class="n">wNewWidth</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HBITMAP</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">getBitmapFromPDF</span><span class="p">(</span><span class="kt">int</span> <span class="n">documentIndex</span><span class="p">,</span><span class="n">WORD</span> <span class="n">width</span><span class="p">,</span> <span class="n">WORD</span> <span class="n">height</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">m_isTempFolderInit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">TiffToJPGMap</span><span class="o">::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">m_convertedPDFs</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">documentIndex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">it</span> <span class="o">==</span> <span class="n">m_convertedPDFs</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//evaluate corresponding jpeg path
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">string</span> <span class="n">combinedJpegPath</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">combinedJpegPath</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">m_tempFolderName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">combinedJpegPath</span> <span class="o">+=</span> <span class="s">&#34;ConvertedPDF&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="n">ss</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">stringIndex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ss</span> <span class="o">&lt;&lt;</span> <span class="n">documentIndex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ss</span> <span class="o">&gt;&gt;</span> <span class="n">stringIndex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">combinedJpegPath</span> <span class="o">+=</span> <span class="n">stringIndex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">combinedJpegPath</span> <span class="o">+=</span> <span class="s">&#34;.jpeg&#34;</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">convertPDFToJPG</span><span class="p">(</span><span class="n">documentIndex</span><span class="p">,</span><span class="n">combinedJpegPath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">m_convertedPDFs</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">documentIndex</span><span class="p">,</span><span class="n">combinedJpegPath</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">it</span> <span class="o">=</span> <span class="n">m_convertedPDFs</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">documentIndex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HBITMAP</span> <span class="n">jpg</span> <span class="o">=</span> <span class="n">getBitmapFromJPEG</span><span class="p">(((</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;</span><span class="p">)(</span><span class="o">*</span><span class="n">it</span><span class="p">)).</span><span class="n">second</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nf">resizeBitmap</span><span class="p">(</span><span class="n">jpg</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//////////////////////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//////////////////////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//////////////////////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * ConversionFromPDFProvider functions
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">AVConversionFromPDFHandler</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">ConversionFromPDFProvider</span><span class="o">::</span><span class="n">gConversionHandler</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">ACCB1</span> <span class="kt">void</span> <span class="n">ACCB2</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">ConversionFromPDFProvider</span><span class="o">::</span><span class="n">Convert</span><span class="p">(</span><span class="kt">int</span> <span class="n">documentIndex</span><span class="p">,</span> <span class="n">string</span> <span class="n">jpegFullPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASAtom</span> <span class="n">cmdName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">AVCommand</span> <span class="n">cmd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">AVConversionFlags</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_PATH_LENGTH</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">temp</span><span class="p">[</span><span class="n">MAX_PATH_LENGTH</span><span class="p">]</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">PDDoc</span> <span class="n">pdDoc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1">//filename for the jpeg output file
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">char</span><span class="o">*</span> <span class="n">outFileName</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">jpegFullPath</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">strcpy</span><span class="p">(</span><span class="n">outFileName</span><span class="p">,</span> <span class="n">jpegFullPath</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">DURING</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">Dialog</span><span class="o">::</span><span class="n">getStatement</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">ConvertTiffToPdf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdDoc</span><span class="p">,</span><span class="n">documentIndex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASPathName</span> <span class="n">jpgPathName</span> <span class="o">=</span> <span class="n">ASFileSysCreatePathName</span><span class="p">(</span><span class="n">ASGetDefaultFileSys</span><span class="p">(),</span> <span class="n">ASAtomFromString</span><span class="p">(</span><span class="s">&#34;Cstring&#34;</span><span class="p">),</span> <span class="n">outFileName</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cmdName</span><span class="o">=</span><span class="n">ASAtomFromString</span><span class="p">(</span><span class="s">&#34;GeneralInfo&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cmd</span><span class="o">=</span><span class="n">AVCommandNew</span><span class="p">(</span><span class="n">cmdName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">volatile</span> <span class="n">ASCab</span> <span class="n">settings</span><span class="o">=</span><span class="n">ASCabNew</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCab</span> <span class="n">inputs</span> <span class="o">=</span> <span class="n">ASCabNew</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCabPutPointer</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">kAVCommandKeyPDDoc</span><span class="p">,</span> <span class="n">PDDoc</span><span class="p">,</span> <span class="n">pdDoc</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">kAVCommandReady</span> <span class="o">!=</span> <span class="n">AVCommandSetInputs</span> <span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">inputs</span><span class="p">))</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//some error handling;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCab</span> <span class="n">config</span> <span class="o">=</span> <span class="n">ASCabNew</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCabPutInt</span> <span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s">&#34;UIPolicy&#34;</span><span class="p">,</span> <span class="n">kAVCommandUIInteractive</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">kAVCommandReady</span><span class="o">!=</span><span class="n">AVCommandSetConfig</span> <span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">config</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//some error handling;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCabPutInt</span> <span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">kExtractImgCmdKeyConvFormat</span><span class="p">,</span> <span class="n">kImgConversionFormatJpeg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCabPutInt</span> <span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">kExtractJpegCmdKeyCompression</span><span class="p">,</span> <span class="n">kJpegCompressionLow</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCabPutInt</span> <span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">kExtractJpegCmdKeyFormat</span><span class="p">,</span> <span class="n">kJpegFormatOptimized</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCabPutInt</span> <span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">kExtractImgCmdKeyColorSpace</span><span class="p">,</span> <span class="n">kColorSpaceGrayscale</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCabPutInt</span> <span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">kExtractImgCmdKeyResolution</span><span class="p">,</span> <span class="n">kImgResolution300</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">kAVCommandReady</span><span class="o">!=</span><span class="n">AVCommandSetParams</span> <span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">settings</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//some error handling;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">GetJPEGHandler</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//handler for jpeg
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span><span class="p">(</span><span class="n">kAVConversionFailed</span> <span class="o">==</span> <span class="n">AVConversionConvertFromPDFWithHandler</span> <span class="p">(</span><span class="n">gConversionHandler</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">settings</span><span class="p">,</span><span class="c1">//param settings 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">kAVConversionNoFlags</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">pdDoc</span><span class="c1">//active pddoc
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">,</span> <span class="n">jpgPathName</span><span class="c1">//destn filename
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">,</span> <span class="n">ASGetDefaultFileSys</span><span class="p">(),</span> <span class="nb">NULL</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1">//some error logging
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">PDDocClose</span><span class="p">(</span><span class="n">pdDoc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HANDLER</span>
+</span></span><span class="line"><span class="cl">  <span class="n">END_HANDLER</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* fromPDFEnumProc
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * ----------------------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">  *
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * Called by Acrobat as it cycles through each FromPDF handler.
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">ACCB1</span> <span class="n">ASBool</span> <span class="n">ACCB2</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">ConversionFromPDFProvider</span><span class="o">::</span><span class="n">fromPDFEnumProc</span><span class="p">(</span><span class="n">AVConversionFromPDFHandler</span> <span class="n">handler</span><span class="p">,</span> <span class="n">AVConversionEnumProcData</span> <span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DURING</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//Get the name of this filter
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">ASInt32</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">AVFileFilterRec</span> <span class="n">filterRec</span> <span class="o">=</span> <span class="n">handler</span><span class="o">-&gt;</span><span class="n">convFilter</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span> <span class="n">filterName</span> <span class="o">=</span> <span class="n">ASTextGetPDTextCopy</span><span class="p">(</span><span class="n">filterRec</span><span class="p">.</span><span class="n">filterDescription</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">len</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//If it&#39;s the JPEG handler, then set our global handler to it.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//Name changed to just &#34;JPEG&#34; in 6.0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span> <span class="p">((</span><span class="o">!</span><span class="n">strcmp</span><span class="p">(</span><span class="n">filterName</span><span class="p">,</span> <span class="s">&#34;JPEG Files&#34;</span><span class="p">))</span> <span class="o">||</span> <span class="p">(</span><span class="o">!</span><span class="n">strcmp</span><span class="p">(</span><span class="n">filterName</span><span class="p">,</span> <span class="s">&#34;JPEG&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gConversionHandler</span> <span class="o">=</span> <span class="n">handler</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HANDLER</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">END_HANDLER</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">ConversionFromPDFProvider</span><span class="o">::</span><span class="n">GetJPEGHandler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">AVConversionFromPDFEnumProc</span> <span class="n">fromPDFEnumProcCB</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCallbackCreateProto</span><span class="p">(</span><span class="n">AVConversionFromPDFEnumProc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">ConversionFromPDFProvider</span><span class="o">::</span><span class="n">fromPDFEnumProc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">AVConversionEnumFromPDFConverters</span> <span class="p">(</span><span class="n">fromPDFEnumProcCB</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASCallbackDestroy</span><span class="p">(</span><span class="n">fromPDFEnumProcCB</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1">//////////////////////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//////////////////////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//////////////////////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * In memory bitmap resizing functions realizations
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HBITMAP</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">ScaleBitmapInt</span><span class="p">(</span><span class="n">HBITMAP</span> <span class="n">hBmp</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wNewWidth</span><span class="p">,</span><span class="n">WORD</span> <span class="n">wNewHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BITMAP</span> <span class="n">bmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="n">GetObject</span><span class="p">(</span><span class="n">hBmp</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">BITMAP</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">bmp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// check for valid size
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span><span class="p">((</span><span class="n">bmp</span><span class="p">.</span><span class="n">bmWidth</span> <span class="o">&gt;</span> <span class="n">wNewWidth</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&amp;&amp;</span> <span class="n">bmp</span><span class="p">.</span><span class="n">bmHeight</span> <span class="o">&lt;</span> <span class="n">wNewHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">||</span> <span class="p">(</span><span class="n">bmp</span><span class="p">.</span><span class="n">bmWidth</span> <span class="o">&lt;</span> <span class="n">wNewWidth</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&amp;&amp;</span> <span class="n">bmp</span><span class="p">.</span><span class="n">bmHeight</span> <span class="o">&gt;</span> <span class="n">wNewHeight</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HDC</span> <span class="n">hDC</span> <span class="o">=</span> <span class="o">::</span><span class="n">GetDC</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BITMAPINFO</span> <span class="o">*</span><span class="n">pbi</span> <span class="o">=</span> <span class="n">PrepareRGBBitmapInfo</span><span class="p">((</span><span class="n">WORD</span><span class="p">)</span><span class="n">bmp</span><span class="p">.</span><span class="n">bmWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">WORD</span><span class="p">)</span><span class="n">bmp</span><span class="p">.</span><span class="n">bmHeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BYTE</span> <span class="o">*</span><span class="n">pData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BYTE</span><span class="p">[</span><span class="n">pbi</span><span class="o">-&gt;</span><span class="n">bmiHeader</span><span class="p">.</span><span class="n">biSizeImage</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="n">GetDIBits</span><span class="p">(</span><span class="n">hDC</span><span class="p">,</span> <span class="n">hBmp</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bmp</span><span class="p">.</span><span class="n">bmHeight</span><span class="p">,</span> <span class="n">pData</span><span class="p">,</span> <span class="n">pbi</span><span class="p">,</span> <span class="n">DIB_RGB_COLORS</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">delete</span> <span class="n">pbi</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pbi</span> <span class="o">=</span> <span class="n">PrepareRGBBitmapInfo</span><span class="p">(</span><span class="n">wNewWidth</span><span class="p">,</span> <span class="n">wNewHeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BYTE</span> <span class="o">*</span><span class="n">pData2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BYTE</span><span class="p">[</span><span class="n">pbi</span><span class="o">-&gt;</span><span class="n">bmiHeader</span><span class="p">.</span><span class="n">biSizeImage</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">bmp</span><span class="p">.</span><span class="n">bmWidth</span> <span class="o">&gt;=</span> <span class="n">wNewWidth</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&amp;&amp;</span> <span class="n">bmp</span><span class="p">.</span><span class="n">bmHeight</span> <span class="o">&gt;=</span> <span class="n">wNewHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ShrinkDataInt</span><span class="p">(</span><span class="n">pData</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">WORD</span><span class="p">)</span><span class="n">bmp</span><span class="p">.</span><span class="n">bmWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">WORD</span><span class="p">)</span><span class="n">bmp</span><span class="p">.</span><span class="n">bmHeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pData2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wNewWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wNewHeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">EnlargeDataInt</span><span class="p">(</span><span class="n">pData</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">WORD</span><span class="p">)</span><span class="n">bmp</span><span class="p">.</span><span class="n">bmWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">WORD</span><span class="p">)</span><span class="n">bmp</span><span class="p">.</span><span class="n">bmHeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pData2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wNewWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wNewHeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">delete</span> <span class="n">pData</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">HBITMAP</span> <span class="n">hResBmp</span> <span class="o">=</span> <span class="o">::</span><span class="n">CreateCompatibleBitmap</span><span class="p">(</span><span class="n">hDC</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wNewWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wNewHeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="n">SetDIBits</span><span class="p">(</span><span class="n">hDC</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">hResBmp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wNewHeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pData2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pbi</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DIB_RGB_COLORS</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="n">ReleaseDC</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">hDC</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">delete</span> <span class="n">pbi</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">delete</span> <span class="n">pData2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">hResBmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">///////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">BITMAPINFO</span> <span class="o">*</span><span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">PrepareRGBBitmapInfo</span><span class="p">(</span><span class="n">WORD</span> <span class="n">wWidth</span><span class="p">,</span> <span class="n">WORD</span> <span class="n">wHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BITMAPINFO</span> <span class="o">*</span><span class="n">pRes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BITMAPINFO</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="n">ZeroMemory</span><span class="p">(</span><span class="n">pRes</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">BITMAPINFO</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pRes</span><span class="o">-&gt;</span><span class="n">bmiHeader</span><span class="p">.</span><span class="n">biSize</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">BITMAPINFOHEADER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pRes</span><span class="o">-&gt;</span><span class="n">bmiHeader</span><span class="p">.</span><span class="n">biWidth</span> <span class="o">=</span> <span class="n">wWidth</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pRes</span><span class="o">-&gt;</span><span class="n">bmiHeader</span><span class="p">.</span><span class="n">biHeight</span> <span class="o">=</span> <span class="n">wHeight</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pRes</span><span class="o">-&gt;</span><span class="n">bmiHeader</span><span class="p">.</span><span class="n">biPlanes</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pRes</span><span class="o">-&gt;</span><span class="n">bmiHeader</span><span class="p">.</span><span class="n">biBitCount</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pRes</span><span class="o">-&gt;</span><span class="n">bmiHeader</span><span class="p">.</span><span class="n">biSizeImage</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">  <span class="p">((</span><span class="mi">3</span> <span class="o">*</span> <span class="n">wWidth</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">wHeight</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">pRes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">///////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">int</span> <span class="o">*</span><span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">CreateCoeffInt</span><span class="p">(</span><span class="kt">int</span> <span class="n">nLen</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nNewLen</span><span class="p">,</span> <span class="n">BOOL</span> <span class="n">bShrink</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">nSum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nSum2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="o">*</span><span class="n">pRes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nLen</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="o">*</span><span class="n">pCoeff</span> <span class="o">=</span> <span class="n">pRes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">nNorm</span> <span class="o">=</span> <span class="p">(</span><span class="n">bShrink</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">?</span> <span class="p">(</span><span class="n">nNewLen</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">)</span> <span class="o">/</span> <span class="nl">nLen</span> <span class="p">:</span> <span class="mh">0x1000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">nDenom</span> <span class="o">=</span> <span class="p">(</span><span class="n">bShrink</span><span class="p">)</span><span class="o">?</span> <span class="nl">nLen</span> <span class="p">:</span> <span class="n">nNewLen</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="n">ZeroMemory</span><span class="p">(</span><span class="n">pRes</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">nLen</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nLen</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">pCoeff</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">nSum2</span> <span class="o">=</span> <span class="n">nSum</span> <span class="o">+</span> <span class="n">nNewLen</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">nSum2</span> <span class="o">&gt;</span> <span class="n">nLen</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">pCoeff</span> <span class="o">=</span> <span class="p">((</span><span class="n">nLen</span> <span class="o">-</span> <span class="n">nSum</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">)</span> <span class="o">/</span> <span class="n">nDenom</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">nSum2</span> <span class="o">-</span> <span class="n">nLen</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">)</span> <span class="o">/</span> <span class="n">nDenom</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">nSum2</span> <span class="o">-=</span> <span class="n">nLen</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">pCoeff</span> <span class="o">=</span> <span class="n">nNorm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">nSum2</span> <span class="o">==</span> <span class="n">nLen</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">nSum2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">nSum</span> <span class="o">=</span> <span class="n">nSum2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">pRes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">///////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">void</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">ShrinkDataInt</span><span class="p">(</span><span class="n">BYTE</span> <span class="o">*</span><span class="n">pInBuff</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WORD</span> <span class="n">wWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WORD</span> <span class="n">wHeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BYTE</span> <span class="o">*</span><span class="n">pOutBuff</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WORD</span> <span class="n">wNewWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WORD</span> <span class="n">wNewHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BYTE</span> <span class="o">*</span><span class="n">pLine</span> <span class="o">=</span> <span class="n">pInBuff</span><span class="p">,</span> <span class="o">*</span><span class="n">pPix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BYTE</span> <span class="o">*</span><span class="n">pOutLine</span> <span class="o">=</span> <span class="n">pOutBuff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="n">dwInLn</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">wWidth</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="n">dwOutLn</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">wNewWidth</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">ii</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BOOL</span> <span class="n">bCrossRow</span><span class="p">,</span> <span class="n">bCrossCol</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="o">*</span><span class="n">pRowCoeff</span> <span class="o">=</span> <span class="n">CreateCoeffInt</span><span class="p">(</span><span class="n">wWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wNewWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">TRUE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="o">*</span><span class="n">pColCoeff</span> <span class="o">=</span> <span class="n">CreateCoeffInt</span><span class="p">(</span><span class="n">wHeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wNewHeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">TRUE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="o">*</span><span class="n">pXCoeff</span><span class="p">,</span> <span class="o">*</span><span class="n">pYCoeff</span> <span class="o">=</span> <span class="n">pColCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="n">dwBuffLn</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">wNewWidth</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">DWORD</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="o">*</span><span class="n">pdwBuff</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DWORD</span><span class="p">[</span><span class="mi">6</span> <span class="o">*</span> <span class="n">wNewWidth</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="o">*</span><span class="n">pdwCurrLn</span> <span class="o">=</span> <span class="n">pdwBuff</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">pdwCurrPix</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">pdwNextLn</span> <span class="o">=</span> <span class="n">pdwBuff</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">wNewWidth</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="n">dwTmp</span><span class="p">,</span> <span class="o">*</span><span class="n">pdwNextPix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="n">ZeroMemory</span><span class="p">(</span><span class="n">pdwBuff</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dwBuffLn</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">wNewHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pPix</span> <span class="o">=</span> <span class="n">pLine</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pLine</span> <span class="o">+=</span> <span class="n">dwInLn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pdwCurrPix</span> <span class="o">=</span> <span class="n">pdwCurrLn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pdwNextPix</span> <span class="o">=</span> <span class="n">pdwNextLn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pXCoeff</span> <span class="o">=</span> <span class="n">pRowCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bCrossRow</span> <span class="o">=</span> <span class="n">pYCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">wNewWidth</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwTmp</span> <span class="o">=</span> <span class="o">*</span><span class="n">pXCoeff</span> <span class="o">*</span> <span class="o">*</span><span class="n">pYCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pdwCurrPix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dwTmp</span> <span class="o">*</span> <span class="n">pPix</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bCrossCol</span> <span class="o">=</span> <span class="n">pXCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">bCrossCol</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwTmp</span> <span class="o">=</span> <span class="n">pXCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="o">*</span><span class="n">pYCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ii</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">ii</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pdwCurrPix</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dwTmp</span> <span class="o">*</span> <span class="n">pPix</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">bCrossRow</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwTmp</span> <span class="o">=</span> <span class="o">*</span><span class="n">pXCoeff</span> <span class="o">*</span> <span class="n">pYCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pdwNextPix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dwTmp</span> <span class="o">*</span> <span class="n">pPix</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">bCrossCol</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwTmp</span> <span class="o">=</span> <span class="n">pXCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">pYCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ii</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">ii</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pdwNextPix</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dwTmp</span> <span class="o">*</span> <span class="n">pPix</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">pXCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pdwCurrPix</span> <span class="o">+=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pdwNextPix</span> <span class="o">+=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pXCoeff</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pPix</span> <span class="o">+=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">pYCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// set result line
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">pdwCurrPix</span> <span class="o">=</span> <span class="n">pdwCurrLn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pPix</span> <span class="o">=</span> <span class="n">pOutLine</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">wNewWidth</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">,</span> <span class="n">pdwCurrPix</span><span class="o">++</span><span class="p">,</span> <span class="n">pPix</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">pPix</span> <span class="o">=</span> <span class="p">((</span><span class="n">LPBYTE</span><span class="p">)</span><span class="n">pdwCurrPix</span><span class="p">)[</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// prepare line buffers
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">pdwCurrPix</span> <span class="o">=</span> <span class="n">pdwNextLn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pdwNextLn</span> <span class="o">=</span> <span class="n">pdwCurrLn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pdwCurrLn</span> <span class="o">=</span> <span class="n">pdwCurrPix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="n">ZeroMemory</span><span class="p">(</span><span class="n">pdwNextLn</span><span class="p">,</span> <span class="n">dwBuffLn</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">y</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pOutLine</span> <span class="o">+=</span> <span class="n">dwOutLn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pYCoeff</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">delete</span> <span class="p">[]</span> <span class="n">pRowCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">delete</span> <span class="p">[]</span> <span class="n">pColCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">delete</span> <span class="p">[]</span> <span class="n">pdwBuff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">///////////////////////////////////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">void</span> <span class="n">TiFFDialogPrivewHelper</span><span class="o">::</span><span class="n">EnlargeDataInt</span><span class="p">(</span><span class="n">BYTE</span> <span class="o">*</span><span class="n">pInBuff</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WORD</span> <span class="n">wWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WORD</span> <span class="n">wHeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BYTE</span> <span class="o">*</span><span class="n">pOutBuff</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WORD</span> <span class="n">wNewWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WORD</span> <span class="n">wNewHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BYTE</span> <span class="o">*</span><span class="n">pLine</span> <span class="o">=</span> <span class="n">pInBuff</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">pPix</span> <span class="o">=</span> <span class="n">pLine</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">pPixOld</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">pUpPix</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">pUpPixOld</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BYTE</span> <span class="o">*</span><span class="n">pOutLine</span> <span class="o">=</span> <span class="n">pOutBuff</span><span class="p">,</span> <span class="o">*</span><span class="n">pOutPix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="n">dwInLn</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">wWidth</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="n">dwOutLn</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">wNewWidth</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BOOL</span> <span class="n">bCrossRow</span><span class="p">,</span> <span class="n">bCrossCol</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="o">*</span><span class="n">pRowCoeff</span> <span class="o">=</span> <span class="n">CreateCoeffInt</span><span class="p">(</span><span class="n">wNewWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">FALSE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="o">*</span><span class="n">pColCoeff</span> <span class="o">=</span> <span class="n">CreateCoeffInt</span><span class="p">(</span><span class="n">wNewHeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wHeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">FALSE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="o">*</span><span class="n">pXCoeff</span><span class="p">,</span> <span class="o">*</span><span class="n">pYCoeff</span> <span class="o">=</span> <span class="n">pColCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DWORD</span> <span class="n">dwTmp</span><span class="p">,</span> <span class="n">dwPtTmp</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">wHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bCrossRow</span> <span class="o">=</span> <span class="n">pYCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pXCoeff</span> <span class="o">=</span> <span class="n">pRowCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pOutPix</span> <span class="o">=</span> <span class="n">pOutLine</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pOutLine</span> <span class="o">+=</span> <span class="n">dwOutLn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pUpPix</span> <span class="o">=</span> <span class="n">pLine</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">pYCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">y</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pLine</span> <span class="o">+=</span> <span class="n">dwInLn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pPix</span> <span class="o">=</span> <span class="n">pLine</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">wWidth</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bCrossCol</span> <span class="o">=</span> <span class="n">pXCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pUpPixOld</span> <span class="o">=</span> <span class="n">pUpPix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pPixOld</span> <span class="o">=</span> <span class="n">pPix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">pXCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pUpPix</span> <span class="o">+=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pPix</span> <span class="o">+=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwTmp</span> <span class="o">=</span> <span class="o">*</span><span class="n">pXCoeff</span> <span class="o">*</span> <span class="o">*</span><span class="n">pYCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwPtTmp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dwTmp</span> <span class="o">*</span> <span class="n">pUpPixOld</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">bCrossCol</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwTmp</span> <span class="o">=</span> <span class="n">pXCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="o">*</span><span class="n">pYCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwPtTmp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dwTmp</span> <span class="o">*</span> <span class="n">pUpPix</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">bCrossRow</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwTmp</span> <span class="o">=</span> <span class="o">*</span><span class="n">pXCoeff</span> <span class="o">*</span> <span class="n">pYCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwPtTmp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dwTmp</span> <span class="o">*</span> <span class="n">pPixOld</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">bCrossCol</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwTmp</span> <span class="o">=</span> <span class="n">pXCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">pYCoeff</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dwPtTmp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dwTmp</span> <span class="o">*</span> <span class="n">pPix</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">pOutPix</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">pOutPix</span> <span class="o">=</span> <span class="p">((</span><span class="n">LPBYTE</span><span class="p">)(</span><span class="n">dwPtTmp</span> <span class="o">+</span> <span class="n">i</span><span class="p">))[</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pXCoeff</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pYCoeff</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">delete</span> <span class="p">[]</span> <span class="n">pRowCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">delete</span> <span class="p">[]</span> <span class="n">pColCoeff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//finally the Dialog::getStatement()-&gt;ConvertTiffToPdf(&amp;pdDoc,documentIndex); which could cause questios. Here is realization of ConvertTiffToPdf function
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   
+</span></span><span class="line"><span class="cl">  <span class="kt">bool</span> <span class="nf">ConvertTiffToPdf</span><span class="p">(</span><span class="n">PDDoc</span> <span class="o">*</span><span class="n">TargetPdDoc</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">aIndex</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">aFileName</span> <span class="o">=</span> <span class="n">getFilenameByIndex</span><span class="p">(</span><span class="n">aIndex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">aFileName</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">ImageFilePath</span> <span class="o">=</span> <span class="n">getDirectoryName</span><span class="p">()</span> <span class="o">+</span> <span class="n">aFileName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASPathName</span> <span class="n">File_To_Be_Converted_To_PDF</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASFileSysCreatePathName</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASGetDefaultFileSys</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASAtomFromString</span><span class="p">(</span><span class="s">&#34;Cstring&#34;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">ImageFilePath</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">AVConversionStatus</span> <span class="n">status</span> <span class="o">=</span> <span class="n">AVConversionConvertToPDF</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">kAVConversionNoFlags</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">File_To_Be_Converted_To_PDF</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">ASGetDefaultFileSys</span><span class="p">(),</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">TargetPdDoc</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ASFileSysReleasePath</span> <span class="p">(</span><span class="n">ASGetDefaultFileSys</span><span class="p">(),</span> <span class="n">File_To_Be_Converted_To_PDF</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">kAVConversionSuccess</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;/</span><span class="kt">int</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;&lt;/</span><span class="kt">int</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;&lt;/</span><span class="kt">int</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;&lt;/</span><span class="kt">int</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;&lt;/</span><span class="n">cstring</span><span class="o">&gt;&lt;/</span><span class="n">olectl</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">map</span><span class="o">&gt;</span>
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/c&#43;&#43;/">C&#43;&#43;</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/code/display-tiff-in-picturebox-adobe-plugins/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Display TIFF in picturebox (Adobe plugins)</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/code/custom-selection-server-in-pdf-plugin/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Custom selection server in PDF plugin</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Tiff to Picture box in PDF plugin ADM dialog on x"
+            href="https://x.com/intent/tweet/?text=Tiff%20to%20Picture%20box%20in%20PDF%20plugin%20ADM%20dialog&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2ftiff-to-picture-box-in-pdf-plugin-adm-dialog%2f&amp;hashtags=c%2b%2b">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Tiff to Picture box in PDF plugin ADM dialog on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2ftiff-to-picture-box-in-pdf-plugin-adm-dialog%2f&amp;title=Tiff%20to%20Picture%20box%20in%20PDF%20plugin%20ADM%20dialog&amp;summary=Tiff%20to%20Picture%20box%20in%20PDF%20plugin%20ADM%20dialog&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2ftiff-to-picture-box-in-pdf-plugin-adm-dialog%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Tiff to Picture box in PDF plugin ADM dialog on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2ftiff-to-picture-box-in-pdf-plugin-adm-dialog%2f&title=Tiff%20to%20Picture%20box%20in%20PDF%20plugin%20ADM%20dialog">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Tiff to Picture box in PDF plugin ADM dialog on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2ftiff-to-picture-box-in-pdf-plugin-adm-dialog%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Tiff to Picture box in PDF plugin ADM dialog on whatsapp"
+            href="https://api.whatsapp.com/send?text=Tiff%20to%20Picture%20box%20in%20PDF%20plugin%20ADM%20dialog%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2ftiff-to-picture-box-in-pdf-plugin-adm-dialog%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Tiff to Picture box in PDF plugin ADM dialog on telegram"
+            href="https://telegram.me/share/url?text=Tiff%20to%20Picture%20box%20in%20PDF%20plugin%20ADM%20dialog&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2ftiff-to-picture-box-in-pdf-plugin-adm-dialog%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Tiff to Picture box in PDF plugin ADM dialog on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Tiff%20to%20Picture%20box%20in%20PDF%20plugin%20ADM%20dialog&u=http%3a%2f%2flocalhost%3a1313%2fposts%2fcode%2ftiff-to-picture-box-in-pdf-plugin-adm-dialog%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© Viktor Halitsyn</span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

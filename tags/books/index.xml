@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>books on Nomad&#39;s reflections</title>
-    <link>http://blog.vnomad.com/tags/books/</link>
-    <description>Recent content in books on Nomad&#39;s reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 27 Sep 2007 20:50:00 +0000</lastBuildDate><atom:link href="http://blog.vnomad.com/tags/books/index.xml" rel="self" type="application/rss+xml" />
+    <title>Books on Nomad&#39;s reflections</title>
+    <link>http://localhost:1313/tags/books/</link>
+    <description>Recent content in Books on Nomad&#39;s reflections</description>
+    <image>
+      <title>Nomad&#39;s reflections</title>
+      <url>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</url>
+      <link>https://s3-us-west-2.amazonaws.com/vnomad-public/blog_infra/wp_back3.jpg</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <copyright>Viktor Halitsyn</copyright>
+    <lastBuildDate>Thu, 27 Sep 2007 20:50:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/books/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nice books to read[OOP,OOD, Agile etc.]</title>
-      <link>http://blog.vnomad.com/code/nice-books-to-readoopood-agile-etc/</link>
+      <link>http://localhost:1313/posts/code/nice-books-to-readoopood-agile-etc/</link>
       <pubDate>Thu, 27 Sep 2007 20:50:00 +0000</pubDate>
-      
-      <guid>http://blog.vnomad.com/code/nice-books-to-readoopood-agile-etc/</guid>
+      <guid>http://localhost:1313/posts/code/nice-books-to-readoopood-agile-etc/</guid>
       <description>Recently, i started to come across _r e a l l y _nice books about software project management and risks. So friends of mine also share good patterns/best practices books. among them the can be listed :
 _ _Tom DeMarco, “Waltzing with Bears: Managing Risk on Software Projects” Steve McConnell “Software project survival guide” “Analysis Patterns: Reusable Object Models” Martin Fowler Design Patterns Book
 Design Patterns: Elements of Reusable Object-Oriented Software by ErichGamma, RichardHelm, RalphJohnson, and JohnVlissides Edvard Yourdon ‘Death March’ if someone can contribute to the list – welcome!</description>
     </item>
-    
   </channel>
 </rss>
