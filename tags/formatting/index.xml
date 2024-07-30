@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Formatting on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/tags/formatting/</link>
+    <link>https://blog.vnomad.com/tags/formatting/</link>
     <description>Recent content in Formatting on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,12 +13,12 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Mon, 14 Sep 2009 20:25:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/formatting/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/tags/formatting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blogger code formatting.</title>
-      <link>http://localhost:1313/posts/code/blogger-code-formatting/</link>
+      <link>https://blog.vnomad.com/posts/code/blogger-code-formatting/</link>
       <pubDate>Mon, 14 Sep 2009 20:25:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/blogger-code-formatting/</guid>
+      <guid>https://blog.vnomad.com/posts/code/blogger-code-formatting/</guid>
       <description>Finally I found a nice code formatter for google blogs. Thanks to PleaseMakeAnote now I can make such fancy posts as:
 using System; /// &amp;lt;summary&amp;gt; /// Summary description for Class1 /// &amp;lt;/summary&amp;gt; public class Class1 { public Class1() { // // TODO: Add constructor logic here // int x = 10; } } </description>
     </item>

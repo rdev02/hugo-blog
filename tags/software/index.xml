@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Software on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/tags/software/</link>
+    <link>https://blog.vnomad.com/tags/software/</link>
     <description>Recent content in Software on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,20 +13,20 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Thu, 27 Oct 2022 12:32:12 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/software/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/tags/software/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Smart home automation.</title>
-      <link>http://localhost:1313/posts/code/2022/10/wink-smartthings-aeotec/</link>
+      <link>https://blog.vnomad.com/posts/code/2022/10/wink-smartthings-aeotec/</link>
       <pubDate>Thu, 27 Oct 2022 12:32:12 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/2022/10/wink-smartthings-aeotec/</guid>
+      <guid>https://blog.vnomad.com/posts/code/2022/10/wink-smartthings-aeotec/</guid>
       <description>Long time ago smart homes were hyped and the next generation of home automation. Beyond your analog timers and motion sensors, wouldn&amp;rsquo;t it be nice to have something a tad more sophisticated to manage all these signals? For the last couple years I&amp;rsquo;ve been growing my smart devices set and hopping between platforms. This post summarizes the journey, currently at Samsung Aeotec Hub stop.
 In place of intro&amp;hellip; The moment one has an electrical device or switch, 2 maintenance problems arise, somewhat tied to each other:</description>
     </item>
     <item>
       <title>VPN. Open? Wire? Scale?</title>
-      <link>http://localhost:1313/posts/code/2022/02/openvpn-wireguard-tailscale/</link>
+      <link>https://blog.vnomad.com/posts/code/2022/02/openvpn-wireguard-tailscale/</link>
       <pubDate>Tue, 22 Feb 2022 22:22:22 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/2022/02/openvpn-wireguard-tailscale/</guid>
+      <guid>https://blog.vnomad.com/posts/code/2022/02/openvpn-wireguard-tailscale/</guid>
       <description>In this post I go about my journey into VPNs and conclude TailScale is the GOTO for anyone who needs a nice cheap connectivity tool asap.
 History Sooner or later one needs a VPN. Various reasons:
 test out UX/behavior from a different part of the world access your test server DMZ, while away from your test server LAN verify prices in other country pay your bills through your bank, while abroad Most people today, though, get it for privacy reasons.</description>

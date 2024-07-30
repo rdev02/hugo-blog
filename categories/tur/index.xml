@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tur on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/categories/tur/</link>
+    <link>https://blog.vnomad.com/categories/tur/</link>
     <description>Recent content in Tur on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,12 +13,12 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Sat, 12 Sep 2009 17:30:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/tur/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/categories/tur/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Turkey vacation.</title>
-      <link>http://localhost:1313/posts/travel/tur/turkey-vacation/</link>
+      <link>https://blog.vnomad.com/posts/travel/tur/turkey-vacation/</link>
       <pubDate>Sat, 12 Sep 2009 17:30:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/travel/tur/turkey-vacation/</guid>
+      <guid>https://blog.vnomad.com/posts/travel/tur/turkey-vacation/</guid>
       <description>Amazing. Yes it was really amazing. I traveled with my darling Anya and I didn&amp;amp;#8217;t expect it that good especially keeping in mind that we had to go with a 4 star hotel. However it was really nice and if you consider going to Turkey with a low budget &amp;amp;#8211; I would recommend [Kosdere Exclusive][1](the place we stayed in). First thing I have to mention is our tour agency [Tez Tour][2].</description>
     </item>
   </channel>

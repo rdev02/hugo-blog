@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Unify on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/tags/unify/</link>
+    <link>https://blog.vnomad.com/tags/unify/</link>
     <description>Recent content in Unify on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,12 +13,12 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Tue, 30 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/unify/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/tags/unify/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Backing up Unify router config without Remote Access</title>
-      <link>http://localhost:1313/posts/code/2024/unify-backup/</link>
+      <link>https://blog.vnomad.com/posts/code/2024/unify-backup/</link>
       <pubDate>Tue, 30 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/2024/unify-backup/</guid>
+      <guid>https://blog.vnomad.com/posts/code/2024/unify-backup/</guid>
       <description>For those who decided &amp;lsquo;Remote Access&amp;quot; feature of Uniyfy isn&amp;rsquo;t worth the security risks associated with it, but still want a local backup of the config, I&amp;rsquo;ve found a decent solution.
 Sharing this here, since it&amp;rsquo;s not readily searchable on the internet nor would AI give you a good answer if you ask about it. And if you run into this head-first, you&amp;rsquo;ll quickly discover that
 router doesn&amp;rsquo;t have samba(cifs) mount support router doesn&amp;rsquo;t have sftp/fuse mount so your usual rsync options of backup fall apart.</description>

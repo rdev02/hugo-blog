@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Gadgets on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/categories/gadgets/</link>
+    <link>https://blog.vnomad.com/categories/gadgets/</link>
     <description>Recent content in Gadgets on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,19 +13,19 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Wed, 28 Aug 2013 23:25:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/gadgets/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/categories/gadgets/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Synology DS413j NAS</title>
-      <link>http://localhost:1313/posts/code/synology-ds413j-nas/</link>
+      <link>https://blog.vnomad.com/posts/code/synology-ds413j-nas/</link>
       <pubDate>Wed, 28 Aug 2013 23:25:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/synology-ds413j-nas/</guid>
+      <guid>https://blog.vnomad.com/posts/code/synology-ds413j-nas/</guid>
       <description>In my previous post I was rambling about Seagate BlackArmor and my sad experience with it. Apart from the sadness it also has my initial thoughts and requirements, so I won&amp;#8217;t duplicate them in this one. But, to keep consistent with the previous review I&amp;#8217;ll go with the same headings/experience areas. That being said &amp;#8211; here we go! DSJ413j Half a year has passed and I&amp;#8217;ve been using Synology NAS for all this time.</description>
     </item>
     <item>
       <title>Seagate BlackArmor NAS 400.</title>
-      <link>http://localhost:1313/posts/code/seagate-blackarmor-nas-400/</link>
+      <link>https://blog.vnomad.com/posts/code/seagate-blackarmor-nas-400/</link>
       <pubDate>Tue, 05 Feb 2013 08:20:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/seagate-blackarmor-nas-400/</guid>
+      <guid>https://blog.vnomad.com/posts/code/seagate-blackarmor-nas-400/</guid>
       <description>So I decided that I&amp;#8217;m sick and tired of plugging in and out usb drives. Be it my tiny 16GB daily thumb drive, or store-it-all 2TB external seagate &amp;#8211; this is a pain&amp;#8230; And to make sure everything is stored you have to &amp;#8220;detach/remove&amp;#8221; them safely all the time. And than eventually you need more storage(or will need) and expanding this kind of solution means more devices OR significantly more money.</description>
     </item>
   </channel>

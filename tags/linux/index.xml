@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Linux on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/tags/linux/</link>
+    <link>https://blog.vnomad.com/tags/linux/</link>
     <description>Recent content in Linux on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,21 +13,21 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Tue, 28 Jun 2011 20:22:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Plymouth fix for Ubuntu 11.04</title>
-      <link>http://localhost:1313/posts/code/plymouth-fix-for-ubuntu-11-04/</link>
+      <link>https://blog.vnomad.com/posts/code/plymouth-fix-for-ubuntu-11-04/</link>
       <pubDate>Tue, 28 Jun 2011 20:22:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/plymouth-fix-for-ubuntu-11-04/</guid>
+      <guid>https://blog.vnomad.com/posts/code/plymouth-fix-for-ubuntu-11-04/</guid>
       <description>If you’re in the same trouble as I was with black screen during boot(plymouth has the theme installed and even displays it during shutdown) then there is a small thing that has to be edited in order to get rid of this annoyance. Go to
 /etc/grub.d/10_linux
 and remove the **handoff=7 **parameter. Inspired by this and also this(pretty nice tool for configuring plymouth for dummies).</description>
     </item>
     <item>
       <title>Avahi and “network service discovery disabled”</title>
-      <link>http://localhost:1313/posts/code/avahi-and-network-service-discovery-disabled/</link>
+      <link>https://blog.vnomad.com/posts/code/avahi-and-network-service-discovery-disabled/</link>
       <pubDate>Fri, 20 May 2011 21:07:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/avahi-and-network-service-discovery-disabled/</guid>
+      <guid>https://blog.vnomad.com/posts/code/avahi-and-network-service-discovery-disabled/</guid>
       <description>Had a real problem with my wifi after moving to Ubuntu from win -&amp;gt; my download speed was dead slow with ~2Mb/s. Tried various things including this this and finally this. The last one did the trick. It was Avahi which spoiled everything. The thing that led me to Avahi was this irritating message popping out each time I connected:
 Having this changed
 _AVAHI_DAEMON_DETECT_LOCAL=1

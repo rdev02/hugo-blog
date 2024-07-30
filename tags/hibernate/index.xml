@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Hibernate on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/tags/hibernate/</link>
+    <link>https://blog.vnomad.com/tags/hibernate/</link>
     <description>Recent content in Hibernate on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,12 +13,12 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Mon, 11 Jan 2010 12:08:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/hibernate/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/tags/hibernate/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Switching to  container based datasource…</title>
-      <link>http://localhost:1313/posts/code/switching-to-container-based-datasource/</link>
+      <link>https://blog.vnomad.com/posts/code/switching-to-container-based-datasource/</link>
       <pubDate>Mon, 11 Jan 2010 12:08:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/switching-to-container-based-datasource/</guid>
+      <guid>https://blog.vnomad.com/posts/code/switching-to-container-based-datasource/</guid>
       <description>Quite a time ago had to do this but had no time for posting a complete solution. Read a few articles on that so that I got the idea. Although it looks quite simple you might run into several configuration issues firing weird and long stacktraces. To get rid of those I&amp;amp;#8217;ll describe the way it worked for me with some additional comments. First of all lets assume we use JBoss app server.</description>
     </item>
   </channel>

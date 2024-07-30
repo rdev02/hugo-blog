@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://blog.vnomad.com/categories/</link>
     <description>Recent content in Categories on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,75 +13,75 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Tue, 30 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Code</title>
-      <link>http://localhost:1313/categories/code/</link>
+      <link>https://blog.vnomad.com/categories/code/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/code/</guid>
+      <guid>https://blog.vnomad.com/categories/code/</guid>
       <description></description>
     </item>
     <item>
       <title>Tea</title>
-      <link>http://localhost:1313/categories/tea/</link>
+      <link>https://blog.vnomad.com/categories/tea/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/tea/</guid>
+      <guid>https://blog.vnomad.com/categories/tea/</guid>
       <description></description>
     </item>
     <item>
       <title>Travel</title>
-      <link>http://localhost:1313/categories/travel/</link>
+      <link>https://blog.vnomad.com/categories/travel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/travel/</guid>
+      <guid>https://blog.vnomad.com/categories/travel/</guid>
       <description></description>
     </item>
     <item>
       <title>Tech</title>
-      <link>http://localhost:1313/categories/tech/</link>
+      <link>https://blog.vnomad.com/categories/tech/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/tech/</guid>
+      <guid>https://blog.vnomad.com/categories/tech/</guid>
       <description></description>
     </item>
     <item>
       <title>Ua</title>
-      <link>http://localhost:1313/categories/ua/</link>
+      <link>https://blog.vnomad.com/categories/ua/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/ua/</guid>
+      <guid>https://blog.vnomad.com/categories/ua/</guid>
       <description></description>
     </item>
     <item>
       <title>Tools</title>
-      <link>http://localhost:1313/categories/tools/</link>
+      <link>https://blog.vnomad.com/categories/tools/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/tools/</guid>
+      <guid>https://blog.vnomad.com/categories/tools/</guid>
       <description></description>
     </item>
     <item>
       <title>Gadgets</title>
-      <link>http://localhost:1313/categories/gadgets/</link>
+      <link>https://blog.vnomad.com/categories/gadgets/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/gadgets/</guid>
+      <guid>https://blog.vnomad.com/categories/gadgets/</guid>
       <description></description>
     </item>
     <item>
       <title>Os</title>
-      <link>http://localhost:1313/categories/os/</link>
+      <link>https://blog.vnomad.com/categories/os/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/os/</guid>
+      <guid>https://blog.vnomad.com/categories/os/</guid>
       <description></description>
     </item>
     <item>
       <title>Tur</title>
-      <link>http://localhost:1313/categories/tur/</link>
+      <link>https://blog.vnomad.com/categories/tur/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/tur/</guid>
+      <guid>https://blog.vnomad.com/categories/tur/</guid>
       <description></description>
     </item>
     <item>
       <title>Swe</title>
-      <link>http://localhost:1313/categories/swe/</link>
+      <link>https://blog.vnomad.com/categories/swe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/swe/</guid>
+      <guid>https://blog.vnomad.com/categories/swe/</guid>
       <description></description>
     </item>
   </channel>

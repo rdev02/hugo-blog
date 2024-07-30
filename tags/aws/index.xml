@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Aws on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/tags/aws/</link>
+    <link>https://blog.vnomad.com/tags/aws/</link>
     <description>Recent content in Aws on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,12 +13,12 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Sat, 18 Nov 2017 21:37:00 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/tags/aws/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CDN image hosting for blog&#39;</title>
-      <link>http://localhost:1313/posts/code/2017/blog-images-using-cdn/</link>
+      <link>https://blog.vnomad.com/posts/code/2017/blog-images-using-cdn/</link>
       <pubDate>Sat, 18 Nov 2017 21:37:00 -0700</pubDate>
-      <guid>http://localhost:1313/posts/code/2017/blog-images-using-cdn/</guid>
+      <guid>https://blog.vnomad.com/posts/code/2017/blog-images-using-cdn/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s rare that a blog has 0 images. Hosting them on the same box as the blog instance is the easiest solution, but it comes at a cost: disk space and page load speed. Unless you are a professional blogger, you are also not ready shell out many $$ for a CDN, so what options are there?&lt;/p&gt;</description>
     </item>
   </channel>

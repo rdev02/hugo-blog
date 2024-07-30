@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Vcs on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/tags/vcs/</link>
+    <link>https://blog.vnomad.com/tags/vcs/</link>
     <description>Recent content in Vcs on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,12 +13,12 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Mon, 29 Sep 2008 15:03:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/vcs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/tags/vcs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SVN vs CVS</title>
-      <link>http://localhost:1313/posts/code/svn-vs-cvs/</link>
+      <link>https://blog.vnomad.com/posts/code/svn-vs-cvs/</link>
       <pubDate>Mon, 29 Sep 2008 15:03:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/svn-vs-cvs/</guid>
+      <guid>https://blog.vnomad.com/posts/code/svn-vs-cvs/</guid>
       <description>About 3 years ago I wash introduced to CVS and from that time I havent stopped using it as it quickly became my daily useage tool. Since than I tried some different tools- just because i had to due to work purposes and one of them was Subversion(SVN). I [ractically don’t see any difference between the two in usage and moreover in the interface. It has to be said that I use TortoiseCVS/SVN verisons – maybe standalone apps differ significantly.</description>
     </item>
   </channel>

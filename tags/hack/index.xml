@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Hack on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/tags/hack/</link>
+    <link>https://blog.vnomad.com/tags/hack/</link>
     <description>Recent content in Hack on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,19 +13,19 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Mon, 20 Jun 2011 08:34:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/hack/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/tags/hack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hackathon in Lviv</title>
-      <link>http://localhost:1313/posts/code/hackathon-in-lviv/</link>
+      <link>https://blog.vnomad.com/posts/code/hackathon-in-lviv/</link>
       <pubDate>Mon, 20 Jun 2011 08:34:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/hackathon-in-lviv/</guid>
+      <guid>https://blog.vnomad.com/posts/code/hackathon-in-lviv/</guid>
       <description>Great news! Best Hackathon traditions to invade Lviv. DOU is planning a hackathon @ June 9 — 10. Location is not set yet, but people are welcome to join now, so that we know there’ll be enough people comming. More details here. If anyone interested to create a team – reach me via comments here or on IMs…</description>
     </item>
     <item>
       <title>Nokia OVI suite &amp; sms extract.</title>
-      <link>http://localhost:1313/posts/code/nokia-ovi-suite-sms-extract/</link>
+      <link>https://blog.vnomad.com/posts/code/nokia-ovi-suite-sms-extract/</link>
       <pubDate>Mon, 27 Dec 2010 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/nokia-ovi-suite-sms-extract/</guid>
+      <guid>https://blog.vnomad.com/posts/code/nokia-ovi-suite-sms-extract/</guid>
       <description>There was a nice program for syncing phone and PC called Nokia PC Suite. While still available on some dusty hard drives it is now replaced with something called Nokia Ovi Suite. As I mentioned before – nice piece of software if we forget about all the “store” thing. But it has one important for me thing missing – sms extracting mechanism. You can’t just take all of your sms and store to the file you want.</description>
     </item>
   </channel>

@@ -2,425 +2,425 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/code/2024/unify-backup/</loc>
+    <loc>https://blog.vnomad.com/posts/code/2024/unify-backup/</loc>
     <lastmod>2024-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://blog.vnomad.com/categories/</loc>
     <lastmod>2024-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/code/</loc>
+    <loc>https://blog.vnomad.com/categories/code/</loc>
     <lastmod>2024-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://blog.vnomad.com/</loc>
     <lastmod>2024-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://blog.vnomad.com/posts/</loc>
     <lastmod>2024-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://blog.vnomad.com/tags/</loc>
     <lastmod>2024-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/unify/</loc>
+    <loc>https://blog.vnomad.com/tags/unify/</loc>
     <lastmod>2024-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/apple/</loc>
+    <loc>https://blog.vnomad.com/tags/apple/</loc>
     <lastmod>2024-03-03T14:07:00+70:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/2024/03/vision-pro/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/2024/03/vision-pro/</loc>
     <lastmod>2024-03-03T14:07:00+70:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/devices/</loc>
+    <loc>https://blog.vnomad.com/tags/devices/</loc>
     <lastmod>2024-03-03T14:07:00+70:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/tea/</loc>
+    <loc>https://blog.vnomad.com/categories/tea/</loc>
     <lastmod>2024-03-03T14:07:00+70:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/snb-router/</loc>
+    <loc>https://blog.vnomad.com/tags/snb-router/</loc>
     <lastmod>2023-12-11T06:20:18+70:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/travel/2023/unify_merlin/</loc>
+    <loc>https://blog.vnomad.com/posts/travel/2023/unify_merlin/</loc>
     <lastmod>2023-12-11T06:20:18+70:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/jpn/</loc>
+    <loc>https://blog.vnomad.com/tags/jpn/</loc>
     <lastmod>2023-03-19T06:17:30+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/travel/</loc>
+    <loc>https://blog.vnomad.com/categories/travel/</loc>
     <lastmod>2023-03-19T06:17:30+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/travel/2023/japan_ski/</loc>
+    <loc>https://blog.vnomad.com/posts/travel/2023/japan_ski/</loc>
     <lastmod>2023-03-19T06:17:30+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/2023/02/fenix-apple/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/2023/02/fenix-apple/</loc>
     <lastmod>2023-02-24T06:00:12+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/tech/</loc>
+    <loc>https://blog.vnomad.com/categories/tech/</loc>
     <lastmod>2023-02-24T06:00:12+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/2022/10/wink-smartthings-aeotec/</loc>
+    <loc>https://blog.vnomad.com/posts/code/2022/10/wink-smartthings-aeotec/</loc>
     <lastmod>2022-10-27T12:32:12+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/software/</loc>
+    <loc>https://blog.vnomad.com/tags/software/</loc>
     <lastmod>2022-10-27T12:32:12+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/2022/02/openvpn-wireguard-tailscale/</loc>
+    <loc>https://blog.vnomad.com/posts/code/2022/02/openvpn-wireguard-tailscale/</loc>
     <lastmod>2022-02-22T22:22:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hardware/</loc>
+    <loc>https://blog.vnomad.com/tags/hardware/</loc>
     <lastmod>2021-12-06T22:07:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/2021/12-06/macbook-pro-max-migration/</loc>
+    <loc>https://blog.vnomad.com/posts/code/2021/12-06/macbook-pro-max-migration/</loc>
     <lastmod>2021-12-06T22:07:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/2020/disktest-go-and-synology-nas/</loc>
+    <loc>https://blog.vnomad.com/posts/code/2020/disktest-go-and-synology-nas/</loc>
     <lastmod>2020-05-31T19:36:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/go/</loc>
+    <loc>https://blog.vnomad.com/tags/go/</loc>
     <lastmod>2020-05-31T19:36:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/nas/</loc>
+    <loc>https://blog.vnomad.com/tags/nas/</loc>
     <lastmod>2020-05-31T19:36:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/zradofila-vs-porohobot/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/zradofila-vs-porohobot/</loc>
     <lastmod>2017-12-09T09:48:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/politics/</loc>
+    <loc>https://blog.vnomad.com/tags/politics/</loc>
     <lastmod>2017-12-09T09:48:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/ua/</loc>
+    <loc>https://blog.vnomad.com/categories/ua/</loc>
     <lastmod>2017-12-09T09:48:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ukr/</loc>
+    <loc>https://blog.vnomad.com/tags/ukr/</loc>
     <lastmod>2017-12-09T09:48:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%D1%83%D0%BA%D1%80/</loc>
+    <loc>https://blog.vnomad.com/tags/%D1%83%D0%BA%D1%80/</loc>
     <lastmod>2017-12-09T09:48:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/aws/</loc>
+    <loc>https://blog.vnomad.com/tags/aws/</loc>
     <lastmod>2017-11-18T21:37:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cdn/</loc>
+    <loc>https://blog.vnomad.com/tags/cdn/</loc>
     <lastmod>2017-11-18T21:37:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/2017/blog-images-using-cdn/</loc>
+    <loc>https://blog.vnomad.com/posts/code/2017/blog-images-using-cdn/</loc>
     <lastmod>2017-11-18T21:37:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
+    <loc>https://blog.vnomad.com/tags/hugo/</loc>
     <lastmod>2017-11-18T21:37:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/tools/</loc>
+    <loc>https://blog.vnomad.com/categories/tools/</loc>
     <lastmod>2017-11-18T21:37:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/github/</loc>
+    <loc>https://blog.vnomad.com/tags/github/</loc>
     <lastmod>2017-11-12T09:59:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/2017/migrate-wordpress-to-hugo-github-pages/</loc>
+    <loc>https://blog.vnomad.com/posts/code/2017/migrate-wordpress-to-hugo-github-pages/</loc>
     <lastmod>2017-11-12T09:59:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/wordpress/</loc>
+    <loc>https://blog.vnomad.com/tags/wordpress/</loc>
     <lastmod>2017-11-12T09:59:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/gadgets/</loc>
+    <loc>https://blog.vnomad.com/categories/gadgets/</loc>
     <lastmod>2013-08-28T23:25:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/synology-ds413j-nas/</loc>
+    <loc>https://blog.vnomad.com/posts/code/synology-ds413j-nas/</loc>
     <lastmod>2013-08-28T23:25:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/seagate-blackarmor-nas-400/</loc>
+    <loc>https://blog.vnomad.com/posts/code/seagate-blackarmor-nas-400/</loc>
     <lastmod>2013-02-05T08:20:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/javascript-performance-tests/</loc>
+    <loc>https://blog.vnomad.com/posts/code/javascript-performance-tests/</loc>
     <lastmod>2012-08-02T22:35:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/js/</loc>
+    <loc>https://blog.vnomad.com/tags/js/</loc>
     <lastmod>2012-08-02T22:35:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/perf/</loc>
+    <loc>https://blog.vnomad.com/tags/perf/</loc>
     <lastmod>2012-08-02T22:35:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rant/</loc>
+    <loc>https://blog.vnomad.com/tags/rant/</loc>
     <lastmod>2012-02-26T16:15:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/wp/</loc>
+    <loc>https://blog.vnomad.com/tags/wp/</loc>
     <lastmod>2012-02-26T16:15:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/wp7-mango-dive/</loc>
+    <loc>https://blog.vnomad.com/posts/code/wp7-mango-dive/</loc>
     <lastmod>2012-02-26T16:15:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/code/</loc>
+    <loc>https://blog.vnomad.com/tags/code/</loc>
     <lastmod>2011-09-14T06:50:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mysql/</loc>
+    <loc>https://blog.vnomad.com/tags/mysql/</loc>
     <lastmod>2011-09-14T06:50:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</loc>
+    <loc>https://blog.vnomad.com/posts/code/mysql-performance-5-1-vs-5-5-vs-5-6-dev/</loc>
     <lastmod>2011-09-14T06:50:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/codesod/</loc>
+    <loc>https://blog.vnomad.com/tags/codesod/</loc>
     <lastmod>2011-09-06T08:06:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/java/</loc>
+    <loc>https://blog.vnomad.com/tags/java/</loc>
     <lastmod>2011-09-06T08:06:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/java-net-malformedurlexception-no-protocol-and/</loc>
+    <loc>https://blog.vnomad.com/posts/code/java-net-malformedurlexception-no-protocol-and/</loc>
     <lastmod>2011-09-06T08:06:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/linux/</loc>
+    <loc>https://blog.vnomad.com/tags/linux/</loc>
     <lastmod>2011-06-28T20:22:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/plymouth-fix-for-ubuntu-11-04/</loc>
+    <loc>https://blog.vnomad.com/posts/code/plymouth-fix-for-ubuntu-11-04/</loc>
     <lastmod>2011-06-28T20:22:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ubuntu/</loc>
+    <loc>https://blog.vnomad.com/tags/ubuntu/</loc>
     <lastmod>2011-06-28T20:22:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hack/</loc>
+    <loc>https://blog.vnomad.com/tags/hack/</loc>
     <lastmod>2011-06-20T08:34:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/hackathon-in-lviv/</loc>
+    <loc>https://blog.vnomad.com/posts/code/hackathon-in-lviv/</loc>
     <lastmod>2011-06-20T08:34:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/it-ramblings/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/it-ramblings/</loc>
     <lastmod>2011-06-19T21:16:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/social/</loc>
+    <loc>https://blog.vnomad.com/tags/social/</loc>
     <lastmod>2011-06-19T21:16:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/new-quest-from-microsoft/</loc>
+    <loc>https://blog.vnomad.com/posts/code/new-quest-from-microsoft/</loc>
     <lastmod>2011-06-04T07:54:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/j2ee-sdk-install-hanging-fix/</loc>
+    <loc>https://blog.vnomad.com/posts/code/j2ee-sdk-install-hanging-fix/</loc>
     <lastmod>2011-06-01T18:41:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/avahi-and-network-service-discovery-disabled/</loc>
+    <loc>https://blog.vnomad.com/posts/code/avahi-and-network-service-discovery-disabled/</loc>
     <lastmod>2011-05-20T21:07:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/os/</loc>
+    <loc>https://blog.vnomad.com/categories/os/</loc>
     <lastmod>2011-05-20T21:07:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ms/</loc>
+    <loc>https://blog.vnomad.com/tags/ms/</loc>
     <lastmod>2011-05-16T07:35:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/skype-microsoft/</loc>
+    <loc>https://blog.vnomad.com/posts/code/skype-microsoft/</loc>
     <lastmod>2011-05-16T07:35:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/tabkit-vertical-tabs/</loc>
+    <loc>https://blog.vnomad.com/posts/code/tabkit-vertical-tabs/</loc>
     <lastmod>2011-05-12T12:34:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/tools/</loc>
+    <loc>https://blog.vnomad.com/tags/tools/</loc>
     <lastmod>2011-05-12T12:34:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/lift-ajax-the-proper-way-of-doing-presentations/</loc>
+    <loc>https://blog.vnomad.com/posts/code/lift-ajax-the-proper-way-of-doing-presentations/</loc>
     <lastmod>2011-04-24T10:43:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/java-to-blazeds-nan-in-double-values/</loc>
+    <loc>https://blog.vnomad.com/posts/code/java-to-blazeds-nan-in-double-values/</loc>
     <lastmod>2011-04-22T09:07:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/maven/</loc>
+    <loc>https://blog.vnomad.com/tags/maven/</loc>
     <lastmod>2011-04-21T10:52:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</loc>
+    <loc>https://blog.vnomad.com/posts/code/maven-compiler-plugin-causing-eclipse-projects-to-have-j2se-1-4-instead-of-configured-one/</loc>
     <lastmod>2011-04-21T10:52:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/csharp/</loc>
+    <loc>https://blog.vnomad.com/tags/csharp/</loc>
     <lastmod>2011-04-19T14:45:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</loc>
+    <loc>https://blog.vnomad.com/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</loc>
     <lastmod>2011-04-19T14:45:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/nokia-ovi-suite-sms-extract/</loc>
+    <loc>https://blog.vnomad.com/posts/code/nokia-ovi-suite-sms-extract/</loc>
     <lastmod>2010-12-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/.net/</loc>
+    <loc>https://blog.vnomad.com/tags/.net/</loc>
     <lastmod>2010-10-13T15:06:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/net-wmi-or-how-do-i-get-all-that-info/</loc>
+    <loc>https://blog.vnomad.com/posts/code/net-wmi-or-how-do-i-get-all-that-info/</loc>
     <lastmod>2010-10-13T15:06:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/net-tab-control/</loc>
+    <loc>https://blog.vnomad.com/posts/code/net-tab-control/</loc>
     <lastmod>2010-10-08T19:39:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/org-springframework-oxm-jaxb-jaxb2marshaller/</loc>
+    <loc>https://blog.vnomad.com/posts/code/org-springframework-oxm-jaxb-jaxb2marshaller/</loc>
     <lastmod>2010-09-29T15:45:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/mcpd-acquired/</loc>
+    <loc>https://blog.vnomad.com/posts/code/mcpd-acquired/</loc>
     <lastmod>2010-03-28T20:06:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/907-invalid-cod-and-other-blackberry-ota-problems/</loc>
+    <loc>https://blog.vnomad.com/posts/code/907-invalid-cod-and-other-blackberry-ota-problems/</loc>
     <lastmod>2010-03-10T10:37:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/blackberry/</loc>
+    <loc>https://blog.vnomad.com/tags/blackberry/</loc>
     <lastmod>2010-03-10T10:37:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mobile/</loc>
+    <loc>https://blog.vnomad.com/tags/mobile/</loc>
     <lastmod>2010-03-10T10:37:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/errata/</loc>
+    <loc>https://blog.vnomad.com/tags/errata/</loc>
     <lastmod>2010-03-09T22:38:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</loc>
+    <loc>https://blog.vnomad.com/posts/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</loc>
     <lastmod>2010-03-09T22:38:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/idea-ant-hanging/</loc>
+    <loc>https://blog.vnomad.com/posts/code/idea-ant-hanging/</loc>
     <lastmod>2010-02-11T10:18:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/nokia-ovi-suite/</loc>
+    <loc>https://blog.vnomad.com/posts/code/nokia-ovi-suite/</loc>
     <lastmod>2010-02-04T22:22:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hibernate/</loc>
+    <loc>https://blog.vnomad.com/tags/hibernate/</loc>
     <lastmod>2010-01-11T12:08:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/switching-to-container-based-datasource/</loc>
+    <loc>https://blog.vnomad.com/posts/code/switching-to-container-based-datasource/</loc>
     <lastmod>2010-01-11T12:08:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/devenv-crash-from-the-command-line/</loc>
+    <loc>https://blog.vnomad.com/posts/code/devenv-crash-from-the-command-line/</loc>
     <lastmod>2009-12-24T21:11:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/c%23/</loc>
+    <loc>https://blog.vnomad.com/tags/c%23/</loc>
     <lastmod>2009-12-12T23:11:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/creating-dynamic-plugin-architecture-with-c-net/</loc>
+    <loc>https://blog.vnomad.com/posts/code/creating-dynamic-plugin-architecture-with-c-net/</loc>
     <lastmod>2009-12-12T23:11:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/sad-funny-world-of-mobile-development/</loc>
+    <loc>https://blog.vnomad.com/posts/code/sad-funny-world-of-mobile-development/</loc>
     <lastmod>2009-12-07T09:38:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/think/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/think/</loc>
     <lastmod>2009-12-01T10:53:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/jetbrains-idea-still-the-best/</loc>
+    <loc>https://blog.vnomad.com/posts/code/jetbrains-idea-still-the-best/</loc>
     <lastmod>2009-11-19T11:12:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/femen-must-have-been-doing-that-right/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/femen-must-have-been-doing-that-right/</loc>
     <lastmod>2009-11-18T13:17:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/intellij-idea-community-edition-now-it-gets-serious/</loc>
+    <loc>https://blog.vnomad.com/posts/code/intellij-idea-community-edition-now-it-gets-serious/</loc>
     <lastmod>2009-11-12T10:41:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/intellij-idea-community-edition-first-impressions/</loc>
+    <loc>https://blog.vnomad.com/posts/code/intellij-idea-community-edition-first-impressions/</loc>
     <lastmod>2009-11-05T10:15:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/flu-people-and-ukrainian-healthcare-system/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/flu-people-and-ukrainian-healthcare-system/</loc>
     <lastmod>2009-10-30T19:10:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/blackberry-fun/</loc>
+    <loc>https://blog.vnomad.com/posts/code/blackberry-fun/</loc>
     <lastmod>2009-10-20T14:08:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/blackberry-internet-usage-ota-and-other-staff/</loc>
+    <loc>https://blog.vnomad.com/posts/code/blackberry-internet-usage-ota-and-other-staff/</loc>
     <lastmod>2009-09-24T11:43:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/blackberry-invokelater-and-multimedia/</loc>
+    <loc>https://blog.vnomad.com/posts/code/blackberry-invokelater-and-multimedia/</loc>
     <lastmod>2009-09-23T09:37:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/blogger-code-formatting/</loc>
+    <loc>https://blog.vnomad.com/posts/code/blogger-code-formatting/</loc>
     <lastmod>2009-09-14T20:25:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/formatting/</loc>
+    <loc>https://blog.vnomad.com/tags/formatting/</loc>
     <lastmod>2009-09-14T20:25:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/mcts-acquired/</loc>
+    <loc>https://blog.vnomad.com/posts/code/mcts-acquired/</loc>
     <lastmod>2009-09-12T19:44:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/tur/</loc>
+    <loc>https://blog.vnomad.com/tags/tur/</loc>
     <lastmod>2009-09-12T17:30:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/tur/</loc>
+    <loc>https://blog.vnomad.com/categories/tur/</loc>
     <lastmod>2009-09-12T17:30:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/travel/tur/turkey-vacation/</loc>
+    <loc>https://blog.vnomad.com/posts/travel/tur/turkey-vacation/</loc>
     <lastmod>2009-09-12T17:30:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/ukrainian-independence-day/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/ukrainian-independence-day/</loc>
     <lastmod>2009-08-27T19:37:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/windows/</loc>
+    <loc>https://blog.vnomad.com/tags/windows/</loc>
     <lastmod>2009-08-21T09:14:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/windows-service-accounts/</loc>
+    <loc>https://blog.vnomad.com/posts/code/windows-service-accounts/</loc>
     <lastmod>2009-08-21T09:14:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/how-do-they-do-it/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/how-do-they-do-it/</loc>
     <lastmod>2009-08-21T09:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/ukrainians-on-times/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/ukrainians-on-times/</loc>
     <lastmod>2009-08-20T19:06:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/damn-symbian-errors/</loc>
+    <loc>https://blog.vnomad.com/posts/code/damn-symbian-errors/</loc>
     <lastmod>2009-06-20T12:32:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/symbian/</loc>
+    <loc>https://blog.vnomad.com/tags/symbian/</loc>
     <lastmod>2009-06-20T12:32:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/mcp-aquired/</loc>
+    <loc>https://blog.vnomad.com/posts/code/mcp-aquired/</loc>
     <lastmod>2009-04-16T22:49:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/java-sdk-is-hacking-window/</loc>
+    <loc>https://blog.vnomad.com/posts/code/java-sdk-is-hacking-window/</loc>
     <lastmod>2009-04-12T19:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/swe/</loc>
+    <loc>https://blog.vnomad.com/categories/swe/</loc>
     <lastmod>2009-04-12T18:40:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/travel/x-ray-headphones-improve/</loc>
+    <loc>https://blog.vnomad.com/posts/travel/x-ray-headphones-improve/</loc>
     <lastmod>2009-04-12T18:40:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/j2me-radio-lists-trouble/</loc>
+    <loc>https://blog.vnomad.com/posts/code/j2me-radio-lists-trouble/</loc>
     <lastmod>2009-03-19T13:05:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/strange-nokia-music-converter/</loc>
+    <loc>https://blog.vnomad.com/posts/code/strange-nokia-music-converter/</loc>
     <lastmod>2009-03-18T22:02:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/net-1-0-to-net-2-0-migration/</loc>
+    <loc>https://blog.vnomad.com/posts/code/net-1-0-to-net-2-0-migration/</loc>
     <lastmod>2008-10-01T09:24:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/svn-vs-cvs/</loc>
+    <loc>https://blog.vnomad.com/posts/code/svn-vs-cvs/</loc>
     <lastmod>2008-09-29T15:03:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/vcs/</loc>
+    <loc>https://blog.vnomad.com/tags/vcs/</loc>
     <lastmod>2008-09-29T15:03:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tea/who-the-hell-is-next-in/</loc>
+    <loc>https://blog.vnomad.com/posts/tea/who-the-hell-is-next-in/</loc>
     <lastmod>2008-09-29T10:17:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/google-chrome/</loc>
+    <loc>https://blog.vnomad.com/posts/code/google-chrome/</loc>
     <lastmod>2008-09-26T19:36:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/wise/</loc>
+    <loc>https://blog.vnomad.com/tags/wise/</loc>
     <lastmod>2008-09-26T19:23:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/wise-installation-studio/</loc>
+    <loc>https://blog.vnomad.com/posts/code/wise-installation-studio/</loc>
     <lastmod>2008-09-26T19:23:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/mysql-in-net/</loc>
+    <loc>https://blog.vnomad.com/posts/code/mysql-in-net/</loc>
     <lastmod>2008-09-26T19:13:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/code-highlighting-lib-missing/</loc>
+    <loc>https://blog.vnomad.com/posts/code/code-highlighting-lib-missing/</loc>
     <lastmod>2008-06-12T09:06:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/trying-out-google-base/</loc>
+    <loc>https://blog.vnomad.com/posts/code/trying-out-google-base/</loc>
     <lastmod>2008-06-10T09:44:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/net-marshalling/</loc>
+    <loc>https://blog.vnomad.com/posts/code/net-marshalling/</loc>
     <lastmod>2008-01-22T11:12:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/c&#43;&#43;/</loc>
+    <loc>https://blog.vnomad.com/tags/c&#43;&#43;/</loc>
     <lastmod>2007-11-05T16:50:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/display-tiff-in-picturebox-adobe-plugins/</loc>
+    <loc>https://blog.vnomad.com/posts/code/display-tiff-in-picturebox-adobe-plugins/</loc>
     <lastmod>2007-11-05T16:50:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</loc>
+    <loc>https://blog.vnomad.com/posts/code/tiff-to-picture-box-in-pdf-plugin-adm-dialog/</loc>
     <lastmod>2007-11-01T10:22:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/custom-selection-server-in-pdf-plugin/</loc>
+    <loc>https://blog.vnomad.com/posts/code/custom-selection-server-in-pdf-plugin/</loc>
     <lastmod>2007-10-19T14:21:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/books/</loc>
+    <loc>https://blog.vnomad.com/tags/books/</loc>
     <lastmod>2007-09-27T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/code/nice-books-to-readoopood-agile-etc/</loc>
+    <loc>https://blog.vnomad.com/posts/code/nice-books-to-readoopood-agile-etc/</loc>
     <lastmod>2007-09-27T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://blog.vnomad.com/archives/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://blog.vnomad.com/search/</loc>
   </url>
 </urlset>

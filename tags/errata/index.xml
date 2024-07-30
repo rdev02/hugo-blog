@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Errata on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/tags/errata/</link>
+    <link>https://blog.vnomad.com/tags/errata/</link>
     <description>Recent content in Errata on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,12 +13,12 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Tue, 09 Mar 2010 22:38:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/errata/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/tags/errata/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wireless router problem and an unexpected way to solve it.</title>
-      <link>http://localhost:1313/posts/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</link>
+      <link>https://blog.vnomad.com/posts/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</link>
       <pubDate>Tue, 09 Mar 2010 22:38:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</guid>
+      <guid>https://blog.vnomad.com/posts/code/wireless-router-problem-and-an-unexpected-way-to-solve-it/</guid>
       <description>A lil’ bit nerdy here. So if anyone does not like all that computer stuff skip to the LAST LINE.
 The trouble.
 It all started when I bought my first wireless router D-Link DIR 320. It looked fine. Started working in seconds and was pretty easy to configure. I was really happy but the I suddenly saw that I can’t reach my favorite finance site. Sites may be down, I thought.</description>

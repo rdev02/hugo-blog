@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Perf on Nomad&#39;s reflections</title>
-    <link>http://localhost:1313/tags/perf/</link>
+    <link>https://blog.vnomad.com/tags/perf/</link>
     <description>Recent content in Perf on Nomad&#39;s reflections</description>
     <image>
       <title>Nomad&#39;s reflections</title>
@@ -13,19 +13,19 @@
     <language>en</language>
     <copyright>Viktor Halitsyn</copyright>
     <lastBuildDate>Thu, 02 Aug 2012 22:35:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/perf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.vnomad.com/tags/perf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Javascript performance tests</title>
-      <link>http://localhost:1313/posts/code/javascript-performance-tests/</link>
+      <link>https://blog.vnomad.com/posts/code/javascript-performance-tests/</link>
       <pubDate>Thu, 02 Aug 2012 22:35:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/javascript-performance-tests/</guid>
+      <guid>https://blog.vnomad.com/posts/code/javascript-performance-tests/</guid>
       <description>I&amp;#8217;m dealing a lot with javascript nowadays and obviously I have to take performance into account. One way of doing this is writing a bunch of test code and record the time for your scripts, but what if you wanted to quickly test out some approaches and do not really want to invest a lot into them? Today I was pointed to a solution: http://jsperf.com/. This awesome tool does not just give you the framework to easily test out javascript but also provides and already created library of tests other people created when investigating their performance issues.</description>
     </item>
     <item>
       <title>String.split() VS String.startsWith() VS Regex simple performance comparison.</title>
-      <link>http://localhost:1313/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</link>
+      <link>https://blog.vnomad.com/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</link>
       <pubDate>Tue, 19 Apr 2011 14:45:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
+      <guid>https://blog.vnomad.com/posts/code/string-split-vs-string-startswith-vs-regex-simple-performance-comparison/</guid>
       <description>Now really, what would be faster/more reliable for a typical not so complicated and not over-simple case? Yes the one we tend to deal with in our day-to-day work? For those impatient benchmarks are here.Reading a 100/1000-line file is not fun and I really think you shouldn’t bother choosing if you’re dealing with such volumes of data. But if you have to parse 320k-500k records lines, which, in fact, is not that large – 320k of CSV data is ~ 12MB performance is considerable.</description>
     </item>
   </channel>
