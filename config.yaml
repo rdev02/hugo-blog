@@ -1,4 +1,4 @@
-baseURL: "http://blog.vnomad.com"
+baseURL: "https://blog.vnomad.com"
 defaultContentLanguage: "en"
 copyright: "© Viktor Halitsyn"
 
@@ -117,14 +117,17 @@ params:
   #     hidden: true # hide everywhere but not in structured data
   #     hiddenInList: true # hide on list pages and home
   
-  # fuseOpts:
-  #     isCaseSensitive: false
-  #     shouldSort: true
-  #     location: 0
-  #     distance: 1000
-  #     threshold: 0.4
-  #     minMatchCharLength: 0
-  #     keys: ["title", "permalink", "summary", "content"]
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content"]
 
 markup:
   goldmark:
@@ -155,6 +158,12 @@ markup:
 #   youtube:
 #     disabled: false
 #     privacyEnhanced: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
 
 services:
   instagram:
