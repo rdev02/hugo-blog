@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.vnomad.com/</loc>
+    <lastmod>2024-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.vnomad.com/posts/</loc>
+    <lastmod>2024-07-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://blog.vnomad.com/posts/code/2024/unify-backup/</loc>
     <lastmod>2024-07-30T00:00:00+00:00</lastmod>
   </url><url>
@@ -9,12 +15,6 @@
     <lastmod>2024-07-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.vnomad.com/categories/code/</loc>
-    <lastmod>2024-07-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.vnomad.com/</loc>
-    <lastmod>2024-07-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.vnomad.com/posts/</loc>
     <lastmod>2024-07-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.vnomad.com/tags/</loc>
